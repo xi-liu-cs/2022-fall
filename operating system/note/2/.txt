@@ -2,3 +2,7 @@
 processor fetch an instruction from memory
 decode (figures out which instruction this is)
 execute (e.g., add, mov, jmp)
+
+40
+virtualization: takes a physical resource (processor, memory, or disk)
+and transform it into more general virtual form
