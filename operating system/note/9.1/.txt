@@ -1,0 +1,16 @@
+switch user to kernel mode:
+when divide by 0, page fault
+switch mode for an application
+context switch
+stop execution, save registers, save page table
+
+transistors: on off
+put transistors together into logic gate
+
+chip: whatever putted into motherboard, can be a processor
+inside a processor can have multiple cores
+
+application is executable file residing on disk
+when processor starts executing it, it become a processor
+
+there is no thread without process
