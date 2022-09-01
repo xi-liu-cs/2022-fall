@@ -1,1 +1,4 @@
-
+39
+processor fetches an instruction from memory
+decodes (figures out which instruction this is)
+executes (e.g., add, mov, jmp)
