@@ -1,1 +1,9 @@
-
+convolutional neural network in nvidia gpu
+model -> render -> image
+5g: 3 billion bits / second
+vr smaller if computation done to another big computer, transfer data through network
+vr wired to nvidia board
+break object into polygons, parallelizable
+pass vertex data to vertex shader, figure out which pixel triangle covers, pass to fragment shader
+spline: smooth surface, curve
+no 3.js, where entire graphics course is done for you, use provided code
