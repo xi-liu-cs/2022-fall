@@ -6,3 +6,80 @@ execute (e.g., add, mov, jmp)
 40
 virtualization: takes a physical resource (processor, memory, or disk)
 and transform it into more general virtual form
+
+41
+https://github.com/remzi-arpacidusseau/ostep-code/blob/master/intro/common.h
+#include <sys/time.h>
+#include <sys/stat.h>
+#include <assert.h>
+
+double get_time()
+{
+    struct timeval t;
+    int rc = gettimeofday(&t, 0);
+    assert(!rc);
+    return (double)t.tv_sec + (double)t.tv_usec / 1e6;
+}
+
+void spin(int howlong)
+{
+    double t = get_time();
+    while((get_time() - t) < (double)howlong);
+}
+
+42
+linux ampersand (&)
+when a command line ends with the &, the shell does not wait for the command to finish
+
+43
+https://man7.org/linux/man-pages/man3/atoi.3.html
+atoi, atol, atoll - convert string array to integer or long
+unistd.h - unix standard
+unics = uniplexed information computing system
+multiplex 多路复用, 多路传输, 多重发讯 a system or signal involving simultaneous transmission of several messages along a single channel of communication
+memory is array of bytes, must specify address to access data stored
+
+44
+virtualizing memory
+each process accesses its own private virtual address space, which maps onto physical memory
+
+45
+int pthread_create(pthread_t *restrict thread,
+                  const pthread_attr_t *restrict attr,
+                  void *(*start_routine)(void *),
+                  void *restrict arg);
+pthread_create() function starts a new thread in the calling
+process
+new thread starts execution by invoking
+start_routine()
+arg is passed as the sole argument of
+start_routine()
+attr argument points to a pthread_attr_t structure whose
+contents are used at thread creation time to determine attributes
+for the new thread. initialized using pthread_attr_init()
+
+https://www.geeksforgeeks.org/understanding-volatile-qualifier-in-c/
+volatile keyword is intended to prevent the compiler from applying any optimizations on objects that can change in ways that cannot be determined by the compiler 
+Objects declared as volatile are omitted from optimization because their values can be changed by code outside the scope of current code at any time. The system always reads the current value of a volatile object from the memory location rather than keeping its value in a temporary register at the point it is requested, even if a previous instruction asked for the value from the same object
+
+46
+volatile int counter = 0; 
+++counter;
+increment of shared counter takes 3 instructions
+1. load value of counter from memory into a register
+2. increment value at register
+3. store value at register back to memory
+
+47
+dynamic random access memory store values in volatile manner, when power goes away, data lost
+hard drive is common repository for long lived info
+unlike abstractions provided by os for cpu and memory, files are shared across different processes
+https://man7.org/linux/man-pages/man2/open.2.html
+https://stackoverflow.com/questions/1658476/c-fopen-vs-open
+open and possibly create a file
+fopen vs open in c
+1) fopen is a library function while open is a system call
+2) fopen provides buffered IO which is faster compare to open which is non buffered
+3) fopen is portable while open not portable (open is environment specific)
+4) fopen returns a pointer to a FILE structure(FILE *); open returns an integer that identifies the file
+5) a FILE * gives you the ability to use fscanf and other stdio functions
