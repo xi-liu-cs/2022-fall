@@ -7,3 +7,4 @@ break object into polygons, parallelizable
 pass vertex data to vertex shader, figure out which pixel triangle covers, pass to fragment shader
 spline: smooth surface, curve
 no 3.js, where entire graphics course is done for you, use provided code
+execution time should be real time, not several minutes
