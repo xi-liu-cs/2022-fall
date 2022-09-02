@@ -1,0 +1,19 @@
+4 pillars of infrastrature
+1. cpu
+2. memory
+3. storage
+4. network
+
+arp: address resolution protocol
+udp: user datagram protocol
+mac: medium access control layer
+
+application: running busines
+transport: guarantee of delivery
+network: nodes sending packet, forwarding, routing
+link: wifi, bluetooth, medium access
+physical: encode data into signal that make ensure to go through other side
+cable is fast
+
+http is application layer protocol
+-ipconfig -all
