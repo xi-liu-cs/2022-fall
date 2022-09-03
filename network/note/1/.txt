@@ -15,3 +15,50 @@ arp: address resolution protocol 地址解析协议
 internet 互联网 is a computer network that interconnects
 computing devices throughout world
 internet service provider 互联网服务提供商
+
+63
+a packet starts in a host (source), passes through a series
+of routers, and arrives in another host (destination)
+as a packet travels from one node (host or router) to the subsequent node (host or router)
+along this path, the packet suffers from several types of delays at each node along the path
+a packet can be transmitted on a link only if there is no other packet
+currently being transmittedd on link and if there are no other packets preceding it in the queue
+
+64
+processing delay: time required to examine the packet’s header and determine where to direct the
+packet is part of the processing delay
+queuing delay: at the queue, the packet experiences a queuing delay as it waits to be transmitted onto
+the link. length of the queuing delay of a specific packet will depend on the number of earlier-arriving packets that are queued and waiting for transmission onto the link. if queue empty, packet's queuing delay is 0
+transmission delay: assume our packet can be transmitted in first come first served manner
+our packet can be transmitted after all packets arrived before it have been transmitted
+l = packet length (bits)
+r = transmission rate of link from a to b (bits / sec)
+transmission delay = l / r
+propagation delay: once a bit is pushed into the link, it needs to propagate to router b.
+time required to propagate from the beginning of the link to router b is the propagation
+delay. bit propagates at the propagation speed of the link. propagation
+speed depends on the physical medium of the link (that is, fiber optics, twisted-pair
+copper wire, and so on) and is in the range of
+2 * 10 ^ 8 meters / sec to 3 * 10 ^ 8 meters / sec
+which is equal to, or a little less than, the speed of light
+
+66
+d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}
+d_{prop} is hundreds of milliseconds for two routers 
+interconnected by a geostationary satellite link, and can be dominant term in d_{nodal}
+
+67
+a = average rate at which packets arrive at queue (packets / sec)
+r = transmission rate (bits / sec)
+l = size of each packet (bits)
+l * a bits / sec = average rate at which bits arrive at queue
+l * a / r = traffic intensity, estimate extent of queuing delay
+if l * a / r > 1, then the average rate at which bits arrive at
+the queue exceeds the rate at which the bits can be transmitted from the queue
+
+69
+n - 1 routers from source to destination
+d_{end - end} = n(d_{proc} + d_{trans} + d_{prop})
+d_{trans} = l / r
+r = transmission rate (bits / sec)
+l = size of each packet (bits)
