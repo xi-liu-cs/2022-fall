@@ -1,0 +1,52 @@
+vector space
+v1, v2, ... vk
+lambda1 v1 + lambda2 v2 + ... + lambdak vk
+sum_{i = 1} ^ k lambdai vi
+w = sum_{i = 1} ^ k lambdai vi (linear combination of vi, linearly dependent)
+
+dot product
+v1 dot v2 = v1 ^ {T} v2
+<v1, v2> = |v1||v2|cos(theta_{12})
+cos(theta_{12}) = v1 ^ {T} v2 / (|v1||v2|)
+|v| = sqrt(x ^ 2 + y ^ 2 + ...)
+
+view data as vector
+if a pixel is r, g, b
+v in R ^ {width * height * 3}
+
+linear transformation, f is a linear function
+stretch
+[x1, x2] -> [x1, c * x2]
+[x1, x2] -> [c * x1, x2]
+shear
+[x1, x2] -> [x1 + x2, x2]
+
+parametrized transformation
+[a b
+ c d]
+[x1
+ x2]
+
+[x1, c * x2] 
+->
+[1 0
+ 0 c]
+
+[c * x1, x2] 
+->
+[c 0
+ 0 1]
+
+vec x
+Ax = A(x1 e1 + x2 e2)
+= x1(Ae1) + x2(Ae2)
+
+transpose
+A
+[a b
+ c d]
+A ^ T
+[a c
+ b d]
+
+determinant ad - bc
