@@ -1,1 +1,63 @@
+65
+the program runs, and requests more memory via malloc(), os may get involved and allocate
+more memory to the process to help satisfy such calls
+3 open file descriptors, for standard input, output, and
+error. these descriptors let programs easily read input from the terminal
+and print output
 
+running: executing instructions
+ready: ready to run but for some reason os has chosen not to run it at this given moment
+blocked: a process has performed some kind
+of operation that makes it not ready to run until some other event
+takes place. when a process initiates an i/o request to a disk, it becomes blocked and thus some other process can use the processor
+
+68
+// the registers xv6 (unix version 6) will save and restore
+// to stop and subsequently restart a process
+struct context
+{
+  int eip;
+  int esp;
+  int ebx;
+  int ecx;
+  int edx;
+  int esi;
+  int edi;
+  int ebp;
+};
+// the different states a process can be in
+enum proc_state { UNUSED, EMBRYO, SLEEPING,
+RUNNABLE, RUNNING, ZOMBIE };
+// the information xv6 tracks about each process
+// including its register context and state
+struct proc {
+char *mem; // Start of process memory
+uint sz; // Size of process memory
+char *kstack; // Bottom of kernel stack
+// for this process
+enum proc_state state; // Process state
+int pid; // Process ID
+struct proc *parent; // Parent process
+void *chan; // If non-zero, sleeping on chan
+int killed; // If non-zero, have been killed
+struct file *ofile[NOFILE]; // Open files
+struct inode *cwd; // Current directory
+struct context context; // Switch here to run process
+struct trapframe *tf; // Trap frame for the
+// current interrupt
+};
+
+device driver are plugged in to os
+to give ability to use new devices
+internet of things have an os
+real time os, fail if unable to response in limited time
+
+process is a container
+cpu is executing code of process
+dynamic link library
+
+a flag saying whether kernel mode or not
+
+read 8 bits, use a table to map 8 bits to a char (ascii)
+objdump
+https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking
