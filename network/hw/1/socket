@@ -3,7 +3,7 @@ http://alas.matf.bg.ac.rs/manuals/lspe/snode=30.html
 
 /* socket types */
 #define SOCK_STREAM 1 /* stream (connection) socket */
-#define SOCK_DGRAM 2 /* datagram (conn.less) socket */
+#define SOCK_DGRAM 2 /* datagram (connectionless) socket */
 #define SOCK_RAW 3 /* raw socket */
 
 /* address families */
