@@ -1,1 +1,20 @@
-
+image is array of pixels
+alpha is transparency, [0, 1], opaque when alpha = 1
+antialiasing
+r, g, b, a in [0, 255] /* 8 bits, each pixel 32 bit word */
+across each octave, frequency change by factor of 2
+gamma correction:
+[0, 255] image pixel values are stored with a power law
+128 represents 0.25 brightness
+187 represents 0.50 brightness
+sqrt([r, g, b])
+html canvas
+vertex: where to place triangle
+fragment: fill color of pixel
+https://unix.stackexchange.com/questions/88642/what-does-mean
+!$ is the "end" of the previous command
+cursor, time is uniform (u), do not change over pixels
+position, varying (v), change over pixels
+https://stackoverflow.com/questions/17537879/in-webgl-what-are-the-differences-between-an-attribute-a-uniform-and-a-varying
+varying variable passed from vertex to fragment
+interpolate into each pixel
