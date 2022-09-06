@@ -61,3 +61,5 @@ a flag saying whether kernel mode or not
 read 8 bits, use a table to map 8 bits to a char (ascii)
 objdump
 https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking
+
+relocatable object file (.o)
