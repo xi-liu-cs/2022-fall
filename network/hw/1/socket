@@ -2,11 +2,11 @@ https://students.mimuw.edu.pl/SO/Linux/Kod/include/linux/socket.h.html
 http://alas.matf.bg.ac.rs/manuals/lspe/snode=30.html
 
 /* socket types */
-#define SOCK_STREAM	1		/* stream (connection) socket	*/
-#define SOCK_DGRAM	2		/* datagram (conn.less) socket	*/
-#define SOCK_RAW	3		/* raw socket */
+#define SOCK_STREAM	1 /* stream (connection) socket */
+#define SOCK_DGRAM	2 /* datagram (conn.less) socket */
+#define SOCK_RAW	3 /* raw socket */
 
 /* address families */
 #define AF_UNSPEC	0 /* unspecified */
-#define AF_UNIX		1	/* unix domain sockets */
-#define AF_INET		2	/* internet protocol */
+#define AF_UNIX		1 /* unix domain sockets */
+#define AF_INET		2 /* internet protocol */
