@@ -1,1 +1,69 @@
+f(x) = (e ^ {7x} + ln(pi(x + 1))) / (sqrt(3)(x ^ 2 + 6))
+is f differentiable, yes, (product, chain)
+int_0 ^ 1 f(x) dx, does this average value exist, yes
+F(x) = int_0 ^ x f(x) dx, does it exist
 
+brownian motion (weiner process)
+position vs time graph of a particle
+randomly jostled around
+f(t) no formula
+draw a secant line between 2 points, zoom in
+fractal nature, f'(t) does not exist
+
+proof based, start with formal definitions
+a set A is an object containing members or elements
+
+set of all possible elements under consideration is called universe
+typically, universe is real numbers
+set with not members is empty or null set
+
+set builder notation
+a predicate is a statement which is either true or false, depending on value
+of 1 or more variables
+p(x){return x <= 3}
+S = {E(x): P(x)} /* E is expression */
+
+(-inf, 3] = {x: x <= 3}
+even = {2n: n in N}
+A = {x in S: P(x)} /* S is domain = universe */
+
+natural number: N = {1, 2, 3, ...}
+integer: Z = {0, -1, 1, -2, 2}
+rational: Q = {m / n: m, n in Z, n != 0}
+real number: R
+
+set algebra
+binary
+given 2 sets A, B
+symbolic := logical
+A cup B = {x: x in A or x in B}
+A cap B = {x: x in A and x in B}
+complement of B relative to A
+A \ B = {x: x in and x not in B}
+if A is universe or some implied set
+B ^ c = A \ B /* R \ B */
+irrational: R \ Q
+
+A, B are disjoint if A cap B = null
+P = set of primes
+P ^ C = N \ P
+
+set relation
+A subset B if x in A implies x in B
+null subset A for any set A, vacuously true
+
+A = B if A subset B and B subset A
+x <= y, y <= x implies x = y
+A = B
+1. x in A -> x in B
+2. x in B -> x in A
+x in A iff x in B
+
+if A subset B and A != B, A is proper subset of B
+https://tex.stackexchange.com/questions/185149/how-to-insert-the-x-is-a-subset-of-y-but-is-not-equal-to-y-symbol
+
+demorgan's law
+A \ (B cup C) = (A \ B) cap (A \ C)
+A \ (B cap C) = (A \ B) cup (A \ C)
+(B cup C) ^ C = (B ^ C) cap (C ^ C)
+(B cap C) ^ C = (B ^ C) cup (C ^ C)
