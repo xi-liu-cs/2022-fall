@@ -1,1 +1,22 @@
+let t = 100 * Math.sin(2 * Math.PI * time)
+let c = S.context
+c.lineWidth = 20
+c.lineCap = 'round'
+let wx = 200 * t
+let wy = 100
+S.rect(wx - 1, wy - 1, 2, 2)
+c.beginPath()
+c.moveTo(100, 100)
+c.lineTo(200, 200)
+c.bezierCurveTo(wx, wy, 100, 200, 200 * t, 300) /* 3 pairs of points, (Date.now() - startTime) / 1000 */
+c.stroke()
 
+swizzling: compose vectors by arbitrarily rearranging and combining components of other vectors
+vec3 color = sin(10. * sin(10 * uTime)) * p)
+= vPos
+= sin(10. * vPos)
+= stripes(vPos.y)
+= vec3(1.) * noise(p)
+= vec3(1.) * (noise(p) + .5)
+= clouds(p.y + noise(p))
+= clouds(p.y + fractal(p))
