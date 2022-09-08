@@ -1,1 +1,55 @@
+what can we learn from human brain
+inspiration from nature
+human want to fly
+wright brothers came up with a machine that can fly
+different from how a bird fly
+emulate aspects of mind onto machines
+relationship between mind and body
+dualism:
+mind and body are distinct and non-identical entities
+monism:
+mind and body are manifestations of a single substance
 
+from outside observer, only physical properties can be observed
+mental properties cannot be observed
+only creater of machine know whether it has a mind or not
+other people is would not know how computations in machine are done
+1791 galvani: electricity applied to nerves could make muscles move
+over time, better measuring tools, better understand how brains work
+which inform better machine learning algorithms
+
+brain is an organism that have nerves in it
+view brain as computational engine
+input: eyes: when seeing image
+that input go through computations
+output: motor control systems (move hand up and down)
+
+mind probably has other forms of computing mechanism that is different than the computer has
+mind acquire different architecture than computer
+recreate the way brain work on an actual system
+
+when see a bird fly, you see that it is feasible (bird can fly)
+so that can try to recreate
+david marr's 3 levels of analysis
+vision is information processing task
+1. computational level: what does system do. what problems does it solve, why does it do these things
+2. algorithmic level: how does system do what it does, what representations does it use
+3. implementation, physical level: how is system physically realized
+
+bird fly:
+computation = flight
+algorithm = flapping
+physical = feathers, circuit in bird's brain
+
+algorithmic level is more important than physical level
+implementation level of human is harder to transfer from biological system (chemical reactions in neurons) to machine
+
+experiment
+anesthetize cat, put electrode in cat's brain
+receptive field to stimuli
+
+human memory is related form of consciousness
+consciousness is affecting what memory
+procedural memory
+
+take inspirations from other entities other than machines
