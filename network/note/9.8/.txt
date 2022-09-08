@@ -3,7 +3,7 @@ simulation application on browser
 
 ### What and why?
 an online game, virtual reality, and audio/image processing software that has persistent data storage</br>
-through building this application, aim to gain a better understanding of unix/linux networking interface, tcp/ip protocols, rendering, and audio/visual processing algorithms
+through building this application, aim to gain a better understanding of unix/linux networking interface, tcp/ip protocol stack, rendering, and audio/visual processing algorithms
 
 ### For whom?
 for people like me, this app can have an entertaining or training aspect</br>
