@@ -19,3 +19,20 @@ compute intensive or performance critical part can be written as functions in c,
 
 ### scope
 minimal working infrastructure using mern should be build first, then core functionalities would be build. if workload become big, it can be reduced to a simpler version
+
+trunk, main, master line is best version of code
+close branch quickly, merge in trunk before other people merge
+merge hell, conflicting changes
+git is repository version system
+git is a distributed versioning
+github is centralized
+git add .
+git commit -m ''
+new repository auto keeps a link to origin remote repository
+branch
+checkout
+origin original remote repository from which local repository was cloned
+pull: download and merge changes in current branch from a remote repository to local repository
+push: upload changes from local repository to remote
+fetch: download but not automatically merge any changes in current branch from remote to local
+merge conflicts must be manually resolved using preferred editor
