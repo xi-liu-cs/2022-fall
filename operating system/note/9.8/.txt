@@ -1,0 +1,54 @@
+when you compile assemble link program, end up an executable file residing on disk
+loader extract executable or some information from that executable file
+before execution, only look at source code, can we know size of local variables in terms of bytes?
+do not know whether a function will be executed, maybe there is a if condition
+global variables are declared outside of functions, created anyway
+dynamically allocated, we do not know size before execution, only know at run time
+code or text section, we know size
+#include <stdio.h>
+
+int main()
+{
+    int i = 0;
+    loop:
+    {
+        ++i;
+        printf("%d\n", i);
+        if(i < 3)
+            goto loop;
+    }
+}
+a relocatable file holds code and data suitable for linking with other object files to create an executable or a shared object file
+compiler or assembler do not know whether the file would be part of a bigger file or not, so they assume that
+whole program is by itself
+but when there is a jmp or goto instruction, but in object file, no human readable labels, only addresses
+if have 3 object files created by assembler, linker will combine them
+first file start from address 0, second file start at address 0 + size of first file (might no longer start from address 0)
+so if jump to 10 in second file, go to wrong place
+linker has to go through instructins and adjust addresses (that is why called relocatable)
+1 object file for each compiled and assembled c file
+shared object file (.so)
+loaded into memory and linked dynamically
+
+symtab section
+symbol table (map registers to symbol names)
+procedure and global variable names
+
+rel. means relocatable
+loader 載入器
+In Unix, the loader is the handler for the system call execve(). The Unix loader's tasks include:
+validation (permissions, memory requirements etc.);
+memory-mapping the executable object from the disk into main memory;
+copying the command-line arguments into virtual memory;
+initializing registers (e.g., the stack pointer);
+jumping to the program entry point (_start).
+
+os keeps a list of all processes (process list)
+each entry contains of process control block
+
+dispatcher or scheduler is part of os, a small program
+that switches processor from 1 process to another
+
+normal exit: return statement
+error exit: print error message
+fatal error: segmentation fault
