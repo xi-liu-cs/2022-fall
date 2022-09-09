@@ -52,3 +52,23 @@ that switches processor from 1 process to another
 normal exit: return statement
 error exit: print error message
 fatal error: segmentation fault
+
+while(1)
+{
+    write(1, "$ ", 2); /* (name, file descriptor) = {{stdin, 0}, {stdout, 1}, {stderr, 2}} */
+    readcommand(command, args);
+    if(!(pid = fork())) /* child */
+        execve(command, args, 0);
+    else if(pid > 0)
+        wait(0);
+    else
+        perror("fail");
+}
+execve() executes the program referred to by pathname
+this causes the program that is currently being run by the calling
+process to be replaced with a new program, with newly initialized
+stack, heap, and (initialized and uninitialized) data segments
+
+https://stackoverflow.com/questions/50421197/what-does-the-ve-in-execve-mean
+v comes from the fact that it takes an argument argv to the vector of arguments to the program
+e comes from another of its arguments, envp, which is similarly a vector of the environment variables
