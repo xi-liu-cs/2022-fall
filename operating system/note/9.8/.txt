@@ -74,3 +74,4 @@ v comes from the fact that it takes an argument argv to the vector of arguments 
 e comes from another of its arguments, envp, which is similarly a vector of the environment variables
 
 https://www.geeksforgeeks.org/5-state-process-model-in-operating-system/
+https://iq.opengenus.org/how-printf-and-scanf-function-works-in-c-internally/
