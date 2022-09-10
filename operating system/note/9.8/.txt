@@ -72,3 +72,5 @@ stack, heap, and (initialized and uninitialized) data segments
 https://stackoverflow.com/questions/50421197/what-does-the-ve-in-execve-mean
 v comes from the fact that it takes an argument argv to the vector of arguments to the program
 e comes from another of its arguments, envp, which is similarly a vector of the environment variables
+
+https://www.geeksforgeeks.org/5-state-process-model-in-operating-system/
