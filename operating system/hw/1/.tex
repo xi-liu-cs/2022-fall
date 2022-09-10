@@ -1,0 +1,113 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu, homework 1}
+1.\\
+2 processes are created, for each click, it might trigger a call to fork() system call that creates a duplicate of the calling process, then an execve() system call that changes the process image (stack, heap, data segments, ...)\\
+2 entries in process list, since the 2 processes do not have the same process id (pid), and have different address spaces\\
+\\
+2.\\
+it is a simplifying illusion that a process has whole CPU for itself. in the case where there is only 1 process running on a CPU, it would be faster for the process to be done comparing with time sharing situations since it would be faster if processes are not interleaved (1 process run for a time slice and another process run for another time slice)\\
+\\
+3.\\
+protection against malicious software that have unwanted operations on hardware without permission\\
+through the operating system application programming interface, it provide a level of abstraction and system independent standards of system calls so that the programmer would not need to write the lower level machine dependent code where a sophisticated knowledge of the device and application binary interface are needed\\
+\\
+4.\\
+yes, multiprogramming is still needed, since a lot of the times the computer is running a number of processes that is greater than the number of cores in the computer\\
+\\
+5.\\
+advantage: more states might be useful in additional to running, blocked, and ready. for example, there can be an initial state to signify that a process is being created, then the process waits admission to ready state, limiting amount of processes being admitted to the ready state is beneficial, since an excess of processes in ready state can result over-contention of resources. there could be a final or zombie state to denote that a process finished but not been cleared, this can be useful since it enables the other processes such as the parent process to examine the return code of the just exited process to find out whether it returned properly\\
+disadvantage: in the process control block or the process's data structure (e.g., xv6 proc struct), there would be a variable storing the state of the process. adding more states to a process require more updates to the state variable which can take more time. more logic and processing might be added to deal with more different kind of process states, which can result in longer code and take more time\\
+\\
+6.\\
+it makes sense that process do not go directly from "ready" to "blocked". for example, if a process has just initiated input/output (e.g., scanf(), begin to wait for the user to type), it goes from running to blocked state, then if the process just finished input/output (e.g., user finished typing), then it go from blocked to ready state, so it can be executed by the system, at this point, the original sequence of input/output operation is done, it cannot initiate another input/output operation until the process is run again, in that case if the process is run again, $ready \rightarrow running \rightarrow blocked$ is possible. it is a bad idea if there is an arrow from "ready" to "blocked", then probability of starvation might be higher in which a process is continually being denied to run, even if it is ready to run\\
+\\
+7.\\
+(a)\\
+if a context switch take $Q = infinity$ seconds, then after a process runs for $T$ seconds, it blocks for I/O for an infinitely amount of time
+\begin{align*}
+efficiency &= \frac{useful}{total}\\
+&= \lim_{total \rightarrow \infty} \frac{T}{total}\\
+&= 0\\
+\end{align*}
+\\
+(b)\\
+since $Q < T$, a context switch is made before every possible block for I/O, there are $n$ context switches, each context switch take $S$ seconds, so time required for all context switches is $nS$, total time is $nQ + nS$
+\begin{align*}
+efficiency &= \frac{useful}{total}\\
+&= \frac{nQ}{nQ + nS}\\
+&= \frac{nQ}{n(Q + S)}\\
+&= \frac{Q}{Q + S}
+\end{align*}
+\\
+(c)\\
+\begin{align*}
+efficiency &= \frac{T}{T + S}
+\end{align*}
+\\
+\\
+(d)
+\begin{align*}
+efficiency &= \frac{T}{T + S}\\
+\end{align*}
+\\
+\\
+(e)
+\begin{align*}
+efficiency &= \frac{Q}{Q + S}\\
+&= \frac{S}{S + S}\\
+&= \frac{1}{2}\\
+\end{align*}
+(f)\\
+if OS makes context switch for every nearly 0 seconds, then OS can get nothing done but spend all of the time context switching 
+\begin{align*}
+efficiency &= \frac{useful}{total}\\
+&= \lim_{i \rightarrow \infty}\frac{0}{iS}\\
+&= 0
+\end{align*}
+\end{document}
