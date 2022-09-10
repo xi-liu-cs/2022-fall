@@ -2,7 +2,16 @@ what can we learn from human brain
 inspiration from nature
 human want to fly
 wright brothers came up with a machine that can fly
-different from how a bird fly
+mechanism of how planes fly is different from how a bird fly
+feathers vs wings
+not emulated flapping or feathers
+
+maybe 1 way to create machine learning algorithms is figure out
+how the mind works
+an entity mind that is telling body how to move
+body itself is giving mind a signal
+mind does not operate in ether, it obtains sensory signals from body
+
 emulate aspects of mind onto machines
 relationship between mind and body
 dualism:
@@ -10,11 +19,29 @@ mind and body are distinct and non-identical entities
 monism:
 mind and body are manifestations of a single substance
 
+dualism:
+physical properties: public, visual, audio, motion through space and time, can be measured
+mental properties: private, consciousness, intentionality (belief, desire, idea), cannot know what others are thinking
+
 from outside observer, only physical properties can be observed
 mental properties cannot be observed
-only creater of machine know whether it has a mind or not
-other people is would not know how computations in machine are done
+
+can a machine have a mind?
+if put a computer inside a robot, can see robot move, but cannot see what machine is thinking about
+unclear whether machine has a mind
+
+only creater of machine know whether it has a mind or not, consciousness, intentionality
+other people is would not know how internal computations in machine are done
+
+relationship between mind and brain
+brain can be measured
+by understanding how brain works at a physical level
+we can emulate algorithms and computations onto a machine
+
+170 bc galen: seat of complex thought
 1791 galvani: electricity applied to nerves could make muscles move
+1963 hodgkin: nobel prize for showing how neurons communicate
+via electrical and chemical signalling
 over time, better measuring tools, better understand how brains work
 which inform better machine learning algorithms
 
@@ -23,6 +50,8 @@ view brain as computational engine
 input: eyes: when seeing image
 that input go through computations
 output: motor control systems (move hand up and down)
+
+input (perceptual systems) -> memory -> practical reasoning -> output (motor control systems)
 
 mind probably has other forms of computing mechanism that is different than the computer has
 mind acquire different architecture than computer
@@ -34,22 +63,42 @@ david marr's 3 levels of analysis
 vision is information processing task
 1. computational level: what does system do. what problems does it solve, why does it do these things
 2. algorithmic level: how does system do what it does, what representations does it use
-3. implementation, physical level: how is system physically realized
+(what processes does it employ to build and manipulate representations)
+3. implementation, physical level: how is system physically realized (what neural structures and neuronal activities
+implement visual system)
 
 bird fly:
 computation = flight
 algorithm = flapping
 physical = feathers, circuit in bird's brain
 
+do not take inspiration from implementation level as much, computation level matter most, and then algorithm level
 algorithmic level is more important than physical level
 implementation level of human is harder to transfer from biological system (chemical reactions in neurons) to machine
 
+answering questions such as what is the human doing is more important than questions such as what is the
+chemical communication of neurons needed to make that happen
+because implementation level is hard to transfer from humans or biological system to machine
+computational or algorithmic level is easier to transfer
+
+what is architecture used in brain
 experiment
 anesthetize cat, put electrode in cat's brain
-receptive field to stimuli
+each neuron is receptive field to stimuli
+what 1 neuron says is related to what a nearby neuron is saying
+fukushima 1980, make a copy of a cat's brain on a computer
+map from a cat's brain to an artificial neural network
 
 human memory is related form of consciousness
+way in which we are consciously thinking about the world affects what type of memory system is being used
+for that type of consciousness
+procedural memory: doing a motor task over and over again
+priming: higher probability of recognizing previously perceived information
+perceptual: understanding context of stimulus
+semantic memory: general context free facts, equations
+episodic memory: what you experienced from past
 consciousness is affecting what memory
 procedural memory
-
-take inspirations from other entities other than machines
+take inspirations from other entities other than machines (from systems that already work)
+brain is modular and has attention in it
+specific parts of brain for specific task, linked
