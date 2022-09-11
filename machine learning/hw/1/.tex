@@ -1,0 +1,538 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+\subsubsection*{Question 1}
+Two players take turns trying to 
+kick a ball into the net in soccer. 
+Player 1 succeeds with probability 
+1/5 and Player 2 succeeds with 
+the probability 1/4. Whoever 
+succeeds first wins the game 
+and the game is over. 
+Assuming that Player 1 takes the 
+first shot, what is the 
+probability that Player 1 wins 
+the game? Please derive your 
+answer.\\
+\\
+let $X_1$ be number of trials required for player 1 to have first success\\
+$X_2$ be number of trials required for player 2 to have first success\\
+$p_1$ be probability of success of player 1, $p_1 = 1 / 5$\\
+$p_2$ be probability of success of player 2, $p_2 = 1/ 4$\\
+\begin{align*}
+P(X_1 = n_1) &= (1 - p_1) ^ {n_1 - 1} p_1\\
+P(X_1 = n_2) &= (1 - p_2) ^ {n_2 - 1} p_2\\
+\end{align*}
+probability that player 1 wins is $P(X_1 < X_2)$\\
+player 1 wins when\\
+1. player 1 succeeds in current turn, and player 2 did not succeed in current turn, probability is $p_1(1 - p_2)$\\
+2. player 1 did not succeed in current turn, and player 2 did not succeed in current turn, then the probability is equivalent for the game to restart from the beginning, probability is $(1 - p_1)(1 - p_2)P(X_1 < X_2)$
+\begin{align*}
+P(X_1 < X_2) &= p_1(1 - p_2) + (1 - p_1)(1 - p_2)P(X_1 < X_2)\\
+P(X_1 < X_2) - (1 - p_1)(1 - p_2)P(X_1 < X_2) &= p_1(1 - p_2)\\
+P(X_1 < X_2)(1 - (1 - p_1)(1 - p_2)) &= p_1(1 - p_2)\\
+P(X_1 < X_2) &= \frac{p_1(1 - p_2)}{1 - (1 - p_1)(1 - p_2)}\\
+&= \frac{p_1(1 - p_2)}{1 - (1 - p_1)(1 - p_2)}\\
+&= \frac{p_1(1 - p_2)}{1 - (1 - p_2 - p_1 + p_1 p_2)}\\
+&= \frac{p_1 - p_1 p_2}{p_1 + p_2 - p_1 p_2}\\
+&= \frac{1 / 5 - (1 / 5)(1 / 4)}{1 / 5 + 1 / 4 - (1 / 5)(1 / 4)}\\
+&= \boxed{\frac{3}{8}}\\
+\end{align*}
+\newpage
+\noindent
+\subsubsection*{Question 2}
+You know that 1\% of the 
+population have COVID. You also 
+know that 90\% of the people who 
+have COVID get a positive test result
+and 10\% of people who do not 
+have COVID also test positive.
+What is the probability that you 
+have COVID given that you 
+tested positive?\\
+\\
+let $A$ denote the event that you tested positive\\
+$B$ be the event that you have covid\\
+$P(B) = 0.01\\
+P(B ^ c) = 1 - P(B) = 1 - 0.01 = 0.99\\
+P(A | B) = 0.9\\
+P(A | B ^ c) = 0.1$
+\begin{align*}
+P(A | B) &= \frac{P(A \cap B)}{P(B)}, \qquad P(A | B ^ c) = \frac{P(A \cap B ^ c)}{P(B ^ c)}\\
+P(A \cap B) &= P(A | B)P(B), \qquad P(A \cap B ^ c) = P(A | B ^ c)P(B ^ c)\\
+P(A) &= P(A \cap B) + P(A \cap B ^ c) = P(A | B)P(B) + P(A | B ^ c)P(B ^ c)\\
+P(B | A) &= \frac{P(A \cap B)}{P(A)}\\
+&= \frac{P(A | B)P(B)}{P(A | B)P(B) + P(A | B ^ c)P(B ^ c)}\\
+&= \frac{(0.9)(0.01)}{(0.9)(0.01) + (0.1)(0.99)}\\
+&= \frac{0.009}{0.108}\\
+&= \frac{9}{108}\\
+&= \boxed{\frac{1}{12}}
+\end{align*}
+\newpage
+\noindent
+\subsubsection*{Question 3}
+Let the function $f(x)$ be defined as: 
+\begin{equation}
+    f(x) = 
+    \left\{ \begin{array}{cl}
+    0 & for \,\, x < 0 \\ 
+\frac{1}{(1+x)} & otherwise.
+\end{array} \right.
+\end{equation}
+Is $f(x)$ a PDF? If yes, then 
+prove that it is a PDF. 
+If no, then 
+prove that it is not a PDF.\\
+\\
+let $X$ be a continuous random variable, if $func$ is a probability density function, then $func$ has the property
+\begin{align*}
+P(-\infty \leq X \leq \infty) &= \int_{-\infty} ^ {\infty} func(x) dx = 1\\
+\\
+I := \int_{-\infty} ^ {\infty} f(x) dx &= \int_0 ^ {\infty} \frac{1}{1 + x} dx\\
+\\
+u := 1 + x, \quad du = dx\\
+\int \frac{1}{1 + x} dx &= \int \frac{du}{u}\\
+&= \ln(u)\\
+&= \ln(1 + x)\\
+\\
+I &= \lim_{a \rightarrow \infty}[\ln(1 + x)]_0 ^ {a}\\
+&= \lim_{a \rightarrow \infty}\ln(a) - \ln(1)\\
+&= \lim_{a \rightarrow \infty}\ln(a) - 0\\
+&= \lim_{a \rightarrow \infty}\ln(a)\\
+&= \infty
+\end{align*}
+since the integral $I$ is not equal to 1, $f(x)$ is not a probability density function\\
+\newpage
+\noindent
+\subsubsection*{Question 4 (10 points)}
+Assume that $X$ and $Y$ are two 
+independent random variables and 
+both have the same density function: 
+\begin{equation}
+    f(x) =
+    \left\{ \begin{array}{cll}
+    2x & if & 0 \le x \le 1 \\ 
+    0  & otherwise & 
+\end{array} \right.
+\end{equation}
+What is the value of 
+$\mathbb{P}(X + Y \le 1)$?
+\\
+\begin{align*}
+P(X + Y \le 1) &= \int_0 ^ 1 \int_0 ^ {1 - y} 2x\;dx dy\\
+&= \int_0 ^ 1 [x ^ 2]_0 ^ {1 - y} dy\\
+&= \int_0 ^ 1 (1 - y) ^ 2 dy\\
+&= \int_0 ^ 1 (1 - 2y + y ^ 2) dy\\
+&= \left[y - y ^ 2 + \frac{y ^ 3}{3}\right]_0 ^ 1\\
+&= 1 - 1 + \frac{1}{3}\\
+&= \boxed{\frac{1}{3}}
+\end{align*}
+\newpage
+\noindent
+\subsubsection*{Question 5}
+Let $X$ be a random variable which belongs 
+to a Uniform distribution between 
+$0$ and $1$: $X \sim Unif(0,1)$. Let 
+$Y = g(X) = e^{X}$. What is the value 
+of $\mathbb{E}(Y)$?\\
+\\
+$a, b \in \mathbb{R}$, for $Unif(a, b)$
+\[f(x) = \frac{1}{b - a}\]
+for $Unif(0, 1)$
+\[f(x) = \frac{1}{1 - 0} = 1\]
+\begin{align*}
+E[X] &= \int_{-\infty} ^ {\infty} x f(x) dx\\
+E[Y] &= E[g(X)] = \int_{-\infty} ^ {\infty} g(x) f(x) dx\\
+&= \int_{-\infty} ^ {\infty} e ^ x (1) dx\\
+&= \int_0 ^ 1 e ^ x dx\\
+&= [e ^ x]_0 ^ 1\\
+&= e ^ 1 - e ^ 0\\
+&= \boxed{e - 1}\\
+\end{align*}
+\newpage
+\noindent
+\subsubsection*{Question 6}
+Suppose that the number of errors per 
+computer program has a Poisson 
+distribution with mean 5. 
+We have 125 program submissions. 
+Let $X_1, X_2, \ldots, X_{125}$ 
+denote the number of errors in the 
+programs. What is the value of 
+$\mathbb{P}(\bar{X}_n < 5.5)$?\\
+\\
+central limit theorem: let $X_1, X_2, ..., X_n$ be random variables, each $X_i$ has expected value $\mu$, variance $\sigma ^ 2$ of each of the $X_i$. $\forall n \geq 1$
+\[Z_n := \frac{\overline{X_n} - E[\overline{X_n}]}{\sqrt{Var(\overline{X_n})}}
+= \frac{\sum_{i = 0} ^ n X_i - n\mu}{\sqrt{n\sigma ^ 2}} = \frac{n\overline{X_n} - n\mu}{\sqrt{n}\sigma} = \sqrt{n}\frac{\overline{X_n} - \mu}{\sigma}\]
+let $\mu$ be mean, $\sigma ^ 2$ be variance\\
+for a poisson distribution, $\mu = \sigma ^ 2 = 5$
+\begin{align*}
+Z_n &= \sqrt{n}\frac{\overline{X_n} - \mu}{\sigma}\\
+&= \sqrt{125}\frac{\overline{X_n} - 5}{\sqrt{5}}\\
+&= \sqrt{5}\sqrt{25}\frac{\overline{X_n} - 5}{\sqrt{5}}\\
+&= 5(\overline{X_n} - 5)\\
+&Z_n \text{ converge to the probability density function of standard normal distribution } \Phi\\
+P(\overline{X}_n < 5.5) &= P(5(\overline{X_n} - 5) < 5(5.5 - 5))\\
+&= P(5(\overline{X_n} - 5) < 2.5)\\
+&\approx \Phi(2.5)\\
+&= \boxed{0.9938}
+\end{align*}
+\subsubsection*{Question 7 (10 points)}
+Let $X_n = f(W_n, X_{n-1})$ for 
+$n = 1, \ldots, P$, for some 
+function $f()$. Let us define the 
+value of variable $E$ as 
+\begin{equation}
+     E = ||C - X_P||^2,
+\end{equation}
+for some constant $C$. 
+What is the value of the gradient 
+$\frac{\partial E}{\partial X_0}$?
+\\
+\begin{align*}
+X_p &= f(W_p, X_{p - 1})\\
+\frac{\partial X_p}{\partial X_0} &= f_X(W_p, X_{p - 1})\frac{\partial X_{p - 1}}{\partial X_0} = \prod_{i = 1} ^ p f_X(W_i, X_{i - 1})\\
+\frac{\partial E}{\partial X_0} &= 2||C - X_p||\frac{\partial X_p}{\partial X_0}\\
+&= 2||C - X_p||\prod_{i = 1} ^ p f_X(W_i, X_{i - 1})
+\end{align*}
+
+\subsection*{Question 8 (10 points)}
+Let $A$ be the matrix 
+$\left[ \begin{array}{ccc}
+     2 & 6 & 7 \\ 
+     3 & 1 & 2 \\
+     5 & 3 & 4 
+    \end{array} 
+\right]$
+and let $x$ be the column vector
+$\left[ \begin{array}{c}
+     2 \\ 
+     3 \\
+     4  
+    \end{array} 
+\right]$. Let $A^{T}$ and $x^{T}$ denote the transpose of $A$ and $x$ respectively. Compute $Ax$, $A^{T}$ and $x^{T}A$.\\
+\\
+\begin{align*}
+Ax &=
+\begin{bmatrix}
+2 & 6 & 7\\
+3 & 1 & 2\\
+5 & 3 & 4\\
+\end{bmatrix}
+\begin{bmatrix}
+2\\
+3\\
+4\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 + 18 + 28\\
+6 + 3 + 8\\
+10 + 9 + 16\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+50\\
+17\\
+35\\
+\end{bmatrix}\\
+A ^ T &=
+\begin{bmatrix}
+2 & 3 & 5\\
+6 & 1 & 3\\
+7 & 2 & 4\\
+\end{bmatrix}\\
+x ^ T A &=
+\begin{bmatrix}
+2 & 3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 & 6 & 7\\
+3 & 1 & 2\\
+5 & 3 & 4\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 + 9 + 20\\
+12 + 3 + 12\\
+14 + 6 + 16\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+33\\
+27\\
+36\\
+\end{bmatrix}
+\end{align*}
+
+\subsection*{Question 9}
+Find out if the following matrices are invertible. If yes, find the inverse of the matrix.\\
+(a)
+\begin{equation}
+    \left[ 
+        \begin{array}{ccc}
+         6 & 2 & 3 \\ 
+         3 & 1 & 1 \\
+        10 & 3 & 4 
+        \end{array} 
+    \right]
+\end{equation}
+(b)
+\begin{equation}
+    \left[ 
+        \begin{array}{ccc}
+         1 & 2 & 3 \\ 
+         0 & 2 & 2 \\
+         1 & 4 & 5 
+        \end{array} 
+    \right]
+\end{equation}\\
+\\
+a matrix is invertible if and only if its determinant is not 0\\
+below calculate determinant using Laplace expansion\\
+(a)
+\begin{align*}
+\begin{vmatrix}
+6 & 2 & 3\\ 
+3 & 1 & 1\\
+10 & 3 & 4 
+\end{vmatrix}
+&=
+6
+\begin{vmatrix}
+1 & 1\\
+3 & 4\\
+\end{vmatrix}
+- 2
+\begin{vmatrix}
+3 & 1\\
+10 & 4\\
+\end{vmatrix}
++ 3
+\begin{vmatrix}
+3 & 1\\
+10 & 3\\
+\end{vmatrix}\\
+&= 6(4 - 3) - 2(12 - 10) + 3(9 - 10) = 6 - 4 - 3 = -1
+\end{align*}
+determinant of (a) is 1, which is not 0, so the matrix is invertible
+\begin{align*}
+\left[
+\begin{array}{ccc|ccc}
+6 & 2 & 3 & 1 & 0 & 0\\
+3 & 1 & 1 & 0 & 1 & 0\\
+10 & 3 & 4 & 0 & 0 & 1
+\end{array}
+\right]\\
+R_1 \leftarrow \frac{R_1}{6}
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+3 & 1 & 1 & 0 & 1 & 0\\
+10 & 3 & 4 & 0 & 0 & 1
+\end{array}
+\right]\\
+R_2 \leftarrow R_2 - 3 R_1
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+0 & 0 & - 1 / 2 & - 1 / 2 & 1 & 0\\
+10 & 3 & 4 & 0 & 0 & 1
+\end{array}
+\right]\\
+R_3 \leftarrow R_3 - 10 R_1
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+0 & 0 & - 1 / 2 & - 1 / 2 & 1 & 0\\
+0 & - 1 / 3 & -1 & - 5 / 3 & 0 & 1
+\end{array}
+\right]\\
+R_2 \leftrightarrow R_3
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+0 & - 1 / 3 & -1 & - 5 / 3 & 0 & 1\\
+0 & 0 & - 1 / 2 & - 1 / 2 & 1 & 0
+\end{array}
+\right]\\
+R_2 \leftarrow -3 R_2
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+0 & 1 & 3 & 5 & 0 & -3\\
+0 & 0 & - 1 / 2 & - 1 / 2 & 1 & 0
+\end{array}
+\right]\\
+R_3 \leftarrow -2 R_3
+\left[
+\begin{array}{ccc|ccc}
+1 & 1 / 3 & 1 / 2 & 1 / 6 & 0 & 0\\
+0 & 1 & 3 & 5 & 0 & -3\\
+0 & 0 & 1 & 1 & -2 & 0
+\end{array}
+\right]\\
+R_1 \leftarrow R_1 - \frac{R_2}{3}
+\left[
+\begin{array}{ccc|ccc}
+1 & 0 & -1 / 2 & -3 / 2 & 0 & 1\\
+0 & 1 & 3 & 5 & 0 & -3\\
+0 & 0 & 1 & 1 & -2 & 0
+\end{array}
+\right]\\
+R_2 \leftarrow R_2 - 3 R_3
+\left[
+\begin{array}{ccc|ccc}
+1 & 0 & -1 / 2 & -3 / 2 & 0 & 1\\
+0 & 1 & 0 & 2 & 6 & -3\\
+0 & 0 & 1 & 1 & -2 & 0
+\end{array}
+\right]\\
+R_1 \leftarrow R_1 + \frac{R_3}{2}
+\left[
+\begin{array}{ccc|ccc}
+1 & 0 & 0 & -1 & -1 & 1\\
+0 & 1 & 0 & 2 & 6 & -3\\
+0 & 0 & 1 & 1 & -2 & 0
+\end{array}
+\right]
+\end{align*}
+inverted matrix of (a) is 
+$\begin{bmatrix}
+-1 & -1 & 1\\
+2 & 6 & -3\\
+1 & -2 & 0
+\end{bmatrix}$\\
+(b)
+\begin{align*}
+\begin{vmatrix}
+1 & 2 & 3\\ 
+0 & 2 & 2\\
+1 & 4 & 5
+\end{vmatrix}
+&=
+1
+\begin{vmatrix}
+2 & 2\\
+4 & 5
+\end{vmatrix}
+- 2
+\begin{vmatrix}
+0 & 2\\
+1 & 5\\
+\end{vmatrix}
++ 3
+\begin{vmatrix}
+0 & 2\\
+1 & 4
+\end{vmatrix}\\
+&= 1(10 - 8) - 2(0 - 2) + 3(0 - 2) = 2 + 4 - 6 = 0
+\end{align*}
+determinant of (b) is 0, so the matrix is not invertible
+\subsubsection*{Question 10}
+What is an Eigen Value of a matrix? 
+What is an Eigen Vector of a matrix? 
+Describe one method (any method) you 
+would use to compute both of them. 
+Use the above described method to compute 
+the Eigen Values of the matrix:
+\begin{equation}
+    \left[ 
+        \begin{array}{ccc}
+         1 & 0 & -1 \\ 
+         1 & 0 & 0 \\
+        -2 & 2 & 1 
+        \end{array} 
+    \right]
+\end{equation}
+\\
+let $V$ be a vector space over the field $\mathbb{C}$, $A: V \rightarrow V$ be a linear map. An element $v \in V$ is an eigenvector of $A$ if $\exists \lambda \in \mathbb{C}, Av = \lambda v$, then $\lambda$ is an eigenvalue of $A$ associated with eigenvector $v$
+\begin{align*}
+Av &= \lambda v\\
+Av - \lambda v &= \textbf{0}\\
+Av - \lambda I v &= \textbf{0}\\
+(A - \lambda I)v &= \textbf{0}\\
+det(A - \lambda I) &= \textbf{0}\\
+A - \lambda I &=
+\begin{bmatrix}
+1 & 0 & -1\\ 
+1 & 0 & 0\\
+-2 & 2 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+\lambda & 0 & 0\\
+0 & \lambda & 0\\
+0 & 0 & \lambda
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 - \lambda & 0 & -1\\ 
+1 & -\lambda & 0\\
+-2 & 2 & 1 - \lambda
+\end{bmatrix}\\
+det(A - \lambda I) &=
+\begin{vmatrix}
+1 - \lambda & 0 & -1\\ 
+1 & -\lambda & 0\\
+-2 & 2 & 1 - \lambda
+\end{vmatrix}\\
+&= (1 - \lambda)((-\lambda)(1 - \lambda) - 0) - (1)(2 - (-\lambda)(-2))\\
+&= (1 - \lambda)(-\lambda + \lambda ^ 2) - (2 - 2\lambda)\\
+&= -\lambda + \lambda ^ 2 + \lambda ^ 2 - \lambda ^ 3 - 2 + 2\lambda\\
+&= -\lambda ^ 3 + 2\lambda ^ 2 + \lambda - 2\\
+&= -(\lambda - 1)(\lambda ^ 2 - \lambda - 2)\\
+&= -(\lambda - 1)(\lambda - 2)(\lambda + 1)\\
+&= 0\\
+\\
+\lambda_1 &= 1\\
+\lambda_2 &= 2\\
+\lambda_3 &= -1\\
+\end{align*}
+
+\end{document}
