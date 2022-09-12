@@ -59,3 +59,22 @@ P(X + Y \le 1) &= \int_0 ^ 1 \int_0 ^ {1 - y} 2x\;dx dy\\
 &= 1 - 1 + \frac{1}{3}\\
 &= \boxed{\frac{1}{3}}
 \end{align*}
+
+\subsubsection*{Question 7 (10 points)}
+Let $X_n = f(W_n, X_{n-1})$ for 
+$n = 1, \ldots, P$, for some 
+function $f()$. Let us define the 
+value of variable $E$ as 
+\begin{equation}
+     E = ||C - X_P||^2,
+\end{equation}
+for some constant $C$. 
+What is the value of the gradient 
+$\frac{\partial E}{\partial X_0}$?
+\\
+\begin{align*}
+X_p &= f(W_p, X_{p - 1})\\
+\frac{\partial X_p}{\partial X_0} &= f_X(W_p, X_{p - 1})\frac{\partial X_{p - 1}}{\partial X_0} = \prod_{i = 1} ^ p f_X(W_i, X_{i - 1})\\
+\frac{\partial E}{\partial X_0} &= 2||C - X_p||\frac{\partial X_p}{\partial X_0}\\
+&= 2||C - X_p||\prod_{i = 1} ^ p f_X(W_i, X_{i - 1})
+\end{align*}
