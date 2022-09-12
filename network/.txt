@@ -1,5 +1,2 @@
 pdf password
 DCNFALL2022%-
-
-ubuntu
-cd /mnt/c/Users/xi133/Desktop/book/2022\ fall/network
