@@ -78,3 +78,22 @@ X_p &= f(W_p, X_{p - 1})\\
 \frac{\partial E}{\partial X_0} &= 2||C - X_p||\frac{\partial X_p}{\partial X_0}\\
 &= 2||C - X_p||\prod_{i = 1} ^ p f_X(W_i, X_{i - 1})
 \end{align*}
+
+\begin{align*}
+X_P &= f(W_P, X_{P - 1})\\
+\frac{\partial E}{\partial X_0} &= \frac{\partial||C - X_P|| ^ 2}{\partial X_0}\\
+&= \frac{\partial||C - X_P|| ^ 2}{\partial X_P} \frac{\partial X_P}{\partial X_0}\\
+&\text{/* dot product of a vector \textbf{v} with itself is the square of \textbf{v}'s magnitude}\\
+&\text{since }\textbf{v} \cdot \textbf{v} = |\textbf{v}||\textbf{v}|\cos(0) = |\textbf{v}||\textbf{v}|(1) = |\textbf{v}| ^ 2 \textbf{ */}\\
+&= \frac{\partial((C - X_P)\cdot(C - X_P))}{\partial X_P} \frac{\partial X_P}{\partial X_0}\\
+&\text{/* derivative of a dot product of $\overrightarrow{a} + \overrightarrow{b}$ with respect to $a_i$:}\\
+&\frac{\partial((\overrightarrow{a} + \overrightarrow{b}) \cdot (\overrightarrow{a} + \overrightarrow{b}))}{\partial b_i}
+= \frac{\partial(\sum_{i = 1} ^ n a_i ^ 2 + 2a_i b_i + b_i ^ 2)}{\partial b_i}
+= 2a_i + 2b_i
+= 2(\overrightarrow{a} + \overrightarrow{b})_i\\
+&\text{let } \overrightarrow{a} := C, \qquad \overrightarrow{b} := -X_P\\
+&\text{then } \frac{\partial((C + (-X_P))\cdot(C + (-X_P)))}{\partial (-X_P)} = 2(C - X_P)(-1) = 2(X_P - C))\text{ */}\\
+&= 2(X_P - C)\frac{\partial X_P}{\partial X_{P - 1}}\cdot\frac{\partial X_{P - 1}}{\partial X_{P - 2}} \,...\, \frac{\partial X_1}{\partial X_0}\\
+&= \boxed{2(X_P - C)\prod_{i = 1} ^ P D_i}\\
+&\text{where } D_i \text{ is the Jacobian matrix of } f(W_i, X_{i - 1})
+\end{align*}
