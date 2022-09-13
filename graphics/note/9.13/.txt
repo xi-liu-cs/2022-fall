@@ -4,3 +4,82 @@ previously took hours to render, now can be realtime
 so can take algorithms from distant past and use them, have a different meaning on new hardware, and connected to cloud
 convolutional neural network
 because improvement in hardware, previously impractical hardware
+
+V = [vx, vy, vz, 1] /* point */
+W = [wx, wy, wz, 0] /* direction */
+normalize vectors, set length to 1
+
+distinguish between a point and a direction
+an address in memory vs a difference between 2 addresses in memory
+
+just as computer memory
+a point has an absolute location
+a direction does not, direction is same no matter where you are
+V + t * W
+
+when focus of lens is far away from the film or digital element
+only see a narrow window of reality
+only have narrow angles
+
+conversely, if move films close, the lens focus close, then get wide angles
+short focal length
+V = [0, 0, fl, 1]
+W = normalize([x, y, -fl, 0])
+t > 0
+fl = focal length
+
+t is distance along the ray from the ray's origin
+if t is 0, you are at ray origin
+
+3 variables is hard
+trick is turn it into a parametric equation in just t
+taking something in 3d space
+ignore everything in that 3d space
+except what matters to me right now marching along that ray is a 1d universe
+it has a single variable t
+a little ant walking along the ray
+the ant lives its entire life along that ray
+it does not know that it is a 3d space
+all it cares is that i keep walking along the ray from v and eventually am i about to 
+bump into the sphere or not
+reduce complexity to 1d universe
+
+V = V - [cx, cy, cz]
+find t along V + t * W such that
+x ^ 2 + y ^ 2 + z ^ 2 + r ^ 2 = 0
+substitute [Vx + t * Wx, Vy + t * Wy, Vz + t * Wz] for [x, y, z]
+(Vx + t * Wx) * (Vx + t * Wx) +
+(Vy + t * Wy) * (Vy + t * Wy) +
+(Vz + t * Wz) * (Vz + t * Wz) - r ^ 2 = 0
+
+rewrite everything so global coordinate system has origin at sphere's center
+everything except t is a constant
+already chosen origin of ray Vx, Vy, Vz
+direction of ray Wx, Wy, Wz
+
+looking at 1d universe of ant crawling along the ray
+made sure that direction was of unit length
+
+rearrange terms
+(Wx * Wx + Wy * Wy + Wz * Wz) * t * t +
+2 * (Vx * Wx + Vy * Wy + Vz * Wz) * t +
+(Vx * Vx + Vy * Vy + Vz * Vz - r * r) = 0
+
+simplify
+(W cdot W) * t * t + 2(V cdot W) * t + (V cdot V - r * r) = 0
+t * t + 2(V cdot W) * t + (V cdot V - r * r) = 0
+
+quadratic equation
+t = (-b +- sqrt(b ^ 2 - 4ac)) / (2a)
+since a = 1
+t = (-b +- sqrt(b ^ 2 - 4c)) / 2
+  = - b / 2 +- sqrt((b ^ 2 - 4c) / 4)
+  = - b / 2 +- sqrt((b / 2)(b / 2)  - c)
+
+t = -(V cdot W) +- sqrt((V cdot W) ^ 2  - V cdot V + r * r)
+closer to the origin of ray is negative side, less distance
+positive is back side
+negative is in front because we hit it first, it get smaller t
+
+if ray misses the sphere, there will be negative value under square root
+N = normalize(P - C)
