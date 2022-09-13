@@ -1,0 +1,98 @@
+supervised learning
+given some input of animal, say what is animal
+
+input x: image of cat
+output y: say it is a cat
+
+how to go from input to output
+medical diagnosis: input: test results, output: risk for heart disease
+robotics: input: sensor data, output: joint velocities
+
+linear regression
+treat input data as a vector
+x1 column vector with d elements
+
+output data is a scalar
+y1 = [] /* 1 number */
+
+(x1, y1) ... (xn, yn)
+input collection
+X = 
+[
+  x1, x2, ..., xn
+] /* dimension = d * n */
+Y = 
+[
+  y1
+  y2
+  ...
+  yn
+] /* dimension = n * 1 */
+
+X -> Y
+x1 is a single example in data
+
+X ^ T W = Y
+dimensionality of W
+W =
+[
+    w1
+    w2
+    ...
+    wd
+] /* dimension = d * 1 */
+
+X /* dimension = d * n */
+X ^ T /* dimension = n * d */
+W /* dimension = d * 1 */
+
+feed (x1, y1) ... (xn, yn) into a ml model
+input: X_{d * n}
+output: Y_{n * 1}
+goal: find a weight vector W such that X ^ T W = Y
+
+minimize ||X ^ T W - Y|| ^ 2
+for every data point e1
+have an error 
+e1 ^ 2 = (W X1 - Y1) ^ 2
+e2 ^ 2 = (W X2 - Y2) ^ 2
+...
+en ^ 2 = (W Xn - Yn) ^ 2
+minimize sum_{i = 1} ^ n e_j ^ 2
+loss
+ordinary least squares
+
+why square rather than absolute
+1. smooth and differentiable (absolute value not differentiable at x = 0)
+2. easier to get closed form expression
+
+huber loss
+huber loss is a loss function used in robust regression
+that is less sensitive to outliers in data than the squared error loss 
+a variant for classification is also sometimes used
+
+/* dimension = n * 1, n * 1 */
+loss := ||X ^ T W - Y|| ^ 2 = <(X ^ T W - Y), (X ^ T W - Y)>
+= (X ^ T W - Y) ^ T (X ^ T W - Y)
+= (W ^ T X - Y ^ T) (X ^ T W - Y)
+= W ^ T X X ^ T W - W ^ T X Y - Y ^ T X ^ T W + Y ^ T Y
+
+when W is minima
+partial L / partial W = 0
+(partial / partial W) (W ^ T X X ^ T W - W ^ T X Y - Y ^ T X ^ T W + Y ^ T Y) = 0
+/* Y ^ T Y will be 0, no W in it */
+= 2X X ^ T W - X Y - X Y + 0
+
+2X X ^ T W - 2X Y = 0
+X X ^ T W = X Y
+W = (X X ^ T) ^ {-1} X Y
+
++ sign, pseudo inverse
+X ^ T W = Y
+W = (X ^ T) ^ {+} Y
+
+w1 x11 + w2 x12 + ... + wd x1d = y
+
+Ax = b
+x = A ^ {-1} b
+x = (A ^ T A) ^ {-1} A ^ T b /* pseudo inverse */
