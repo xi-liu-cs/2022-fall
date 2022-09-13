@@ -7,3 +7,4 @@ decide which process to take now
 3 of them, some of them are waiting for i/o, some of them are already ready
 moving from running to ready when a process's time slice
 direct memory access: from disk to memory
+first in first out not fair, if a process in back of queue is done with i/o, it cannot execute even if it is ready
