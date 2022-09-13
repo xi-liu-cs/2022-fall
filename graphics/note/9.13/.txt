@@ -1,0 +1,6 @@
+it is not the algorithms that changed, it is the hardware that changed
+moore's law
+previously took hours to render, now can be realtime
+so can take algorithms from distant past and use them, have a different meaning on new hardware, and connected to cloud
+convolutional neural network
+because improvement in hardware, previously impractical hardware
