@@ -8,3 +8,16 @@ decide which process to take now
 moving from running to ready when a process's time slice
 direct memory access: from disk to memory
 first in first out not fair, if a process in back of queue is done with i/o, it cannot execute even if it is ready
+0 to 2 ^ {64 - 1} addresses for each process (2 ^ {64} bytes)
+suspend: removed from memory, swapped to disk, now even if the process is done with i/o, cannot be ready until extra step from disk to memory
+part of disk is for swapping area
+interrupt: current running process is suspended, might be something external to the process
+1. timeout (time to live (ttl) or hop limit)
+2. i/o device (ethernet)
+3. page fault
+
+interrupt: 
+1. save program counter, registers
+2. hardware loads program counter of interrupt service routine (isr)
+3. isr runs
+4. load new program counter, register of picked process
