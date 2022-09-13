@@ -1,0 +1,10 @@
+communicate via set of standardized protocols
+free peering agreement, relay each other's data between organizations of equal size
+in each transaction, act as a server or client, but not both
+tcp or udp has error checking, check whether packets are arrived
+tcp for usual web browser
+udp for streaming
+smtp simple mail transfer protocol
+2 versions of http
+1. get: request by respond
+2. post: web client supply some data to web server
