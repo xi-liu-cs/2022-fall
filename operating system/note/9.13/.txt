@@ -1,1 +1,9 @@
-
+process is application in execution
+a container (heap, stack)
+process state
+running, not running
+1 cpu, 4 processes
+decide which process to take now
+3 of them, some of them are waiting for i/o, some of them are already ready
+moving from running to ready when a process's time slice
+direct memory access: from disk to memory
