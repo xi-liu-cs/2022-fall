@@ -68,8 +68,18 @@ disadvantage: in the process control block or the process's data structure (e.g.
 it makes sense that process do not go directly from "ready" to "blocked". for example, if a process has just initiated input/output (e.g., scanf(), begin to wait for the user to type), it goes from running to blocked state, then if the process just finished input/output (e.g., user finished typing), then it go from blocked to ready state, so it can be executed by the system, at this point, the original sequence of input/output operation is done, it cannot initiate another input/output operation until the process is run again, in that case if the process is run again, $ready \rightarrow running \rightarrow blocked$ is possible. it is a bad idea if there is an arrow from "ready" to "blocked", then probability of starvation might be higher in which a process is continually being denied to run, even if it is ready to run\\
 \\
 7.\\
+let e := efficiency, $e$ be a synonym for efficiency in question 7\\
+since this question is subject to various interpretations, more assumptions and possible cases are considered in the following later pages (pages 4 to 9), including visual justification and schematic differentiation between the cases, each case considered hold different assumptions\\
+\\
 (a)\\
-if a context switch take $Q = infinity$ seconds, then after a process runs for $T$ seconds, it blocks for I/O for an infinitely amount of time
+if a context switch take $Q = infinity$ seconds, then after a process runs for $T$ seconds, it blocks for I/O for an infinitely amount of time\\
+\\
+case 1: if assume there is an automatic context switch after a process blocks for I/O, then
+\begin{align*}
+efficiency &= \frac{nT}{n(T + S)}\\
+&= \frac{T}{T + S}
+\end{align*}
+case 2: if assume there is no automatic context switch after a process blocks for I/O, then
 \begin{align*}
 efficiency &= \frac{useful}{total}\\
 &= \lim_{total \rightarrow \infty} \frac{T}{total}\\
@@ -77,7 +87,13 @@ efficiency &= \frac{useful}{total}\\
 \end{align*}
 \\
 (b)\\
-since $Q < T$, a context switch is made before every possible block for I/O, there are $n$ context switches, each context switch take $S$ seconds, so time required for all context switches is $nS$, total time is $nQ + nS$
+case 1: $T / Q$ switches for each period of $T$, switches take time $nST / Q$
+\begin{align*}
+efficiency &= \frac{useful}{total}\\
+&= \frac{nT}{n(T + ST / Q)}\\
+&= \frac{T}{T + ST / Q}\\
+\end{align*}
+case 2: since $Q < T$, a context switch is made before every possible block for I/O, there are $n$ context switches, each context switch take $S$ seconds, so time required for all context switches is $nS$, total time is $nQ + nS$
 \begin{align*}
 efficiency &= \frac{useful}{total}\\
 &= \frac{nQ}{nQ + nS}\\
