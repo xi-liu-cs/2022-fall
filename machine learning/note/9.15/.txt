@@ -1,0 +1,104 @@
+w = [w1, w2]
+x = [x1, x2]
+w cdot x = w1 x1 + w2 x2
+d / dw1 (w cdot x) = x1
+d / dw2 (w cdot x) = x2
+
+x =
+[
+  d / dw1
+  d / dw2
+]
+
+a =
+[
+  a b
+  c d
+]
+
+d / dw (w ^ t a w)
+=
+[w1 w2]
+[a b
+ c d]
+[w1
+ w2]
+=
+[w1 w2]
+[aw1 + bw2
+cw1 + dw2]
+
+difference between predicted y and actual y
+||X ^ T W - Y|| ^ 2
+
+w = (x ^ t) ^ {+} y
+(x ^ t) ^ {+}: pseudo inverse of input x data
+y: output
+ordinary least squares
+
+if x has 1 dimension, then y = w1 x
+z =
+[x
+1]
+
+y = w1 x
+z =
+[x
+x ^ 2
+1]
+
+y = w1 x + w2 x ^ 2 + x
+how to fit a model on the red dots?
+
+z = [x]
+  = [x, x ^ 2]
+  = [x, x ^ 3]
+
+root mean square error
+sqrt
+(
+  ||X ^ T W - Y|| ^ 2 / n
+)
+
+bias vs variance
+high variance: when change data, cannot fit, new error when add new data
+high bias: large error between all blue points, same error when add new data
+
+https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229
+algorithm, validation, prior knowledge
+
+scratchpad
+validation
+x vs y, quadratic
+hold some examples out
+D = [X, Y]
+= [(X_{train}, X_{validation}), (Y_{train}, Y_{validation})]
+
+1. degree of polynomial p = 1
+W ^ T [X]
+W ^ T X_{val} - Y_{val}
+2. p = 2
+W ^ T 
+[X
+X  ^ 2]
+W ^ T X_{val} - Y_{val}
+3. p = 3
+
+measuring errors on hold out validation set
+
+ols: minimize ||X ^ T W - Y|| ^ 2
+sol: W = (X X ^ T) ^ {-1} XY
+
+ridge regression
+minimize ||X ^ T W - Y|| ^ 2 such that ||W|| ^ 2 <= c ^ 2
+loss function: ||X ^ T W - Y|| ^ 2 + lambda ||W|| ^ 2
+solution: W = (X X ^ T + lambda I) ^ {-1} X Y
+
+lasso regression
+minimize ||X ^ T W - Y|| ^ 2 such that ||W|| ^ 2 <= c
+loss function: ||X ^ T W - Y|| ^ 2 + lambda ||W||
+
+anscombe's quartet
+
+huber loss
+quadratic then linear
