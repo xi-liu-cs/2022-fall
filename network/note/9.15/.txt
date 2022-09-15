@@ -1,1 +1,10 @@
+(message => console.log(message))('doing something')
 
+function f(msg)
+{
+  return console.log(msg);
+}
+f('doing something')
+
+make a copy of an object, this is prototypal inheritance
+const robotMe = Object.create(me)
