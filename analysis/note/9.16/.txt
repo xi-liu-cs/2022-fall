@@ -1,0 +1,64 @@
+contrapositive: p -> q, !q -> !p
+contradiction: p -> q,
+a -> !b is false
+then a -> b
+prove a ^ 2 = 2, then a is irrational
+assume a is rational
+a = m / n, gcd(m, n) = 1
+m ^ 2 / n ^ 2 = 2
+m ^ 2 = 2 n ^ 2, m ^ 2 is even
+-> m is even
+/* m ^ 2 even -> m even
+do a contrapositive 
+m odd -> m ^ 2 odd
+m = 2i + 1
+m ^ 2 = (2i + 1) ^ 2 = 4i ^ 2 + 4i + 1
+= 2(2i ^ 2 + 2i) + 1 
+so m ^ 2 is odd */
+m = 2k
+4k ^ 2 = 2n ^ 2 -> n ^ 2 = 2k ^ 2
+since m and n are both even
+gcd(m, n) = 2, contradiction
+
+{a <= b, b <= a} -> a = b
+sup{x: x ^ 2 < 1} = 1
+sup = s
+1. s < 1, not an upper bound
+2. s > 1, not least, not smallest upper bound
+3. s = 1
+
+1. s < 1
+exists h > 0 so
+(s + h) ^ 2 < 1
+s + h in A but s < s + h
+
+s ^ 2 + 2sh + h ^ 2 < 1
+
+/* this does not really work
+0 < 2sh + h ^ 2 < 1 - s ^ 2
+0 <= 2sh <= 1 - s ^ 2
+/* h > 0, h ^ 2 > 0, take h ^ 2 out make the term smaller
+h = (1 - s ^ 2) / (2s) */
+*/
+
+s ^ 2 + 2sh + h ^ 2 
+< s ^ 2 + 2sh + h
+< s ^ 2 + 1 - s ^ 2
+< 1
+/* 0 < h < (1 - s ^ 2) / (2s + 1) */
+
+0 < h < 1
+/* since assumed h < 1, h ^ 2 < h */
+(s + h) ^ 2 = s ^ 2 + 2sh + h ^ 2 
+< s ^ 2 + 2sh + h
+< s ^ 2 + (2s + 1)h
+<? 1
+rearrange terms
+pick h < (1 - s ^ 2) / (2s + 1) for the above inequality to hold
+now edit inequality, 0 < h < (1 - s ^ 2) / (2s + 1)
+
+2. s > 1
+(s - h) ^ 2 = s ^ 2 - 2sh + h ^ 2 > 1 /* h > 0 */
+> s ^ 2 - 2sh
+>? 1
+0 < h < (s ^ 2 - 1) / (2s)
