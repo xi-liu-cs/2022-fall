@@ -170,6 +170,7 @@ so $f_{i + 1}$ is surjective\\
 \\
 \\
 4.\\
+(a)\\
 need to show $f(C \cup D) \subset f(C) \cup f(D)$ and $f(C) \cup f(D) \subset f(C \cup D)$\\
 \\
 show $f(C \cup D) \subset f(C) \cup f(D)$\\
@@ -185,6 +186,23 @@ then $\forall y \in f(C), \exists x \in C$ such that $f(x) = y$\\
 then $\forall y \in f(D), \exists x \in D$ such that $f(x) = y$\\
 then $x \in C$ or $x \in D$,\\
 then $\exists x \in C \cup D$ such that $f(x) = y$,\\
+\\
+(b)\\
+$f(C \cup D) \subset f(C) \cap f(D)$\\
+let $y \in f(C \cap D)$, then $\exists x \in C \cap D$ such that $f(x) = y$,\\
+then $x \in C$ and $x \in D$,\\
+then $f(x) \in f(C)$ and $f(x) \in f(D)$,\\
+then $f(x) \in f(C) \cap f(D)$\\
+\\
+a function that $f: A \rightarrow B$. $C, D \subset A, f(C \cap D) \not\supset f(C) \cap f(D)$\\
+let $A = \{0, 1, \frac{1}{2}\}, B = \{0, 1\}\\
+C = \{0, 1\}, D = \{0, \frac{1}{2}\}$ and $f(0) = 0, f(1) = 1, f(\frac{1}{2}) = 1$,\\
+then $C \cap D = \{0\},\\
+f(C \cap D) = f(\{0\}) = \{0\}$\\
+then $f(C) = f(\{0, 1\}) = \{0, 1\}\\
+f(D) = f(\{0, \frac{1}{2}\}) = \{0, 1\}\\
+f(C) \cap f(D) = \{0, 1\} \cap \{0, 1\} = \{0, 1\}\\
+f(C \cap D) = f(\{0\}) = \{0\} \not\supset \{0, 1\} = f(C) \cap f(D)$\\
 \\
 \\
 \\
@@ -203,7 +221,10 @@ however, we can find a number $j \in E = (-\infty, i)$ such that $j < i$, then $
 \\
 6.\\
 show $\inf B \leq \inf A$\\
-for contradiction, assume $\inf A < \inf B$, then $\exists i$ such that $\inf A < i < \inf B$, since $A < \inf B$, $i \not\in B$ and $i \in A$, then this contradicts with $A \subset B$, so the assumption that $\inf A < \inf B$ is wrong, so $\inf B \leq \inf A$\\
+$\forall a \in A, \because A \subset B, \therefore a \in B$, based on definition of $\inf B, \forall b \in B, \inf B \leq b$,\\
+and since $a \in B, \therefore \inf B \leq a$\\
+so $\inf B$ is a lower bound of $A$\\
+$\inf A$ is greatest lower bound of $A$, so $\inf B \leq \inf A$\\
 \\
 show $\inf A \leq \sup A$\\
 \begin{align*}
@@ -235,11 +256,11 @@ since $c \geq c'$ and $c' \geq c$, so $c = c'$\\
 (b)\\
 prove contraposition: if $x \in B$, then $x \leq c$\\
 since $c$ is an upper bound of $B$, based on the definition of upper bound, $\forall x \in B, x \leq c$\\
-\newpage
-\noindent
+\\
+\\
 8\\
 (a)\\
-assume $\exists \varepsilon > 0, \forall x \in B, x \leq c - \varepsilon$, then $\sup B \leq c - \varepsilon$. since $\sup B \leq c - \varepsilon, \sup B \not= c$, so the assumption that $x \leq c - \varepsilon$ is wrong, so $c - \varepsilon < x$\\
+assume $\exists \varepsilon > 0, \forall x \in B, x \leq c - \varepsilon, c - \varepsilon$ is an upper bound of $B$, then $\sup B \leq c - \varepsilon$. since $\sup B \leq c - \varepsilon, \sup B \not= c$, so the assumption that $x \leq c - \varepsilon$ is wrong, so $c - \varepsilon < x$\\
 \\
 (b)\\
 assume set $[d, d + \varepsilon) \cap B$ is empty, based on definition of $\inf B$, we know $\forall b \in B, d \leq b, \text{ and since } [d, d + \varepsilon) \text{ is empty}, d + \varepsilon \leq b, \forall b \in B$,\\
