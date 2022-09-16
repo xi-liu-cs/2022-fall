@@ -1,1 +1,69 @@
+interrupt is an external situation that requires os attention
+higher priority than other processes
+suspended: running to ready state
+1. timeout
+2. hardware, paper jam
+3. page fault, process trying to access something from memory, but that thing is moved to disk
+since os wants to make room for other processes
 
+1. hardware saves program counter, register, current process
+why hardware needs to save program counter and all registers used by current process
+2. hardware loads program counter of interrupt service routine
+a program that reacts to every kind of interrupt
+3. isr runs
+4. when done, next process to run is picked
+5. program counter, registers of picked process are loaded
+6. picked process starts runnning
+
+what happens if there is an interrupt while the os is servicing another interrupt
+1. if hit 2 keys close to each other, each key i/o will be 1 interrupt, it could interrupt each other
+   pressing a key is an interrupt, releasing a key is another interrupt
+2. suppose print something on printer, interrupt service to deal with printer, then somebody press the key
+   is an interrupt over an interrupt
+   
+receiving data or packets from internet over buffer of ethernet card is an interrupt
+pic: programmable interrupt controller
+pic's can receive a lot of interrupts, its job is to prioritize them and send them 1 by 1 to cpu
+if another interrupt of higher priority comes, then os will interrupt that interrupt and start servicing the higher priority interrupt
+
+higher priority: if not serviced right now, some data loss or hardware failure can happen
+finite small buffer in ethernet card when receving data from internet
+if don't take over something, quickly buffer may overflow and lose data coming from internet
+
+moving user to kernel mode
+1. interrupts
+2. system call
+3. exception (divide by 0, segmentation fault)
+
+if a process spends fraction p waiting for i/o
+n processes in memory
+probability that all processes are waiting for i/o is p ^ n
+when all waiting for i/o, 
+cpu utilization = 1 - p ^ n
+
+if we have 1 cpu, where is os
+executing os itself
+1. separate kernel
+2. os functions execute within user processes, some small amount of os functions distributed in each process's address space
+3. os functions execute as separate processes, time sharing with normal processes
+https://people.cs.rutgers.edu/~pxk/416/notes/02-boot.html
+
+os attempts to make process thinks it has whole memory for itself, but why is a segmentation fault when a process
+try to write to an address that is not allowed to?
+process' view: memory from 0 to 2 ^ 64
+
+a process might override its code section, not cause segmentation fault
+dynamic writing code, code itself change during execution
+at very low address, at least from 0 to 400, reserved for os use for its bookkeeping
+dynamic changing code since space might not be enough to write code that account for all situations
+
+if a process is using cpu, this means os is not running
+if so, how can os stop a process to switch to another process? timer interrupts
+a device programmed to raise interrupt every x milliseconds
+x is set by os
+os starts timer at boot time
+
+when interrupt occurs, machine switch to kernel and os takes control
+scheduler part of os
+scheduler decides continue running current process or context switch to another one
+timer is on motherboard
