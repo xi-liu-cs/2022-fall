@@ -1,0 +1,245 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+(i)\\
+subset definition
+\begin{align*}
+S_1 \subset S_2 &\equiv \forall x (x \in S_1 \rightarrow x \in S_2) \qquad (*)\\
+S_1 \subset S_2 &\equiv S_2 \supset S_1
+\end{align*}
+prove if $C \subset B$ and $B \subset A$, then $C \subset A$
+\begin{align*}
+&\forall c \in C, \quad\because C \subset B, \quad\therefore c \in B \qquad (*)\\
+&\because B \subset A, \quad \quad\therefore c \in A \qquad (*)
+\end{align*}
+so it is shown $\forall c(c \in C \rightarrow c \in A) \equiv C \subset A$\\
+\\
+\\
+(ii)\\
+set equality definition
+\begin{align*}
+S_1 &= S_2 \equiv (S_1 \subset S_2) \wedge (S_2 \subset S_1) \equiv \forall x (x \in S_1 \leftrightarrow x \in S_2) \qquad (*)\\
+&\text{prove } (S_1 \subset S_2) \wedge (S_2 \subset S_1)\\
+&A \subset C:\\
+&\forall a \in A, \quad\because A = B, \quad\therefore a \in B\\
+&\because B = C, \quad\therefore a \in C\\
+&\text{so it is shown } \forall a (a \in A \rightarrow a \in C) \equiv A \subset C\\
+&C \subset A:\\
+&\forall c \in C, \quad\because B = C, \qquad\therefore c \in B\\
+&\because A = B, \quad\therefore c \in A\\
+&\text{so it is shown } \forall c (c \in C \rightarrow c \in A) \equiv C \subset A\\
+&\text{so it is shown } (A \subset C) \wedge (C \subset A) \equiv \forall x (x \in A \leftrightarrow x \in C) \equiv A \equiv C\\
+\end{align*}
+\\
+\\
+\\
+2.\\
+(a)
+\begin{align*}
+&\forall x_1, x_2 \in (0, 1), \text{if } f(x_1) = \frac{1}{x_1}, f(x_2) = \frac{1}{x_2}, \text{and } f(x_1) =f(x_2),\\
+&\text{then } \frac{1}{x_1} = \frac{1}{x_2}\\
+&\frac{1}{1 / x_1} = \frac{1}{1 / x_2}\\
+&x_1 = x_2\\
+&\text{so it is shown } \forall x_1, x_2 \in (0, 1), f(x_1) = f(x_2) \rightarrow x_1 = x_2
+\end{align*}
+so $f$ is injective
+\begin{align*}
+\forall f(x) &\in (1, \infty)\\
+f(x) &= \frac{1}{x}\\
+x &= \frac{1}{f(x)}\\
+\because f(x) &\in (1, \infty)\\
+\therefore x &= \frac{1}{f(x)} < 1\\
+\because f(x) \geq 1 > 0 &\text{ and } 1 > 0\\
+\therefore x &= \frac{1}{f(x)} > 0\\
+0 &< \frac{1}{f(x)} < 1\\
+0 &< x < 1
+\end{align*}
+so it is shown $\forall f(x) \in (1, \infty), \exists x \in (0, 1)$ such that $f(x) = 1 / x$\\
+so $f$ is surjective\\
+\\
+(b)\\
+\begin{align*}
+&\text{let } x_1 = 1.0 \in \mathbb{R}, x_2 = 1.1 \in \mathbb{R}\\
+&g(x_1) = g(1.0) = \lfloor 1.0 \rfloor = 1\\
+&g(x_2) = g(1.1) = \lfloor 1.1 \rfloor = 1\\
+&g(x_1) = 1 = g(x_2) \text{ but } x_1 = 1.0 \not= 1.1 = x_2
+\end{align*}
+so $g$ is not injective\\
+\\
+$\forall z \in \mathbb{Z}$, since $z$ is an integer, floor of $z$ is equal to $z$ itself, so $\forall z \in \mathbb{Z}, \exists z \in \mathbb{R}, g(z) = \lfloor z \rfloor = z$, so $g$ is surjective\\
+\\
+\\
+\\
+3.\\
+(a)\\
+bijective is both injective and surjective\\
+show $f_3$ is injective\\
+$\forall \textbf{v}_1, \textbf{v}_2 \in \mathbb{N} ^ 3$, denote $\textbf{v}_1 = (\textbf{v}_1.x, \textbf{v}_1.y, \textbf{v}_1.z), \quad\textbf{v}_2 = (\textbf{v}_2.x, \textbf{v}_2.y, \textbf{v}_2.z)$,\\
+if $f_3(\textbf{v}_1) = f_3(\textbf{v}_2)$,\\
+then $(\textbf{v}_1.x, f_2(\textbf{v}_1.y, \textbf{v}_1.z)) = (\textbf{v}_2.x, f_2(\textbf{v}_2.y, \textbf{v}_2.z))$,\\
+then $\textbf{v}_1.x = \textbf{v}_2.x$ and $f_2(\textbf{v}_1.y, \textbf{v}_1.z) = f_2(\textbf{v}_2.y, \textbf{v}_2.z)$\\
+$f_2$ is defined to be a bijective function as stated, where the elements in $\mathbb{N} \times \mathbb{N}$ are arranged by in increasing order according to the sum of 2 entries ($(1, 1), (1, 2), (2, 1), (1, 3), ...$), and assign $f_2(1, 1) = 1, f_2(1, 2) = 2, f_2(2, 1) = 3, ...$\\
+$\because f_2$ is bijective, $\therefore f_2$ is injective, and since we know $f_2(\textbf{v}_1.y, \textbf{v}_1.z) = f_2(\textbf{v}_2.y, \textbf{v}_2.z)$ and $f_2$ is injective, so $(\textbf{v}_1.y, \textbf{v}_1.z) = (\textbf{v}_2.y, \textbf{v}_2.z)$,\\
+so $\textbf{v}_1 = (\textbf{v}_1.x, \textbf{v}_1.y, \textbf{v}_1.z) = (\textbf{v}_2.x, \textbf{v}_2.y, \textbf{v}_2.z) = \textbf{v}_2$,\\
+so $f_3$ is injective\\
+\\
+show $f_3$ is surjective\\
+$\forall \textbf{y} \in \mathbb{N} ^ 2$, denote $\textbf{y} = (\textbf{y}.x, \textbf{y}.y),\\
+\text{show }\forall \textbf{y} \in \mathbb{N} ^ 2, \exists \textbf{x} = (n_1, n_2, n_3)\in \mathbb{N} ^ 3, f(\textbf{x}) = \textbf{y}\\
+\forall (n_1, f_2(n_2, n_3)) \in \mathbb{N} ^ 2$, since $\textbf{y}.x = n_1 = \textbf{x}.x$, so $n_1$ exists,\\
+since $f_2$ is defined to be a surjective function as stated, $\forall \textbf{y}_2 \in \mathbb{N}, \exists \textbf{x}_2 = (n_2, n_3) \in \mathbb{N} ^ 2$ such that $f_2(\textbf{x}_2) = f_2(n_2, n_3) = \textbf{y}_2$, so $n_2, n_3$ exist\\
+since $n_1, n_2, n_3$ exist, $\text{it is shown that }\forall \textbf{y} \in \mathbb{N} ^ 2, \exists \textbf{x} \in \mathbb{N} ^ 3, f(\textbf{x}) = \textbf{y}$\\
+so $f_3$ is surjective\\
+\\
+(b)\\
+let $prop(p)$ be the proposition that $\mathbb{N} ^ p$ is countable\\
+\\
+base step: if $p = 1$, $f_1: \mathbb{N} \rightarrow \mathbb{N}$, establish a bijection by choosing $f_1(n) = n$, then $\forall n_1, n_2 \in \mathbb{N}, f_1(n_1) = f_2(n_2) \rightarrow n_1 = n_2, \text{ and }\forall y = f_1(n) \in \mathbb{N}, \exists n \in \mathbb{N} \text{ such that } f_1(n) = n = y$, so $|\mathbb{N}| = |\mathbb{N}|$, so based on definition of countable, $\mathbb{N}$ is countable\\
+if $p = 2$, $f_2$ is defined to be a bijective function as stated, where the elements in $\mathbb{N} \times \mathbb{N}$ are arranged by in increasing order according to the sum of 2 entries ($(1, 1), (1, 2), (2, 1), (1, 3), ...$), and assign $f_2(1, 1) = 1, f_2(1, 2) = 2, f_2(2, 1) = 3, ...$, so $|\mathbb{N} ^ 2| = |\mathbb{N}|$, so based on definition of countable, $\mathbb{N} ^ 2$ is countable\\
+if $p = 3$, it is shown in problem 3 part (a)\\
+\\
+inductive step: assume $i \in \mathbb{N}, prop(i)$ is true, need to show $prop(i + 1)$ is true\\
+since $prop(i)$ is assumed to be true, there is a bijection $f_i: \mathbb{N} ^ i \rightarrow \mathbb{N} ^ {i - 1}$,\\
+need to show there is a bijection $f_{i + 1}: \mathbb{N} ^ {i + 1} \rightarrow \mathbb{N} ^ i \text{ by } f_{i + 1}(n_1, n_2, ..., n_{i + 1}) := (n_1, f_i(n_2, n_3, ..., n_{i + 1}))$\\
+denote $\textbf{v} = (\textbf{v}[1], \textbf{v}[2], ..., \textbf{v}[i + 1]) \in \mathbb{N} ^ {i + 1}$\\
+\\
+show $f_{i + 1}$ is injective\\
+$\forall \textbf{v}_1, \textbf{v}_2 \in \mathbb{N} ^ {i + 1}, \text{ if } f(\textbf{v}_1) = f(\textbf{v}_2)$,\\
+then $(\textbf{v}_1[1], f_i(\textbf{v}_1[2], \textbf{v}_1[3], ..., \textbf{v}_1[i + 1])) = (\textbf{v}_2[1], f_i(\textbf{v}_2[2], \textbf{v}_2[3], ..., \textbf{v}_2[i + 1]))$,\\
+then $\textbf{v}_1[1] = \textbf{v}_2[1]$ and $f_i(\textbf{v}_1[2], \textbf{v}_1[3], ..., \textbf{v}_1[i + 1]) = f_i(\textbf{v}_2[2], \textbf{v}_2[3], ..., \textbf{v}_2[i + 1])$\\
+since $f_i$ is assumed to be bijective (so injective) in the inductive hypothesis, knowing $f_i(\textbf{v}_1[2], \textbf{v}_1[3], ..., \textbf{v}_1[i + 1]) = f_i(\textbf{v}_2[2], \textbf{v}_2[3], ..., \textbf{v}_2[i + 1])$ implies $(\textbf{v}_1[2], \textbf{v}_1[3], ..., \textbf{v}_1[i + 1]) = (\textbf{v}_2[2], \textbf{v}_2[3], ..., \textbf{v}_2[i + 1])$\\
+so $\textbf{v}_1 = (\textbf{v}_1[1], \textbf{v}_1[2], ..., \textbf{v}_1[i + 1]) = (\textbf{v}_2[1], \textbf{v}_2[2], ..., \textbf{v}_2[i + 1]) = \textbf{v}_2$\\
+so $f_{i + 1}$ is injective\\
+\\
+show $f_{i + 1}$ is surjective\\
+$\forall \textbf{y} \in \mathbb{N} ^ i$, denote $\textbf{y} = (\textbf{y}[1], \textbf{y}[2], ..., \textbf{y}[i]),\\
+\text{show }\forall \textbf{y} \in \mathbb{N} ^ i, \exists \textbf{x} = (\textbf{x}[1], \textbf{x}[2], ..., \textbf{x}[i + 1]) = (n_1, n_2, ..., n_{i + 1})\in \mathbb{N} ^ {i + 1}, f(\textbf{x}) = \textbf{y}\\
+\forall (n_1, f_i(n_2, n_3, ..., n_i)) \in \mathbb{N} ^ i$, since $\textbf{y}[1] = n_1 = \textbf{x}[1]$, so $n_1$ exists,\\
+since $f_i$ is assumed to be a bijective (so surjective) function in the inductive hypothesis, $\forall \textbf{y}_2 \in \mathbb{N} ^ {i - 1}, \exists \textbf{x}_2 = (n_2, n_3, ..., n_{i + 1}) \in \mathbb{N} ^ i$ such that $f_i(\textbf{x}_2) = f_i(n_2, n_3, ..., n_{i + 1}) = \textbf{y}_2$, so $n_2, n_3, ..., n_{i + 1}$ exist\\
+since $n_1, n_2, ..., n_{i + 1}$ exist, $\text{it is shown that }\forall \textbf{y} \in \mathbb{N} ^ 2, \exists \textbf{x} \in \mathbb{N} ^ 3, f(\textbf{x}) = \textbf{y}$\\
+so $f_{i + 1}$ is surjective\\
+\\
+\\
+\\
+4.\\
+need to show $f(C \cup D) \subset f(C) \cup f(D)$ and $f(C) \cup f(D) \subset f(C \cup D)$\\
+\\
+show $f(C \cup D) \subset f(C) \cup f(D)$\\
+let $y \in f(C \cup D)$, then $\exists x \in C \cup D$ such that $f(x) = y$,\\
+then $x \in C$ or $x \in D$,\\
+then $f(x) \in f(C)$ or $f(x) \in f(D)$,\\
+then $f(x) \in f(C) \cup f(D)$\\
+\\
+show $f(C) \cup f(D) \subset f(C \cup D)$\\
+let $y \in f(C) \cup f(D)$,\\
+then $y \in f(C)$ or $y \in f(D)$,\\
+then $\forall y \in f(C), \exists x \in C$ such that $f(x) = y$\\
+then $\forall y \in f(D), \exists x \in D$ such that $f(x) = y$\\
+then $x \in C$ or $x \in D$,\\
+then $\exists x \in C \cup D$ such that $f(x) = y$,\\
+\\
+\\
+\\
+5.\\
+part 1
+\[\sup E = b\]
+since $\forall x \in E = (-\infty, b), x < b$, so $b$ is an upper bound\\
+for contradiction, assume $b$ is not the least upper bound, then there exist an upper bound $i \in (-\infty, b)$ such that $i < b$, however, if $i < b$, then $i$ is not a upper bound of $E$ since $\neg\forall x \in E, x \leq i$, or equivalently, $\exists x \in (i, b) \subset E, x > i$, so the assumption that $b$ is not the least upper bound is wrong, so $b$ is the least upper bound\\
+\\
+part 2\\
+$E$ is unbounded below\\
+for contradiction, assume $i \in E = (-\infty, b)$ is a lower bound\\
+however, we can find a number $j \in E = (-\infty, i)$ such that $j < i$, then $i$ is not a lower bound of $E$ since $\neg\forall x \in E, x \geq i$, or equivalently, $\exists x \in (-\infty, i) \subset E, x < i$, so the assumption that $b$ is a lower bound is wrong, so $b$ is not a lower bound\\
+\\
+\\
+\\
+6.\\
+show $\inf B \leq \inf A$\\
+for contradiction, assume $\inf A < \inf B$, then $\exists i$ such that $\inf A < i < \inf B$, since $A < \inf B$, $i \not\in B$ and $i \in A$, then this contradicts with $A \subset B$, so the assumption that $\inf A < \inf B$ is wrong, so $\inf B \leq \inf A$\\
+\\
+show $\inf A \leq \sup A$\\
+\begin{align*}
+\inf A &= \sup(\{x : x \leq b, \forall b \in A\})\\
+\sup A &= \inf(\{x: x \geq b, \forall b \in A\})\\
+\end{align*}
+since $lb := \inf A$ is a lower bound, $\forall x \in A, x \geq lb$\\
+since $ub := \sup A$ is an upper bound, $\forall x \in A, x \leq ub$\\
+so $\exists x \in A, lb \leq x \leq ub$\\
+so $\inf A = lb \leq ub = \sup A$\\
+\\
+show $\sup A \leq \sup B$\\
+for contradiction, assume $\sup A > \sup B$, then $\exists i$ such that $\sup B < i < \sup A$, since $\sup B < i$, $i \not\in B$ and $i \in A$, then this contradicts with $A \subset B$, so the assumption that $\sup A > \sup B$ is wrong, so $\sup A \leq \sup B$\\
+\\
+\\
+\\
+7.\\
+(a)\\
+$c, c' \in B$\\
+since $c = \sup B$, then
+\[c = \inf(\{x: x \geq b, \forall b \in B\})\]
+so $c \geq c'$\\
+since $c' = \sup B$, then
+\[c' = \inf(\{x: x \geq b, \forall b \in B\})\]
+so $c' \geq c$\\
+since $c \geq c'$ and $c' \geq c$, so $c = c'$\\
+\\
+\\
+(b)\\
+prove contraposition: if $x \in B$, then $x \leq c$\\
+since $c$ is an upper bound of $B$, based on the definition of upper bound, $\forall x \in B, x \leq c$\\
+\newpage
+\noindent
+8\\
+(a)\\
+assume $\exists \varepsilon > 0, \forall x \in B, x \leq c - \varepsilon$, then $\sup B \leq c - \varepsilon$. since $\sup B \leq c - \varepsilon, \sup B \not= c$, so the assumption that $x \leq c - \varepsilon$ is wrong, so $c - \varepsilon < x$\\
+\\
+(b)\\
+assume set $[d, d + \varepsilon) \cap B$ is empty, based on definition of $\inf B$, we know $\forall b \in B, d \leq b, \text{ and since } [d, d + \varepsilon) \text{ is empty}, d + \varepsilon \leq b, \forall b \in B$,\\
+then $d + \varepsilon \leq \inf B$, which is a contradiction with $d = \inf B$, so the assumption that $[d, d + \varepsilon) \cap B$ is empty is wrong, so $[d, d + \varepsilon) \cap B$ is non-empty
+\end{document}
