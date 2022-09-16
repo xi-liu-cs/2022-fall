@@ -1,1 +1,2 @@
 https://math.stackexchange.com/questions/285589/functions-set-theory-proof-that-fc-cup-d-fc-cup-fd
+https://math.stackexchange.com/questions/528089/show-that-if-a-subseteq-b-then-inf-b-leq-inf-a-leq-sup-a-leq-sup-b
