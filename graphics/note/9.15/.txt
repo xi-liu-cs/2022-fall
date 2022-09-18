@@ -1,1 +1,27 @@
+vec4 s = vec4(0., 0., 0., .5);
+vec3 ld = normalize(vec3(sin(10. * uTime), 1., 1.));
+float ray_sphere(vec3 v, vec3 w, vec3 s)
+{
+  v -= s.xyz;
+  float b = dot(v, w),
+  d = b * b - dot(v, v) + s.w * s.w;
+  return d < 0. ? -1 : -b - sqrt(d);
+}
 
+vec3 shade_sphere(vec3 p, vec3 s)
+{
+  vec3 n = normal(p - s.xyz),
+  c = vec3(.1);
+  c += max(0., dot(n, ld));
+  return c;
+}
+
+varying vec3 v_pos;
+float fl = 3.;
+
+void main()
+{
+  vec3 color = vec3(.1, .2, .5),
+  v = vec3(0., 0., fl),
+  w = normalize(vec3(v_pos.xy, -fl));
+}
