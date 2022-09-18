@@ -25,3 +25,20 @@ void main()
   v = vec3(0., 0., fl),
   w = normalize(vec3(v_pos.xy, -fl));
 }
+
+vec3 fire(float y)
+{
+  vec3 fire = vec3(1., 1., 0.);
+  float s = mix(.6, 1., clamp(3. * y - 2., 0., 1.));
+  fire = mix(fire, vec3(1., 0., 0.), min(y + 1, 1.));
+  fire = mix(fire, vec3(0., 0., 0.), max(5. * y, 0.));
+  return fire;
+}
+
+void main()
+{
+  vec3 p0 = vPos + vec3(0., 0., .03 * uTime),
+  p1 = vPos + vec3(0., -1., .03 * uTime + .5),
+  color = fire(p0.y + turbulence(mix(p0, p1, 1 * uTime)));
+  gl_FragColor = vec4(sqrt(color), 1.);
+}
