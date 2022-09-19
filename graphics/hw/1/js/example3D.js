@@ -134,8 +134,8 @@ S.setFragmentShader(\`
    vec3 shade_sphere(vec3 point, sphere s, vec3 light_direct)
    {
        vec3 n = normalize(point - s.center);
-       vec3 c = vec3(.7, .5, 1.);
-       c += max(0., dot(n, light_direct));
+       vec3 c = vec3(.1, 0., .7);
+       c += max(0., dot(n, light_direct)) + pattern(n);
        return c;
    }
 
@@ -177,4 +177,3 @@ events: `
 }
 
 }
-
