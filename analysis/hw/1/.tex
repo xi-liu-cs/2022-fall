@@ -211,11 +211,20 @@ part 1
 \[\sup E = b\]
 since $\forall x \in E = (-\infty, b), x < b$, so $b$ is an upper bound\\
 for contradiction, assume $b$ is not the least upper bound, then there exist an upper bound $i \in (-\infty, b)$ such that $i < b$, however, if $i < b$, then $i$ is not a upper bound of $E$ since $\neg\forall x \in E, x \leq i$, or equivalently, $\exists x \in (i, b) \subset E, x > i$, so the assumption that $b$ is not the least upper bound is wrong, so $b$ is the least upper bound\\
+assume $\exists \varepsilon \in \mathbb{R}, \varepsilon > 0$ such that $b - \varepsilon < b$ is another upper bound lower than $b$, then
+\begin{align*}
+2b - \varepsilon &< 2b\\
+\because (2b - \varepsilon) / 2 &< b\\
+b - \varepsilon / 2 &< b\\ 
+\therefore b - \varepsilon / 2 &\in E\\
+\text{however, } b - \varepsilon / 2 &> b - \varepsilon
+\end{align*}
+$\because$ there exists an element in $E$ greater than $b - \varepsilon, \;\therefore b - \varepsilon$ is not an upper bound, which contradicts with the assumption that $b - \varepsilon$ is an upper bound, so $\neg\exists$ upper bound lower than $b$, so $b$ is least upper bound\\
 \\
 part 2\\
 $E$ is unbounded below\\
 for contradiction, assume $i \in E = (-\infty, b)$ is a lower bound\\
-however, we can find a number $j \in E = (-\infty, i)$ such that $j < i$, then $i$ is not a lower bound of $E$ since $\neg\forall x \in E, x \geq i$, or equivalently, $\exists x \in (-\infty, i) \subset E, x < i$, so the assumption that $b$ is a lower bound is wrong, so $b$ is not a lower bound\\
+however, we can find a number $j \in E = (-\infty, i)$ such that $j < i$, then $i$ is not a lower bound of $E$ since $\neg\forall x \in E, x \geq i$, or equivalently, $\exists \varepsilon \in \mathbb{R}, \exists x = i - \varepsilon \in (-\infty, i) \subset E, x < i$, so the assumption that $b$ is a lower bound is wrong, so $b$ is not a lower bound\\
 \\
 \\
 \\
@@ -237,7 +246,10 @@ so $\exists x \in A, lb \leq x \leq ub$\\
 so $\inf A = lb \leq ub = \sup A$\\
 \\
 show $\sup A \leq \sup B$\\
-for contradiction, assume $\sup A > \sup B$, then $\exists i$ such that $\sup B < i < \sup A$, since $\sup B < i$, $i \not\in B$ and $i \in A$, then this contradicts with $A \subset B$, so the assumption that $\sup A > \sup B$ is wrong, so $\sup A \leq \sup B$\\
+$\forall a \in A, \because A \subset B, \therefore a \in B$, based on definition of $\sup B, \forall b \in B, \sup B \geq b$,\\
+and since $a \in B, \therefore \sup B \geq a$\\
+so $\sup B$ is an upper bound of $A$\\
+$\sup A$ is least upper bound of $A$, so $\sup A \leq \sup B$
 \\
 \\
 \\
@@ -260,9 +272,14 @@ since $c$ is an upper bound of $B$, based on the definition of upper bound, $\fo
 \\
 8\\
 (a)\\
-assume $\exists \varepsilon > 0, \forall x \in B, x \leq c - \varepsilon, c - \varepsilon$ is an upper bound of $B$, then $\sup B \leq c - \varepsilon$. since $\sup B \leq c - \varepsilon, \sup B \not= c$, so the assumption that $x \leq c - \varepsilon$ is wrong, so $c - \varepsilon < x$\\
+assume $\exists \varepsilon > 0, \forall x \in B, x \leq c - \varepsilon, \text{ then } c - \varepsilon$ is an upper bound of $B$, then since $\sup B$ is a least upper bound, so $\sup B \leq c - \varepsilon$. since $\sup B \leq c - \varepsilon, \sup B \not= c$, so the assumption that $\forall x \in B, x \leq c - \varepsilon$ is wrong, so $\neg\forall x \in B, x \leq c - \varepsilon$, so $\exists x \in B, c - \varepsilon < x$. also, based on definition of $c = \sup B, \forall b \in B, b \leq c, $ so $x \leq c$\\
 \\
 (b)\\
-assume set $[d, d + \varepsilon) \cap B$ is empty, based on definition of $\inf B$, we know $\forall b \in B, d \leq b, \text{ and since } [d, d + \varepsilon) \text{ is empty}, d + \varepsilon \leq b, \forall b \in B$,\\
-then $d + \varepsilon \leq \inf B$, which is a contradiction with $d = \inf B$, so the assumption that $[d, d + \varepsilon) \cap B$ is empty is wrong, so $[d, d + \varepsilon) \cap B$ is non-empty
+need to prove $\forall \varepsilon > 0, \exists i \in B$ such that $d \leq i < d + \varepsilon$\\
+since $d = \inf B$, d is a lower bound of B, so $\forall i < d, i \not\in B$\\
+for contradiction, assume $[d, d + \varepsilon) \cap B$ is empty, then $\exists \varepsilon > 0, d \leq i < d + \varepsilon \longrightarrow i \not\in B$\\
+contraposition is $i \in B \longrightarrow (i < d) \vee (i \geq d + \varepsilon)$\\
+if $i < d = \inf B$, then since $d$ is a lower bound, $\forall b \in B, d \leq b$, since $i$ is smaller than a lower bound of $B$, this implies $i \not\in B$, but this contradicts with $i \in B$\\
+if $i \geq d + \varepsilon$, then $d + \varepsilon$ is a lower bound of $B$, but $\inf B = d$, this contradicts with $d$ is a "greatest" lower bound\\
+so the assumption that $[d, d + \varepsilon) \cap B$ is empty is wrong, so $[d, d + \varepsilon) \cap B$ is non-empty
 \end{document}
