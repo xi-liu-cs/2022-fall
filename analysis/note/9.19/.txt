@@ -1,0 +1,147 @@
+let A = {x in R: x ^ 2 < 2}
+1. r = sup A exists and B the unique positive real number satisfying r ^ 2 = 2, r = sqrt{2}
+2. r not in Q
+
+r ^ 2 = r * r
+sqrt{x}
+
+1. r = sup A exists using least upper bound property of R
+2. r ^ 2 = 2 by proving r ^ 2 <= 2 and r ^ 2 >= 2
+3. uniqueness: if s > 0 satisfy s ^ 2 = 2, uniqueness implies s = r
+
+existence
+1. 1 in R, 1 ^ 2 -> 1 in A -> A is non-empty
+2. 3 in R, 3 ^ 2 = 9
+if x in R satisfies x >= 3 -> x ^ 2 >= 9
+if x ^ 2 < 9 -> x < 3 /* contrapositive */
+x ^ 2 < 2 -> x ^ 2 < 9
+if x in A, then x < 3
+so 3 is an upper bound of A
+
+so A is non-empty and bounded above
+so by least upper bound property of R
+r = sup A exists
+
+r ^ 2 >= 2
+suppose s > 0 satisfies s ^ 2 < 2 /* negation of r ^ 2 >= 2 */
+show exists h > 0 s.t. (s + h) ^ 2 > 2 -> s + h in A but s + h > s, so s cannot be an upper bound
+1. since 2 - s ^ 2 > 0, 2s + 1 > 0, (2 - s ^ 2) / (2s + 1) > 0
+pick h > 0 to satisfy h < 1 and h < (2 - s ^ 2) / (2s + 1)
+(s + h) ^ 2 - s ^ 2 = 2sh + h ^ 2 = (2s + h)h
+< (2s + 1)h /* h < 1 */
+< (2s + 1)(2 - s ^ 2) / (2s + 1) /* h < (2 - s ^ 2) / (2s + 1) */
+= 2 - s ^ 2
+rearrange
+(s + h) ^ 2 < 2 -> s + h in A, so s cannot be an upper bound of A
+so it is shown s ^ 2 < 2 -> s cannot be upper bound of A
+take contrapositive, since r is an upper bound -> r ^ 2 >= 2
+
+r ^ 2 <= 2
+suppose s > 0 satisfies s ^ 2 > 2
+show exists h > 0 s.t. s - h is an upper bound of A
+since s ^ 2 - 2 > 0, h := (s ^ 2 - 2) / (2s) > 0
+s ^ 2 - (s - h) ^ 2
+= 2sh - h ^ 2 /* h > 0 */
+< 2sh
+= 2s((s ^ 2 - 2) / (2s)) = s ^ 2 - 2
+rearrange
+(s - h) ^ 2 > 2
+let x in R, if x >= s - h > 0
+then x ^ 2 > (s - h) ^ 2 > 2
+by contrapositive,  x ^ 2 < 2 -> x < s - h
+so s - h is upper bound of A
+so if r ^ 2 > 2
+it would not be least upper bound
+thus r ^ 2 <= 2
+
+combine r ^ 2 <= 2 and r ^ 2 >= 2 -> r ^ 2 = 2
+
+uniqueness
+suppose s > 0 satisfies s ^ 2 = 2
+if s < r, since 0 < s, r
+s ^ 2 < rs < r ^ 2
+which is a contradiction
+(assumed r ^ 2 = s ^ 2 = 2)
+if r < s, since 0 < s, r
+r ^ 2 < rs < s ^ 2
+which is a contradiction
+(assumed r ^ 2 = s ^ 2 = 2)
+thus r = s
+
+corollary Q does not have least upper bound property
+
+archimedean property of R
+suppose x, y in R satisfying x > 0
+then exists n in N s.t. nx > y (*)
+corollary: Q are dense in R
+if x, y in R satisfying x < y, exists rational number satisfying x < r < y
+
+infinity and dx (infinitesimal) are not real number /* plugging in infinity is not legal */
+if infinity in R, pick y = infinity, x = 1, however, there is no natural number n
+s.t. n * 1 > infinity
+
+hyperreal numbers
+
+archimedean property proof
+suppose x, y in R are as given can divide (*) by x > 0 to get
+n > y / x = t
+archimedean property is equivalent to showing for all t in R
+exists n in N, s.t. n > t, equivalent to showing natural numbers N are unbounded above
+
+assume n in N are bounded above
+by lub prop of R
+exists r = sup N
+r - 1 cannot be an upper bound of N -> exists n in N, s.t. n > r - 1
+n + 1 > r but n + 1 in N, so b cannot be an upper bound
+contradiction, thus N cannot be bounded above
+so, exists n in N, s.t. nx > y
+
+inf{1 / n: n in N} = 0
+let A = {1 / n: n in N}
+i / n > 0 for all n in N, so 0 is lb of A
+inf A = b exists and b >= 0
+
+suppose b > 0
+by archimedean property, exists n in N
+n * b > 1 -> b > 1 / n
+contradicts b being a lower bound
+so b <= 0
+
+combine b = 0
+
+A, -A = {-x in R, x in A}
+inf A = sup(-A)
+
+if sup A in A, say A has a maximum, and write max A := sup A
+if inf A in A, say A has a minimum, and write min A := inf A
+
+sup(0, 1) = 1 not in (0, 1)
+sup{0, 1, 2} = 2 in {0, 1, 2}
+max{0, 1, 2} = 2
+
+x in R, abs(x)
+|x| = 
+{
+  x if x >= 0
+  -x if x < 0
+}
+
+|x| <= y iff -y < x < y
+-|x| <= x <= |x| for all x in R
+
+triangle inequality
+x, y in R
+|x + y| <= |x| + |y|
+length of 3rd side of triangle is less then sum of length of other 2 sides
+||vec(x) + vec(y)|| <= ||vec(x)|| + ||vec(y)||
+
+given x, y in R
+-|x| <= x <= |x| and -|y| <= y <= |y|
+add left <= add mid <= add right
+-(|x| + |y|) <= x + y <= |x| + |y|
+-a <= b <= a
+|x + y| <= |x| + |y|
+|b| <= a
+
+reverse triangle inequality
+||x| - |y|| <= |x - y| (<= |x| + |-y| = |x| + |y|)
