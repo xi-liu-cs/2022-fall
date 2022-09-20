@@ -1,1 +1,12 @@
-
+y = w ^ t x
+x is vector of n dimensions, x in R ^ {d x n}
+y is a 1 dimensional output that is a real number, y in R ^ n
+R ^ d -> R
+from x map to a line (w ^ t x)
+from line to event (0, p(y), 1)
+logit(p(y)) = ln(p(y) / (1 - p(y))) = w ^ t x
+p(y) / (1 - p(y)) = e ^ {w ^ t x}
+p(y) = e ^ {w ^ t x} - p(y)e ^ {w ^ t x}
+p(y) + p(y)e ^ {w ^ t x} =  e ^ {w ^ t x}
+p(y)(1 + e ^ {w ^ t x}) = e ^ {w ^ t x}
+p(y) = e ^ {w ^ t x} / (1 + e ^ {w ^ t x})
