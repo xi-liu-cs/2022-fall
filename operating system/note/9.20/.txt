@@ -1,1 +1,2 @@
-
+unistd.h, sys/type.h, sys/wait.h
+simulations value speed over convenience
