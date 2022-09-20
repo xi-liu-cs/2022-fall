@@ -1,1 +1,26 @@
-
+phong shading
+highlight
+diffused
+if dot product between L and N
+length of both are 1, so cos of angle between them
+query rays
+for each light source
+if did not hit sphere, t = -1
+if hit sphere, t > 0
+pipelined processor
+cpu is all about flexibility
+1. what is uDc, uniform diffuse color
+2. why look homework file different for different systems, some uninitialized variable
+3. #include in glsl, concatenate strings
+if statement can cause branch divergence
+an if statement is about 75 machine instructions
+if there is an if statement for each pixel, them it slows down
+const int idx;
+a loop is a macro, replicating instructions 1 after another
+how to avoid if:
+float weight = step(t, 0.)
+webxr
+opengl have compute shaders
+half space
+trace at an equation ax + by + c = 0
+ray trace neutrons in nuclear reactor
