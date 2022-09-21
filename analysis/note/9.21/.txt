@@ -77,7 +77,7 @@ contradiction, {x_n} cannot converge, {x_n} diverge
 visualize convergence definition
 lim_{n -> infty} x_n = L
 for all epsilon > 0 (1), exists M in N (2), for all n >= M (3), |x_n - L| < epsilon (4)
-plot x vs x_n for {1 / n}, x is horizontal axis, x_n is vertical axis, guess x_n -> 0 as n -> infty
+plot n vs x_n for {1 / n}, n is horizontal axis, x_n is vertical axis, guess x_n -> 0 as n -> infty
 epsilon is accuracy, how accurate our L approximate x_n
 finite epsilon, so finite accuracy
 
