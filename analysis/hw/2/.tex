@@ -1,0 +1,326 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+theorem 1.2.4 says if $a, b \in \mathbb{R}, a < b$, then $\exists r \in \mathbb{Q}, a < r < b$\\
+since $x, x - \varepsilon \in \mathbb{R}, x - \varepsilon < x$ \qquad (since $\varepsilon > 0$)\\
+so $\exists r \in \mathbb{Q}, x - \varepsilon < r < x$ \qquad (apply theorem 1.2.4)\\
+$x - r < \varepsilon < x + \varepsilon - r$ \qquad (add $\varepsilon - r$ to both sides)\\
+$\because r < x, \therefore x - r > 0\\
+x - r = |x - r| < \varepsilon$\\
+\\
+\\
+\\
+2.\\
+for contradiction, assume $x \not= y$, then $\exists i > 1$, let $\varepsilon := |x - y| / i$, then $|x - y| > |x - y| / i = \varepsilon$\\
+or equivalently, $|x - y| \not\leq |x - y| / i = \varepsilon$, which is a contradiction with $|x - y| \leq \varepsilon$\\
+so the assumption that $x \not= y$ is wrong\\
+so $x = y$\\
+\\
+\\
+\\
+3.\\
+(a)\\
+let since $f, g$ are bounded functions, $f, g$ have lower and upper bounds\\
+let $f\_low$ be lower bound of $f$, $f\_up$ be upper bound of $f$\\
+$g\_low$ be lower bound of $g$, $g\_up$ be upper bound of $g$\\
+based on definition of lower and upper bounds\\
+$\forall d \in D, f\_low \leq f(d) \leq f\_up\\
+g\_low \leq g(d) \leq g\_up$\\
+add above inequalities together using proposition 1.1.8 (vii)\\ 
+$f\_low + g\_low \leq f(d) + g(d) \leq f\_up + g\_up$\\
+/* proof of proposition 1.1.8 (vii)\\
+if $x \leq y$ and $z \leq w$, then $x + z \leq y + w$\\
+$\because x \leq y$ \qquad add $z$ to both sides\\
+$\therefore x + z \leq y + z$ \qquad (*)\\
+$\because z \leq w$ \qquad add $y$ to both sides\\
+$\therefore z + y \leq w + y$ \qquad (**)\\
+$\therefore x + z \leq y + z = z + y \leq w + y = y + w$ \qquad combine (*) and (**)\\ 
+$\therefore x + z \leq y + w$ */\\
+so the function $(f + g)(x) = f(x) + g(x)$ has a lower bound $f\_low + g\_low$ and an upper bound $f\_up + g\_up$\\
+so $(f + g)(x) = f(x) + g(x)$ is bounded\\
+\\
+since $f$ is bounded, $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+since $g$ is bounded, $\exists N \in \mathbb{R}, \forall x \in D, |g(x)| \leq N$\\
+apply triangle inequality\\
+$|f(x) + g(x)| \leq |f(x)| + |g(x)| \leq M + N$\\
+so $\exists M + N \in \mathbb{R}, |f(x) + g(x)| \leq M + N\\$
+so $(f + g)(x) = f(x) + g(x)$ is bounded\\
+\\
+(b)\\
+let since $f, g$ are bounded functions, $f, g$ have lower and upper bounds\\
+let $f\_low$ be lower bound of $f$, $f\_up$ be upper bound of $f$\\
+$g\_low$ be lower bound of $g$, $g\_up$ be upper bound of $g$\\
+based on definition of lower and upper bounds\\
+$\forall d \in D, f\_low \leq f(d) \leq f\_up\\
+g\_low \leq g(d) \leq g\_up$\\
+multiply above inequalities together using proposition 1.1.8 (ii)\\
+$f\_low\;g\_low\leq f(d) g(d) \leq f\_up\;g\_up$\\
+/* proof of proposition 1.1.8 (ii)\\
+if $x > 0$ and $y < z$, then $xy > xz$\\
+$y < z$ \qquad subtract both sides by $y$\\
+$0 < z - y$ \qquad multiply $x$ to both sides\\
+$0 < x(z - y)$ \qquad distribute\\
+$0 < xz - xy\\
+xy < xz$ */\\
+so the function $(fg)(x) = f(x)g(x)$ has a lower bound $f\_low\;g\_low$ and an upper bound $f\_up\;g\_up$\\
+so $(fg)(x) = f(x)g(x)$ is bounded\\
+\\
+since $f$ is bounded, $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+since $g$ is bounded, $\exists N \in \mathbb{R}, \forall x \in D, |g(x)| \leq N$\\
+apply proposition 1.3.1 (iii) and proposition 1.1.8 (ii)\\
+$|f(x)g(x)| = |f(x)||g(x)| \leq MN$\\
+so $\exists MN \in \mathbb{R}, |f(x)g(x)| \leq MN$\\
+so $(fg)(x) = f(x)g(x)$ is bounded\\
+\\
+(c)
+\begin{align*}
+|h(x)| &\geq c\\
+\frac{|h(x)|}{c} &\geq \frac{c}{c} = 1\\
+\frac{1}{c} &\geq \frac{1}{|h(x)|}\\
+\frac{|f(x)|}{c} &\geq \frac{|f(x)|}{|h(x)|} =\left|\frac{f(x)}{h(x)}\right|\\
+\end{align*}
+so $\exists |f(x)| / c \in \mathbb{R}, |f(x) / g(x)| \leq |f(x)| / c$\\
+so $f(x) / g(x)$ is bounded\\
+\\
+(d)\\
+$f \circ h = f(h(x))$\\
+since $f$ is bounded, $\exists M \in \mathbb{R}, \forall y \in D, |f(y)| \leq M$,\\
+since $h: E \rightarrow D$, and $y \in D$, so $h(x) \in D\\
+\exists M \in \mathbb{R}, \forall y = h(x) \in D, |f(h(x))| \leq M$\\
+so $f \circ g = f(g(x))$ is bounded\\
+\\
+4.\\
+\[\text{show }\sup_{x \in D} f(x) \leq \sup_{x \in D} g(x) \qquad (*)\]
+since $\sup g(x)$ is an upper bound for $g(D)$, $\forall x \in D, f(x) \leq g(x) \leq \sup g(x)$,\\
+so $\sup g(x)$ is also an upper bound for $f(D)$
+\[\text{so }\forall x \in D, f(x) \leq \sup_{x \in D} g(x)\]
+since $\sup_{x \in D} g(x)$ is an upper bound for $f(D)$, $\sup_{x \in D} g(x)$ is greater than or equal to the least upper bound of $f(D)$
+\[\text{so }\sup_{x \in D} f(x) \leq \sup_{x \in D} g(x)\]
+\\
+\\
+\[\text{show }\inf_{x \in D} f(x) \leq \inf_{x \in D} g(x) \qquad (**)\]
+since $\inf f(x)$ is a lower bound for $f(D)$, $\forall x \in D, \inf f(x) \leq f(x) \leq g(x)$,\\
+so $\inf f(x)$ is also a lower bound for $g(D)$
+\[\text{so }\forall x \in D, \inf_{x \in D} f(x) \leq g(x)\]
+since $\inf_{x \in D} f(x)$ is a lower bound for $g(D)$, $\inf_{x \in D} f(x)$ is less than or equal to the greatest lower bound of $g(D)$
+\[\text{so }\inf_{x \in D} f(x) \leq \inf_{x \in D} g(x)\]
+\\
+\\
+show $\sup_{x \in D} f(x) \leq \sup_{x \in D} |f(x)|$\\
+$\forall x \in D, f(x) \leq |f(x)|$ \qquad (proposition 1.3.1 (vi))\\
+let $g(x) := |f(x)|, f(x) \leq g(x)$,\\
+since it is shown that $\sup_{x \in D} f(x) \leq \sup_{x \in D} g(x)$ in (*),\\
+so $\sup_{x \in D} f(x) \leq \sup_{x \in D} |f(x)|$\\
+\\
+\\
+show $\inf_{x \in D} -|f(x)| \leq \sup_{x \in D} f(x)$\\
+$\forall x \in D, -|f(x)| \leq f(x)$ \qquad (proposition 1.3.1 (vi))\\
+let $f_2(x) := -|f(x)|. g_2(x) := f(x)$,\\
+since it is shown that $\inf_{x \in D} f_2(x) \leq \inf_{x \in D} g_2(x)$ in (**),\\
+so $\inf_{x \in D} -|f(x)| \leq \sup_{x \in D} f(x)$\\
+\\
+\\
+show $\inf_{x \in D} f(x) \leq \sup_{x \in D} f(x)$\\
+since $\inf f(D)$ is a lower bound, $\forall x \in D, \inf f(D) \leq x$\\
+since $\sup f(D)$ is a upper bound, $\forall x \in D, x \leq \sup f(D)$\\
+so $\forall x \in D, \inf f(D) \leq x \leq \sup f(D)$\\
+so $\inf f(D) \leq \sup f(D)$\\
+\\
+\\
+show $\sup_{x \in D} |f(x)| \leq M$\\
+for contradiction, assume $\sup |f(x)| > M$\\
+then $\exists x$ such that $|f(x)| > M$\\
+but since $M$ is a bound for $|f|, \forall x \in D, |f(x)| \leq M$\\
+$|f(x)| \leq M$ contradicts with $|f(x)| > M$\\
+so the assumption that $\sup |f(x)| > M$ is false\\
+so $\sup |f(x)| \leq M$\\
+\\
+\\
+show $-M \leq \inf_{x \in D} -|f(x)|$\\
+for contradiction, assume $\inf_{x \in D} -|f(x)| < -M$\\
+then $\exists x$ such that $-|f(x)| < -M, |f(x)| > M$\\
+but since $M$ is a bound for $|f|, \forall x \in D, |f(x)| \leq M$\\
+$|f(x)| \leq M$ contradicts with $|f(x)| > M$\\
+so the assumption that $\inf_{x \in D} -|f(x)| < -M$ is false\\
+so $-M \leq \inf_{x \in D} -|f(x)|$\\
+\\
+\\
+5.\\
+(a)\\
+$\{x_n\} = \{(-1) ^ n\} = \{-1, 1, -1, 1, ...\}\\
+\{|x_n - 1|\} = \{|(-1) ^ n - 1|\} = \{2, 0, 2, 0, ...\}\\
+\max\{|x_n - 1|\} = \max\{|(-1) ^ n - 1|\} = 2\\$
+$\forall \varepsilon > 2, \max\{|x_n - 1|\} = 2 < \varepsilon$, then $P(x_n)$ is false\\
+$\forall n \geq 1, |x_n - 1| < \varepsilon \qquad\text{ or equivalently } \forall n \geq 1, |x_n - 1| \not\geq \varepsilon$\\
+so for $\varepsilon > 2$\\
+\\
+\\
+(b)\\
+$\{x_n\} = \{(n + 1) / n\} = \{2 / 1, 3 / 2, 4 / 3, 5 / 4, ...\}\\
+\{|x_n - 1|\} = \{|(n + 1) / n - n / n|\} =  \{|(n + 1 - n) / n|\} = \{|1 / n|\}\\
+\max\{|x_n - 1|\} = \max\{|1 / n|\} = 1 < \varepsilon$, then $P(x_n)$ is false\\
+so for $\varepsilon > 1$\\
+\\
+\\
+(c)\\
+let $P(x_n)$ be the predicate that $|x_n - L| \geq \varepsilon$\\
+need to prove\\
+(i) $\{x_n\}$ converges to some $L \in \mathbb{R}$ implies $\forall \varepsilon > 0, |x_n - L| \geq \varepsilon$ hold at most finitely often\\
+(ii) $\forall \varepsilon > 0, |x_n - L| \geq \varepsilon$ hold at most finitely often implies $\{x_n\}$ converges to some $L \in \mathbb{R}$\\
+\\
+(i)\\
+based on definition of convergence, $\{x_n\}$ converges to some $L \in \mathbb{R}$ means\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+so $\forall n \geq M, |x_n - L| \not\geq \varepsilon$, the predicate $P(x_n)$ that $|x_n - L| \geq \varepsilon$ is false\\
+so $|x_n - L| \geq \varepsilon$ hold at most finitely often\\
+\\
+(ii)\\
+based on definition of $P(x_n)$ hold at most finitely often, $\forall \varepsilon > 0, |x_n - L| \geq \varepsilon$ hold at most finitely often means\\
+$\exists M \in \mathbb{N}, \forall n \geq M, P(x_n)$ is false, $|x_n - L| \not\geq \varepsilon, |x_n - L| < \varepsilon$\\
+which matches with the definition of convergence\\
+so $\{x_n\}$ converges to some $L \in \mathbb{R}$\\
+\\
+\\
+\\
+6.\\
+(a)\\
+$\{x_n\} := \{n ^ 2\}$\\
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+if $\{x_n\}$ diverges, then $\{x_n\}$ does not converge, negate the above definition\\
+diverge means $\exists \varepsilon > 0, \forall M \in \mathbb{N}, \exists n \geq M, |x_n - L| \geq \varepsilon$\\
+$|x_n - L| \geq \varepsilon\\
+|n ^ 2 - L| \geq \varepsilon\\
+n ^ 2 - L \geq \varepsilon \text{ or } -(n ^ 2 - L) = L - n ^ 2 \geq \varepsilon\\
+n ^ 2 \geq \varepsilon + L\\
+\exists n \geq \max(m, \sqrt{\varepsilon + L})\\$
+so $\{n ^ 2\}$ diverges\\
+\\
+for contradiction, assume $\{x_n\} = \{n ^ 2\}$ converges, then $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M\\
+|x_n| \leq M\\
+|n ^ 2| \leq M$\\
+let $a \in \mathbb{R}, a > 0$,\\
+choose $n = M + a$\\
+$|n ^ 2| = |M + a| ^ 2 = M ^ 2 + 2aM + a ^ 2 > 2M > M$\\
+which contradict with $|n ^ 2| \leq M$\\
+so the assumption that $\{n ^ 2\}$ converges is wrong\\
+so $\{n ^ 2\}$ diverges\\
+\\
+\\
+(b)\\
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+let $M := 10 ^ 6,\\
+L := 0\\
+\forall \varepsilon > 0, \exists 10 ^ 6 \in \mathbb{N}, \forall n \geq 10 ^ 6, |x_n - L| = |0 - 0| = 0 < \varepsilon$\\
+so $\{x_n\}$ converges\\
+\\
+\newpage
+\noindent
+(c)\\
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+let $L := 1\\$
+\begin{align*}
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M,&\\
+|x_n - L| &= \left|\frac{4n}{4n + 1} - 1\right|\\
+&= \left|\frac{4n}{4n + 1} - \frac{4n + 1}{4n + 1}\right|\\
+&= \left|\frac{4n - 4n - 1}{4n + 1}\right|\\
+&= \left|\frac{-1}{4n + 1}\right|\\
+&= \frac{1}{4n + 1} < \varepsilon
+\end{align*}
+\begin{align*}
+4n + 1 &> \frac{1}{\varepsilon}\\
+4n &> \frac{1}{\varepsilon} - 1\\
+4n &> \frac{1 - \varepsilon}{\varepsilon}\\
+n &> \frac{1 - \varepsilon}{4\varepsilon}
+\end{align*}
+so let $M := (1 - \varepsilon) / (4\varepsilon)$, then $\forall \varepsilon > 0, \exists (1 - \varepsilon) / (4\varepsilon) \in \mathbb{N}, \forall n \geq (1 - \varepsilon) / (4\varepsilon), |x_n - L| = |(4n) / (4n + 1) - 1| < \varepsilon$
+\\
+\\
+(d)\\
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+let $L := 0\\$
+\begin{align*}
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M,&\\
+|x_n - L| &= \left|\frac{2n}{n ^ 2 + 1} - 0\right|\\
+&= \left|\frac{2n}{n ^ 2 + 1}\right|\\
+&= \frac{2n}{n ^ 2 + 1} < \frac{2n}{n ^ 2} = \frac{2}{n} < \varepsilon
+\end{align*}
+\begin{align*}
+2 < n\varepsilon\\
+\frac{2}{\varepsilon} < n
+\end{align*}
+so let $M := 2 / \varepsilon$, then $\forall \varepsilon > 0, \exists 2 / \varepsilon \in \mathbb{N}, \forall n \geq 2 / \varepsilon, |x_n - L| = |(2n) / (n ^ 2 + 1) - 0| < \varepsilon$\\
+\\
+\\
+7.\\
+show (i) implies (ii)\\
+if $\forall \varepsilon' > 0, \exists M' \in \mathbb{N}, \forall n \geq M', |x_n - L| \leq \varepsilon'$,\\
+then $\exists i \in \mathbb{R}, \exists \varepsilon_2 = \varepsilon' / i, \exists M_2 \in \mathbb{N}, \forall n \geq M_2, |x_n - L| \leq \varepsilon_2 = \varepsilon' / i < \varepsilon'$,\\
+then $|x_n - L| < \varepsilon'$\\
+\\
+\\
+show (ii) implies (i)\\
+if $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$,\\
+then base on definition of less than or equal to ($\leq$)\\
+$|x_n - L| \leq \varepsilon$ is equivalent to $|x_n - L| < \varepsilon$ or $|x_n - L| = \varepsilon$\\
+since $|x_n - L| < \varepsilon$, so $|x_n - L| \leq \varepsilon$\\
+\\
+\\
+\\
+8.\\
+if $x, y \in \mathbb{R}, x < y, \text{ then } \exists r \in \mathbb{Q}, x < r < y$ \qquad (theorem 1.2.4)\\
+since $x - 1 / n, x + 1 / n \in \mathbb{R}, \text{ so } \exists r_n \in \mathbb{Q}, x - 1 / n < r_n < x + 1 / n\\$
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$,\\
+let $M \geq 1 / \varepsilon\\
+\text{then } \forall n \geq M, 1 / n \leq 1 / M \leq \varepsilon\\
+x - \varepsilon \leq x - 1 / n \leq r_n \leq x + 1 / n \leq x + \varepsilon\\
+x - \varepsilon \leq r_n \leq x + \varepsilon\\
+-\varepsilon \leq r_n - x \leq \varepsilon\\
+|r_n - x| \leq \varepsilon\\
+\text{then }\forall \varepsilon > 0, \exists M \geq 1 / \varepsilon, \forall n \geq M, |r_n - x| < \varepsilon$
+\end{document}
