@@ -1,0 +1,6 @@
+r is reflection angle
+rtMin = rt
+rColor = shade_sphere(P + rt * R, uS[rn], uSm[rn]);
+no recursion, everything must be known at compile time
+up to a max number of reflections
+complex machinary
