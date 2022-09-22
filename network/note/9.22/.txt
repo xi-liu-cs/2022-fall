@@ -1,0 +1,5 @@
+{} destructure, take 1 field from an object
+{} escape in react
+env file
+port number, host name
+use axios to make a request
