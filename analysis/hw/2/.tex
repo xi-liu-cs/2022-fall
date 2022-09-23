@@ -280,7 +280,7 @@ let $L := 1\\$
 4n &> \frac{1 - \varepsilon}{\varepsilon}\\
 n &> \frac{1 - \varepsilon}{4\varepsilon}
 \end{align*}
-so let $M := (1 - \varepsilon) / (4\varepsilon)$, then $\forall \varepsilon > 0, \exists (1 - \varepsilon) / (4\varepsilon) \in \mathbb{N}, \forall n \geq (1 - \varepsilon) / (4\varepsilon), |x_n - L| = |(4n) / (4n + 1) - 1| < \varepsilon$
+so let $M := \lceil(1 - \varepsilon) / (4\varepsilon)\rceil$, then $\forall \varepsilon > 0, \exists (1 - \varepsilon) / (4\varepsilon) \in \mathbb{N}, \forall n \geq (1 - \varepsilon) / (4\varepsilon), |x_n - L| = |(4n) / (4n + 1) - 1| < \varepsilon$
 \\
 \\
 (d)\\
@@ -296,7 +296,7 @@ let $L := 0\\$
 2 < n\varepsilon\\
 \frac{2}{\varepsilon} < n
 \end{align*}
-so let $M := 2 / \varepsilon$, then $\forall \varepsilon > 0, \exists 2 / \varepsilon \in \mathbb{N}, \forall n \geq 2 / \varepsilon, |x_n - L| = |(2n) / (n ^ 2 + 1) - 0| < \varepsilon$\\
+so let $M := \lceil 2 / \varepsilon \rceil$, then $\forall \varepsilon > 0, \exists 2 / \varepsilon \in \mathbb{N}, \forall n \geq 2 / \varepsilon, |x_n - L| = |(2n) / (n ^ 2 + 1) - 0| < \varepsilon$\\
 \\
 \\
 7.\\
