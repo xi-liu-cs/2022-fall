@@ -1,0 +1,18 @@
+execve
+exec virtual environment
+argv envp
+int execve(char * fname)
+fname is a string of name of executable file
+write steps in piece of paper first, then translate to code
+shell execute an exe file
+fork then exec
+fork make another process, 2 proc at the end
+after exec, num proc do not change
+preemptive: a higher priority process take over the currently running lower priority process
+non-preemptive: current must finish before another process is scheduled
+
+first come first served
+non-preemptive
+
+shortest job first
+non-preemptive
