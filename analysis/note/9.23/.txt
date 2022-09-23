@@ -1,0 +1,47 @@
+f: [-2, 10] -> R
+x ^ 3 - x ^ 2 + 8x
+|f(x)| <= M
+|x ^ 3 - x ^ 2 + 8x| <= |x ^ 3| + x ^ 2 + 8|x| := g /* triangle */
+<= g(10) = 1180
+
+{1 / (n + 1)}
+forall epsilon > 0, exists M in N, forall n geq
+|1 / (n + 1) < epsilon|
+1 / (n + 1) < epsilon
+1 < epsilon(n + 1)
+1 / epsilon < n + 1
+1 / epsilon - 1 < n
+M = 1 / epsilon - 1
+
+by archimedean property
+exist M in N
+M >= 1 / epsilon - 1
+|1 / (n + 1)| <= 1 / (M + 1) <= 1 / (1 / epsilon - 1 + 1) = epsilon
+
+{n ^ 3 / (n ^ 3 + n + 1)}
+|n ^ 3 / (n ^ 3 + n + 1) - 1|
+= |(n ^ 3 - n ^ 3 - n - 1) / (n ^ 3 + n + 1)|
+= |(n + 1) / (n ^ 3 + n + 1)|
+< (n + 1) / n ^ 3 /* n >= 1 */
+< (2n) / n ^ 3
+= 2 / n ^ 2 < epsilon
+2 < epsilon * n ^ 2
+2 / epsilon < n ^ 2
+sqrt{2 / epsilon} < n
+M = lceil sqrt{2 / epsilon} rceil
+
+{1 / (n ^ 2 - 2n)}
+|1 / (n ^ 2 - 2n) - 0|
+= 1 / (n ^ 2 - 2n + 1 - 1)
+= 1 / ((n - 1) ^ 2 - 1) < epsilon
+M = lceil 1 + sqrt{1 + 1 / epsilon} rceil
+
+{2 ^ {-n}}
+|2 ^ {-n} - 0|
+1 / 2 ^ n < epsilon
+1 < epsilon * 2 ^ n
+1 / epsilon < 2 ^ n
+log_2 (1 / epsilon) < n
+M = lceil log_2 (1 / epsilon) rceil
+/* n < 2 ^ n -> n + 1 < 2 ^ {n + 1}
+M = lceil sqrt{1 / epsilon} rceil */
