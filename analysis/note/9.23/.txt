@@ -45,3 +45,6 @@ log_2 (1 / epsilon) < n
 M = lceil log_2 (1 / epsilon) rceil
 /* n < 2 ^ n -> n + 1 < 2 ^ {n + 1}
 M = lceil sqrt{1 / epsilon} rceil */
+
+sqrt{n ^ 2 + n} - n
+(sqrt{n ^ 2 + n} - n)(sqrt{n ^ 2 + n} + n)
