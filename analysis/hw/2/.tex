@@ -49,9 +49,9 @@
 collaboration: Chuanyang Jin\\
 \\
 1.\\
-theorem 1.2.4 says if $a, b \in \mathbb{R}, a < b$, then $\exists r \in \mathbb{Q}, a < r < b$\\
+theorem 1.2.4.ii says if $a, b \in \mathbb{R}, a < b$, then $\exists r \in \mathbb{Q}, a < r < b$\\
 since $x, x - \varepsilon \in \mathbb{R}, x - \varepsilon < x$ \qquad (since $\varepsilon > 0$)\\
-so $\exists r \in \mathbb{Q}, x - \varepsilon < r < x$ \qquad (apply theorem 1.2.4)\\
+so $\exists r \in \mathbb{Q}, x - \varepsilon < r < x$ \qquad (apply theorem 1.2.4.ii)\\
 $x - r < \varepsilon < x + \varepsilon - r$ \qquad (add $\varepsilon - r$ to both sides)\\
 $\because r < x, \therefore x - r > 0\\
 x - r = |x - r| < \varepsilon$\\
@@ -128,6 +128,18 @@ so $(fg)(x) = f(x)g(x)$ is bounded\\
 \frac{|f(x)|}{c} &\geq \frac{|f(x)|}{|h(x)|} =\left|\frac{f(x)}{h(x)}\right|\\
 \end{align*}
 so $\exists |f(x)| / c \in \mathbb{R}, |f(x) / g(x)| \leq |f(x)| / c$\\
+so $f(x) / g(x)$ is bounded\\
+\\
+\\
+since $f$ is bounded, $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+since $g$ is bounded, $\exists N \in \mathbb{R}, \forall x \in D, |g(x)| \leq N$\\
+\begin{align*}
+&\forall x \in D\\
+|(f / h)(x)| &= |f(x) / h(x)|\\
+&= |f(x)| / |h(x)|\\
+&\leq M / |h(x)| \qquad \because |f(x)| \leq M\\
+&\leq M / c \qquad \because |h(x)| \geq c, c > 0
+\end{align*}
 so $f(x) / g(x)$ is bounded\\
 \\
 (d)\\
@@ -255,6 +267,7 @@ so $\{n ^ 2\}$ diverges\\
 \\
 \\
 (b)\\
+converge to 0\\
 if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
 let $M := 10 ^ 6,\\
 L := 0\\
@@ -264,6 +277,7 @@ so $\{x_n\}$ converges\\
 \newpage
 \noindent
 (c)\\
+converge to 1\\
 if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
 let $L := 1\\$
 \begin{align*}
@@ -284,6 +298,7 @@ so let $M := \lceil(1 - \varepsilon) / (4\varepsilon)\rceil$, then $\forall \var
 \\
 \\
 (d)\\
+converge to 0\\
 if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
 let $L := 0\\$
 \begin{align*}
@@ -315,7 +330,7 @@ since $|x_n - L| < \varepsilon$, so $|x_n - L| \leq \varepsilon$\\
 \\
 \\
 8.\\
-if $x, y \in \mathbb{R}, x < y, \text{ then } \exists r \in \mathbb{Q}, x < r < y$ \qquad (theorem 1.2.4)\\
+if $x, y \in \mathbb{R}, x < y, \text{ then } \exists r \in \mathbb{Q}, x < r < y$ \qquad (theorem 1.2.4.ii)\\
 since $x - 1 / n, x + 1 / n \in \mathbb{R}, \text{ so } \exists r_n \in \mathbb{Q}, x - 1 / n < r_n < x + 1 / n\\$
 if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$,\\
 let $M \geq 1 / \varepsilon\\
