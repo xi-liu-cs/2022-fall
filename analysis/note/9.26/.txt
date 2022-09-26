@@ -1,0 +1,139 @@
+lim_{n -> inf} x_n = L iff for all e > 0, exists M in N, for all n >= M, |x_n - L| < e
+lim_{n -> inf} (x_n) ^ 2 == (lim_{n -> inf} x_n) ^ 2
+continuity of algebraic operations 2.2.5
+let {x_n}, {y_n} be convergent sequences
+
+1. sequence {z_n} := {x_n + y_n} converges with limit
+lim_{n -> inf} z_n = lim_{n -> inf} (x_n + y_n) =  lim_{n -> inf} x_n +  lim_{n -> inf} y_n
+continuity means can switch order of taking limits with something else
+
+{2 / n} does it converge
+2 / n = 1 / n + 1 / n
+z_n = x_n + y_n
+
+{x_n} = {n}
+{y_n} = {-n}
+{z_n} = {x_n + y_n} = {0}
+z_n converges
+but lim_{n -> inf} z_n != lim_{n -> inf} x_n + lim_{n -> inf} y_n
+
+2. z_n = x_n + y_n
+then {z_n} converges
+lim_{n -> inf} (x_n - y_n) = lim_{n -> inf} x_n - lim_{n -> inf} y_n
+
+3. z_n = x_n y_n
+lim_{n -> inf} (x_n y_n) = (lim_{n -> inf} x_n)(lim_{n -> inf} y_n)
+
+4. if y_n != 0 for all n
+lim_{n -> inf} y_n !+ 0
+then z_n := x_n / y_n
+{z_n} converges and
+lim_{n -> inf} (x_n / y_n) = lim_{n -> inf} x_n / lim_{n -> inf} y_n
+
+proof
+1. take e > 0
+z := x + y
+where x = lim_{n -> inf} x_n
+y = lim_{n -> inf} y_n
+
+since x_n -> x
+exists M1 in N
+for all n >= M1
+|x_n - x| < e / 2
+
+since y_n -> y
+exists M2 in N
+for all n >= M2
+|y_n - y| < e / 2
+
+then, take M = max{M1, M2}, then for all n >= M, (n >= M1, n >= M2)
+|z_n - z| = |x_n + y_n - (x + y)|
+= |x_n - x + y_n - y|
+<= |x_n - x| + |y_n - y| /* triangle inequality */
+< e / 2 + e / 2
+= e
+
+lim_{n -> inf} z_n
+= lim_{n -> inf} x_n + y_n
+= lim_{n -> inf} z_n
+
+/* if choose e to be e / 3 instead of e / 2
+then at the end < e / 3 + e / 3 = 2e / 3 < e */
+
+3. z_n := x_n y_n
+z := xy
+x_n -> x, y_n -> y, z_n -> z, as n -> inf
+|z_n - z| = |x_n y_n - xy|
+= |(x_n - x + x)(y_n - y + y) - xy|
+= |(x_n - x)(y_n - y) + (x_n - x)y + x(y_n - y) + xy - xy
+<= |x_n - x||y_n - y| +  |x_n - x||y| + |x||y_n - y| /* |ab| = |a||b| */
+< e
+
+/* |x_n - x||y| < e
+(extra small)(big) < small */
+
+take k := max{|x|, |y|, 1, e / 3}
+then since x_n -> x, y_n -> y, e / (3k) > 0
+exists M1 in N, for all n >= M1, |x_n - x| < e / (3k) /* small / big = extra small */
+exists M2 in N, for all n >= M2, |y_n - y| < e / (3k)
+
+|z_n - z| <= |x_n - x||y_n - y| + |x_n - x||y| + |x||y_n - y|
+M = max{M1, M2}, for all n >= M
+< (e / (3k))(e / (3k)) + (e / (3k))k + k (3 / (3k)) /* k >= |y|, k >= |x| */
+= (e / (3k))(e / (3k)) + e / 3 + e / 3 /* k >= e / 3, e / (3k) <= 1, k >= 1 */
+<= e / (3k) + e / 3 + e / 3
+<= e / 3 + e / 3 + e / 3
+= e
+{z_n} converges, lim_{n -> inf} x_n y_n = (lim_{n -> inf} x_n)(lim_{n -> inf} y_n)
+
+limit of a convergent sequence is unique
+suppose {x_n} is a convergent sequence
+1 sequence converge to 2 numbers, show that 2 numbers are the same
+x, y in R satisfy x_n -> x, x_n -> y as n -> inf
+"give yourself an e of room"
+let e > 0 be arbitrary
+exists M1 in N, for n >= M1, |x_n - x| < e / 2
+exists M2 in N, for n >= M2, |x_n - y| < e / 2
+
+take M := max{M1, M2}
+for all n >= M
+|y - x| = |y - x_n + x_n - x|
+<= |x_n - y| + |x_n - x|
+< e / 2 + e / 2
+= e
+
+for all e > 0, |y - x| < e, 0 <= |y - x| <= 0
+|y - x| = 0
+x = y
+
+so limits are unique
+x_n = y_n -> lim_{n -> inf} x_n =  lim_{n -> inf} y_n
+
+limits preserve non-strict inequalities
+for n in N, x_n <= y_n, lim_{n -> inf} x_n <= lim_{n -> inf} y_n
+
+lemma 2.2.3
+limits preserve <=
+given convergent sequences {x_n}, {y_n}
+if x_n <= y_n for n in N
+then lim_{n -> inf} x_n <= lim_{n -> inf} y_n
+
+1 / n > 0 for all n in N
+1 / n > 0 -> 1 / n >= 0
+lim_{n -> inf} 1 / n >= lim_{n -> inf} 0 = 0
+
+let x_n -> x, x_n -> y as n -> inf
+let e > 0 be arbitrary
+exists M1 in N, for all n >= M1, |x - x_n| <= e / 2
+-e / 2 <= x - x_n <= e / 2
+exists M2 in N, for all n >= M2, |y_n - y| <= e / 2
+-e / 2 <= y_n - y <= e / 2
+M := max{M1, M2}, for all n >= M
+(x - x_n) +- (y - y_n) = (x - y) - (y_n - x_n)
+/* < e / 2 +- e / 2 = e */
+x - y < e - (y_n - x_n) <= e /* x_n <= y_n, for all n in N, y_n - x_n >= 0 */
+
+x - y < e, for all e > 0
+x - y <= 0
+lim x - lim y <= 0
+lim x = lim y
