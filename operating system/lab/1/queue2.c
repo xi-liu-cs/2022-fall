@@ -2,14 +2,6 @@
 #include "queue.h"
 #include "proc.h"
 
-void * mal(size_t size)
-{
-    void * a = malloc(size);
-    if(!a)
-      printf("malloc error\n");
-    return a;
-}
-
 proc ** queue_to_proc_array(queue * q)
 {
   proc ** a = (proc **)mal(q->cur * sizeof(proc *));
