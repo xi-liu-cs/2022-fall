@@ -562,21 +562,21 @@ void round_robin(file * fp_out, proc ** proc_array, int n_proc, int quantum)
             p->state = ready;
             queue_link_push(q_cur_cycle, p);
           }
-          cur_quant = 0;
           cur_run = null;
+          cur_quant = 0;
         }
         else if(p->cpu_remain <= p->half_cpu && p->io_remain > 0)
         {/* current process is blocked on i/o */
           p->state = blocked;
           cur_run = null;
-          if(cur_quant == quantum)
-            cur_quant = 0;
+          cur_quant = 0;
         }
         else if(!p->cpu_remain && !p->io_remain)
         {/* current running process terminates */
           p->state = final;
           p->finish_time = cycle - 1;
           cur_run = null;
+          cur_quant = 0;
           ++finish;
           if(finish == n_proc)
             break;
