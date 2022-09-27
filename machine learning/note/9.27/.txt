@@ -1,0 +1,5 @@
+https://jgreitemann.github.io/svm-demo
+f(x) = w ^ T + b
+f(x) = 0
+optimize (w1, w2, b)
+y ^ i (w1 x1 ^ i + w2 x2 ^ i + b) >= 1 minimize w1 ^ 2 + w2 ^ 2
