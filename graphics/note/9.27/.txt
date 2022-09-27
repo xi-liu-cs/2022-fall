@@ -1,0 +1,68 @@
+point
+x
+y
+z
+1
+
+direction
+x
+y
+z
+0
+
+represent a point P as a column vector
+x
+y
+z
+w
+
+a plane A as a row vector
+a b c d
+
+point P is on plane A if dot product A dot P is 0
+ax + by + cz + dw = 0
+
+homogeneous means 1 side is 0
+can scale 1 side without worrying about worrying about another side
+
+unit cube
+-1 <= x, y, z <= 1
+
+-1 <= x
+homogeneous (must be <= 0 at right side): -x - 1 <= 0
+matrix row: -1 0 0 -1 /* (a, b, c, d) */
+if take a point (x, y, z, 1) and plug in to these 6 equations, if we get a value <= 1 for all of them, point is within cube
+
+ray: V + tW
+solve for what point along ray is on plane
+V = [Vx, Vy, Vz]
+W = [Wx, Wy, Wz]
+[x, y, z] = [Vx + tWx, Vy + tWy, Vz + tWz]
+given halfspace
+ax + by + cz + dw <= 0
+a(Vx + tWx) + b(Vy + tWy) + c(Vz + tWz) + d(Vw + tWw) <= 0
+aVx + bVy + cVz + dVw +
+aWx + bWy + cWz + dWw <= 0
+AV + tAW <= 0
+tAW <= -AV
+t <= -AV / AW
+
+each of A dot V or A dot W can be <, >, or =, so 9 cases total
+if AV < 0, already inside halfspace
+if AW < 0, direction toward inside halfspace, moving further in
+
+t_{enter} <= t_{exit}, ray intersects cude
+t_{enter} > t_{exit}, ray misses cube
+
+translate
+(1 0 0 tx
+0 1 0 ty
+0 0 1 tz
+0 0 0 1)
+(x
+y
+z
+1)
+
+matrix associative
+transformations of multiple matrices can be store as 1 matrix
