@@ -1,0 +1,167 @@
+convergence test
+1. monotone convergence theorem
+monotone sequences
+2. subsequences: tail control convergence
+3. ratio test
+
+monotone sequences
+a sequence {x_n} is monotone increasing if
+for all n in N, x_n <= x_{n + 1}
+if x_n < x_{n + 1}, {x_n} is strictly monotone increasing
+
+{1 / n}
+1 / n > 1 / (n + 1)
+{1 / n} is strictly monotone increasing
+
+a monotone sequence {x_n} is convergent iff
+it is bounded
+
+monotone and convergent -> bounded, already proved
+monotone sequence and bounded -> convergent
+consider {x_n} is monotone increasing and bounded
+exists B in R, |x_n| <= B for all n in N
+{x_n, n in N} is bounded
+
+x = sup{x_n, n in N} exists
+let e > 0 be arbitrary
+from hw1, for all e > 0, exists x_n in {x_n, n in N}, x - e < x_m < x
+exists elements arbitrary close to x in {x_n, n in N}
+
+since {x_n} is monotone increasing
+for all n >= M, since {x_n} is monotone increasing
+x + e > x >= x_n > x_{n - 1} >= ... > x - e
+-e < x_n - x < e
+|x_n - x| < e
+
+conclude {x_n} is convergent
+lim_{n -> inf}
+= sup{x_n, n in N}
+
+monotone decreasing
+lim_{n -> inf}
+= inf{x_n, n in N}
+
+{1 / n}
+by monotone convergent theorem
+1 > 1 / n > 0
+|1 / n| < 1
+sequence is bounded
+by mct, lim 1 / n = inf{1 / n, n in N} = 0
+
+subsequences tails
+given a sequence {x_n}_1 ^ {infty}
+call a sequence {x_n_i}_{i = 1} ^ {infty}
+is a subsequence if {n_i}_{i = 1} ^ {infty}
+is a strictly increasing sequence of natural numbers
+
+{x_n} = {n ^ 2}
+{(2i) ^ 2}_{i = 1} ^ {infty} is a subsequence
+
+{x_n} = {1 / n}
+{1 / 2 ^ n} is a subsequence
+
+{1 / 2 ^ i}_{i = 1} ^ {infty}
+{n_i} = {2 ^ i}_{i = 1} ^ {infty}
+
+subsequences limit = original sequence limit
+let {x_n} be a convergent sequence, {x_n_i} be a subsequence
+of this convergent sequence
+then {x_n_i}_{i = 1} ^ {infty}
+is convergent with lim_{i -> infty} x_n_i = lim_{n -> infty} x_n
+
+lim 1 / (2 ^ n) = lim 1 / n = 0
+if {n_i} is a strictly increasing sequence of natural numbers
+then n_i >= i
+{n_i} = 2, 4, 8
+i = 1, 2, 3
+
+let e > 0 be arbitrary
+since {x_n} is convergnet to some x in R
+exists m in N, for all n >= M, |x_n - x| < e
+since n_i >= i for all i in N
+for all i >= M, (n_i >= i >= M)
+|x_n_i - x| < e
+
+{x_n_i} is convergent, lim_{i -> inf} x_n_i = lim_{n -> inf} x_n
+{y_i} = {x_n_i}
+
+the k tail of a sequence {x_n} for k in N is subsequence
+sequence of indices
+
+4 tail of {1 / n}
+is sequence {1 / (n + 4)}
+{1 / n} = 1 / 1, 1 / 2, 1 / 3, ...
+{1 / (n + 4)} = 1 / 5, 1 / 6, 1 / 7, ...
+
+tails control convergence
+given a sequence {x_n}, the following are equivalent, 1 <-> 2 <-> 3
+1. {x_n} is convergent
+2. k tail {x_{n + k}} is convergent for all k in N
+3. k tail {x_{n + k}} is convergent for some k in N
+lim_{n -> inf} x_n = lim_{n -> inf} x_{n + k} if {x_n} converges
+
+the following are equivalent
+proof strategy: 1 -> 2 -> 3 -> 1
+
+let x_n :=
+{
+  ..., n <= i
+  1 / n, n > i
+}
+pick k = i
+i-tail {x_n} is {1 / (n + i)}
+converges
+{x_n} satisfies (iii)
+
+get
+1. {x_n} converges
+2. {x_{n + i}} converges for all i in N
+
+1 -> 2
+assume {x_n} is convergent
+then, since {x_{n + k}} is a subsequence, {x_{n + k}} is convergent
+lim_{n -> inf} x_{n + k} = lim_{n -> inf} x_n
+
+2 -> 3
+if {x_{n + k}} is convergent for all k in N
+... some k in N
+
+3 -> 1
+assume {x_{n + k}} converges for some k in N
+
+let e > 0 be arbitrary
+exists M in N, forall n >= M, |x_{n + k| - x| < e
+x := lim x_{n + k}
+for all n >= M + k
+|x_n - x| < e
+
+ratio test
+prop
+let c > 0
+1. if c < 1, {c ^ n} is convergent, lim_{n -> inf} c ^ n = 0
+2. if c > 1, {c ^ n} is unbounded, hence divergent
+
+ex: (0.4) ^ n -> 0
+(4) ^ n divergent
+
+prove {c ^ n} converges, c < 1
+c > 0 -> c ^ n > 0, for all n in N
+c < 1 -> c ^ {n + 1} = c c ^ n < c ^ n for all n in N
+|c ^ n| <= 1, c ^ {n + 1} < c ^ n
+mct, {c ^ n} is monotone and bounded, hence convergent
+
+lim c ^ n = 0
+l := lim c ^ n
+1 tail of c ^ n is {c ^ {n + 1}} = {c * c ^ n}
+{c}, {c ^ n} are convergent, also have 1 tail {c ^ {n + 1}} also converges to l
+
+l = lim c ^ {n + 1}
+= lim c (c ^ n)
+= (lim c)(lim c ^ n)
+= cl
+
+l - cl = 0
+l(1 - c) = 0
+c < 1
+so 1 - c != 0
+so l = 0
