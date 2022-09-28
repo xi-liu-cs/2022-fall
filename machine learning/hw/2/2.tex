@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\newcommand\iidsim{\stackrel{\mathclap{iid}}{\sim}}
+
+\title{Introduction to Machine Learning
+(CSCI-UA.473): Homework 2}
+\author{Instructor: Lerrel Pinto}
+\date{September 20, 2022}
+
+\begin{document}
+
+\maketitle
+
+\section*{Submission Instructions}
+You must typeset the answers  
+using \LaTeX~ and compile them into a 
+single PDF file. 
+Name the pdf file as 
+⟨Your-NetID⟩\_hw2.pdf and the notebook containing the coding portion as  ⟨Your-NetID⟩\_hw2.ipynb. The PDF file should contain solutions to both the theory portion and the coding portion. Submit the files through the following Google Form - \href{https://forms.gle/Rf63VnEaMoLcWr7p7}{https://forms.gle/Rf63VnEaMoLcWr7p7} 
+The due date is 
+{\bf October 4, 2022, 11:59 PM}. You may discuss the questions with each other but each student must provide their own answer to each question.
+
+\section*{Questions}
+
+\subsection*{Question 1: 
+Empirical vs. Expected Cost (10 points)} 
+We approximate the true cost 
+function with the empirical 
+cost function defined by: 
+\begin{equation}
+\mathbb{E}_{x}\left[E(g(x), f(x))\right] = 
+\frac{1}{N} \sum_{i=1}^N E(g(x^i), y^i),
+\label{eq:q1}
+\end{equation}
+where $N$ is the number of training samples, $f$ is the unknown function, $g$ is the learnable function, $E$ is the cost function, $y^i$ is the label associated with the input $x^i$. In Eq.~\ref{eq:q1}, the left-hand side of the equation represents the expected value of the cost between $g(x)$ and $f(x)$ for every $x$ in the dataset, and the right-hand side approximates this expectation by computing a mean over the errors assigning equal weight to each sample. In the above equation is it okay to give an equal weight to the cost associated with each training example? 
+Given that we established that not every data $x$ is
+equally likely, is taking the sum of all per-example
+costs and dividing by N reasonable? Should we weigh
+each per-example cost differently, depending on 
+how likely each x is? Justify your answer.
+
+\subsection*{Question 2: 
+Simple Linear Regression Model (10 points)}
+
+Consider the following model: $Y_{i} = 5 + 0.5X_{i} + \epsilon_{i}, \hspace{1mm} \epsilon_{i} \iidsim N(0,1)$
+
+\begin{enumerate}
+    \item What is $\E[Y|X = 0]$, $\E[Y|X = -2]$ and $Var[Y|X]$?
+    \item What is the probability of $Y > 5$, given $X = 2$?
+    \item If $X$ has a mean of zero and variance of 10, what are $\E[Y]$ and $Var[Y]$?
+    \item What is $Cov(X,Y)$?
+\end{enumerate}
+
+\subsection*{Question3: Least Squares Regression (10 points)}
+
+Consider the linear regression model: 
+\begin{equation}
+    y = \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{k}x_{k} + \epsilon, \epsilon
+\end{equation}
+
+where $y$ is a dependent variable, $x_{i}$ corresponds to independent variables and $\theta_{i}$ corresponds to the parameters to be estimated. While approximating a best-fit regression line, though the line is a pretty good fit for the dataset as a whole, there may be an error between the predicted value $\hat y$ and true value $y$ for every data point $\textbf{x}$ = $[x_{1}, x_{2}, ..., x_{k}]$ in the dataset. This error is captured by $\epsilon \sim N(0, \sigma^2)$, where for each data point with features $x_{i}$, the label $\hat y$ is drawn from a Gaussian with mean $\mathbf{\theta^{T}x}$ and variance $\sigma^2$. Given a set of $N$ observations, provide the closed form solution for an ordinary least squares estimate $\hat\theta$ for the model parameters $\theta$.
+
+For the ordinary least squares method, the assumption is that $Var(\epsilon_{i}|X_{i}) = \sigma^{2}$, where $\sigma$ is a constant value. However, when $Var(\epsilon_{i}|X_{i}) = f(X_{i}) \neq \sigma^{2}$, the error term for each observation $X_{i}$ has a weight $W_{i}$ corresponding to it. This is called Weighted Least Squares Regression. In this scenario, provide a closed form  weighted least squares estimate $\hat\theta$ for the model parameters $\theta$.
+
+\subsection*{Question 4: Linear vs Logistic Regression (5 points)}
+Explain. with equations, the difference between linear and logistic regression.
+
+\end{document}
