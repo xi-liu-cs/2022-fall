@@ -1,0 +1,4 @@
+more queues means more management
+less queues means each queue is longer, searching in 1 queue is longer
+linked list is not good for performance, not cache friendly
+2 logical consecutive nodes are not necessarily stored consecutively
