@@ -10,25 +10,9 @@
 \DeclareMathOperator{\E}{\mathbb{E}}
 \newcommand\iidsim{\stackrel{\mathclap{iid}}{\sim}}
 
-\title{Introduction to Machine Learning
-(CSCI-UA.473): Homework 2}
-\author{Instructor: Lerrel Pinto}
-\date{September 20, 2022}
-
 \begin{document}
 
-\maketitle
-
-\section*{Submission Instructions}
-You must typeset the answers  
-using \LaTeX~ and compile them into a 
-single PDF file. 
-Name the pdf file as 
-⟨Your-NetID⟩\_hw2.pdf and the notebook containing the coding portion as  ⟨Your-NetID⟩\_hw2.ipynb. The PDF file should contain solutions to both the theory portion and the coding portion. Submit the files through the following Google Form - \href{https://forms.gle/Rf63VnEaMoLcWr7p7}{https://forms.gle/Rf63VnEaMoLcWr7p7} 
-The due date is 
-{\bf October 4, 2022, 11:59 PM}. You may discuss the questions with each other but each student must provide their own answer to each question.
-
-\section*{Questions}
+\section*{Xi Liu}
 
 \subsection*{Question 1: 
 Empirical vs. Expected Cost (10 points)} 
@@ -40,12 +24,30 @@ cost function defined by:
 \frac{1}{N} \sum_{i=1}^N E(g(x^i), y^i),
 \label{eq:q1}
 \end{equation}
-where $N$ is the number of training samples, $f$ is the unknown function, $g$ is the learnable function, $E$ is the cost function, $y^i$ is the label associated with the input $x^i$. In Eq.~\ref{eq:q1}, the left-hand side of the equation represents the expected value of the cost between $g(x)$ and $f(x)$ for every $x$ in the dataset, and the right-hand side approximates this expectation by computing a mean over the errors assigning equal weight to each sample. In the above equation is it okay to give an equal weight to the cost associated with each training example? 
-Given that we established that not every data $x$ is
+where $N$ is the number of training samples, $f$ is the unknown function, $g$ is the learnable function, $E$ is the cost function, $y^i$ is the label associated with the input $x^i$. In Eq.~\ref{eq:q1}, the left-hand side of the equation represents the expected value of the cost between $g(x)$ and $f(x)$ for every $x$ in the dataset, and the right-hand side approximates this expectation by computing a mean over the errors assigning equal weight to each sample. In the above equation is it okay to give an equal weight to the cost associated with each training example? Given that we established that not every data $x$ is
 equally likely, is taking the sum of all per-example
 costs and dividing by N reasonable? Should we weigh
 each per-example cost differently, depending on 
-how likely each x is? Justify your answer.
+how likely each x is? Justify your answer.\\
+\\
+\\
+it is okay to give an equal weight to the cost associated with each training example, taking the sum of all per-example
+costs and dividing by N is reasonable. we don't need to weigh
+each per-example cost differently, depending on how likely each x is\\
+justification: central limit theorem: let $X_1, ..., X_n$ be independent and identically distributed random variables with mean $\mu$ and variance $\sigma ^ 2, \overline{X_n} = \frac{1}{n} \sum_{i = 1} ^ n X_i$, $P(Z_n \leq z)$ be cumulative distribution function of $Z_n$, $\Phi$ be cumulative distribution function of $Z$, then
+\begin{align*}
+Z_n &:= \frac{\overline{X_n} - E[\overline{X_n}]}{\sqrt{Var(\overline{X_n})}}
+= \frac{\sum_{i = 0} ^ n X_i - n\mu}{\sqrt{n\sigma ^ 2}} = \frac{n\overline{X_n} - n\mu}{\sqrt{n}\sigma} = \sqrt{n}\frac{\overline{X_n} - \mu}{\sigma} \leadsto Z
+\end{align*}
+$Z_n \leadsto Z$ denote $Z_n$ converges to $Z$ in distribution
+\begin{align*}
+\lim_{n \rightarrow \infty} P(Z_n \leq z) &= \Phi(z) = \int_{-\infty} ^ z \frac{1}{\sqrt{2\pi}} e ^ {-x ^ 2 / 2} dx\\
+&\text{where } Z \sim N(0, 1)\\
+&\text{using equation (1)}\\
+\overline{X_n} &:= \frac{1}{N} \sum_{i=1}^N E(g(x^i), y^i)\\
+\mu &:= \mathbb{E}_{x}\left[E(g(x), f(x))\right]
+\end{align*}
+if training data is distributed regularly like distribution of $x$, then right hand side of equation (1) converge to left hand side of equation (1) when $n$ approaches to infinity by central limit theorem, then we don't need to add weight to individual data points, more heuristic way to think is, for data points $x$ with higher probability, it is more likely to occur multiple times in training data, then data points with lower probability is less likely to occur in training data
 
 \subsection*{Question 2: 
 Simple Linear Regression Model (10 points)}
@@ -53,24 +55,169 @@ Simple Linear Regression Model (10 points)}
 Consider the following model: $Y_{i} = 5 + 0.5X_{i} + \epsilon_{i}, \hspace{1mm} \epsilon_{i} \iidsim N(0,1)$
 
 \begin{enumerate}
-    \item What is $\E[Y|X = 0]$, $\E[Y|X = -2]$ and $Var[Y|X]$?
-    \item What is the probability of $Y > 5$, given $X = 2$?
-    \item If $X$ has a mean of zero and variance of 10, what are $\E[Y]$ and $Var[Y]$?
-    \item What is $Cov(X,Y)$?
+\item What is $\E[Y|X = 0]$, $\E[Y|X = -2]$ and $Var[Y|X]$?
+\begin{align*}
+\E[Y|X = 0] &= \E[5 + 0.5(0) + \epsilon]\\
+&= \E[5] + \E[\epsilon]\\
+&= 5 + \mu_{\epsilon}\\
+&= 5 + 0\\
+&= 5\\
+\\
+\E[Y|X = -2] &= \E[5 + 0.5(-2) + \epsilon]\\
+&= \E[5] + \E[-1] + \E[\epsilon]\\
+&= 5 - 1 + \mu_{\epsilon}\\
+&= 4 + \mu_{\epsilon}\\
+&= 4 + 0\\
+&= 4\\
+\\
+Var[Y|X] &= Var[5 + 0.5X + \epsilon]\\
+&= Var[5] + (0.5) ^ 2 Var[X] + Var[\epsilon]\\
+&= 0 + 0.25 Var[X] + 1\\
+&= 0.25 Var[X] + 1\\
+\end{align*}
+\item What is the probability of $Y > 5$, given $X = 2$?
+\begin{align*}
+P(Y > 5 | X = 2) &= P(5 + 0.5(2) + \epsilon > 5)\\
+&= P(6 + \epsilon > 5)\\
+&= P(\epsilon > -1)\\
+&= P(\epsilon \leq 1)\\
+&\approx \Phi(1)\\
+&= 0.8413\\
+\end{align*}
+\item If $X$ has a mean of zero and variance of 10, what are $\E[Y]$ and $Var[Y]$?
+\begin{align*}
+\E[Y] &= \E[5 + 0.5X + \epsilon]\\
+&= \E[5] + 0.5\E[X] + E[\epsilon]\\
+&= 5 + 0.5\mu_X + \mu_{\epsilon}\\
+&= 5 + 0.5(0) + 0\\
+&= 5\\
+\\
+Var[Y] &= Var[5] + (0.5) ^ 2 Var[X] + Var[\epsilon]\\
+&= 0 + 0.25(10) + 1\\
+&= 2.5 + 1\\
+&= 3.5\\
+\end{align*}
+\item What is $Cov(X,Y)$?
+\begin{align*}
+Cov(X, Y) &= E[(X - E[X])(Y - E[Y])]\\
+&= E[XY - XE[Y] - E[X]Y + E[X]E[Y]]\\
+&= E[XY] - E[X]E[Y] - E[X]E[Y] + E[X]E[Y]\\
+&= E[XY] - E[X]E[Y]\\
+&= E[X(5 + 0.5X + \epsilon)] - E[X]E[5 + 0.5X + \epsilon]\\
+&= E[5X + 0.5X ^ 2 + \epsilon X] - E[X]E[5 + 0.5X + \epsilon]\\
+&= 5E[X] + 0.5E[X ^ 2] + E[\epsilon X] - E[X]E[5 + 0.5X + \epsilon]\\
+&= 5E[X] + 0.5E[X ^ 2] + E[\epsilon]E[X] - E[X]E[5 + 0.5X + \epsilon]\\
+&= 0.5E[X ^ 2]\\
+\end{align*}
 \end{enumerate}
 
-\subsection*{Question3: Least Squares Regression (10 points)}
+\subsection*{Question 3: Least Squares Regression (10 points)}
 
 Consider the linear regression model: 
 \begin{equation}
     y = \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{k}x_{k} + \epsilon, \epsilon
 \end{equation}
 
-where $y$ is a dependent variable, $x_{i}$ corresponds to independent variables and $\theta_{i}$ corresponds to the parameters to be estimated. While approximating a best-fit regression line, though the line is a pretty good fit for the dataset as a whole, there may be an error between the predicted value $\hat y$ and true value $y$ for every data point $\textbf{x}$ = $[x_{1}, x_{2}, ..., x_{k}]$ in the dataset. This error is captured by $\epsilon \sim N(0, \sigma^2)$, where for each data point with features $x_{i}$, the label $\hat y$ is drawn from a Gaussian with mean $\mathbf{\theta^{T}x}$ and variance $\sigma^2$. Given a set of $N$ observations, provide the closed form solution for an ordinary least squares estimate $\hat\theta$ for the model parameters $\theta$.
-
+where $y$ is a dependent variable, $x_{i}$ corresponds to independent variables and $\theta_{i}$ corresponds to the parameters to be estimated. While approximating a best-fit regression line, though the line is a pretty good fit for the dataset as a whole, there may be an error between the predicted value $\hat y$ and true value $y$ for every data point $\textbf{x}$ = $[x_{1}, x_{2}, ..., x_{k}]$ in the dataset. This error is captured by $\epsilon \sim N(0, \sigma^2)$, where for each data point with features $x_{i}$, the label $\hat y$ is drawn from a Gaussian with mean $\mathbf{\theta^{T}x}$ and variance $\sigma^2$. Given a set of $N$ observations, provide the closed form solution for an ordinary least squares estimate $\hat\theta$ for the model parameters $\theta$.\\
 For the ordinary least squares method, the assumption is that $Var(\epsilon_{i}|X_{i}) = \sigma^{2}$, where $\sigma$ is a constant value. However, when $Var(\epsilon_{i}|X_{i}) = f(X_{i}) \neq \sigma^{2}$, the error term for each observation $X_{i}$ has a weight $W_{i}$ corresponding to it. This is called Weighted Least Squares Regression. In this scenario, provide a closed form  weighted least squares estimate $\hat\theta$ for the model parameters $\theta$.
+\\
+solution for regular least squares is
+\begin{align*}
+rss(\beta) &= ||\textbf{y} - \textbf{x}\beta|| ^ 2\\
+\frac{\partial rss}{\partial \beta} = -2\textbf{x} ^ T(\textbf{y} - \textbf{x}\beta) &= 0\\
+\textbf{x} ^ T(\textbf{y} - \textbf{x}\beta) &= 0\\
+\textbf{x} ^ T \textbf{y} - \textbf{x} ^ T \textbf{x}\beta &= 0\\
+\textbf{x} ^ T \textbf{y} &= \textbf{x} ^ T \textbf{x}\beta\\
+\beta &= (\textbf{x} ^ T \textbf{x}) ^ {-1} \textbf{x} ^ T \textbf{y}
+\end{align*}
+let $\textbf{W}$ be a diagonal matrix with diagonal elements $w_1, ..., w_n$\\
+\begin{align*}
+\textbf{W} &=
+\begin{pmatrix}
+w_1 & 0 & \dots & 0\\
+0 & w_2 & \dots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & \dots & \dots & w_n\\
+\end{pmatrix}
+\end{align*}
+weighted residual sum of squares is
+\begin{align*}
+rss(\theta) &= \sum_{i = 1} ^ n w_i (y_i - \textbf{x}_i ^ T \theta) ^ 2\\
+&= (\textbf{Y} - \textbf{X}\theta) ^ T \textbf{W} (\textbf{Y} - \textbf{X}\theta)\\
+&\text{/* use transformation }\\
+&\textbf{Y}' = \textbf{W} ^ {1 / 2} \textbf{Y},\quad \textbf{X}' = \textbf{W} ^ {1 / 2}\textbf{X} \text{ */}\\
+&= ((\textbf{X}') ^ T \textbf{X}') ^ {-1} (\textbf{X}') ^ T \textbf{Y}'\\
+&= (\textbf{X} ^ T \textbf{W}\textbf{X}) ^ {-1} \textbf{X} ^ T \textbf{W} \textbf{Y}\\
+\end{align*}
 
 \subsection*{Question 4: Linear vs Logistic Regression (5 points)}
-Explain. with equations, the difference between linear and logistic regression.
-
+Explain. with equations, the difference between linear and logistic regression.\\
+\\
+\\
+linear regression model is $Y_i = \beta_0 + \beta_1X_i + \epsilon_i$\\
+linear regression model with input vector $\textbf{x} ^ T = \{\textbf{x}_1, \textbf{x}_2, ..., \textbf{x}_d\}$, real valued output $\textbf{y}$, residual sum of squares $rss$, set of training data $(x_1, y_1), ..., (x_n, y_n)$, each $x_i = (x_{i1}, x_{i2}, ..., x_{id}) ^ T$ is a feature measurements vector for $i$th case, $\beta = (\beta_0, \beta_1, ..., \beta_d) ^ T$
+\begin{align*}
+f(\textbf{x}) &= \beta_0 + \sum_{i = 1} ^ d \textbf{x}_i \beta_i\\
+rss(\beta) &= \sum_{i = 1} ^ n (y_i - f(x_i)) ^ 2\\
+&= \sum_{i = 1} ^ n (y_i - (\beta_0 + \sum_{j = 1} ^ d x_{i, j} \beta_j)) ^ 2\\
+&= \sum_{i = 1} ^ n (y_i - \beta_0 - \sum_{j = 1} ^ d x_{i, j} \beta_j) ^ 2\\
+\text{let }\textbf{y} := 
+\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n\\
+\end{pmatrix}
+\qquad
+\textbf{x} &:=
+\begin{pmatrix}
+1 & x_{1, 1} & x_{1, 2} & \dots & x_{1, d}\\
+1 & x_{2, 1} & x_{2, 2} & \dots & x_{2, d}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+1 & x_{n, 1} & x_{n, 2} & \dots & x_{n, d}\\
+\end{pmatrix}\\
+\textbf{x}\beta &= 
+\begin{pmatrix}
+1 & x_{1, 1} & x_{1, 2} & \dots & x_{1, d}\\
+1 & x_{2, 1} & x_{2, 2} & \dots & x_{2, d}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+1 & x_{n, 1} & x_{n, 2} & \dots & x_{n, d}\\
+\end{pmatrix}
+\begin{pmatrix}
+\beta_0\\
+\beta_1\\
+\vdots\\
+\beta_d\\
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+\beta_0 & x_{1, 1}\beta_1 & x_{1, 2}\beta_2 & \dots & x_{1, d}\beta_d\\
+\beta_0 & x_{2, 1}\beta_1 & x_{2, 2}\beta_2 & \dots & x_{2, d}\beta_d\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+\beta_0 & x_{n, 1}\beta_1 & x_{n, 2}\beta_2 & \dots & x_{n, d}\beta_d\\
+\end{pmatrix}\\
+&= \sum_{i = 1} ^ n (\beta_0 + \sum_{j = 1} ^ d x_{i, j} \beta_j)
+\end{align*}
+\begin{align*}
+&\text{then}\\
+rss(\beta) &= (\textbf{y} - \textbf{x}\beta) ^ T (\textbf{y} - \textbf{x}\beta)\\
+&= ||\textbf{y} - \textbf{x}\beta|| ^ 2\\
+\frac{\partial rss}{\partial \beta} &= -2\textbf{x} ^ T(\textbf{y} - \textbf{x}\beta)
+\end{align*}
+to find minimum, set first derivative to 0
+\begin{align*}
+\frac{\partial rss}{\partial \beta} = -2\textbf{x} ^ T(\textbf{y} - \textbf{x}\beta) &= 0\\
+\textbf{x} ^ T(\textbf{y} - \textbf{x}\beta) &= 0\\
+\textbf{x} ^ T \textbf{y} - \textbf{x} ^ T \textbf{x}\beta &= 0\\
+\textbf{x} ^ T \textbf{y} &= \textbf{x} ^ T \textbf{x}\beta\\
+\beta &= (\textbf{x} ^ T \textbf{x}) ^ {-1} \textbf{x} ^ T \textbf{y}
+\end{align*}
+logistic regression\\
+$Y_i \in \{0, 1\}$ is binary. for $k$-dimensional covariate $X$, model is
+\begin{align*}
+p_i &= p_i(\beta) = P(Y_i = 1|X = x) = \frac{e ^ {\beta_0 + \sum_{j = 1} ^ k \beta_j x_{i, j}}}{1 + e ^ {\beta_0 + \sum_{j = 1} ^ k \beta_j x_{i, j}}}\\
+logit(p_i) &= \beta_0 + \sum_{j = 1} ^ k \beta_j x_{i, j}\\
+logit(p) &= log\left(\frac{p}{1 - p}\right)
+\end{align*}
+name of logistic regression come from $e ^ x / (1 + e ^ x)$ is called logistic function
 \end{document}
