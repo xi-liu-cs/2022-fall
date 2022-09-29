@@ -1,1 +1,2 @@
 https://towardsdatascience.com/normal-equation-in-python-the-closed-form-solution-for-linear-regression-13df33f9ad71
+https://ms.mcmaster.ca/canty/teaching/stat3a03/Lectures7.pdf
