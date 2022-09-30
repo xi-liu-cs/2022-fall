@@ -74,7 +74,11 @@ Var[Y|X] &= Var[5 + 0.5X + \epsilon]\\
 &= Var[5] + (0.5) ^ 2 Var[X] + Var[\epsilon]\\
 &= 0 + 0.25 Var[X] + 1\\
 &= 0.25 Var[X] + 1\\
+&= 0.25(0) + 1\\
+&= 1
 \end{align*}
+since definition of $Var[Y | X]$ is variance of $Y$ given $X = x$. $Var[Y | X]$ is exactly analogous to the usual definition of variance, but now all expectations are conditional on the fact that $X$ is known. so $X$ is fixed to be $x$, so $Var[X] = 0$\\
+\\
 \item What is the probability of $Y > 5$, given $X = 2$?
 \begin{align*}
 P(Y > 5 | X = 2) &= P(5 + 0.5(2) + \epsilon > 5)\\
@@ -107,8 +111,13 @@ Cov(X, Y) &= E[(X - E[X])(Y - E[Y])]\\
 &= E[5X + 0.5X ^ 2 + \epsilon X] - E[X]E[5 + 0.5X + \epsilon]\\
 &= 5E[X] + 0.5E[X ^ 2] + E[\epsilon X] - E[X]E[5 + 0.5X + \epsilon]\\
 &= 5E[X] + 0.5E[X ^ 2] + E[\epsilon]E[X] - E[X]E[5 + 0.5X + \epsilon]\\
-&= 0.5E[X ^ 2]\\
+&= 5E[X] + 0.5E[X ^ 2] - 5E[X] - 0.5E[X]E[X]\\
+&= 0.5(E[X ^ 2] - E[X]E[X])\\
+&= 0.5Var[X]\\
+&= 0.5(0)\\
+&= 0
 \end{align*}
+since definition of $Var[Y | X]$ is variance of $Y$ given $X = x$. $Var[Y | X]$ is exactly analogous to the usual definition of variance, but now all expectations are conditional on the fact that $X$ is known. so $X$ is fixed to be $x$, so $Var[X] = 0$
 \end{enumerate}
 
 \subsection*{Question 3: Least Squares Regression (10 points)}
