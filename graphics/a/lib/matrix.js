@@ -48,14 +48,22 @@ function cross(v1, v2) /* vec3 */
     return res;
 }
 
+matrix4.prototype.print =
+function()
+{
+    for(let i = 0; i < row; ++i)
+        for(let j = 0; j < col; ++j)
+            console.log(this.a[i][j]);
+}
+
 matrix4.prototype.mul =
 function(other)
 {
     r1 = row, r2 = row, c1 = col, c2 = col;
     c = new Float32Array(rowcol);
-    for(i = 0; i < r1; ++i)
+    for(let i = 0; i < r1; ++i)
     {
-        for(j = 0; j < c2; ++j)
+        for(let j = 0; j < c2; ++j)
         {
             c[i * col + j] = 0;
             for(k = 0; k < r2; ++k)
@@ -195,6 +203,12 @@ function(other)
   return this;
 }
 
+matrix4.prototype.invert =
+function()
+{
+    return this.inverse_set(this);
+};
+
 matrix4.prototype.perspective_set =
 function(fovy, aspect, near, far)
 {
@@ -279,6 +293,30 @@ function(angle, x, y, z)
     return this.mul(new matrix4().rotate_set(angle, x, y, z));
 }
 
+matrix4.prototype.scale_set =
+function(x, y, z)
+{
+    this.a = new Float32Array
+    ([
+        x, 0, 0, 0,
+        0, y, 0, 0,
+        0, 0, z, 0,
+        0, 0, 0, 1,
+    ]);
+    return this;
+};
+
+matrix4.prototype.scale =
+function(x, y, z)
+{
+    let a = this.a;
+    b = [x, y, z];
+    for(let i = 0; i < row - 1; ++i)
+        for(let j = 0; j < col; ++j)
+            a[i * col + j] *= b[i];
+    return this;
+};
+
 matrix4.prototype.translate_set =
 function(x, y, z)
 {
@@ -297,8 +335,8 @@ function(x, y, z)
 {
     a = this.a;
     b = [x, y, z];
-    for(i = 0; i < row; ++i)
-        for(j = 0; j < col - 1; ++j)
+    for(let i = 0; i < row; ++i)
+        for(let j = 0; j < col - 1; ++j)
             a[(i + 1) * col - 1] += a[i * col + j] * b[j];
     return this;
 }
