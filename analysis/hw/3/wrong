@@ -1,0 +1,35 @@
+3\\
+(a)\\
+false\\
+let $x_n := n, y_n = -n$, then $\{x_n + y_n\}_{n = 1} ^ {\infty} = \{n + (-n)\}_{n = 1} ^ {\infty}$\\
+$\{x_n + y_n\}_{n = 1} ^ {\infty}$ converges to 0: $\forall \varepsilon > 0, \exists M = 1, \forall n \geq 1, |(x_n + y_n) - 0| = |n + (-n) - 0| = 0 < \varepsilon$\\
+$\{x_n\} = \{n\}$ is divergent: for contradiction, assume there exists an upper bound $B \in \mathbb{R}$ for $\{n\}$, but then $B + 1 \in \mathbb{R}$ is also in the sequence of $\{n\}$, $B < B + 1$, so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n\}$ is divergent\\
+$\{y_n\} = \{-n\}$ is divergent: for contradiction, assume there exists a lower bound $B$ for $\{-n\}$, but then $B - 1$ is also in the sequence of $\{-n\}$, $B    - 1 < B$, so $B$ is not a lower bound, which contradicts with the assumption that $B$ is a lower bound, so the assumption that there exists a lower bound $B$ is wrong, $\{-n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{-n\}$ is divergent\\
+$\{x_n + y_n\}_{n = 1} ^ {\infty}$ converges to 0, but $\{x_n\}$ does not converge and $\{y_n\}$ does not converge\\
+
+5\\
+(b)\\
+$\{x_n\} = \{2 ^ n / n ^ 2\}$ does not converge\\
+for contradiction, $\forall i \in \mathbb{N}, i\geq 3$, assume there exists an upper bound $B = 2 ^ i / i ^ 2 \in \mathbb{R}$ for $\{2 ^ n / n ^ 2\}$, but then $B' = 2 ^ {i + 1} / (i + 1) ^ 2 \in \mathbb{R}$ is also in the sequence of $\{2 ^ n / n ^ 2\}$, $B < B'$ (shown below), so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{2 ^ n / n ^ 2\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{2 ^ n / n ^ 2\}$ is divergent\\
+show $B < B'$
+\begin{align*}
+B &< B'\\
+\frac{2 ^ i}{i ^ 2} &< \frac{2 ^ {i + 1}}{(i + 1) ^ 2}\\
+\frac{(i + 1) ^ 2}{i ^ 2} &< \frac{2 ^ {i + 1}}{2 ^ i}\\
+\frac{(i + 1) ^ 2}{i ^ 2} &< 2\\
+(i + 1) ^ 2 &< 2i ^ 2\\
+i ^ 2 + 2i + 1 &< 2i ^ 2\\
+2i + 1 &< i ^ 2\\
+\\
+&\text{base step: } i = 3\hspace{10em}\\
+2(3) + 1 = 6 + 1 &= 7 < (3) ^ 2 = 9\\
+&\text{inductive step: assume $2i + 1 < i ^ 2$ is true}\\
+\text{show }2(i + 1) + 1 &< (i + 1) ^ 2 \text{is true}\\
+2(i + 1) + 1 &< (i + 1) ^ 2\\
+2i + 3 &< i ^ 2 + 2i + 1\\
+3 &< i ^ 2 + 1\\
+2 &< i ^ 2\\
+&\because \text{the base step is when } i = 3\\
+&\forall i \geq 3, i ^ 2 \geq 9 > 2\\
+\therefore 2 &< i ^ 2 \text{ is true}\\
+\end{align*}
