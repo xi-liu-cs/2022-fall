@@ -214,10 +214,11 @@ then $\{z_n\}_{n = 1} ^ {\infty} = \{x_n y_n\}_{n = 1} ^ {\infty}$ converges to 
 (e)\\
 false\\
 let $x_n := n ^ 2, y_n := 1 / n$, then $\{x_n y_n\}_{n = 1} ^ {\infty} = n ^ 2 / n = n$\\
-$\{x_n\}_{n = 1} ^ {\infty} = \{n ^ 2\}_{n = 1} ^ {\infty}$ is unbounded: assume there exists an upper bound $B = i ^ 2, i \in \mathbb{N}$ for $\{n ^ 2\}$, but then $(i + 1) ^ 2$ is also in the sequence of $\{n\}$, $B = i ^ 2 < (i + 1) ^ 2$, so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{n ^ 2\}$ is unbounded\\
+$\{x_n\}_{n = 1} ^ {\infty} = \{n ^ 2\}_{n = 1} ^ {\infty}$ is unbounded: $\forall x \in \mathbb{R}, \exists n \in \mathbb{N}, n ^ 2 > x, $ e.g., $n := \lceil x + 1 \rceil,\\
+n ^ 2 = \lceil x + 1 \rceil ^ 2 > x,\;x_n = n ^ 2 > x$. $\{n ^ 2\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n ^ 2\}$ is divergent\\
 $\{y_n\}_{n = 1} ^ {\infty} = \{1 / n\}_{n = 1} ^ {\infty}$ converges to 0: given an $\varepsilon > 0$, can find an $M \in \mathbb{N}, 0 < 1 / M < \varepsilon$ (archimedean property, theorem 1.2.4 (i)), then $\forall n \geq M$
 \[|x_n - 0| = \left|\frac{1}{n}\right| = \frac{1}{n} \leq \frac{1}{M} < \varepsilon\]
-$\{x_n y_n\}_{n = 1} ^ {\infty} = \{n ^ 2 / n\}_{n = 1} ^ {\infty} = \{n\}_{n = 1} ^ {\infty}$ diverges: for contradiction, assume there exists an upper bound $B \in \mathbb{R}$ for $\{n\}$, but then $B + 1 \in \mathbb{R}$ is also in the sequence of $\{n\}$, $B < B + 1$, so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n\}$ is divergent\\
+$\{x_n y_n\}_{n = 1} ^ {\infty} = \{n ^ 2 / n\}_{n = 1} ^ {\infty} = \{n\}_{n = 1} ^ {\infty}$ diverges: $\forall x \in \mathbb{R}, \exists n \in \mathbb{N}, n > x, $ e.g., $n := \lceil x + 1 \rceil, x_n = n > x$. $\{n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n\}$ is divergent\\
 for the above counterexample, $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded, and $\{y_n\}_{n = 1} ^ {\infty}$ converges to 0, but $\{x_n y_n\}_{n = 1} ^ {\infty}$ does not diverge\\
 \\
 \\
