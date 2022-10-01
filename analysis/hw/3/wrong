@@ -50,3 +50,15 @@ L &:= \lim_{n \rightarrow \infty} \frac{|x_{n + 1}|}{|x_n|}\\
 &\geq \lim_{n \rightarrow \infty} 2(1) = 2 \qquad \text{/* }\because \forall n \in \mathbb{N},\;\frac{2}{n} + \frac{1}{n ^ 2} > 0 \text{ */}\\
 &> 1
 \end{align*}
+
+\begin{align*}
+\text{show }\lim_{n \rightarrow \infty} \frac{n ^ 2}{n ^ 2 + 2n + 1} &= 1\\
+&\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M\\
+\left|\frac{n ^ 2}{n ^ 2 + 2n + 1} - 1\right| &= \left|\frac{n ^ 2}{n ^ 2 + 2n + 1} - \frac{n ^ 2 + 2n + 1}{n ^ 2 + 2n + 1}\right|\\
+&= \left|\frac{n ^ 2 - n ^ 2 - 2n - 1}{n ^ 2 + 2n + 1}\right|\\
+&= \left|\frac{-2n - 1}{n ^ 2 + 2n + 1}\right|\\
+&= \left|\frac{-(2n + 1)}{n ^ 2 + 2n + 1}\right|\\
+&= \frac{2n + 1}{n ^ 2 + 2n + 1}\\
+&< \frac{2n + 1}{2n + 1} \qquad \because \forall n \in \mathbb{N}, n ^ 2 \geq 0\\
+&= 1
+\end{align*}
