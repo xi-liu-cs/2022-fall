@@ -1,0 +1,365 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+(i) implies (ii)\\
+if $\forall \varepsilon_1 > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - x| < \varepsilon_1$,\\
+then $\forall \varepsilon_1, \varepsilon_2 > 0, \exists \alpha > 0, \varepsilon_1 < \alpha \varepsilon_2$ (archimedean property, theorem 1.2.4 (i))\\
+$|x_n - x| < \varepsilon_1 < \alpha \varepsilon_2$\\
+$|x_n - x| \leq \alpha\varepsilon_2$ (definition of $\leq$ is < or =)\\
+so $\forall \varepsilon_2 > 0, \exists M \in \mathbb{N} \subset \mathbb{R}, \forall n \geq M, |x_n - x| \leq \alpha\varepsilon_2$\\
+\\
+(ii) implies (i)\\
+if $\forall \varepsilon_1 > 0, \exists M \in \mathbb{R}, \forall n \geq \lceil M \rceil, |x_n - x| \leq \alpha_1\varepsilon_1$\\
+then $\forall \varepsilon_1, \alpha_1, \alpha_2 > 0, \exists \varepsilon_2 = \alpha_2(\alpha_1\varepsilon_1), \alpha_1\varepsilon_1 < \alpha_2(\alpha_1 \varepsilon_1)$ (archimedean property, theorem 1.2.4 (i))\\
+$|x_n - x| \leq \alpha_1\varepsilon_1 < \alpha_2(\alpha_1\varepsilon_1) = \varepsilon_2\\
+|x_n - x| < \varepsilon_2$\\
+so $\forall \varepsilon_2 > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - x| < \varepsilon_2$\\
+\\
+2.\\
+suppose $\{x_n\}_{n = 1} ^ {\infty}$ and $\{y_n\}_{n = 1} ^ {\infty}$ are convergent sequences\\
+(a)\\
+let $z_n := ax_n + by_n, x := \lim_{n \rightarrow \infty} x_n, y := \lim_{n \rightarrow \infty} y_n, z := ax + by$\\
+let $\varepsilon > 0$ be given\\
+find an $M_1 \in \mathbb{N}$ such that $\forall n \geq M_1, |x_n - x| < \varepsilon$\\
+find an $M_2 \in \mathbb{N}$ such that $\forall n \geq M_2, |y_n - y| < \varepsilon$\\
+take $M = \max\{M_1, M_2\}$, then $\forall n \geq M$, we have
+\begin{align*}
+|z_n - z| &= |(ax_n + by_n) - (ax + by)|\\
+&= |ax_n - ax + by_n - by|\\
+&= |a(x_n - x) + b(y_n - y)|\\
+&\leq |a(x_n - x)| + |b(y_n - y)| \qquad \text{(triangle inequality, proposition 1.3.2)}\\
+&= |a||x_n - x| + |b||y_n - y| \qquad \text{(proposition 1.3.1 (iii))}\\
+&< |a|\varepsilon + |b|\varepsilon\\
+&= (|a| + |b|)\varepsilon
+\end{align*}
+since $|a| + |b| \geq 0$, let $\alpha := |a| + |b|$, then $\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall n \geq M, |z_n - z| \leq \alpha\varepsilon$, which is equivalent to $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |z_n - z| < \varepsilon$ as shown in problem 1, based on convergence definition 2.1.2, $z_n$ converges to $z = ax + by$, so $\lim_{n \rightarrow \infty} z_n = \lim_{n \rightarrow \infty}  (ax_n + by_n) = ax + by = a(\lim_{n \rightarrow \infty} x_n) + b(\lim_{n \rightarrow \infty} y_n)$\\
+\\
+\\
+\\
+(b)\\
+let $z_n := x_n ^ 2, x := \lim_{n \rightarrow \infty} x_n, z := x ^ 2$\\
+let $\varepsilon > 0$ be given\\
+let $K := \max\{|x|, \varepsilon / 3, 1\}$\\
+find an $M$ such that $\forall n \geq M_1, |x_n - x| < \varepsilon / (3K)$\\
+\begin{align*}
+|z_n - z| &= |x_n ^ 2 - x ^ 2|\\
+&= |(x_n x_n) - (xx)|\\
+&= |(x_n - x + x)(x_n - x + x) - xx|\\
+&= |((x_n - x) + x)((x_n - x) + x) - xx|\\
+&= |(x_n - x)(x_n - x) + (x_n - x)x + x(x_n - x) + xx - xx|\\
+&= |(x_n - x)(x_n - x) + 2x(x_n - x)|\\
+&\leq |x_n - x||x_n - x| + |2x||x_n - x| \qquad \text{(triangle inequality, proposition 1.3.2)}\\
+&\leq \frac{\varepsilon}{3K}\frac{\varepsilon}{3K} + 2K\frac{\varepsilon}{3K} \qquad\qquad \left(\because \frac{\varepsilon}{3} \leq K,\; \frac{\varepsilon}{3K} \leq 1\right)\\
+&\leq \frac{\varepsilon}{3K} + \frac{2\varepsilon}{3} \qquad\qquad (1 \leq K)\\
+&\leq \frac{\varepsilon}{3} + \frac{2\varepsilon}{3}\\
+&= \varepsilon
+\end{align*}
+based on convergence definition 2.1.2, $z_n$ converges to $z$, so left hand side is equal to right hand side\\
+\\
+\\
+\\
+\\
+\\
+(c)\\
+assume $\forall n \in \mathbb{N}, x_n \not= 0, \lim_{n \rightarrow \infty} x_n \not= 0$\\
+let $z_n := 1 / x_n, z := 1 / x$, $\varepsilon > 0$ be given, $x := \lim x_n$. since $|x| \not= 0, \min\{|x| ^ 2 \varepsilon / 2, |x| / 2\} > 0$\\
+find an $M$ such that $\forall n \geq M, |x_n - x| < \min\{|x| ^ 2 \varepsilon / 2, |x| / 2\}$
+\begin{align*}
+\because \forall n \geq M, &|x - x_n| < |x| / 2\\
+\therefore |x| = |x - x_n + x_n| &\leq |x - x_n| + |x_n| < \frac{|x|}{2} + |x_n|\\
+|x| &< \frac{|x|}{2} + |x_n|\\
+\frac{|x|}{2} &< |x_n|\\
+\frac{2}{|x|} &> \frac{1}{|x_n|}\\
+\frac{1}{|x_n|} &< \frac{2}{|x|}\\
+\end{align*}
+\begin{align*}
+\left|\frac{1}{x_n} - \frac{1}{x}\right| &= \left|\frac{x - x_n}{xx_n}\right|\\
+&= \frac{|x - x_n|}{|x||x_n|}\\
+&= \frac{|x - x_n|}{|x|}\frac{1}{|x_n|}\\
+&\leq \frac{|x - x_n|}{|x|}\frac{2}{|x|}\\
+&< \frac{|x| ^ 2 \varepsilon / 2}{|x|}\frac{2}{|x|}\\
+&= \varepsilon\end{align*}
+based on convergence definition 2.1.2, $z_n$ converges to $z$, so left hand side is equal to right hand side\\
+\\
+\\
+\\
+\\
+\\
+3.\\
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$\\
+if $\{x_n\}$ diverges, then $\{x_n\}$ does not converge, negate the above definition\\
+diverge means $\forall L \in \mathbb{R}, \exists \varepsilon > 0, \forall M \in \mathbb{N}, \exists n \geq M, |x_n - L| \geq \varepsilon$\\
+proposition 2.1.7: a convergent sequence is bounded\\
+contraposition: an unbounded sequence is divergent\\
+\\
+(a)\\
+false\\
+let $x_n := n, y_n = -n$, then $\{x_n + y_n\}_{n = 1} ^ {\infty} = \{n + (-n)\}_{n = 1} ^ {\infty}$\\
+$\{x_n + y_n\}_{n = 1} ^ {\infty}$ converges to 0: $\forall \varepsilon > 0, \exists M = 1, \forall n \geq 1, |(x_n + y_n) - 0| = |n + (-n) - 0| = 0 < \varepsilon$\\
+$\{x_n\} = \{n\}$ is divergent: $\forall x \in \mathbb{R}, \exists n \in \mathbb{N}, n > x, $ e.g., $n := \lceil x + 1 \rceil, x_n = n > x$. $\{n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n\}$ is divergent\\
+$\{y_n\} = \{-n\}$ is divergent: $\forall y \in \mathbb{R}, \exists n \in \mathbb{N}, -n < y$ e.g., $-n := \lfloor y - 1 \rfloor, y_n = -n < y$. $\{-n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{-n\}$ is divergent\\
+$\{x_n + y_n\}_{n = 1} ^ {\infty}$ converges to 0, but $\{x_n\}$ does not converge and $\{y_n\}$ does not converge\\
+\\
+\\
+(b)\\
+false\\
+let $x_n :=
+\begin{cases}
+0 & \text{if $n$ is even}\\
+1 & \text{else}\\
+\end{cases}\\
+y_n :=
+\begin{cases}
+1 & \text{if $n$ is even}\\
+0 & \text{else}\\
+\end{cases}\\$
+$\{x_n y_n\}_{n = 1} ^ {\infty}$ converges to 0: $\forall \varepsilon > 0, \exists M = 1, \forall \text{ even } n \geq 1, |(x_n y_n) - 0| = |(0)(1) - 0| = |0 - 0| = 0 < \varepsilon,\\
+\forall \text{ odd } n \geq 1, |(x_n y_n) - 0| = |(1)(0) - 0| = |0 - 0| = 0 < \varepsilon$\\
+$\{x_n\}$ is divergent: for contradiction, assume there is a limit $x$, then for $\varepsilon = 1 / 3, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - x| < 1 / 3$, then for an even $n \geq M$, compute\\
+$|x_n - x| = |0 - x| < 1 / 3, \qquad |x_{n + 1} - x| = |1 - x| < 1 / 3$\\
+but $1 = |0 - x - (1 - x)| \leq |0 - x| + |1 - x| < 1 / 3 + 1 / 3 = 2 / 3\\$
+$1 \leq 2 / 3$ is a contradiction, so the assumption that there is a limit is wrong, so $\{x_n\}$ is divergent\\
+$\{y_n\}$ is divergent: for contradiction, assume there is a limit $y$, then for $\varepsilon = 1 / 3, \exists M \in \mathbb{N}, \forall n \geq M, |y_n - y| < 1 / 3$, then for an odd $n \geq M$, compute\\
+$|y_n - y| = |0 - y| < 1 / 3, \qquad |y_{n + 1} - y| = |1 - y| < 1 / 3$\\
+but $1 = |0 - y - (1 - y)| \leq |0 - y| + |1 - y| < 1 / 3 + 1 / 3 = 2 / 3\\$
+$1 \leq 2 / 3$ is a contradiction, so the assumption that there is a limit is wrong, so $\{y_n\}$ is divergent\\
+for the above counterexample, $\{x_n y_n\}_{n = 1} ^ {\infty}$ converges to 0, but $\{x_n\}$ does not converge and $\{y_n\}$ does not converge\\
+\\
+\\
+(c)\\
+true\\
+if $\{a_n\}_{n = 1} ^ {\infty} := \{x_n\}_{n = 1} ^ {\infty}$ and $\{b_n\}_{n = 1} ^ {\infty} := \{x_n + y_n\}_{n = 1} ^ {\infty}$ converges,\\
+let $\{c_n\}_{n = 1} ^ {\infty} := \{y_n\}_{n = 1} ^ {\infty} = \{x_n + y_n\}_{n = 1} ^ {\infty} - \{x_n\}_{n = 1} ^ {\infty} = \{b_n\}_{n = 1} ^ {\infty} - \{a_n\}_{n = 1} ^ {\infty}$\\
+let $c_n := b_n - a_n, a := \lim_{n \rightarrow \infty} a_n, b := \lim_{n \rightarrow \infty} b_n, c := b - a$\\
+let $\varepsilon > 0$ be given\\
+find an $M_1 \in \mathbb{N}$ such that $\forall n \geq M_1, |a_n - a| < \varepsilon$\\
+find an $M_2 \in \mathbb{N}$ such that $\forall n \geq M_2, |b_n - b| < \varepsilon$\\
+take $M = \max\{M_1, M_2\}$, then $\forall n \geq M$, we have
+\begin{align*}
+|c_n - c| &= |(b_n - a_n) - (b - a)|\\
+&= |b_n - b + a - a_n|\\
+&\leq |b_n - b| + |a - a_n| \qquad \text{(triangle inequality, proposition 1.3.2)}\\
+&= |b_n - b| + |a_n - a| \qquad \text{(proposition 1.3.1 (ii))}\\
+&< \varepsilon + \varepsilon\\
+&= 2\varepsilon
+\end{align*}
+since $2 \geq 0$, let $\alpha := 2$, then $\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall n \geq M, |c_n - c| \leq \alpha\varepsilon$, which is equivalent to $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |c_n - c| < \varepsilon$ as shown in problem 1, based on convergence definition 2.1.2, $c_n$ converges to $c = b - a$\\
+then $\{y_n\}_{n = 1} ^ {\infty}$ converges\\
+\\
+\\
+(d)\\
+true\\
+if $\{x_n\}_{n = 1} ^ {\infty}$ is bounded and $\{y_n\}_{n = 1} ^ {\infty}$ converges to 0, then\\
+$\because \{x_n\}_{n = 1} ^ {\infty}$ is bounded, $\therefore \exists B \in \mathbb{R}, \forall n \in \mathbb{N}, |x_n| \leq B$\\
+$\because \{y_n\}_{n = 1} ^ {\infty}$ converges to 0, $\therefore \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |y_n - 0| < \varepsilon, |y_n| < \varepsilon$
+\begin{align*}
+z_n &:= x_n y_n, z := 0\\
+|z_n - z| &= |x_n y_n - 0|\\
+&= ||x_n||y_n| - 0| \qquad \text{proposition 1.3.1 (iii)}\\
+&= |x_n||y_n|\\
+&\leq B\varepsilon
+\end{align*}
+let $\alpha := B$, then $\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall n \geq M, |z_n - z| \leq \alpha\varepsilon$, which is equivalent to $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |z_n - z| < \varepsilon$ as shown in problem 1, based on convergence definition 2.1.2\\
+then $\{z_n\}_{n = 1} ^ {\infty} = \{x_n y_n\}_{n = 1} ^ {\infty}$ converges to 0\\
+\\
+\\
+(e)\\
+false\\
+let $x_n := n ^ 2, y_n := 1 / n$, then $\{x_n y_n\}_{n = 1} ^ {\infty} = n ^ 2 / n = n$\\
+$\{x_n\}_{n = 1} ^ {\infty} = \{n ^ 2\}_{n = 1} ^ {\infty}$ is unbounded: assume there exists an upper bound $B = i ^ 2, i \in \mathbb{N}$ for $\{n ^ 2\}$, but then $(i + 1) ^ 2$ is also in the sequence of $\{n\}$, $B = i ^ 2 < (i + 1) ^ 2$, so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{n ^ 2\}$ is unbounded\\
+$\{y_n\}_{n = 1} ^ {\infty} = \{1 / n\}_{n = 1} ^ {\infty}$ converges to 0: given an $\varepsilon > 0$, can find an $M \in \mathbb{N}, 0 < 1 / M < \varepsilon$ (archimedean property, theorem 1.2.4 (i)), then $\forall n \geq M$
+\[|x_n - 0| = \left|\frac{1}{n}\right| = \frac{1}{n} \leq \frac{1}{M} < \varepsilon\]
+$\{x_n y_n\}_{n = 1} ^ {\infty} = \{n ^ 2 / n\}_{n = 1} ^ {\infty} = \{n\}_{n = 1} ^ {\infty}$ diverges: for contradiction, assume there exists an upper bound $B \in \mathbb{R}$ for $\{n\}$, but then $B + 1 \in \mathbb{R}$ is also in the sequence of $\{n\}$, $B < B + 1$, so $B$ is not an upper bound, which contradicts with the assumption that $B$ is an upper bound, so the assumption that there exists an upper bound $B$ is wrong, $\{n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{n\}$ is divergent\\
+for the above counterexample, $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded, and $\{y_n\}_{n = 1} ^ {\infty}$ converges to 0, but $\{x_n y_n\}_{n = 1} ^ {\infty}$ does not diverge\\
+\\
+\\
+\\
+\\
+4.
+\begin{align*}
+\text{part 1} \hspace{10em}&\\
+\lim_{n \rightarrow \infty} \frac{x_n}{y_n} &= 0 \hspace{10em}\\
+&\text{based on convergence definition 2.1.2} \hspace{10em}\\
+\forall \varepsilon > 0, &\exists M \in \mathbb{N}, \forall n \geq M\\
+\left|\frac{x_n}{y_n} - 0\right| &< \varepsilon\\
+\left|\frac{x_n}{y_n}\right| &< \varepsilon\\
+\frac{|x_n|}{y_n} &< \varepsilon \qquad \because y_n > 0\\
+|x_n| &< \varepsilon y_n\\
+\frac{|x_n|}{\varepsilon} &< y_n\\
+y_n &> \frac{|x_n|}{\varepsilon}\\
+\text{take } \varepsilon = 1\\
+\text{then } y_n &> |x_n|\\
+\end{align*}
+part 2
+\begin{align*}
+\{x_n\} &:= \{p(n) - n ^ d\}\\
+\{y_n\} &:= \{n ^ d\}\\
+\lim_{n \rightarrow \infty} \frac{x_n}{y_n} &= \lim_{n \rightarrow \infty} \frac{p(n) - n ^ d}{n ^ d}\\
+&= \lim_{n \rightarrow \infty} \frac{(n ^ d + c_{d - 1} n ^ {d - 1} + ... + c_0) - n ^ d}{n ^ d}\\
+&= \lim_{n \rightarrow \infty} \frac{c_{d - 1} n ^ {d - 1} + ... + c_0}{n ^ d}\\
+&:= \lim_{n \rightarrow \infty} b_n\\
+\lim_{n \rightarrow \infty} a_n := \lim_{n \rightarrow \infty} \frac{c_{d - 1} n ^ {d - 1}}{n ^ d} &= \lim_{n \rightarrow \infty} \frac{c_{d - 1}}{n} < \lim_{n \rightarrow \infty} b_n\\
+\lim_{n \rightarrow \infty} b_n < \lim_{n \rightarrow \infty} \frac{(c_{d - 1} + ... + c_0)n ^ {d - 1}}{n ^ d} &= \lim_{n \rightarrow \infty} \frac{c_{d - 1} + ... + c_0}{n} := \lim_{n \rightarrow \infty} c_n\\
+&\because \text{proposition 2.2.5 (iii) and the proof in problem 2 (c)}\\
+\lim_{n \rightarrow \infty} a_n &= \lim_{n \rightarrow \infty}\frac{c_{d - 1}}{n} = \left(\lim_{n \rightarrow \infty}c_{d - 1}\right)\left(\lim_{n \rightarrow \infty}\frac{1}{n}\right) = (c_{d - 1})(0) = 0\\
+\end{align*}
+/* $\{1 / n\}_{n = 1} ^ {\infty}$ converges to 0: given an $\varepsilon > 0$, can find an $M \in \mathbb{N}, 0 < 1 / M < \varepsilon$ (archimedean property, theorem 1.2.4 (i)), then $\forall n \geq M, |x_n - 0| = 1 / n = 1 / n \leq 1 / M < \varepsilon$ */
+\begin{align*}
+\text{again, } &\because \text{proposition 2.2.5 (iii) and the proof in problem 2 (c)}\\
+\lim_{n \rightarrow \infty} c_n &= \lim_{n \rightarrow \infty} \frac{c_{d - 1} + ... + c_0}{n}\\
+&= \left(\lim_{n \rightarrow \infty} c_{d - 1} + ... + c_0\right)\left(\lim_{n \rightarrow \infty}\frac{1}{n}\right)\\
+&= (c_{d - 1} + ... + c_0)(0)\\
+&= 0\\
+\end{align*}
+according to squeeze lemma 2.2.1\\
+since $\{a_n\}, \{b_n\}, \{c_n\}$ are sequences such that $\forall n \in \mathbb{N}, a_n \leq b_n \leq c_n$, and $\{a_n\}, \{c_n\}$ converge, $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} c_n = 0$\\
+so as a result $\{b_n\}$ converges and
+\[\lim_{n \rightarrow \infty} b_n = \lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} c_n = 0\]
+\begin{align*}
+\lim_{n \rightarrow \infty} b_n &= \lim_{n \rightarrow \infty} \frac{x_n}{y_n}\\
+&= \lim_{n \rightarrow \infty} \frac{p(n) - n ^ d}{n ^ d}\\
+&= 0
+\end{align*}
+according to what is proven in part 1, $\exists M \in \mathbb{N}, \forall n \geq \mathbb{N}, y_n > |x_n|\\
+y_n = n ^ d > |x_n| = |p(n) - n ^ d| \geq ||p(n)| - |n ^ d|| \qquad (\text{reverse triangle inequality, corollary 1.3.3 (i)})\\
+n ^ d > |p(n)| - |n ^ d|\\
+n ^ d + |n ^ d| > |p(n)|\\
+\because n, d \in \mathbb{N}, n ^ d \geq 0, |n ^ d| = n ^ d\\
+n ^ d + n ^ d > |p(n)|\\
+2n ^ d > |p(n)| > p(n) \qquad \text{(proposition 1.3.1 (vi))}\\
+2 n ^ d > p(n)$\\
+\\
+\\
+5.\\
+(a)\\
+given an $\varepsilon > 0$, can find an $M \in \mathbb{N}, 0 < 1 / M < \varepsilon$ (archimedean property, theorem 1.2.4 (i)), then $\forall n \geq M$
+\begin{align*}
+|x_n - 0| &= \left|\frac{n \cos(n)}{n ^ 2 + 1} - 0\right|\\
+&= \left|\frac{n \cos(n)}{n ^ 2 + 1}\right|\\
+&= \frac{|n \cos(n)|}{|n ^ 2 + 1|}\\
+&= \frac{|n||\cos(n)|}{|n ^ 2 + 1|} \qquad \text{(proposition 1.3.1 (iii))}\\
+&\leq \frac{|n|(1)}{|n ^ 2 + 1|} \qquad (\forall y \in \mathbb{R}, |\cos(y)| \leq 1)\\
+&= \frac{|n|}{|n ^ 2 + 1|} \qquad (n \in \mathbb{N}, n \geq 0, n ^ 2 + 1 \geq 0)\\
+&= \frac{n}{n ^ 2 + 1}\\
+&< \frac{n}{n ^ 2}\\
+&= \frac{1}{n}\\
+&\leq \frac{1}{M}\\
+&< \varepsilon\\
+\lim_{n \rightarrow \infty} x_n &= \lim_{n \rightarrow \infty} \frac{n \cos(n)}{n ^ 2 + 1} = 0\\
+\end{align*}
+\\
+\\
+\begin{align*}
+\text{(b)} \hspace{14em}&\\
+\{x_n\} = \{2 ^ n / n ^ 2\} \text{ does not converge}&\\
+\text{use ratio test, lemma 2.2.12 (ii)}&\\
+L &:= \lim_{n \rightarrow \infty} \frac{|x_{n + 1}|}{|x_n|}\\
+&= \lim_{n \rightarrow \infty} \frac{|2 ^ {n + 1} / (n + 1) ^ 2|}{|2 ^ n / n ^ 2|}\\
+&= \lim_{n \rightarrow \infty} \frac{2 ^ {n + 1} / (n + 1) ^ 2}{2 ^ n / n ^ 2}\\
+&= \lim_{n \rightarrow \infty} 2\frac{(n + 1) ^ 2}{n ^ 2}\\
+&= \lim_{n \rightarrow \infty} 2\left(\frac{n ^ 2 + 2n + 1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(\frac{n ^ 2}{n ^ 2} + \frac{2n}{n ^ 2} + \frac{1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(1 + \frac{2n}{n ^ 2} + \frac{1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(1 + \frac{2}{n} + \frac{1}{n ^ 2}\right)\\
+&\geq \lim_{n \rightarrow \infty} 2(1) = 2 \qquad \text{/* }\because \forall n \in \mathbb{N},\;\frac{2}{n} + \frac{1}{n ^ 2} > 0 \text{ */}\\
+&> 1
+\end{align*}
+by the ratio test, since $L \geq 2 > 1$, $\{x_n\}$ is unbounded, so by the contraposition of proposition 2.1.7, $\{2 ^ n / n ^ 2\}$ is divergent\\
+/* ratio test proof\\
+$r, L \in \mathbb{R}$\\
+if $L < 1$: as $\forall n \in \mathbb{N}, |x_{n + 1}| / |x_n| \geq 0$, then $L \geq 0$, pick $r$ such that $L < r < 1$, compare sequence $\{x_n\}$ to sequence $\{r ^ n\}$, as $L - r > 0, \exists M \in \mathbb{N}, \forall n \geq M$\\
+\begin{align*}
+\left|\frac{|x_{n + 1}|}{|x_n|} - L\right| &< L - r\\
+r - L = -(L - r) < \frac{|x_{n + 1}|}{|x_n|} - L &< L - r \qquad (\text{proposition 1.3.1 (v)})\\
+r - L &< \frac{|x_{n + 1}|}{|x_n|} - L\\
+r &< \frac{|x_{n + 1}|}{|x_n|}\\
+\text{for } n > M\\
+|x_n| &= |x_M|\frac{|x_{M + 1}|}{|x_M|}\frac{|x_{M + 2}|}{|x_{M + 1}|}\dots\frac{|x_n|}{|x_{n - 1}|}\\
+&= |x_M|\prod_{i = 0} ^ {n - M - 1} \frac{|x_{M + i + 1}|}{|x_{M + i}|} < |x_M|r ^ {n - M} = (|x_M|r ^ {-M})r ^ n
+\end{align*}
+sequence $\{r ^ n\}$ converges to zero and hence $(|x_M|r ^ {-M})r ^ n$ converges to zero. by proposition 2.2.10, the $M$-tail of $\{x_n\}$ converges to zero and therefore $\{x_n\}$ converges to zero\\
+\\
+if $L > 1$: pick $r$ such that $1 < r < L$, compare sequence $\{x_n\}$ to sequence $\{r ^ n\}$, as $L - r > 0, \exists M \in \mathbb{N}, \forall n \geq M$
+\begin{align*}
+\left|\frac{|x_{n + 1}|}{|x_n|} - L\right| &< L - r\\
+r - L = -(L - r) < \frac{|x_{n + 1}|}{|x_n|} - L &< L - r \qquad (\text{proposition 1.3.1 (v)})\\
+r - L &< \frac{|x_{n + 1}|}{|x_n|} - L\\
+r &< \frac{|x_{n + 1}|}{|x_n|}\\
+\text{for } n > M\\
+|x_n| &= |x_M|\frac{|x_{M + 1}|}{|x_M|}\frac{|x_{M + 2}|}{|x_{M + 1}|}\dots\frac{|x_n|}{|x_{n - 1}|}\\
+&= |x_M|\prod_{i = 0} ^ {n - M - 1} \frac{|x_{M + i + 1}|}{|x_{M + i}|} > |x_M|r ^ {n - M} = (|x_M|r ^ {-M})r ^ n
+\end{align*}
+sequence $\{r ^ n\}$ is unbounded (since $r > 1$), and so $\{x ^ n\}$ cannot be bounded */
+\\
+\\
+6.\\
+part 1\\
+if a bounded sequence $\{x_n\}_{n = 1} ^ {\infty}$ converges to a limit $x \in \mathbb{R}$, then every subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$ converges to $x$\\
+suppose $\lim_{n \rightarrow \infty} x_n = x, \text{then } \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M$
+\[|x_n - x| < \varepsilon\]
+/* show for any subsequence $\{x_n\}_{i = 1} ^ {\infty}, \forall i \in \mathbb{N}, n_i \geq i$\\
+base step: $i = 1, 1 \leq n_1, \because n_1 \in \mathbb{N}$\\
+inductive step: assume $i \leq n_i$ is true, show $i + 1 \leq n_{i + 1}$ is true
+\begin{align*}
+i &\leq n_i\\
+i + 1 &\leq n_i + 1\\
+&\leq n_{i + 1}
+\end{align*}
+$\because n_i, n_{i + 1} \in \mathbb{N}, n_i < n_{i + 1}$ implies $n_i \not= n_{i + 1}, \inf(n_{i + 1}) = n_i + 1, \;\therefore n_i + 1 \leq n_i + 1$ */\\
+$\because \forall i \in \mathbb{N}, n_i \geq i, \therefore i \geq M$ implies $n_i \geq M$, so $\forall i \geq M$
+\[|x_{n_i} - x| \leq \varepsilon\]
+\\
+\\
+part 2\\
+if every subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$ of a bounded sequence $\{x_n\}$ converges to $x$, then the sequence $\{x_n\}$ converges to a limit $x \in \mathbb{R}$\\
+contrapositive: if sequence $\{x_n\}$ diverges, then there exists a subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$ that diverges\\
+if sequence $\{x_n\}$ diverges, $\forall L \in \mathbb{R}, \exists \varepsilon > 0, \forall M \in \mathbb{N}, \exists n \geq M, |x_n - L| \geq \varepsilon$\\
+let $\{n_i = i\}$ be the index sequence of $x_n, \forall i \in \mathbb{N}, n_i \leq n_{i + 1}$\\
+$\{x_n\}_{n = 1} ^ {\infty} = \{x_{n_i}\}_{i = 1} ^ {\infty} = \{x_i\}_{i = 1} ^ {\infty}$ is a subsequence of $\{x_n\}$ that also diverges, because the subsequence has the same elements as the original sequence
+\end{document}
