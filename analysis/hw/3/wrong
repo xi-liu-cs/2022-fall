@@ -33,3 +33,4 @@ i ^ 2 + 2i + 1 &< 2i ^ 2\\
 &\forall i \geq 3, i ^ 2 \geq 9 > 2\\
 \therefore 2 &< i ^ 2 \text{ is true}\\
 \end{align*}
+一个序列每一项都比前一项大, 不一定diverge, 1 - 1 / n
