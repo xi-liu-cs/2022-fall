@@ -34,3 +34,19 @@ i ^ 2 + 2i + 1 &< 2i ^ 2\\
 \therefore 2 &< i ^ 2 \text{ is true}\\
 \end{align*}
 一个序列每一项都比前一项大, 不一定diverge, 1 - 1 / n
+
+\begin{align*}
+\text{(b)} \hspace{14em}&\\
+\{x_n\} = \{2 ^ n / n ^ 2\} \text{ does not converge}&\\
+\text{use ratio test, lemma 2.2.12 (ii)}&\\
+L &:= \lim_{n \rightarrow \infty} \frac{|x_{n + 1}|}{|x_n|}\\
+&= \lim_{n \rightarrow \infty} \frac{|2 ^ {n + 1} / (n + 1) ^ 2|}{|2 ^ n / n ^ 2|}\\
+&= \lim_{n \rightarrow \infty} \frac{2 ^ {n + 1} / (n + 1) ^ 2}{2 ^ n / n ^ 2}\\
+&= \lim_{n \rightarrow \infty} 2\frac{(n + 1) ^ 2}{n ^ 2}\\
+&= \lim_{n \rightarrow \infty} 2\left(\frac{n ^ 2 + 2n + 1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(\frac{n ^ 2}{n ^ 2} + \frac{2n}{n ^ 2} + \frac{1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(1 + \frac{2n}{n ^ 2} + \frac{1}{n ^ 2}\right)\\
+&= \lim_{n \rightarrow \infty} 2\left(1 + \frac{2}{n} + \frac{1}{n ^ 2}\right)\\
+&\geq \lim_{n \rightarrow \infty} 2(1) = 2 \qquad \text{/* }\because \forall n \in \mathbb{N},\;\frac{2}{n} + \frac{1}{n ^ 2} > 0 \text{ */}\\
+&> 1
+\end{align*}
