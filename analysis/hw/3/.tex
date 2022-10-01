@@ -55,11 +55,11 @@ $|x_n - x| \leq \alpha\varepsilon_2$ (definition of $\leq$ is < or =)\\
 so $\forall \varepsilon_2 > 0, \exists M \in \mathbb{N} \subset \mathbb{R}, \forall n \geq M, |x_n - x| \leq \alpha\varepsilon_2$\\
 \\
 (ii) implies (i)\\
-if $\forall \varepsilon_1 > 0, \exists M \in \mathbb{R}, \forall n \geq \lceil M \rceil, |x_n - x| \leq \alpha_1\varepsilon_1$\\
-then $\forall \varepsilon_1, \alpha_1, \alpha_2 > 0, \exists \varepsilon_2 = \alpha_2(\alpha_1\varepsilon_1), \alpha_1\varepsilon_1 < \alpha_2(\alpha_1 \varepsilon_1)$ (archimedean property, theorem 1.2.4 (i))\\
+if $\forall \varepsilon_1 > 0, \exists M_1 \in \mathbb{R}, M_2 := \lceil M_1 \rceil, \forall n \geq M_2 \in \mathbb{N}, |x_n - x| \leq \alpha_1\varepsilon_1$\\
+then $\forall \varepsilon_1, \alpha_1, \alpha_2 > 0, \exists \varepsilon_2 := \alpha_2(\alpha_1\varepsilon_1), \alpha_1\varepsilon_1 < \alpha_2(\alpha_1 \varepsilon_1)$ (archimedean property, theorem 1.2.4 (i))\\
 $|x_n - x| \leq \alpha_1\varepsilon_1 < \alpha_2(\alpha_1\varepsilon_1) = \varepsilon_2\\
 |x_n - x| < \varepsilon_2$\\
-so $\forall \varepsilon_2 > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - x| < \varepsilon_2$\\
+so $\forall \varepsilon_2 > 0, \exists M_2 \in \mathbb{N}, \forall n \geq M_2, |x_n - x| < \varepsilon_2$\\
 \\
 2.\\
 suppose $\{x_n\}_{n = 1} ^ {\infty}$ and $\{y_n\}_{n = 1} ^ {\infty}$ are convergent sequences\\
@@ -255,7 +255,7 @@ part 2
 \lim_{n \rightarrow \infty} c_n &= \lim_{n \rightarrow \infty} \frac{c_{d - 1} + ... + c_0}{n}\\
 &= \left(\lim_{n \rightarrow \infty} c_{d - 1} + ... + c_0\right)\left(\lim_{n \rightarrow \infty}\frac{1}{n}\right)\\
 &= (c_{d - 1} + ... + c_0)(0)\\
-&= 0\\
+&= 0
 \end{align*}
 according to squeeze lemma 2.2.1\\
 since $\{a_n\}, \{b_n\}, \{c_n\}$ are sequences such that $\forall n \in \mathbb{N}, a_n \leq b_n \leq c_n$, and $\{a_n\}, \{c_n\}$ converge, $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} c_n = 0$\\
@@ -278,6 +278,7 @@ n ^ d + n ^ d > |p(n)|\\
 \\
 5.\\
 (a)\\
+sequence $\{x_n\}$ converges to 0\\
 given an $\varepsilon > 0$, can find an $M \in \mathbb{N}, 0 < 1 / M < \varepsilon$ (archimedean property, theorem 1.2.4 (i)), then $\forall n \geq M$
 \begin{align*}
 |x_n - 0| &= \left|\frac{n \cos(n)}{n ^ 2 + 1} - 0\right|\\
@@ -361,5 +362,5 @@ if every subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$ of a bounded sequence $\{x
 contrapositive: if sequence $\{x_n\}$ diverges, then there exists a subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$ that diverges\\
 if sequence $\{x_n\}$ diverges, $\forall L \in \mathbb{R}, \exists \varepsilon > 0, \forall M \in \mathbb{N}, \exists n \geq M, |x_n - L| \geq \varepsilon$\\
 let $\{n_i = i\}$ be the index sequence of $x_n, \forall i \in \mathbb{N}, n_i \leq n_{i + 1}$\\
-$\{x_n\}_{n = 1} ^ {\infty} = \{x_{n_i}\}_{i = 1} ^ {\infty} = \{x_i\}_{i = 1} ^ {\infty}$ is a subsequence of $\{x_n\}$ that also diverges, because the subsequence has the same elements as the original sequence
+$\{x_n\}_{n = 1} ^ {\infty} = \{x_{n_i}\}_{i = 1} ^ {\infty} = \{x_i\}_{i = 1} ^ {\infty}$ is a subsequence of $\{x_n\}$ that also diverges, because this subsequence has the same elements as the original sequence
 \end{document}
