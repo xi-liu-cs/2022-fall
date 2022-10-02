@@ -61,13 +61,11 @@ uniform vec3 u_light_direct[n_light];
 uniform vec3 u_light_color[n_light];
 varying vec3 vPos;
 float focal_length = 3.;
-
 vec3 stripes(float x)
 {
    float t = pow(sin(x) * .5 + .5, .1);
    return vec3(t, t * t, t * t * t);
 }
-
 float pattern(vec3 v)
 {
    const int n = 10;
@@ -80,21 +78,18 @@ float pattern(vec3 v)
    }
    return res;
 }
-
 vec3 object(float y)
 {
    vec3 back = .5 * vec3(.5, .1, 1.);
    float s = mix(.5, 1., clamp(3.* y - 2., 0., 1.));
    return mix(back, vec3(s), clamp(.5 * y, 0., 1.));
 }
-
 float ray_halfspace(ray r, vec4 plane)
 {/* plane * r <= 0, plane * (origin + t * direct) <= 0,  plane * origin + t * plane * direct <= 0, t <= -(plane * origin) / (plane * direct) */
    vec4 origin = vec4(r.origin, 1.),
    direct = vec4(r.direct, 0.);
    return -dot(plane, origin) / dot(plane, direct);
 }
-
 vec4 ray_cube(ray r, mat4 inverse_matrix)
 {
    vec3 n = vec3(0.);
@@ -116,7 +111,6 @@ vec4 ray_cube(ray r, mat4 inverse_matrix)
    /* vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p); */
    return vec4(n, t_in < t_out ? t_in : -.1);
 }
-
 vec4 ray_octahedron(ray r, mat4 inverse_matrix)
 {
    vec3 n = vec3(0.);
@@ -135,10 +129,10 @@ vec4 ray_octahedron(ray r, mat4 inverse_matrix)
       else
         t_out = min(t_out, t);
    }
-   vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p);
+   /* vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p); */
+   vec3 p = r.origin + t_in + r.direct; n += pattern(p);
    return vec4(n, t_in < t_out ? t_in : -.1);
 }
-
 float ray_sphere(ray r, sphere s)
 {
    vec3 oc = r.origin - s.center;
@@ -148,7 +142,6 @@ float ray_sphere(ray r, sphere s)
    disc = b * b - c;
    return disc < 0. ? -1. : -b - sqrt(disc);
 }
-
 vec3 shade_sphere(vec3 point, sphere s, mat4 material)
 {
       vec3 ambient = material[0].rgb,
@@ -170,13 +163,13 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
          {
             vec3 reflect = 2. * dot(n, u_light_direct[i]) * n - u_light_direct[i];
             c += u_light_color[i] * (diffuse * max(0., dot(n, u_light_direct[i]))
-            + specular * pow(max(0., dot(reflect, eye)), power)) + pattern(n);
+            + specular * pow(max(0., dot(reflect, eye)), power));
          }
       }
+      c += pattern(n);
       /* c *= 1. + .5 * noise(3. * n); */
       return c;
 }
-
 void main()
 {
    vec3 color = u_back_color;
@@ -295,39 +288,40 @@ S.setUniform('3fv', 'u_light_direct', ld_data);
 S.setUniform('3fv', 'u_light_color', [1, 1, 1, .5, .3, .1]);
 S.setUniform('3fv', 'u_diffuse_color', [red.value / 100, green.value / 100, blue.value / 100]);
 S.setUniform('1f', 'u_time', time);
+// for(let i = 0; i < S.n_sphere; ++i)
+// {
+//    S.s_velocity[i][0] += .01 * Math.sin(time + i);
+//    S.s_velocity[i][1] += .01 * Math.cos(time + 2 * i);
+//    S.s_velocity[i][2] += .01 * Math.cos(time + 3 * i);
+//    for(let j = 0; j < 3; ++j)
+//    {
+//       S.s_velocity[i][j] += .01 * (Math.random() - .5);
+//       S.s_pos[i][j] += .01 * S.s_velocity[i][j];
+//       S.s_pos[i][j] *= .8;
+//    }
+//    S.s_pos[i] = scale(normalize(S.s_pos[i]), .7);
+// }
+// for(let i = 0; i < S.n_sphere; ++i)
+//    for(let j = 0; j < S.n_sphere; ++j) /* avoid sphere interpenetration */
+//       if(i != j)
+//       {
+//          let d = subtract(S.s_pos[i], S.s_pos[j]),
+//          r = norm(d);
+//          if(r < 2 * radius)
+//          {
+//             let t = 2 * radius - r;
+//             for(let k = 0; k < 3; ++k)
+//             {
+//                S.s_pos[i][k] += t * d[k] / r;
+//                S.s_pos[j][k] -= t * d[k] / r;
+//             }
+//          }
+//       }
 for(let i = 0; i < S.n_sphere; ++i)
 {
-   S.s_velocity[i][0] += .01 * Math.sin(time + i);
-   S.s_velocity[i][1] += .01 * Math.cos(time + 2 * i);
-   S.s_velocity[i][2] += .01 * Math.cos(time + 3 * i);
-   for(let j = 0; j < 3; ++j)
-   {
-      S.s_velocity[i][j] += .01 * (Math.random() - .5);
-      S.s_pos[i][j] += .01 * S.s_velocity[i][j];
-      S.s_pos[i][j] *= .8;
-   }
-   S.s_pos[i] = scale(normalize(S.s_pos[i]), .7);
-}
-for(let i = 0; i < S.n_sphere; ++i)
-   for(let j = 0; j < S.n_sphere; ++j) /* avoid sphere interpenetration */
-      if(i != j)
-      {
-         let d = subtract(S.s_pos[i], S.s_pos[j]),
-         r = norm(d);
-         if(r < 2 * radius)
-         {
-            let t = 2 * radius - r;
-            for(let k = 0; k < 3; ++k)
-            {
-               S.s_pos[i][k] += t * d[k] / r;
-               S.s_pos[j][k] -= t * d[k] / r;
-            }
-         }
-      }
-for(let i = 0; i < S.n_sphere; ++i)
-{
-   S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], .1 * Math.cos(time + i)); */
-   S.setUniform('1f', 'u_sphere[' + i + '].radius', radius);
+//    S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], .1 * Math.cos(time + i)); */
+    S.setUniform('3f', 'u_sphere[' + i + '].center', Math.random() - .5, Math.random() - .5, Math.random() - .5);
+    S.setUniform('1f', 'u_sphere[' + i + '].radius', radius);
 }
 S.setUniform('Matrix4fv', 'u_sphere_material', false, S.material.flat());
 S.setUniform('3fv', 'u_back_color', [red.value / 1000, green.value / 1000, blue.value / 1000]);
@@ -343,7 +337,6 @@ S.setUniform('4fv', 'u_cube',
 [-1,0,0,-1, 1,0,0,-1,
 0,-1,0,-1, 0,1,0,-1,
 0,0,-1,-1, 0,0,1,-1,]);
-
 S.setUniform('4fv', 'u_octahedron',
 [-1,-1,-1,-1, 1,1,1,-1,
 1,-1,-1,-1, -1,1,1,-1,
