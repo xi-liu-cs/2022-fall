@@ -12,7 +12,7 @@ description =
 </small>`;
 code = {
 'init':`
-S.n_sphere = 5;
+S.n_sphere = 15;
 S.radius = .05;
 S.n_light = 2;
 S.n_side = 6;
@@ -80,7 +80,7 @@ float pattern(vec3 v)
 }
 vec3 object(float y)
 {
-   vec3 back = .5 * vec3(.5, .1, 1.);
+   vec3 back = .5 * vec3(.1, .1, 1.);
    float s = mix(.5, 1., clamp(3.* y - 2., 0., 1.));
    return mix(back, vec3(s), clamp(.5 * y, 0., 1.));
 }
@@ -109,6 +109,7 @@ vec4 ray_cube(ray r, mat4 inverse_matrix)
             t_out = min(t_out, t);
    }
    /* vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p); */
+   vec3 p = r.origin + t_in + r.direct; n += pattern(p);
    return vec4(n, t_in < t_out ? t_in : -.1);
 }
 vec4 ray_octahedron(ray r, mat4 inverse_matrix)
@@ -151,6 +152,7 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
       vec3 n = normalize(point - s.center),
       c = mix(ambient, u_back_color, .3),
       eye = vec3(0., 0., 1.);
+      c += vec3(.4, .2, 0.);
       for(int i = 0; i < n_light; ++i)
       {
          float t = -1.;
@@ -166,7 +168,7 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
             + specular * pow(max(0., dot(reflect, eye)), power));
          }
       }
-      if(s.radius == .3)
+      if(s.radius >= .1)
         c += pattern(n);
       /* c *= 1. + .5 * noise(3. * n); */
       return c;
@@ -277,7 +279,7 @@ let subtract = (a, b) =>
       res.push(a[i] - b[i]);
    return res;
 };
-let radius = .25,
+let radius = 0,
 ld0 = normalize([1, 1, 1]),
 ld1 = normalize([-1, -1, 1]),
 ld_data = [];
@@ -318,13 +320,19 @@ for(let i = 0; i < S.n_sphere; ++i)
             }
          }
       }
-for(let i = 0; i < S.n_sphere - 1; ++i)
-{
-    S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], .1 * Math.cos(time + i)); */
-    S.setUniform('1f', 'u_sphere[' + i + '].radius', radius);
+for(let i = 0; i < S.n_sphere; ++i)
+{	
+	if(i != S.n_sphere - 1)
+	{
+		S.setUniform('3f', 'u_sphere[' + i + '].center', .7 * Math.sin(time + .1 * i) + .03 * i, -.8 * Math.cos(time + .1 * i) + .03 * i, .7 * Math.sin(time + i)); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); */
+		S.setUniform('1f', 'u_sphere[' + i + '].radius', radius + .01 * i);
+	}
+	else
+	{
+		S.setUniform('3f', 'u_sphere[' + i + '].center', 0, 0, 0);
+		S.setUniform('1f', 'u_sphere[' + i + '].radius', .3);
+	}
 }
-S.setUniform('3f', 'u_sphere[' + i + '].center', 0, 0, 0);
-S.setUniform('1f', 'u_sphere[' + i + '].radius', .5);
 S.setUniform('Matrix4fv', 'u_sphere_material', false, S.material.flat());
 S.setUniform('3fv', 'u_back_color', [red.value / 1000, green.value / 1000, blue.value / 1000]);
 let cube_matrix4 = new matrix4();
@@ -332,7 +340,7 @@ cube_matrix4.translate(Math.cos(time) / 2, Math.sin(time) / 2, .5);
 cube_matrix4.rotate(10 * time, 1, 0, 0);
 cube_matrix4.rotate(10 * time, 0, 1, 0);
 cube_matrix4.rotate(10 * time, 0, 0, 1);
-cube_matrix4.scale(.3, .3, .3);
+cube_matrix4.scale(.3, .3, .1);
 cube_matrix4.invert();
 S.setUniform('Matrix4fv', 'u_cube_inverse_matrix', false, cube_matrix4.a);
 S.setUniform('4fv', 'u_cube', 
