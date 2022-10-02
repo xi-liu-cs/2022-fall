@@ -166,7 +166,8 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
             + specular * pow(max(0., dot(reflect, eye)), power));
          }
       }
-      c += pattern(n);
+      if(s.radius == .3)
+        c += pattern(n);
       /* c *= 1. + .5 * noise(3. * n); */
       return c;
 }
@@ -288,41 +289,42 @@ S.setUniform('3fv', 'u_light_direct', ld_data);
 S.setUniform('3fv', 'u_light_color', [1, 1, 1, .5, .3, .1]);
 S.setUniform('3fv', 'u_diffuse_color', [red.value / 100, green.value / 100, blue.value / 100]);
 S.setUniform('1f', 'u_time', time);
-// for(let i = 0; i < S.n_sphere; ++i)
-// {
-//    S.s_velocity[i][0] += .01 * Math.sin(time + i);
-//    S.s_velocity[i][1] += .01 * Math.cos(time + 2 * i);
-//    S.s_velocity[i][2] += .01 * Math.cos(time + 3 * i);
-//    for(let j = 0; j < 3; ++j)
-//    {
-//       S.s_velocity[i][j] += .01 * (Math.random() - .5);
-//       S.s_pos[i][j] += .01 * S.s_velocity[i][j];
-//       S.s_pos[i][j] *= .8;
-//    }
-//    S.s_pos[i] = scale(normalize(S.s_pos[i]), .7);
-// }
-// for(let i = 0; i < S.n_sphere; ++i)
-//    for(let j = 0; j < S.n_sphere; ++j) /* avoid sphere interpenetration */
-//       if(i != j)
-//       {
-//          let d = subtract(S.s_pos[i], S.s_pos[j]),
-//          r = norm(d);
-//          if(r < 2 * radius)
-//          {
-//             let t = 2 * radius - r;
-//             for(let k = 0; k < 3; ++k)
-//             {
-//                S.s_pos[i][k] += t * d[k] / r;
-//                S.s_pos[j][k] -= t * d[k] / r;
-//             }
-//          }
-//       }
 for(let i = 0; i < S.n_sphere; ++i)
 {
-//    S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], .1 * Math.cos(time + i)); */
-    S.setUniform('3f', 'u_sphere[' + i + '].center', Math.random() - .5, Math.random() - .5, Math.random() - .5);
+   S.s_velocity[i][0] += .01 * Math.sin(time + i);
+   S.s_velocity[i][1] += .01 * Math.cos(time + 2 * i);
+   S.s_velocity[i][2] += .01 * Math.cos(time + 3 * i);
+   for(let j = 0; j < 3; ++j)
+   {
+      S.s_velocity[i][j] += .01 * (Math.random() - .5);
+      S.s_pos[i][j] += .01 * S.s_velocity[i][j];
+      S.s_pos[i][j] *= .8;
+   }
+   S.s_pos[i] = scale(normalize(S.s_pos[i]), .7);
+}
+for(let i = 0; i < S.n_sphere; ++i)
+   for(let j = 0; j < S.n_sphere; ++j) /* avoid sphere interpenetration */
+      if(i != j)
+      {
+         let d = subtract(S.s_pos[i], S.s_pos[j]),
+         r = norm(d);
+         if(r < 2 * radius)
+         {
+            let t = 2 * radius - r;
+            for(let k = 0; k < 3; ++k)
+            {
+               S.s_pos[i][k] += t * d[k] / r;
+               S.s_pos[j][k] -= t * d[k] / r;
+            }
+         }
+      }
+for(let i = 0; i < S.n_sphere - 1; ++i)
+{
+    S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], S.s_pos[i][2]); /* S.setUniform('3f', 'u_sphere[' + i + '].center', S.s_pos[i][0], S.s_pos[i][1], .1 * Math.cos(time + i)); */
     S.setUniform('1f', 'u_sphere[' + i + '].radius', radius);
 }
+S.setUniform('3f', 'u_sphere[' + i + '].center', 0, 0, 0);
+S.setUniform('1f', 'u_sphere[' + i + '].radius', .5);
 S.setUniform('Matrix4fv', 'u_sphere_material', false, S.material.flat());
 S.setUniform('3fv', 'u_back_color', [red.value / 1000, green.value / 1000, blue.value / 1000]);
 let cube_matrix4 = new matrix4();
