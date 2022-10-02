@@ -234,7 +234,7 @@ setInterval(() => {
    for (name in code)
       if (name && (name != 'init' || isInit))
          evalCodes[name]();
-   if(isInit)
+   if(name == 'init' || isInit)
       chooseCode('');
    isInit = false;
    afterDraw();
