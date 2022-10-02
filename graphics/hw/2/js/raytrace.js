@@ -60,7 +60,8 @@ uniform vec4 u_octahedron[8];
 uniform vec3 u_light_direct[n_light];
 uniform vec3 u_light_color[n_light];
 varying vec3 vPos;
-float focal_length = 3.;
+float focal_length = 3.,
+big_radius = .3;
 vec3 stripes(float x)
 {
    float t = pow(sin(x) * .5 + .5, .1);
@@ -108,8 +109,8 @@ vec4 ray_cube(ray r, mat4 inverse_matrix)
         else
             t_out = min(t_out, t);
    }
-   /* vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p); */
-   vec3 p = r.origin + t_in + r.direct; n += pattern(p);
+   /* vec3 p = r.origin + t_in + r.direct; n += 1. * noise(10. * p);
+   vec3 p = r.origin + t_in + r.direct; n += pattern(p); */
    return vec4(n, t_in < t_out ? t_in : -.1);
 }
 vec4 ray_octahedron(ray r, mat4 inverse_matrix)
@@ -152,7 +153,8 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
       vec3 n = normalize(point - s.center),
       c = mix(ambient, u_back_color, .3),
       eye = vec3(0., 0., 1.);
-      c += vec3(.4, .2, 0.);
+      if(s.radius == big_radius)
+      	c += vec3(.4, .2, 0.);
       for(int i = 0; i < n_light; ++i)
       {
          float t = -1.;
@@ -168,7 +170,7 @@ vec3 shade_sphere(vec3 point, sphere s, mat4 material)
             + specular * pow(max(0., dot(reflect, eye)), power));
          }
       }
-      if(s.radius >= .1)
+      if(s.radius == big_radius)
         c += pattern(n);
       /* c *= 1. + .5 * noise(3. * n); */
       return c;
@@ -279,7 +281,7 @@ let subtract = (a, b) =>
       res.push(a[i] - b[i]);
    return res;
 };
-let radius = 0,
+let radius = 0, big_radius = .3,
 ld0 = normalize([1, 1, 1]),
 ld1 = normalize([-1, -1, 1]),
 ld_data = [];
@@ -330,7 +332,7 @@ for(let i = 0; i < S.n_sphere; ++i)
 	else
 	{
 		S.setUniform('3f', 'u_sphere[' + i + '].center', 0, 0, 0);
-		S.setUniform('1f', 'u_sphere[' + i + '].radius', .3);
+		S.setUniform('1f', 'u_sphere[' + i + '].radius', big_radius);
 	}
 }
 S.setUniform('Matrix4fv', 'u_sphere_material', false, S.material.flat());
