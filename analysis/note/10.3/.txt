@@ -1,0 +1,123 @@
+let c > 0
+1. if  c < 1, c ^ n = 0
+2. if c > 1, c ^ n diverge
+
+let {x_n} be a sequence such that x_n is not 0 for all n in N
+and a limit L := lim |x_{n + 1}| / |x_n|
+if L < 1, then lim x_n = 0
+if L > 1, then x_n is unbounded, divergent
+
+plot horizontal = n, vertical = |x_{n + 1}| / |x_n|
+|x_{n + 1}| / |x_n| < r
+
+plot horizontal = n, vertical = x_n
+|x_{n + 1}| < r |x_n|, r < 1
+m-tail of {x_n} will decay like r ^ n
+
+ratio test
+1. L < 1, pick r, 0 <= L < r < 1
+r - L > 0
+since lim |x_{n + 1}| / |x_n| = L
+exists M in N, for all n >= M
+|x_{n + 1}| / |x_n| - L <= ||x_{n + 1}| / |x_n| - L| < r - L /* e = r - L > 0 */
+|x_{n + 1}| / |x_n| < r, decreasing by a factor of r
+
+for all n >= M
+|x_n| < r|x_{n - 1}| < ... < r ^ {n - M} |x_M| = (|x_M| r ^ {-M}) r ^ n
+(|x_M| r ^ {-M}) r ^ n -> 0 as n -> inf
+(constants that does not depend on n)(r < 1, r ^ n -> 0)
+for all e > 0
+exists M' in N
+for all n >= max(M, M')
+|x_n| < |x_M| r ^ {-M} r ^ n = ||x_M| r ^ {-M} r ^ n - 0| < e
+x_n converge to 0
+
+{a_n}, {b_n}, {x_n}
+a_n <= x_n <= b_n
+if lim a = lim b, then x_n converge
+lim x_n = lim a = lim b
+
+{(cos n) / n} does it converge
+-1 <= cos n <= 1
+- 1 / n <= (cos n) / n <= 1 / n
+(cos n) / n is squeezed, converge to 0
+
+lim sup inf
+given a bounded sequence {x_n}
+a_n := sup{x_k : k >= n}
+b_n := inf{x_k : k >= n}
+lim_{n -> infty} sup x_n = lim_{n -> infty} a_n
+lim_{n -> infty} inf x_n = lim_{n -> infty} b_n
+
+x_n = 1 / n
+{x_k: k >= n}
+plot horizontal = n vs vertical = {x_k: k >= n}, top sequence a_n, bottom sequence b_n
+a_n := sup{x_k : k >= n} = sup{1 / k : k >= n} = 1 / n
+b_n := inf{x_k : k >= n} = inf{1 / k : k >= n} = 0
+
+lim sup x_n = lim a_n = 0
+lim inf x_n = lim b_n = 0
+
+existence of lim sup inf
+let {x_n} be a bounded sequence
+take {a_n}, {b_n} be as defined earlier
+1. sequnce {a_n} is a bounded monotone decreasing sequence
+{b_n} is a bounded monotone increasing sequence
+
+2. {a_n}, {b_n} converge
+lim sup x_n = lim a_n = inf{a_n: n in N}
+lim inf x_n = lim b_n = sup{b_n: n in N}
+
+3. lim inf x_n <= lim sup x_n
+
+proof
+1. let {x_n} be a bounded sequence
+{a_n} = sup{x_k : k >= n}
+
+s_n :+ {x_k : k >= n}
+s_{n + 1} subset s_n, for all n in N
+sup S_{n + 1} <= sup S_n <= a_{n + 1} <= a_n
+a_n is monotone decreasing
+
+for boundedness, any S_n subset S_1
+inf S_1 <= inf S_n <= sup S_n <= sup S_1
+
+b_1 <= b_n <= a_n <= a_1
+{a_n} is bounded
+
+lim a_n = lim sup x_n = inf{a_n: n in N}
+b_n <= a_n
+limits preserve non strict inequalities
+lim inf x_n = lim b_n <= lim a_n = lim sup x_n
+
+{x_n} := 
+{
+  0, if n is odd
+  2 / n + 1, if n is even
+}
+plot horizontal = n vs vertical = {x_k: k >= n}
+{x_k: k >= n} = {{0} cup {1 / k + 1 : k >= n / 2}}
+inf{x_k: k >= n} = 0
+sup{x_k: k >= n} =
+{
+  2 / n + 1, if n even
+  2 / (n + 1) + 1, if n odd
+}
+
+existence of convergent subseqences
+if {x_n} is any bounded subsequence (not necessarily convergent)
+then exists a subsequence
+{x_n_k}_{k = 1} ^ {inf}
+lim x_n_k = lim sup x_n
+exists a possibly different subsequence x_m_k
+lim x_m_k = lim inf x_n
+
+{x_{2n}} = {1 / n + 1} -> 1 = lim sup x_n
+{x_{2n + 1}} = {0} -> 0 = lim inf x_n
+
+1. inductively construct a sequence
+base: find x_n_1, then use induction
+inductive: assume x_n_p
+use it to find x_n_{p + 1}
+
+2. show if it converges
