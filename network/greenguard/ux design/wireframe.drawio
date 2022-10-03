@@ -1,29 +1,106 @@
-<mxfile host="app.diagrams.net" modified="2022-10-03T15:44:34.358Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="9-50BXk3ax0TtK-08xwK" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-03T17:58:23.843Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42" etag="0TSxTrb6TUmMegJdfTwG" version="20.4.0" type="github">
   <diagram id="AQFI6UG3dmrKnwbbd0p1" name="Page-1">
-    <mxGraphModel dx="946" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1037" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="3" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="4" edge="1">
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2" target="4">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="390" y="210" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="380" y="170" />
-              <mxPoint x="360" y="190" />
+              <mxPoint x="290" y="80" />
+              <mxPoint x="80" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-21" target="XZwGA0tTDyMO1BIwxY2l-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="434" y="80" />
+              <mxPoint x="245" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="XZwGA0tTDyMO1BIwxY2l-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="80" />
+              <mxPoint x="333" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="XZwGA0tTDyMO1BIwxY2l-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="80" />
+              <mxPoint x="550" y="80" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="2" value="&lt;div&gt;entry point: entire map and side panel&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="330" y="60" width="120" height="60" as="geometry" />
+          <mxGeometry x="230" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0Y4MVhz9-gonjYsTBbe1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4" target="0Y4MVhz9-gonjYsTBbe1-4">
+        <mxCell id="0Y4MVhz9-gonjYsTBbe1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="4" target="0Y4MVhz9-gonjYsTBbe1-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="4" value="after click according to location: information panel shown on the side with historical facts tab and events tab" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="100" y="250" width="160" height="80" as="geometry" />
+          <mxGeometry y="150" width="160" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0Y4MVhz9-gonjYsTBbe1-4" value="after clicking on events tab: opens a panel with all the nearby events information" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="380" width="160" height="100" as="geometry" />
+        <mxCell id="0Y4MVhz9-gonjYsTBbe1-4" value="after clicking on events tab: opens a panel with all the nearby events information" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry y="270" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-4" target="XZwGA0tTDyMO1BIwxY2l-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-4" value="a search option based on keywords and coordinates" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="150" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-8" value="show a list of matching results with links pointing to the relevant location data and webpages" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="270" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-9" target="XZwGA0tTDyMO1BIwxY2l-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-9" value="a menu to choose which dataset to select from" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="150" width="85" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.368;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-16" target="XZwGA0tTDyMO1BIwxY2l-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-16" value="an interface to perform queries on the dataset" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="275" width="75" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-18" target="XZwGA0tTDyMO1BIwxY2l-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-18" value="select which machine learning algorithm to perform on the data, and what prediction can be made" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="400" width="95" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-19" value="visualize prediction and dataset" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="540" width="105" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-21" target="XZwGA0tTDyMO1BIwxY2l-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-21" value="interactions with map, real time rendering" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="397.51" y="150" width="72.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-24" target="XZwGA0tTDyMO1BIwxY2l-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-24" value="handle user inputs, zoom in, zoom out" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="378.75" y="275" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-28" value="make the map change dynamically based on user&#39;s location" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="393.13" y="405" width="81.25" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="XZwGA0tTDyMO1BIwxY2l-39" target="XZwGA0tTDyMO1BIwxY2l-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-39" value="handling with new vision data about landscape and terrain" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="150" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XZwGA0tTDyMO1BIwxY2l-41" value="visual data processing, algorithms to reshape the map according to new data&lt;br&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="275" width="100" height="95" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
