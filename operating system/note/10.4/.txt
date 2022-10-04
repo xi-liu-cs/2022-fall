@@ -1,0 +1,26 @@
+cpu is not connected to disk
+cpu is connected to memory
+cpu cannot execute anything that does not exist in memory
+processes must exist in memory, not in disk
+active processes need to be able to be swapped in
+and out of main memory in order in maximize processor utilization
+modules are what processes are in the memory
+
+base: start address of program in physical memory
+limit (bound): length of program
+
+for every memory access (load or store)
+base is added to address
+result compared to limit
+memory management unit
+
+if machine is slow, does not necessarily mean cpu is slow
+it might mean memory is small, not many processes are swept in the disk, moving from disk to memory is slow
+
+programs move in and out of memory
+if a hole is adjacent to process, allocated to it
+process moved to bigger hole
+process suspended till enough memory is there
+
+worst fit: when pick biggest empty space
+leftover big enough to be useful for some other processes
