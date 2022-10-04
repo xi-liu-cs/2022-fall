@@ -1,0 +1,44 @@
+refraction
+snell's law
+n1 sin theta1 = n2 sin theta2
+cloud, condensation, tiny particles of water, each one is a sphere
+
+cos theta1 = -w dot n
+sin theta1 = sqrt{1 - c ^ 2} /* c = cos */
+sin theta2 = sin theta1 n1 / n2
+cos theta2 = sqrt{1 - s ^ 2} /* s = sin */
+
+h = half space
+h dot p =
+(a b c d)
+(x
+y
+z
+w)
+<= 0 /* inside half space */
+
+cone
+x ^ 2 + y ^ 2 - z ^ 2 <= 0
+plug v + tw into x, y, z
+
+cylinder
+y ^ 2 + z ^ 2 - 1 <= 0
+
+(x y z w)
+(4 * 4 matrix)
+(x
+y
+z
+w)
+= 0
+
+sphere
+(x y z w) = (x y z 1)
+(4 * 4 matrix)[4][4] = -1
+
+p ^ t q p <= 0
+p ^ t m ^ t (m ^ {-1 ^ t} q m ^ -1) m p <= 0
+
+(v + tw) ^ t q (v + tw) <= 0
+take the derivative to find the normal of the surface
+pointing out of the surface
