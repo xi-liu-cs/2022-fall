@@ -1,0 +1,11 @@
+row = predicted vs col = ground truth
+confusion matrix 混淆矩阵
+
+precision = tp / (tp + fp) = (true positive) / (true positive + false positive)
+recall = tp / (tp + fn) = (true positive) / (true positive + false negative)
+if want to be true that a negative result is truely negative, need to use recall
+specificity = tn / (tn + fp)
+
+do not care about both examples equally
+if a covid detector, if result is negative, must have high confidence that it is truely negative
+so a lot of false positives in covid test
