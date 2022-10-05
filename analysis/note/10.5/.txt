@@ -1,0 +1,112 @@
+existence of convergent subsequences
+if {x_n} is a bounded sequence, then exists a subsequence {x_n_k} satisfying
+lim_{k -> inf} x_n_k = lim_{n -> inf} sup x_n (always exists)
+
+similarly, exists a possibly different subsequence
+{x_m_k}, lim_{k -> inf} x_m_k = lim_{n -> inf} inf x_n
+
+construct a subsequence inductively
+base case: set n1 = 1 (x1 is first element {x_n_k})
+inductive step: n_p is defined
+a_n := sup{x_k : k >= n}
+lim a_n = lim sup x_n
+
+lim a_n_{p + 1} = sup{x_k : k >= n_p + 1} = n_p tail of {x_n}
+since a_n_{p + 1} is a supremum, exists x_m in {x_k : k >= n_p + 1} such that
+a_{n_{p} + 1} - 1 / (p + 1) < x_m <= a_n_{p + 1}
+
+set n_{p + 1} = m > n_p
+by induction, constructed a subsequence {x_n_k}
+
+show {x_n_k} converges to lim sup x_n
+a_{n_{k} + 1} - 1 / (k + 1) < x_{n_{k + 1}} < a_{n_k + 1} /* subsequence of {a_n}, converge to lim sup x_n */
+lim sup x_n < x_{n_{k + 1}} < a_{n_k + 1}
+squeeze lemma says that x_{n_{k + 1}} converges to lim sup x_n
+
+1-tail of {x_n_k} converges to lim sup x_n
+{x_n_k} converges to lim sup x_n
+
+case for {x_m_k} converging to lim inf is similar
+
+lim sup inf convergence test
+let {x_n} be a bounded sequence, then {x_n} converges 
+iff lim sup x_n = lim inf x_n
+if {x_n} converges, lim x_n = lim sup x_n = lim inf x_n
+
+prove
+convergent -> lim sup = lim inf
+assume {x_n} is convergent to some x := lim x_n, then
+every subsequence converges to x
+by theorem 2.3.4
+there exists subsequence x_n_k and x_m_k which converge to lim sup and lim inf
+lim sup x_n = lim x_n_k = x
+lim inf x_n = lim x_m_k = x
+
+lim sup x_n -> lim inf x_n
+a_n := sup{x_k : k >= n} -> lim sup x_n
+b_n := sup{x_k : k >= n} -> lim inf x_n
+a_n <= k <= b_n, for all n in N
+squeeze lemma
+lim x_n = lim sup x_n = lim inf x_n
+
+bolzano weierstrass
+suppose {x_n} is a bounded sequence of real numbers
+then {x_n} has a convergent subsequence {x_n_k}
+follow from (theorem 2.3.4 (only hold for R))
+bolzano weierstrass generalizes to R ^ n
+
+a sequence {x_n} is a cauchy sequence if
+for all e > 0, exists M in N, for all n, k >= M, |x_n - x_k| < e
+
+{x_n} is convergent <-> exists L in R, for all e > 0, exists M in N, for all n >= M, |x_n - L| < e
+{x_n} is cauchy <-> for all e > 0, exists M in N, for all n, k >= M, |x_n - x_k| < e
+do not need a candidate limit L here
+
+cauchy completeness of R
+a sequence of real numbers is cauchy iff it is convergent
+R dedekind complete
+<-> R has least upper bound property
+<-> sup{x_n * k >= n} always exists
+<-> lim inf/sup
+<-> cauchy completeness
+
+for all e > 0, exists M in N, for all n, k >= M, |x_n - x_k| < e
+plot n vs x_n
+
+if {x_n} is cauchy, then it is bounded
+suppose {x_n} is cauchy
+-> exists M in N, for all n, k >= M, |x_n - x_k| < e = 1
+-> for all n >= M, |x_n| - |x_M| <= ||x_n| - |x_M|| <= |x_n - x_M| /* reverse triangle */
+-> plug in k = M, |x_n - x_M|
+-> |x_n| <= 1 + |x_M|, for all n >= M
+set B := max{|x_1|, |x_2|, ..., |x_{M - 1}|, 1 + |x_M|} /* n < M, n >= M */
+|x_n| <= B, for all n in N, so {x_n} bounded
+
+cauchy completeness of R
+(cauchy <- convergent)
+assume {x_n} is convergent to L in R
+let e > 0 be arbitrary
+exists M in N, for all n >= M, |x_n - L| < e / 2
+for all n, k >= M
+|x_n - x_k| = |x_n - L + L - x_k| <= |x_n - L| + |x_k - L| < e / 2 + e / 2 = e
+
+(cauchy -> convergent)
+assume {x_n} is cauchy
+implies x_n is bounded
+by theorem 2.3.4
+exists subsequences {x_n_k} and {x_m_k} which converge to lim sup/inf
+let a := lim sup x_n = lim x_n_k
+b := lim inf x_n = lim x_m_k
+let e > 0 be arbitrary
+exists M1 in N, for all n, k >= M, |x_n - x_k| < e / 3 /* cauchy */
+exists M2 in N, for all k >= M, |x_n_k - a| < e / 3 /* x_n_k -> a */
+exists M3 in N, for all k >= M, |x_m_k - b| < e / 3 /* x_m_k -> b */
+M := max(M!, M2, M3), n_k, m_k >= k >= m
+for all k >= M
+|a - b| = |a - x_n_k + x_n_k - x_m_k + x_m_k - b|
+<= |a - x_n_k| + |x_n_k - x_m_k| + |x_m_k - b|
+< e / 3 + e / 3 + e / 3 = e
+|a - b| < e, for all e > 0 
+a = b
+lim sup x_n = lim sup x_n
+{x_n} converge
