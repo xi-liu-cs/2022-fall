@@ -1,0 +1,13 @@
+2
+a
+if $x, y \in \mathbb{R}, x < y, \text{ then } \exists r \in \mathbb{Q}, x < r < y$ \qquad (theorem 1.2.4.ii)\\
+since $\sup S - 1 / n, \sup S + 1 / n \in \mathbb{R}, \sup S - 1 / n < \sup S + 1 / n, \text{ so } \exists x_n \in \mathbb{Q}, \sup S - 1 / n < x_n < \sup S + 1 / n\\$
+if $\{x_n\}$ converges to some $L \in \mathbb{R}$, then $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_n - L| < \varepsilon$,\\
+let $M \geq 1 / \varepsilon\\
+\text{then } \forall n \geq M, 1 / n \leq 1 / M \leq \varepsilon\\
+\sup S - \varepsilon \leq \sup S - 1 / n \leq x_n \leq \sup S + 1 / n \leq \sup S + \varepsilon\\
+\sup S - \varepsilon \leq x_n \leq \sup S + \varepsilon\\
+-\varepsilon \leq x_n - \sup S \leq \varepsilon\\
+|x_n - \sup S| \leq \varepsilon\\
+\text{then }\forall \varepsilon > 0, \exists M \geq 1 / \varepsilon, \forall n \geq M, |x_n - \sup S| < \varepsilon$\\
+so $\lim_{n \rightarrow \infty} x_n = \sup S$\\
