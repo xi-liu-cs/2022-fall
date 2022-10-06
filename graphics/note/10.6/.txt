@@ -1,0 +1,32 @@
+represent cube as 12 triangles
+fragment shader only do work when there are triangles
+color closer z value if 2 triangles are stacked onto each other
+keep a buffer internally
+z buffer
+map u v to x y z
+parametric surfaces
+triangle strip: only 1 vertex added per triangle
+turn 2d strip
+glue triangle strip together
+allow to make a degenerate triangle, that have 0 area
+so they are not displayed
+
+mesh a, b
+a = [], b = []
+replicate a.back, b.front
+a_0 ... a_{n -1} a_{n - 1} b_0 b_0 ... b_{n - 1}
+
+every time render a mesh
+need to have a draw call
+combine into a single mesh, become a single draw call
+
+a vertex represented by 8 numbers [x, y, z, n_x, n_y, n_z, u, v]
+based on 3 vertices, look at 3 edges, 3 vectors
+cross product
+find the direction where triangle face
+step 1:
+compute cross product between any 2 pairs of edges
+add 3 vectors together
+step 2:
+compute same thing for each triangle
+add all surrounding triangle for a point's direction
