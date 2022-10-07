@@ -1,0 +1,217 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+power set is set of all subsets of $X$\\
+$\mathcal{P}(X) = \{S: S \subset X\}$\\
+$C$ is an upper bound of $A$: $\forall B \in A, B \subset C$\\
+$S$ is an least upper bound of $A$: $\forall \text{ upper bounds } C \text{ of } A, S \subset C$\\
+\\
+(a)\\
+$C := B_1 \cup B_2$ is an upper bound of $A := \{B_1, B_2\}$\\
+need to show $\forall B \in A := \{B_1, B_2\}, B \subset C := B_1 \cup B_2$\\
+if $B = B_1, \forall x (x \in B_1 \rightarrow x \in B_1 \vee x \in B_2), B_1 \subset B_1 \cup B_2$\\
+if $B = B_2, \forall x (x \in B_2 \rightarrow x \in B_1 \vee x \in B_2), B_2 \subset B_1 \cup B_2$\\
+\\
+\\
+(b)\\
+part 1\\
+if $C$ is an upper bound of $A := \{B_1, B_2\}$\\
+then $\forall B \in A := \{B_1, B_2\}, B \subset C$\\
+$\because B_1 \subset C, \forall x(x \in B_1 \rightarrow x \in C)\\
+B_2 \subset C, \forall x(x \in B_2 \rightarrow x \in C)\\
+\therefore \forall x(x \in B_1 \vee x \in B_1 \rightarrow x \in C), B_1 \cup B_2 \subset C\\$
+\\
+part 2\\
+$B_1 \cup B_2$ is a least upper bound: since $\forall$ upper bounds $C$ of $A := \{B_1, B_2\}$, $B_1 \cup B_2 \subset C$ as shown in part 1\\
+if $S$ is another least upper bound, then\\
+(i) $S$ is an upper bound of $A$, $\forall B \in A, B \subset S, \forall x (x \in B \rightarrow x \in S)$\\
+(ii) $S$ is a least upper bound of $A$, $\forall$ upper bounds $C$ of $A := \{B_1, B_2\}$, $S \subset C, \forall x (x \in S \rightarrow x \in C)$\\
+\\
+$\because S$ is an upper bound, and $B_1 \cup B_2$ is the least upper bound\\
+$\therefore B_1 \cup B_2 \subset S$\\
+\\
+$\because B_1 \cup B_2$ is an upper bound\\
+$\therefore S \subset B_1 \cup B_2$\\
+\\
+$\because B_1 \cup B_2 \subset S, S \subset B_1 \cup B_2\\
+\therefore S = B_1 \cup B_2$\\
+\\
+\\
+(c)\\
+$C$ is an lower bound of $A$: $\forall B \in A, C \subset B$\\
+$B_1 \cap B_2$ is a lower bound of $\{B_1, B_2\}$\\
+need to show $\forall B \in A := \{B_1, B_2\}, C :=  B_1 \cap B_2 \subset B$\\
+if $B = B_1, \forall x (x \in B_1 \wedge x \in B_2 \rightarrow x \in B_1), B_1 \cap B_2 \subset B_1$\\
+if $B = B_2, \forall x (x \in B_1 \wedge x \in B_2 \rightarrow x \in B_2), B_1 \cap B_2 \subset B_2$\\
+\\
+\\
+(d)\\
+show every nonempty collection $A \subset \mathcal{P}(X)$ has a least upper bound $S$\\
+since $A$ is nonempty, exists a set $\bigcup_{B \in A} B$ which is the union over this collection
+\[\bigcup_{B \in A} B := \{x \in X: \exists B \in A, x \in B\}\]
+$\forall B \in A, \forall x(x \in B \rightarrow x \in \bigcup_{B \in A} B), B \subset \bigcup_{B \in A} B$, so $\bigcup_{B \in A} B$ is an upper bound\\
+since $S := \bigcup_{B \in A} B$ is the union of all sets in $A$, $S := \bigcup_{B \in A} B$ contains all elements of all sets in $A$ and no extra element, so it has the least cardinality among all upper bounds of $A$, $\forall$ upper bounds $C$ of $A$, $S \subset C$, so $S := \bigcup_{B \in A} B$ is the least upper bound of $A$\\
+\\
+\\
+2.\\
+(a)\\
+let $a := \sup S$, since $a$ is an least upper bound, $a - 1$ is not an upper bound of $S$, so $\exists x \in S, a - 1 \leq x \leq a$\\
+continuing, construct a monotone increasing sequence $x_n, \forall n \in \mathbb{N}, a - 1 / n < x_n \leq a$, since $\lim_{n \rightarrow \infty} a - 1 / n = a$ and $\lim_{n \rightarrow \infty} a = a$, by squeeze lemma, $x_n$ converges to $a$\\
+\\
+\\
+(b)\\
+base step: $\{y_n\} = \{y_1\} \in S$, monotone increasing\\
+inductive step: assume $y_1, ..., y_n = \{y_n\} \in S$ is monotone increasing, need to show $y_1, ..., y_{n + 1} = \{y_{n + 1}\} \in S$ is also monotone increasing\\
+$\because \sup S \not\in S, \forall n \in \mathbb{N}, \forall y_n \in S, y_n < \sup S \\
+\sup S - y_n > 0\\
+\text{base on hw1 q8}, \forall \varepsilon > 0, \exists x \in B, c - \varepsilon < x \leq c\\
+\exists y_{n + 1} \in S, y_n < y_{n + 1} < \sup S$\\
+so $\{y_{n + 1}\}$ is shown to be monotone increasing\\
+$\{y_n\}$ is a monotone increasing sequence\\
+\\
+\\
+(c)\\
+since there exists a strictly monotone increasing sequence $\{y_n\}$ with $y_n \in S, \forall n \in \mathbb{N}$, establish a bijective function $f: \{y_n : n \in \mathbb{N}\} \rightarrow \mathbb{N}, f(y_n) = n$\\
+\\
+\\
+(d)\\
+let $S$ be the empty set, $S = \emptyset \subset \mathbb{R}$, then $S$ only have 1 subset $E = \emptyset$ that is itself, $\emptyset$ is finite so it is not countably infinite\\
+so not always be a countably infinite subset\\
+\\
+\\
+3.\\
+(a)\\
+part 1\\
+$\{x_n\}$ diverges to negative infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n \leq -k, \lim_{n \rightarrow \infty} x_n := -\infty$\\
+part 2\\
+$\{x_n\} := \{-n ^ 3\}, M := \sqrt[3]{K}\\
+\forall K \in \mathbb{R}, \forall n \geq M, -n \leq -M, x_n = -n ^ 3 \leq -M ^ 3 = -(\sqrt[3]{K}) ^ 3 = -K\\
+x_n \leq -K$, $x_n$ diverges to $-\infty$\\
+\\
+\\
+(b)\\
+\begin{align*}
+\lim_{n \rightarrow \infty} \frac{1}{x_n} &= 0\\
+\forall K_1 \geq 0, \exists M \in \mathbb{N}, &\forall n \geq M\\
+\left|\frac{1}{x_n} - 0\right| &< K_1\\
+1 &< K_1 x_n\\
+x_n &> \frac{1}{K_1}\\
+K_2 &:= \frac{1}{K_1}\\
+x_n &> K_2
+\end{align*}
+so $\{x_n\}$ diverges to positive infinity\\
+\\
+\\
+(c)\\
+definition 1.3.6\\
+$f: D \rightarrow \mathbb{R}$\\
+$f$ is bounded: $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+$f$ is unbounded: $\forall M \in \mathbb{R}, \exists x \in D, |f(x)| > M$\\
+$f$ is unbounded above: $\forall M \in \mathbb{R}, \exists x \in D, f(x) > M$\\
+\\
+part 1\\
+if $\{x_n\}$ is unbounded above, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
+(i) if $\{x_n\}$ is unbounded above, then every $p$-tail of $\{x_n\}$ is also unbounded above\\
+if $\{x_n\}$ is unbounded above\\
+let $k > 0$ be arbitrary, since $\{x_n\}$ is unbounded above, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists x \in \mathbb{N}, f(x) := x_n > k$, then $\forall k \in \mathbb{N}, \exists n_k \in \mathbb{N}, f(x) := x_{n_k} > k$, we can find 1 term such that $x_{n_1} > k$, based on definition of $p$-tail, $n_1$-tail starts with the term after $x_{n_1}$, since $x_{n_2}$ came from $n_1$ tail, $n_1 < n_2$\\
+inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists x \in \mathbb{N}, f(x) := x_n > k, \forall p \in \mathbb{N}, \exists n_p \in \mathbb{N}, f(x) := x_{n_p} > k$, based on definition of $p$-tail, $n_p$-tail starts with the term after $x_{n_p}$, since $x_{n_{p + 1}}$ came from $n_p$ tail, $n_p < n_{p + 1}$\\
+now subsequence $x_{n_1}, x_{n_2}, ..., x_{n_p}, ...$ is defined since $n_1 < n_2 < ... < n_p < ...$, $x_{n_p} > k$\\
+so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
+\\
+part 2\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then $\{x_n\}$ is unbounded above\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then\\ $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > K$\\
+let $x_{n_k} := x_k := k$, for contradiction, assume $\{x_n\}$ is bounded above, let $b := \sup\{x_n\}$, number $b - 1$ cannot be an upper bound for $\{x_n\}$ as it is strictly less than $b$ (the least upper bound). $\exists m \in \mathbb{N}, m > b - 1, m + 1 = x_m + 1 > b$, contradicting $b$ being an upper bound, so $\{x_n\}$ is unbounded above\\
+\\
+\\
+\\
+4.\\
+(a)
+\begin{align*}
+\text{if } n \text{ is even, then }\\
+\{\bar{x}_n\} = \frac{1}{n}\sum_{i = 1} ^ n (-1) ^ n &= 0\\
+\text{if } n \text{ is odd, then }\\
+\{\bar{x}_n\} = \frac{1}{n}\sum_{i = 1} ^ n (-1) ^ n &= -\frac{1}{n}\\ 
+\end{align*}
+if $n$ is even, then\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |\bar{x}_n - 0| = |0 - 0| = 0 < \varepsilon$\\
+if $n$ is odd, then\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, 0 < 1 / M < \varepsilon, \forall n \geq M, |\bar{x}_n - 0| = |-1 / n - 0| = 1 / n \leq 1 / M < \varepsilon$\\
+\\
+\\
+(b)
+\begin{align*}
+|\bar{x}_n - L| &= \left|\left(\frac{1}{n}\sum_{k = 1} ^ n x_k\right) - L\right|\\
+&= \left|\left(\frac{1}{n}\sum_{k = 1} ^ n x_k\right) - \frac{nL}{n}\right|\\
+&= \left|\sum_{k = 1} ^ n\frac{x_k - L}{n}\right|\\
+&= \left|\sum_{k = 1} ^ M\frac{x_k - L}{n} + \sum_{k = M + 1} ^ n\frac{x_k - L}{n}\right|\\
+&= \left|\frac{1}{n}\sum_{k = 1} ^ M x_k - L + \frac{1}{n}\sum_{k = M + 1} ^ n x_k - L\right|\\
+&\leq \frac{1}{n}\sum_{k = 1} ^ M |x_k - L| + \frac{1}{n}\sum_{k = M + 1} ^ n |x_k - L|\\
+&\text{/* since } |x_n - L| < \varepsilon / 2 \text{ */}\\
+&< \frac{1}{n}\sum_{k = 1} ^ M \left(\frac{\varepsilon}{2}\right) + \frac{1}{n}\sum_{k = M + 1} ^ n \left(\frac{\varepsilon}{2}\right)\\
+&= \frac{(M - 1 + 1)}{n}\frac{\varepsilon}{2} + \frac{n - (M + 1) + 1}{n}\frac{\varepsilon}{2}\\
+&= \frac{M\varepsilon}{2n} + \frac{(n - M)\varepsilon}{2n}\\
+&\text{/* since } \exists K \geq \frac{\varepsilon}{2} \text{ */}\\
+&\leq \frac{MK}{n} + \frac{(n - M)\varepsilon}{2n}\\
+\end{align*}
+\\
+\\
+(c)
+\begin{align*}
+\frac{MK}{n} + \frac{(n - M)\varepsilon}{2n} &\leq \frac{MK}{n} + \frac{n\varepsilon}{2n}\\
+&= \frac{MK}{n} + \frac{\varepsilon}{2}\\
+&< \varepsilon
+\end{align*}
+since $MK / n$ converges to 0
+\begin{align*}
+&\text{show } \frac{MK}{n} \text{ converges to 0}\\
+&\forall \varepsilon > 0, \exists m \in \mathbb{N}, 0 < MK / m < \varepsilon, \forall n \geq m\\
+&\left|\frac{MK}{n} - 0\right| = MK / n \leq MK / m < \varepsilon
+\end{align*}
+\end{document}
