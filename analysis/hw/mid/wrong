@@ -20,6 +20,7 @@ if $\{x_n\}$ is unbounded above, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ 
 if $\{x_n\}$ is unbounded above\\
 let $k > 0$ be arbitrary, since $\{x_n\}$ is unbounded above, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k$, then $\forall k \in \mathbb{N}, \exists n_k \in \mathbb{N}, f(n_k) := x_{n_k} > k$\\
 base step: we can find 1 term such that $x_{n_1} > 1$, based on definition of $p$-tail, $n_1$-tail starts with the term after $x_{n_1}$, since $x_{n_2}$ came from $n_1$ tail, $n_1 < n_2$\\
+base step: since $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k$, so $\forall k \in \mathbb{R}, \exists n, n_1, n + n_1 \in \mathbb{N}, f(n + n_1) := x_{n + n_1} > k$, so $\{x_{n + n_1}\}_{n = 1} ^ {\infty}$ is unbounded above, so $n_1$-tail is unbounded above\\
 inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k, \forall p \in \mathbb{N}, \exists n_p \in \mathbb{N}, f(n_p) := x_{n_p} > p$, based on definition of $p$-tail, $n_p$-tail starts with the term after $x_{n_p}$, since $x_{n_{p + 1}}$ came from $n_p$ tail, $n_p < n_{p + 1}$\\
 now subsequence $x_{n_1}, x_{n_2}, ..., x_{n_p}, ...$ is defined since $n_1 < n_2 < ... < n_p < ...$, $x_{n_p} > p$\\
 so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
