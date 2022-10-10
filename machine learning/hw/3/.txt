@@ -1,0 +1,2 @@
+https://datascience.stackexchange.com/questions/28426/train-accuracy-vs-test-accuracy-vs-confusion-matrix
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html
