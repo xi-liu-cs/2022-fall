@@ -65,7 +65,7 @@ if $C$ is an upper bound of $A := \{B_1, B_2\}$\\
 then $\forall B \in A := \{B_1, B_2\}, B \subset C$\\
 $\because B_1 \subset C, \forall x(x \in B_1 \rightarrow x \in C)\\
 B_2 \subset C, \forall x(x \in B_2 \rightarrow x \in C)\\
-\therefore \forall x(x \in B_1 \vee x \in B_1 \rightarrow x \in C), B_1 \cup B_2 \subset C\\$
+\therefore \forall x(x \in B_1 \vee x \in B_2 \rightarrow x \in C), B_1 \cup B_2 \subset C\\$
 \\
 part 2\\
 $B_1 \cup B_2$ is a least upper bound: since $\forall$ upper bounds $C$ of $A := \{B_1, B_2\}$, $B_1 \cup B_2 \subset C$ as shown in part 1\\
@@ -101,7 +101,7 @@ since $S := \bigcup_{B \in A} B$ is the union of all sets in $A$, $S := \bigcup_
 \\
 2.\\
 (a)\\
-let $a := \sup S$, since $a$ is an least upper bound, $a - 1$ is not an upper bound of $S$, so $\exists x \in S, a - 1 \leq x \leq a$\\
+let $a := \sup S$, since $a$ is an least upper bound, $a - 1$ is not an upper bound of $S$, so $\exists x_1 \in S, a - 1 \leq x_1 \leq a$\\
 continuing, construct a monotone increasing sequence $x_n, \forall n \in \mathbb{N}, a - 1 / n < x_n \leq a$, since $\lim_{n \rightarrow \infty} a - 1 / n = a$ and $\lim_{n \rightarrow \infty} a = a$, by squeeze lemma, $x_n$ converges to $a$\\
 \\
 \\
@@ -159,9 +159,8 @@ part 1\\
 if $\{x_n\}$ is unbounded above, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
 (i) if $\{x_n\}$ is unbounded above, then every $p$-tail of $\{x_n\}$ is also unbounded above\\
 if $\{x_n\}$ is unbounded above\\
-let $k > 0$ be arbitrary, since $\{x_n\}$ is unbounded above, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists x \in \mathbb{N}, f(x) := x_n > k$, then $\forall k \in \mathbb{N}, \exists n_k \in \mathbb{N}, f(x) := x_{n_k} > k$, we can find 1 term such that $x_{n_1} > k$, based on definition of $p$-tail, $n_1$-tail starts with the term after $x_{n_1}$, since $x_{n_2}$ came from $n_1$ tail, $n_1 < n_2$\\
-inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists x \in \mathbb{N}, f(x) := x_n > k, \forall p \in \mathbb{N}, \exists n_p \in \mathbb{N}, f(x) := x_{n_p} > k$, based on definition of $p$-tail, $n_p$-tail starts with the term after $x_{n_p}$, since $x_{n_{p + 1}}$ came from $n_p$ tail, $n_p < n_{p + 1}$\\
-now subsequence $x_{n_1}, x_{n_2}, ..., x_{n_p}, ...$ is defined since $n_1 < n_2 < ... < n_p < ...$, $x_{n_p} > k$\\
+base step: since $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded above,  based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k$, so choose $k = 1$, $\exists n_1 \in \mathbb{N}, x_{n_1} > 1$, $n_1$-tail of $x_n$ starts with the term after $x_{n_1}, n_1 < n_2$, if choose $k = 2$, $\exists n_2 \in \mathbb{N}, x_{n_2} > 2$\\
+inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k, \text{so }\exists n_p \in \mathbb{N}, f(n_p) := x_{n_p} > p$, $n_p$-tail is the sequence $\{x_{i + n_p}\}_{i = 1} ^ {\infty}$ starting at index $n_p + 1$, $n_{p + 1}$-tail is the sequence $\{x_{i + n_{p + 1}}\}_{i = 1} ^ {\infty}$ starting at index $n_{p + 1} + 1$, since $n_p$-tail of $x_n$ starts with the term after $x_{n_p}, n_p < n_{p + 1}$, $n_{p + 1}$-tail is defined, based on definition of unbounded above, $k = p + 1$, $\exists n_{p + 1} \in \mathbb{N}, x_{n_{p + 1}} > p + 1$\\
 so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
 \\
 part 2\\
@@ -206,7 +205,10 @@ $\forall \varepsilon > 0, \exists M \in \mathbb{N}, 0 < 1 / M < \varepsilon, \fo
 \begin{align*}
 \frac{MK}{n} + \frac{(n - M)\varepsilon}{2n} &\leq \frac{MK}{n} + \frac{n\varepsilon}{2n}\\
 &= \frac{MK}{n} + \frac{\varepsilon}{2}\\
-&< \varepsilon
+&\text{/* }\forall n > \frac{2MK}{\varepsilon}\text{ */}\\
+&< \frac{MK}{2MK / \varepsilon} + \frac{\varepsilon}{2}\\
+&= \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\\
+&= \varepsilon
 \end{align*}
 since $MK / n$ converges to 0
 \begin{align*}
