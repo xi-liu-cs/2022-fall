@@ -76,7 +76,7 @@ if $S$ is another least upper bound, then\\
 $\because S$ is an upper bound, and $B_1 \cup B_2$ is the least upper bound\\
 $\therefore B_1 \cup B_2 \subset S$\\
 \\
-$\because B_1 \cup B_2$ is an upper bound\\
+since $S$ is a least upper bound\\
 $\therefore S \subset B_1 \cup B_2$\\
 \\
 $\because B_1 \cup B_2 \subset S, S \subset B_1 \cup B_2\\
@@ -106,7 +106,7 @@ continuing, construct a monotone increasing sequence $x_n, \forall n \in \mathbb
 \\
 \\
 (b)\\
-base step: $\{y_n\} = \{y_1\} \in S$, monotone increasing\\
+base step: $y_1 \in S$, monotone increasing\\
 inductive step: assume $y_1, ..., y_n = \{y_n\} \in S$ is monotone increasing, need to show $y_1, ..., y_{n + 1} = \{y_{n + 1}\} \in S$ is also monotone increasing\\
 $\because \sup S \not\in S, \forall n \in \mathbb{N}, \forall y_n \in S, y_n < \sup S \\
 \sup S - y_n > 0\\
@@ -165,8 +165,12 @@ so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k
 \\
 part 2\\
 if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then $\{x_n\}$ is unbounded above\\
-if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then\\ $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > K$\\
-let $x_{n_k} := x_k := k$, for contradiction, assume $\{x_n\}$ is bounded above, let $b := \sup\{x_n\}$, number $b - 1$ cannot be an upper bound for $\{x_n\}$ as it is strictly less than $b$ (the least upper bound). $\exists m \in \mathbb{N}, m > b - 1, m + 1 = x_m + 1 > b$, contradicting $b$ being an upper bound, so $\{x_n\}$ is unbounded above\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then\\
+$\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
+let $x_n := n$, for contradiction, assume $\{x_n\}$ is bounded above, let $b := \sup\{x_n\}$, number $b - 1$ cannot be an upper bound for $\{x_n\}$ as it is strictly less than $b$ (the least upper bound). $\exists m \in \mathbb{N}, m > b - 1, m + 1 = x_m + 1 > b$, since $x_m + 1$ is a term in the sequence that is greater than $b$, it contradicts with $b$ being an upper bound, so $\{x_n\}$ is unbounded above\\
+\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
+assume $\{x_n\}$ has an upper bound $b$ s.t. $\forall n \in \mathbb{N}, x_n \leq b$, since $\{x_{n_k}\}$ diverges, for $b \in \mathbb{R}, \exists M \in \mathbb{N}, \forall k \geq M, x_{n_k} > b,$ then for $n = n_k, x_n > b$, contradicts with $x_n \leq b$, so $\{x_n\}$ is unbounded above\\
 \\
 \\
 \\
