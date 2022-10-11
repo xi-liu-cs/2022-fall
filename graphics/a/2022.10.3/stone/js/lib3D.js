@@ -1,4 +1,3 @@
-
 function lib3D() {
 
 const VERTEX_SIZE = 3;
