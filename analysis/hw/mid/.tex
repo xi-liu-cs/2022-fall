@@ -117,22 +117,24 @@ $\{y_n\}$ is a monotone increasing sequence\\
 \\
 \\
 (c)\\
-since there exists a strictly monotone increasing sequence $\{y_n\}$ with $y_n \in S, \forall n \in \mathbb{N}$, establish a bijective function $f: \{y_n : n \in \mathbb{N}\} \rightarrow \mathbb{N}, f(y_n) = n$\\
+since there exists a strictly monotone increasing sequence $\{y_n\}$ with $y_n \in S, \forall n \in \mathbb{N}$, establish a bijective function $f: \mathbb{N} \rightarrow \{y_n : n \in \mathbb{N}\}, f(n) = y_n$\\
+$f(n) = y_n$ is injective: $a < b \rightarrow f_a < f_b, a > b \rightarrow f_a > f_b,$ so $a \not= b \rightarrow f(a) \not= f(b)$\\
+$f(n) = y_n$ is surjective: $\forall y_a \in \{y_n: n \in \mathbb{N}\}$, $\exists n = a \in \mathbb{N}, y_n = y_a$\\
 \\
 \\
 (d)\\
-let $S$ be the empty set, $S = \emptyset \subset \mathbb{R}$, then $S$ only have 1 subset $E = \emptyset$ that is itself, $\emptyset$ is finite so it is not countably infinite\\
+let $S := \{0\}, \sup S = 0 \in S, \mathcal{P}(S) = \{\emptyset, \{0\}\}$, all subsets $E$ of $S$ is finite so it is not countably infinite\\
 so not always be a countably infinite subset\\
 \\
 \\
 3.\\
 (a)\\
 part 1\\
-$\{x_n\}$ diverges to negative infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n \leq -k, \lim_{n \rightarrow \infty} x_n := -\infty$\\
+$\{x_n\}$ diverges to negative infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n \leq k, \lim_{n \rightarrow \infty} x_n := -\infty$\\
 part 2\\
 $\{x_n\} := \{-n ^ 3\}, M := \sqrt[3]{K}\\
-\forall K \in \mathbb{R}, \forall n \geq M, -n \leq -M, x_n = -n ^ 3 \leq -M ^ 3 = -(\sqrt[3]{K}) ^ 3 = -K\\
-x_n \leq -K$, $x_n$ diverges to $-\infty$\\
+\forall K \in \mathbb{R}, \forall n \geq M, -n \leq -M, x_n = -n ^ 3 \leq -M ^ 3 = -(\sqrt[3]{-K}) ^ 3 = K\\
+x_n \leq K$, $x_n$ diverges to $-\infty$\\
 \\
 \\
 (b)\\
