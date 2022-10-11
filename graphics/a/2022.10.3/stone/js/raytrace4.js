@@ -1,4 +1,3 @@
-
 rooms.raytrace4 = function () {
 
    lib3D();
