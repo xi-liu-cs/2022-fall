@@ -1,0 +1,130 @@
+given a sequence {x_n} write 'formal object'
+sum_{n = 1} ^ {infty} x_n
+sum x_n
+{x_n} is a formal object
+call it series
+converges if sequence partial sums {s_k}
+s_k := sum_{n = 1} ^ k x_n converges
+abuse notation
+
+if converge
+sum_{n = 1} ^ {infty} x_n = lim_{k -> inf} s_k
+if {s_k} diverges, sum x_n diverges
+
+convergence of geometric sequence
+suppose -1 < r < 1
+then series sum_{n = 1} ^ {infty} r ^ n converges to 1 / (1 - r)
+
+proof
+define s_k = sum_{n = 0} ^ {k - 1} x_n = 1 + r ^ 1 + ... + r ^ {k - 1}
+r - s_k = r + r ^ 2 + ... + r ^ k
+s_k - r * s_k = (1 - r)s_k = 1 + r ^ 1 + r ^ 2 + ... + r ^ {k - 1} - (1 + r ^ 2 + ... + r ^ k) = 1 - r ^ k
+s_k = (1 - r ^ k) / (1 - r) = 1 / (1 - r) - 1 / (1 - r) * r ^ k
+lim_{k -> inf} s_k = 1 / (1 - r)
+
+since {s_k} converges
+sum x_n converges to 1 / (1 - r)
+
+cannot assume sum_{n = 0} ^ infty r ^ n = s is a real number
+rs = r + r ^ 2 + r ^ 3 + ...
+s - rs = (1 - r)s = 1, s = 1 / (1 - r)
+
+plot x vs f(x)
+as x approachs c
+
+cluster point
+to say f(x) -> L as x -> c
+first need to figure out conditions to allow x to approach c
+let S subset R be a set
+say a number c in R is called a cluster point of s if
+for all delta > 0, exists x in S \ {c}, |x - c| < delta
+(c - delta, c + delta) cap S \ {c} is non empty
+
+c in R is not a cluter point of S
+exists delta > 0, for all x in S \ {c}, |x - c| >= delta
+(c - delta, c + delta) cap S \ {c} is empty
+
+S = {0} cup [1, 2]
+plot
+delta is a width
+0 in R is not a cluster point of S
+exists delta = 1 / 2, (c - delta, c + delta)
+= (0 - delta, 0 + delta) cap S \ {0}
+= (-1 / 2, 1 / 2) cap [1, 2]
+= empty set
+
+c is isolated from other points of S
+
+claim 1 in R is a cluster point of S
+for all delta > 0
+if delta < 1
+(c - delta, c + delta) = (1 - delta, 1 + delta) 
+= {0} cup (1, 2]
+is non empty
+1 is cluster point
+
+sequential characterization of cluster points
+let S subset R
+then c in R is a cluster point of S
+iff exists a convergent sequence {x_n}
+x_n in S \ {c} for all n in N
+lim x_n = c
+c is cluster point iff x -> c without being equal to c
+
+assume c in R is a cluster point of S
+(c - 1 / n, c + 1 / n) cap S \ {c} is non empty for all n in N
+take x_n in (c - 1 / n, c + 1 / n) cap S \ {c}
+x_n in S \ {c} /* since cap */
+let e > 0 be arbitrary
+take M in N, 1 / M < e
+for all n >= M
+/* x_n in (c - 1 / n, c + 1 / n), c - 1 / n < x_n < c + 1 / n, |x_n - c| < 1 / n */
+|x_n - c| <= 1 / n <= 1 / M < e
+{x_n} converge to c
+
+assume {x_n} converges to c in R with x_n in S \ {c} for all n in N
+let d > 0 be arbitrary, since x_n converge to c
+exists M in N, for all n >= M, |x_n - c| < d (set epsilon := delta)
+-> x_m in (c - d, c + d)
+and x_m in S \ {c}
+so x_m in (c - d, c + d) cap S \ {c}
+so set (c - d, c + d) cap S \ {c} is non empty
+so c is cluster point
+
+limit of a function
+epsilon delta definition of limit of a function
+let f: S -> R be a function
+c in R be a cluster point of S subset R
+suppose exists L in R, for all e > 0, exists d > 0,
+whenever x in S \ {c} and |x - c| < d, we have
+|f(x) - L| < e
+then f(x) converges to limit L as x goes to c
+lim_{x -> c} f(x) = L
+f(x) -> L as x -> c
+if no such L exists, f(x) diverges as x -> c
+
+f(x) converges as x -> c
+exists L in R, for all e > 0, exists d > 0, for all x in (c - d, c + d) cap S \ {c} /* always non empty since c is a cluster point */
+|f(x) - L| < e
+{x_n} converges as n -> infty
+compare with
+exists L in R, for all e > 0, exists n in N, |x_n - L| < e
+
+plot x vs f(x), S = R
+f(x) -> L as x -> c
+draw x = c, y = L
+draw x: (c - d, c + d)
+draw y: (L - e, L + e)
+
+f: [0, 1] -> R
+given by f(x) = 
+{
+x if 0 < x <= 1
+1 if x = 0
+}
+lim_{x -> 0} f(x) = 0
+
+let e > 0 be arbitrary, exists d = e, then
+for all x in (0 - d, 0 + d) cap S \ {0}
+|x - 0| < d and x in [0, 1] \ {0} = (0, 1]
+|f(x) - L| = |x - 0| < d = e
