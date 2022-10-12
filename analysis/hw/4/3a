@@ -1,0 +1,19 @@
+3\\
+let $\{x_n\}_{n = 1} ^ {\infty}$ and $\{y_n\}_{n = 1} ^ {\infty}$ be bounded sequences\\
+(a)
+\[\text{show } \lim_{i \rightarrow \infty} (x_{n_i} + y_{n_i}) = \lim_{n \rightarrow \infty}\inf(x_n + y_n)\]
+$a_n := \inf\{x_k + y_k: k \geq n\}, z := \lim \inf (x_n + y_n) = \lim a_n$\\
+define the subsequence inductively\\
+let $n_1 := 1$, suppose defined subsequence until $n_k$ for some $k$\\
+pick $m > n_k$
+\[a_{(n_k + 1)} - x_m < \frac{1}{k + 1}\]
+can do this since $a_{(n_k + 1)} = \sup\{x_n: n \geq n_k + 1\}$, so there are elements arbitrarily close to the supremum\\
+set $n_{k + 1} := m$, subsequence $\{x_{n_k}\}$ is defined\\
+$\forall k \geq 2, a_{n_{k - 1} + 1} \geq a_{n_k}$ since\\
+/* $a_{n_{k - 1} + 1} = \sup\{x_k: k \geq n_{k - 1} + 1\}\\
+a_{n_k} = \sup\{x_k: k \geq n_k\}$\\
+based on definition of subsequence, $\{x_n\}$'s subsequence $\{x_{n_i}\}_{i = 1} ^ {\infty}$'s index sequence $\{n_i\}$ is a strictly increasing sequence of natural numbers, $n_i < n_{i + 1}, n_i + 1 \leq n_{i + 1}$\\
+so $n_{k - 1} + 1 \leq n_k\\
+\sup\{x_k: k \geq n_{k - 1} + 1\} \geq \sup\{x_k: k \geq n_k\}\\
+a_{n_{k - 1} + 1} \geq a_{n_k}$ */\\
+and $a_{n_k} = \sup\{x_k: k \geq n_k\} \geq x_{n_k}$\\
