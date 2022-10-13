@@ -1,0 +1,20 @@
+cylinder: 2 quadric surfaces
+cube: 3
+octahedron: 4
+>> 0: right shift by 0 turn float to int
+(num * 100 >> 0) / 100, round to 2 decimal places
+otherwise rounding error displayed
+tube: x ^ 2 + y ^ 2 - 1 <= 0
+
+tube
+shape.push(2, 0) /* 2 quadric surfaces, process 2 at a time, skip for next iteration */
+
+higher level routines reduce user choices
+
+octahedron coefficient push()
+(x + y + z) ^ 2 - 1 <= 0 /* xx + yy + zz + 2xy + 2yz + 2zx - 1 <= 0 */
+(x - y - z) ^ 2 - 1 <= 0
+(-x + y - z) ^ 2 - 1 <= 0
+(-x - y + z) ^ 2 - 1 <= 0
+
+cpu: only once per frame
