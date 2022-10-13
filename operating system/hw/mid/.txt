@@ -1,0 +1,2 @@
+https://ayandas.me/blog-tut/2019/01/05/linking-in-c++.html#:~:text=The%20ldd%20command%20lists%20the,not%20have%20any%20runtime%20dependencies.
+http://gcc.gnu.org/onlinedocs/gcc/Link-Options.html
