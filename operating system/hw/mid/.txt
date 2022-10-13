@@ -1,3 +1,4 @@
 https://ayandas.me/blog-tut/2019/01/05/linking-in-c++.html
 http://gcc.gnu.org/onlinedocs/gcc/Link-Options.html
 https://www.ibm.com/docs/en/xl-fortran-aix/15.1.3?topic=fortran-dynamic-static-linking
+https://mycareerwise.com/content/advantages-and-disadvantages-dynamic-linking/content/exam/gate/computer-science
