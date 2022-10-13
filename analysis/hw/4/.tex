@@ -1,0 +1,283 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1\\
+$0 < c < 1$\\
+(a)\\
+part 1
+\begin{align*}
+\lim_{n \rightarrow \infty} \sup \{(-c) ^ n\} &= \lim_{n \rightarrow \infty}(\sup\{x_k: k \geq n\})\\
+\sup\{x_k: k \geq n\} &= \sup\{(-c) ^ n, (-c) ^ {n + 1}, ...\}\\
+&=
+\begin{cases}
+(-c) ^ n = c ^ n & \text{if n is even}\\
+(-c) ^ {n + 1} = c ^ {n + 1} & \text{if n is odd}\\
+\end{cases}\\
+&= 0 \text{ as } n \rightarrow \infty\\
+\lim_{n \rightarrow \infty} \sup x_n &= 0
+\end{align*}
+\\
+part 2
+\begin{align*}
+\lim_{n \rightarrow \infty} \inf \{(-c) ^ n\} &= \lim_{n \rightarrow \infty}(\inf\{x_k: k \geq n\})\\
+\inf\{x_k: k \geq n\} &= \inf\{(-c) ^ n, (-c) ^ {n + 1}, ...\}\\
+&=
+\begin{cases}
+(-c) ^ {n + 1} = -c ^ {n + 1} & \text{if n is even}\\
+(-c) ^ n = -c ^ n & \text{if n is odd}\\
+\end{cases}\\
+&= 0 \text{ as } n \rightarrow \infty\\
+\lim_{n \rightarrow \infty} \inf x_n &= 0
+\end{align*}
+based on proposition 2.3.5, since $\lim_{n \rightarrow \infty} \inf x_n = \lim_{n \rightarrow \infty} \sup x_n, \{x_n\}$ converges\\
+$\lim_{n \rightarrow \infty} x_n = \lim_{n \rightarrow \infty} \inf x_n = \lim_{n \rightarrow \infty} \sup x_n = 0$\\
+\\
+\\
+(b)\\
+part 1
+\begin{align*}
+\lim_{n \rightarrow \infty} \sup\left\{(-1) ^ n + \frac{1}{n}\right\} &= \lim_{n \rightarrow \infty}(\sup\{x_k: k \geq n\})\\
+\sup\{x_k: k \geq n\} &= \sup\left\{(-1) ^ n + \frac{1}{n},\;(-1) ^ {n + 1} + \frac{1}{n + 1},\;...\right\}\\
+&=
+\begin{cases}
+(-1) ^ n + \frac{1}{n} & \text{if n is even}\\
+(-1) ^ {n + 1} + \frac{1}{n + 1} & \text{if n is odd}\\
+\end{cases}\\
+&= 1 \text{ as } n \rightarrow \infty\\
+\lim_{n \rightarrow \infty} \sup x_n &= 1
+\end{align*}
+\\
+\\
+part 2
+\begin{align*}
+\lim_{n \rightarrow \infty} \inf\left\{(-1) ^ n + \frac{1}{n}\right\} &= \lim_{n \rightarrow \infty}(\inf\{x_k: k \geq n\})\\
+\inf\{x_k: k \geq n\} &= \inf\left\{(-1) ^ n + \frac{1}{n},\;(-1) ^ {n + 1} + \frac{1}{n + 1},\;...\right\}\\
+&=
+\begin{cases}
+(-1) ^ {n + 1} + \frac{1}{n + 1} & \text{if n is even}\\
+(-1) ^ n + \frac{1}{n} & \text{if n is odd}\\
+\end{cases}\\
+&= -1 \text{ as } n \rightarrow \infty\\
+\lim_{n \rightarrow \infty} \inf x_n &= -1
+\end{align*}
+based on proposition 2.3.5, since $\lim_{n \rightarrow \infty} \inf x_n = -1 \not= 1 = \lim_{n \rightarrow \infty} \sup x_n, \{x_n\}$ do not converge, so $\{x_n\}$ diverges\\
+\\
+\\
+\\
+2\\
+original limit definition\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, 0 < 1 / M ^ 2 < \varepsilon, \forall n \geq \max\{1, M\}, 1 / n ^ 2 \leq 1 / M ^ 2$
+\[|x_n - 0| = \left|\frac{1}{n ^ 2}- 0\right| = \frac{1}{n ^ 2} \leq \frac{1}{M ^ 2} < \varepsilon\]
+cauchy\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, M ^ 2 > 2 / \varepsilon, \forall n, k \geq M, 1 / n ^ 2 \leq 1 / M ^ 2 < \varepsilon / 2,\; 1 / k ^ 2 \leq 1 / M ^ 2 < \varepsilon / 2\\
+1 / n ^ 2 < \varepsilon / 2,\;1 / k ^ 2 < \varepsilon / 2\\
+\forall n, k \geq M$
+\[\left|\frac{1}{n ^ 2} - \frac{1}{k ^ 2}\right| \leq \left|\frac{1}{n ^ 2}\right| + \left|\frac{1}{k ^ 2}\right| = \frac{1}{n ^ 2} + \frac{1}{k ^ 2} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\]
+so $\{1 / n ^ 2\}$ is cauchy\\
+\\
+\\
+\\
+3\\
+let $\{x_n\}_{n = 1} ^ {\infty}$ and $\{y_n\}_{n = 1} ^ {\infty}$ be bounded sequences\\
+(a)
+\[\text{show } \lim_{i \rightarrow \infty} (x_{n_i} + y_{n_i}) = \lim_{n \rightarrow \infty}\inf(x_n + y_n)\]
+$z_n := x_n + y_n, z_{n_i} := x_{n_i} + y_{n_i}\\
+a_n := \inf\{x_k + y_k: k \geq n\} = \inf\{z_k: k \geq n\}, z := \lim \inf (x_n + y_n) = \lim \inf z_n = \lim a_n$\\
+define the subsequence inductively\\
+let $n_1 := 1$, suppose defined subsequence until $n_k$ for some $k$\\
+pick $m > n_k$
+\[a_{(n_k + 1)} - z_m < \frac{1}{k + 1}\]
+can do this since $a_{(n_k + 1)} = \sup\{z_n: n \geq n_k + 1\}$, so there are elements arbitrarily close to the supremum\\
+set $n_{k + 1} := m$, subsequence $\{z_{n_k}\}$ is defined\\
+$\forall k \geq 2, a_{n_{k - 1} + 1} \geq a_{n_k}$ since\\
+/* $a_{n_{k - 1} + 1} = \sup\{z_k: k \geq n_{k - 1} + 1\}\\
+a_{n_k} = \sup\{z_k: k \geq n_k\}$\\
+based on definition of subsequence, $\{z_n\}$'s subsequence $\{z_{n_i}\}_{i = 1} ^ {\infty}$'s index sequence $\{n_i\}$ is a strictly increasing sequence of natural numbers, $n_i < n_{i + 1}, n_i + 1 \leq n_{i + 1}$\\
+so $n_{k - 1} + 1 \leq n_k\\
+\sup\{z_k: k \geq n_{k - 1} + 1\} \geq \sup\{z_k: k \geq n_k\}\\
+a_{n_{k - 1} + 1} \geq a_{n_k}$ */\\
+and $a_{n_k} = \sup\{z_k: k \geq n_k\} \geq z_{n_k}$\\
+so $\forall k \geq 2$
+\begin{align*}
+|a_{n_k} - z_{n_k}| &= a_{n_k} - z_{n_k}\\
+&\leq a_{n_{k - 1} + 1} - z_{n_k}\\
+&< \frac{1}{k}
+\end{align*}
+show $\{z_{n_k}\}$ converges to $z$, let $\varepsilon > 0$ be given, as $\{a_n\}$ converges to $z$, subsequence $\{a_{n_k}\}$ converges to $z$\\
+$\exists M_1 \in \mathbb{N}, \forall k \geq M_1$
+\[|a_{n_k} - z| < \frac{\varepsilon}{2}\]
+find $M_2 \in \mathbb{N}$
+\[\frac{1}{M_2} \leq \frac{\varepsilon}{2}\]
+take $M := \max\{M_1, M_2, 2\}, \forall k \geq M$
+\begin{align*}
+|z - z_{n_k}| &= |a_{n_k} - z_{n_k} + z - a_{n_k}|\\
+&\leq |a_{n_k} - z_{n_k}| + |z - a_{n_k}|\\
+&< \frac{1}{k} + \frac{\varepsilon}{2}\\
+&< \frac{1}{M_2} + \frac{\varepsilon}{2}\\
+&< \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\\
+&= \varepsilon\\
+\end{align*}
+\\
+\\
+(b)
+\begin{align*}
+\lim_{n \rightarrow \infty} \inf (x_n + y_n) &= \lim_{n \rightarrow \infty} \inf\{x_k + y_k: k \geq n\}\\
+&\geq \lim_{n \rightarrow \infty} (\inf\{x_k: k \geq n\} + \inf\{y_k: k \geq n\})\\
+&\text{/* since if } x \in A, y \in B, \text{then}\\
+&\inf A + \inf B \leq x + y\\
+&\text{so } \inf A + \inf B \text{ is a lower bound of } A + B \text{ and so}\\
+&\inf A + \inf B \leq \inf(A + B) \text{ */}\\
+&= \lim_{n \rightarrow \infty} \inf\{x_k: k \geq n\} + \lim_{n \rightarrow \infty} \inf\{y_k: k \geq n\}\quad\text{continuity of algebraic operations}\\
+&= \left(\lim_{n \rightarrow \infty} \inf x_n \right) + \left(\lim_{n \rightarrow \infty} \inf y_n \right)
+\end{align*}
+\\
+\\
+(c)
+\begin{align*}
+\{x_n\} &:= \{(-1) ^ n\},\quad\{y_n\} := \{(-1) ^ {n + 1}\}\\
+\lim_{n \rightarrow \infty}\inf(x_n + y_n) &= \lim_{n \rightarrow \infty}\inf((-1) ^ n + (-1) ^ {n + 1})\\
+&=
+\begin{cases}
+1 + -1 = 0 & \text{if n is even}\\
+-1 + 1 = 0 & \text{if n is odd}\\
+\end{cases}\\
+\lim_{n \rightarrow \infty}\inf x_n &= -1\\
+\lim_{n \rightarrow \infty}\inf y_n &= -1\\
+\lim_{n \rightarrow \infty}\inf(x_n + y_n) &= 0 > -2 = -1 + -1 = \left(\lim_{n \rightarrow \infty} \inf x_n \right) + \left(\lim_{n \rightarrow \infty} \inf y_n \right)
+\end{align*}
+\\
+\\
+\\
+4\\
+(a)\\
+$\{x_n\} := n$ is an unbounded sequence which has the property that every subsequence diverges\\
+\\
+definition 1.3.6\\
+$f: D \rightarrow \mathbb{R}$\\
+$f$ is bounded: $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+$f$ is unbounded: $\forall M \in \mathbb{R}, \exists x \in D, |f(x)| > M$\\
+\\
+$\{x_n\} := n$ is unbounded: $\forall M \in \mathbb{R}, \exists n = \lceil|M|\rceil + 1 \in \mathbb{N}, |f(n)| = |n| = n > M$\\
+\\
+definition 2.3.9\\
+$\{x_n\}$ diverges to infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n > K$\\
+$\{x_{n_i}\}_{i = 1} ^ {\infty}$ diverges to infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \exists i = \lceil|K|\rceil + 1 \in \mathbb{N}, \forall n_i \geq M, x_{n_i} = n_i = i > K$\\
+\\
+\\
+(b)\\
+$\{r_n\} := \{(-1) ^ n\}$ is a bounded sequence of rational numbers such that no subsequence of $\{r_n\} := \{(-1) ^ n\}$ converges to a rational number since $\{r_n\} := \{(-1) ^ n\}$ diverges\\
+\\
+$\{(-1) ^ n\}$ is bounded: $\exists M := 1 \in \mathbb{R}, \forall n \in \mathbb{N}, |f(n)| = |(-1) ^ n| = 1 \leq M := 1$\\
+$\{(-1) ^ n\}$ diverges:\\
+$\exists \varepsilon \in (0, 2], \forall M \in \mathbb{N}, \exists n, k \geq M, |x_n - x_k| = 2 \geq \varepsilon$\\
+so $\{(-1) ^ n\}$ is not cauchy, based on theorem 2.4.5, a sequence of real numbers is cauchy if and only if it converges, so $\{(-1) ^ n\}$ diverges\\
+definition 2.4.1\\
+cauchy: $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n, k \geq M, |x_n - x_k| < \varepsilon$\\
+not cauchy: $\exists \varepsilon > 0, \forall M \in \mathbb{N}, \exists n, k \geq M, |x_n - x_k| \geq \varepsilon$\\
+\\
+\\
+\\
+5\\
+(a)\\
+based on bolzano weierstrass theorem 2.3.8, suppose a sequence $\{x_n\}$ of real numbers is bounded. then there exists a convergent subsequence $\{x_{n_i}\}$\\
+since a cauchy sequence is bounded (proposition 2.4.4), there exists a convergent subsequence\\
+let $\{x_n\}$ be a cauchy sequence, $\{x_{n_k}\}$ be a convergent subsequence\\ $x := \lim_{k \rightarrow \infty} x_{n_k}$\\
+show $\lim_{n \rightarrow \infty} x_n = x$\\
+since $\{x_{n_k}\}$ is a convergent subsequence\\
+$\forall \varepsilon > 0, \exists M_1 \in \mathbb{N}, \forall k \geq M_1, |x_{n_k} - x| < \varepsilon / 2$\\
+since $\{x_n\}$ is cauchy, based on definition 2.4.1\\
+$\forall \varepsilon > 0, \exists M_2 \in \mathbb{N}, \forall i, j \geq M_2, |x_i - x_j| < \varepsilon / 2$\\
+choose $a > M_1$ large enough so that $n_a > M_2$, then $\forall n > M_2$\\
+$|x_n - x| = |x_n - x_{n_a} + x_{n_a} - x| \leq |x_n - x_{n_a}| + |x_{n_a} - x| < |x_i - x_j| + |x_{n_k} - x| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon$\\
+\\
+\\
+(b)\\
+$\{r_n\} := \{(1 + \frac{1}{n}) ^ n\}$ is a cauchy sequence that does not converge to some limit $r \in \mathbb{Q}$\\
+since $e := \lim_{n \rightarrow \infty} (1 + \frac{1}{n}) ^ n$ is irrational based on Joseph Fourier's proof by contradiction\\
+since $\{r_n\} := \{(1 + \frac{1}{n}) ^ n\}$ converges to a  real number $e \in \mathbb{R} \setminus \mathbb{Q}$, and based on proposition 2.1.6, a convergent sequence has a unique limit, so $\{r_n\}$ is a cauchy sequence that does not converge to some limit $r \in \mathbb{Q}$. so $\mathbb{Q}$ is not cauchy complete\\
+\\
+\\
+\\
+6
+\begin{align*}
+\forall n \in \mathbb{N}, x_n &\leq y_n\\
+\forall k \in \mathbb{N}, \sum_{n = 1} ^ k x_n &\leq \sum_{n = 1} ^ k y_n\\
+\lim_{k \rightarrow \infty} \sum_{n = 1} ^ k x_n &\leq \lim_{k \rightarrow \infty} \sum_{n = 1} ^ k y_n \quad\text{based on lemma 2.2.3}\\
+\sum_{n = 1} ^ {\infty} x_n &\leq \sum_{n = 1} ^ {\infty} y_n\\
+\end{align*}
+lemma 2.2.3 proof\\
+$(x_n \leq y_n) \rightarrow (\lim x_n \leq \lim y_n)\\
+x := \lim x_n, y := \lim y_n\\
+\forall \varepsilon > 0, \exists M_1 \in \mathbb{N}, \forall n \geq M_1, |x_n - x| < \varepsilon / 2\\
+\forall \varepsilon > 0, \exists M_2 \in \mathbb{N}, \forall n \geq M_2, |y_n - y| < \varepsilon / 2\\
+\exists n \geq \max\{M_1, M_2\}, x - x_n < \varepsilon / 2, y_n - y < \varepsilon / 2\\
+y_n - x_n + x - y < \varepsilon / 2 + \varepsilon / 2 = \varepsilon\\
+y_n - x_n < y - x + \varepsilon\\
+\because x_n \leq y_n, \therefore 0 \leq y_n - x_n < y - x + \varepsilon\\
+0 < y - x + \varepsilon\\
+y - x > -\varepsilon\\
+x - y < \varepsilon\\
+x \leq y$\\
+\\
+\\
+\\
+7\\
+$d_n \in \{0,1, 2, 3, 4, 5, 6, 7, 8, 9\}$\\
+proposition 2.5.13: if $\forall n \in \mathbb{N}, x_n \geq 0$, then $\sum x_n$ converges if and only if the sequence of partial sums is bounded above\\
+need to find an upper bound $b \in \mathbb{R}$ such that $\sum_{n = 1} ^ {\infty} |\frac{d_n}{10 ^ n}| \leq b$
+\begin{align*}
+\sum_{n = 1} ^ {\infty} \left|\frac{d_n}{10 ^ n}\right| &\leq \sum_{n = 1} ^ {\infty} \left|\frac{9}{10 ^ n}\right|\\
+&= 9\sum_{n = 1} ^ {\infty} \frac{1}{10 ^ n}\\
+&= 9\sum_{n = 1} ^ {\infty} \left(\frac{1}{10}\right) ^ n\\
+&= 9\left(\frac{1}{1 - (1 / 10)}\right)\qquad \text{geometric series sum}\\ 
+&= 9\left(\frac{1}{9 / 10}\right)\\
+&= 9\cdot\frac{10}{9}\\
+&= 10
+\end{align*}
+so $\sum |x_n|$ is bounded above, so $\sum x_n$ is absolutely convergent
+\end{document}
