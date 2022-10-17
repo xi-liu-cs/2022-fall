@@ -1,2 +1,117 @@
 S subset R, c in R is a cluster point of S
 for all d > 0, (c - e, e + e) cap S \ {c} is non empty
+
+exists L in R, for all e > 0, exists d > 0, for all x in (c - d, c + d) cap S \ {c} /* always non empty since c is a cluster point */
+|f(x) - L| < e
+
+sequential limit
+let S subset R, c be a cluster point of S
+f: S -> R
+f(x) -> L as x -> c iff for all sequence
+{x_n} satistfy x_n in S \ {c} for all n in N, lim_{n -> infty} x_n = c
+we have sequence {f(x)} converges to L
+
+lim f(x) = L
+lim f(x_n) = L for all x_n
+
+assume lim_{x -> c} f(x) = L
+for all e > 0, exists d > 0, for all x in (c - d, c + d) cap S \ {c} |f(x) - L| < e
+for all sequence {x_n} satisfying  x_n in S \ {c} for all n in N, lim_{n -> infty} x_n = c
+exists M in N, for all n >= M, |x_n - c| < d, note x_n in (c - d, c + d) cap S \ {c}
+for all n >= M
+|f(x_n) - L| < e
+{f(x_n)} converges to L
+
+contrapositive
+show f(x) not converge to L as x -> c 
+imply
+{x_n} in S \ {c} for all n in N, x_n -> c as n -> infty, f(x_n) not converge to L as n -> infty
+
+f(x) not converge to L:
+exits e > 0, for all d > 0, exists x in (c - d, c + d) cap S \ {c}
+|f(x) - L| >= e
+
+assume f(x) not converge to L as x -> c
+exits e > 0, for all n in N, exists x_n in S \ {c} cap (c - 1 / n, c + 1 / n)
+|f(x_n) - L| >= e
+
+x_n in S \ {c} for all n in N
+|x_n - c| <= 1 / n
+|f(x) - L| >= e > 0 /* e is a fixed number */
+since at least e, f(x_n) not converge to L as n -> infty
+
+f: R \ {0} -> R
+f(x) = sin(1 / x)
+claim f(x) diverges as x -> 0
+
+suppose lim_{x -> c} f(x) = L in R as x -> 0
+by sequential limit lemma
+for all x_n satisfy x_n in R \ {0}, x_n -> 0 as n -> inf
+lim f(x_n) = L
+
+take x_n given by x_n = 1 / (n pi + pi / 2)
+x_n -> 0 as n -> infty
+x_n in R \ {0}
+f(x_n) = sin(1 / x_n) = sin(1 / (1 / (n pi + pi / 2))) = sin((n pi + pi / 2) = (-1) ^ n not converge to L as n -> infty
+vontradiction, f(x) not converge to any L as x -> 0
+
+upgrade results about sequences to functions
+continuity of mul
+f(x) -> L1
+g(x) -> L2
+as x -> c
+forall {x_n} satisfy  x_n in S \ {0} for all n in N, x_n -> 0 as n -> inf
+lim (f * g) /* converge by sequential limit lemma */
+= (lim f)(lim g) /* continuity og mul of sequences */
+= L1 * L2
+/* change input from x_n (sequence) to x (function) */
+
+why S \ {c}
+limit of sequence, cannot plug in n = infty
+limit of function, cannot plug in x = c
+lim_{n -> 0} (f(x + h) - f(x)) / h
+
+continuity
+e-d definition of continuity
+S subset R, c in S, f: S -> R
+f is continuous at c if
+for all e > 0, exists d > 0, for all x in S, |x - c| < d
+|f(x) - f(c)| < e
+if f is continuous for all c in S, f is continuous function
+
+characterizations of continuity
+let S subset R, c in S, f: S -> R
+
+limit characterization:
+if(c != cluster of S)
+  f is continuous at c
+if(c == cluster of S)
+  f is continuous at c iff lim_{x -> c} f(x) = f(c)
+
+sequential characterization
+f is continuous at c iff for all sequence {x_n} satisfying
+x_n in S, for all n in N and x_n -> c as n -> infty
+lim_{n -> infty} f(x_n) = f(c) = f(lim_{n -> infty} x_n)
+
+proof limit characterization
+1. suppose c is not cluster point of S
+not cluster: 
+exists d > 0, (c - d, c + d) cap S \ {c} is empty
+since c in S, (c - d, c + d) cap S = {c}
+for all e > 0, for d above, for all x in S, |x - c| < d
+for all x in {c}
+|f(x)| - f(c)| = |f(c) - f(c)| = 0 < e
+so f is continuous
+
+2. let c be cluster point of S
+assume f is continuous at c
+for all e > 0, exists d > 0, for all x in (c - d, c + d) cap S, |f(x) - f(c)| < e /* more strict */
+note (c - d, c + d) cap S \ {c} subset (c - d, c + d) cap S
+for all e > 0, exists d > 0, for all x in (c - d, c + d) cap S \ {c}, |f(x) - f(c)| < e /* less strict */
+lim_{x -> c} f(x) = f(c)
+
+proof sequential characterization
+assume lim_{x -> c} f(x) = f(c)
+for all e > 0, exists d > 0,  for all x in S \ {c} cap (c - d, c + d), |f(x) - f(c)| < e
+note |f(c) - f(c)| = 0 < e, for all x in S cap (c - d, c + d)
+f is continuous at c
