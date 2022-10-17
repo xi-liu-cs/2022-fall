@@ -1,0 +1,2 @@
+S subset R, c in R is a cluster point of S
+for all d > 0, (c - e, e + e) cap S \ {c} is non empty
