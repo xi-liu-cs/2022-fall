@@ -3,3 +3,4 @@ DCNFALL2022%-
 
 https://stackoverflow.com/questions/36795819/when-should-i-use-curly-braces-for-es6-import
 https://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
+https://stackoverflow.com/questions/73210017/using-css-grid-position-multi-row-children-directly-under-each-other
