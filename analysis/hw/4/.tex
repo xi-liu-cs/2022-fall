@@ -87,8 +87,8 @@ part 1
 \sup\{x_k: k \geq n\} &= \sup\left\{(-1) ^ n + \frac{1}{n},\;(-1) ^ {n + 1} + \frac{1}{n + 1},\;...\right\}\\
 &=
 \begin{cases}
-(-1) ^ n + \frac{1}{n} & \text{if n is even}\\
-(-1) ^ {n + 1} + \frac{1}{n + 1} & \text{if n is odd}\\
+(-1) ^ n + \frac{1}{n} = 1 + \frac{1}{n} & \text{if n is even}\\
+(-1) ^ {n + 1} + \frac{1}{n + 1} = 1 + \frac{1}{n + 1} & \text{if n is odd}\\
 \end{cases}\\
 &= 1 \text{ as } n \rightarrow \infty\\
 \lim_{n \rightarrow \infty} \sup x_n &= 1
@@ -101,8 +101,8 @@ part 2
 \inf\{x_k: k \geq n\} &= \inf\left\{(-1) ^ n + \frac{1}{n},\;(-1) ^ {n + 1} + \frac{1}{n + 1},\;...\right\}\\
 &=
 \begin{cases}
-(-1) ^ {n + 1} + \frac{1}{n + 1} & \text{if n is even}\\
-(-1) ^ n + \frac{1}{n} & \text{if n is odd}\\
+(-1) ^ {n + 1} + \frac{1}{n + 1} = -1 + \frac{1}{n + 1} & \text{if n is even}\\
+(-1) ^ n + \frac{1}{n} = -1 + \frac{1}{n} & \text{if n is odd}\\
 \end{cases}\\
 &= -1 \text{ as } n \rightarrow \infty\\
 \lim_{n \rightarrow \infty} \inf x_n &= -1
@@ -164,6 +164,15 @@ take $M := \max\{M_1, M_2, 2\}, \forall k \geq M$
 &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\\
 &= \varepsilon\\
 \end{align*}
+let $z_n := x_n + y_n$\\
+$\{x_n\}$ is bounded: $\exists M_1 \in \mathbb{R}, \forall n \in \mathbb{N}, |x_n| \leq M_1$\\
+$\{y_n\}$ is bounded: $\exists M_2 \in \mathbb{R}, \forall n \in \mathbb{N}, |y_n| \leq M_2$\\
+$\therefore \exists M_3 := M_1 + M_2 \in \mathbb{R}, \forall n \in \mathbb{N}, |z_n| = |x_n + y_n| \leq |x_n| + |y_n| \leq M_1 + M_2 = M_3$\\
+$\therefore \{z_n\}$ is bounded, based on theorem 2.3.4, $\exists$ subsequence $\{z_{n_k}\} = \{x_{n_k} + y_{n_k}\}$ such that
+\begin{align*}
+\lim_{k \rightarrow \infty} z_{n_k} &= \lim_{n \rightarrow \infty} \inf z_n\\
+\lim_{k \rightarrow \infty} (x_{n_k} + y_{n_k}) &= \lim_{n \rightarrow \infty} \inf (x_n + y_n)\\
+\end{align*}
 \\
 \\
 (b)
@@ -197,14 +206,14 @@ take $M := \max\{M_1, M_2, 2\}, \forall k \geq M$
 \\
 4\\
 (a)\\
-$\{x_n\} := n$ is an unbounded sequence which has the property that every subsequence diverges\\
+$\{x_n\} := \{n\}$ is an unbounded sequence which has the property that every subsequence diverges\\
 \\
 definition 1.3.6\\
 $f: D \rightarrow \mathbb{R}$\\
 $f$ is bounded: $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
 $f$ is unbounded: $\forall M \in \mathbb{R}, \exists x \in D, |f(x)| > M$\\
 \\
-$\{x_n\} := n$ is unbounded: $\forall M \in \mathbb{R}, \exists n = \lceil|M|\rceil + 1 \in \mathbb{N}, |f(n)| = |n| = n > M$\\
+$\{x_n\} := \{n\}$ is unbounded: $\forall M \in \mathbb{R}, \exists n = \lceil|M|\rceil + 1 \in \mathbb{N}, |f(n)| = |n| = n > M$\\
 \\
 definition 2.3.9\\
 $\{x_n\}$ diverges to infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n > K$\\
