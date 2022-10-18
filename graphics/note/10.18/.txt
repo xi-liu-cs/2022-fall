@@ -1,0 +1,23 @@
+getAttributeLocation
+vetexAttributePointer
+square mesh: position, surface normal, uv coordinate
+glue mesh
+uv mesh: convert uv square to mesh
+f: (u, v) -> vertex
+drawMesh(mesh, matrix)
+transform both vertex and surface normal
+projection matrix is for perspective
+transformMesh(mesh, matrix)
+z buffering
+depth test
+projection matrix for depth
+(1, 0, 0, 0,
+0, 1, 0, 0,
+0, 0, 1, -0.1,
+0, 0, 0, 1)
+(x
+y
+z
+1)
+camera at certain distance away
+smaller when far
