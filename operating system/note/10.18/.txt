@@ -1,0 +1,6 @@
+address space is divided into pages
+a byte is smallest data type
+based on how many char
+virtual address space: 2 ^ 64
+page: 2 ^ 12
+#page = 2 ^ 64 / 2 ^ 12 = 2 ^ 52
