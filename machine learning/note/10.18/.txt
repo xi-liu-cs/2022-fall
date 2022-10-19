@@ -1,0 +1,32 @@
+goal: find theta* such that f(theta*) = min_{theta} f(theta)
+gradient descent
+  start from initial guess theta0 and learning rate alpha
+  update theta ^ {i + 1} <- theta ^ i - alpha (df(theta) / d theta)
+  repeat until theta is small or reach max number of steps
+https://uclaacm.github.io/gradient-descent-visualiser/
+
+min_{theta} f(theta), theta in R
+
+mountain
+f(x, y) = cos(x) ^ 2 + cos(y) ^ 2
+
+multiple parameters
+goal: find vec<theta*> such that f(vec<theta*>) = min_{vec<theta>} f(vec<theta>)
+gradient descent
+  start from initial guess vec<theta0> and learning rate alpha
+  update vec<theta ^ {i + 1}> <- vec<theta ^ i> - alpha grad(f(vec<theta>))
+  repeat until theta is small or reach max number of steps
+
+stochastic gradient descent
+  sample single or multiple datapoints d ~ D
+  update vec<theta ^ {i + 1}> <- vec<theta ^ i> - alpha grad(f(vec<theta>, d))
+  
+look at what previous value of gradient was
+make sure not to change gradient too much from previous value
+not changing speed too much at every iteration
+
+velocity v
+v ^ {t + 1} = b v ^ t + alpha grad(f(vec<w>))
+vec<theta ^ {t + 1}> <- vec<theta ^ t> - v ^ {t + 1}
+
+https://ruder.io/optimizing-gradient-descent/index.html
