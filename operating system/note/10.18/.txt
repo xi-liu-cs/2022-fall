@@ -4,3 +4,9 @@ based on how many char
 virtual address space: 2 ^ 64
 page: 2 ^ 12
 #page = 2 ^ 64 / 2 ^ 12 = 2 ^ 52
+2 different processes will always go to different physical pages
+in what scenario does the os map 2 different virtual pages to a same physical page?
+dynamically linked libraries
+not whole program of zoom is currently in memory, some error handling part would be loaded when needed
+some pages of zoom in disk
+valid bit: 0 means page is not in memory
