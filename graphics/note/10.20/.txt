@@ -1,0 +1,2 @@
+rotz(1 + sin(t))
+rotz(1 + cos(t))
