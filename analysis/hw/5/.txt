@@ -5,3 +5,4 @@ http://educ.jmu.edu/~ohmx/squeeze_proof.pdf
 https://sites.millersville.edu/bikenaga/calculus1/left-and-right-limits/left-and-right-limits.html
 https://math.stackexchange.com/questions/1672202/how-to-show-that-fx-x-is-continuous
 https://math.stackexchange.com/questions/675481/if-f-g-are-continuous-at-a-show-that-hx-max-fx-gx-and-kx-mi
+https://math.stackexchange.com/questions/242009/continuity-of-max-function
