@@ -2,3 +2,4 @@ https://www.quora.com/What-is-a-limit-point-of-a-set-of-rational-numbers
 https://math.stackexchange.com/questions/560307/prove-that-sqrtx-is-continuous-on-its-domain-0-infty
 https://math.stackexchange.com/questions/2699949/prove-cosx-is-continuous
 http://educ.jmu.edu/~ohmx/squeeze_proof.pdf
+https://sites.millersville.edu/bikenaga/calculus1/left-and-right-limits/left-and-right-limits.html
