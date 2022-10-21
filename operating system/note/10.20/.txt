@@ -1,0 +1,21 @@
+translate from virtual page number to physical page number
+but virtual page offset does not change
+left 12 bits for virtual page number, right bits for offset
+smaller memory can hold fewer pages, so more page faults
+load or store, anything has parenthesis, memory access, generate virtual address
+lw (%rax), %rbx, load word, a memory access, generate virtual address used by mmu
+add %rax, %rbx, to get instruction itself, need to access memory
+
+so 2 memory access
+1. to get instruction itself, add, load, ..., in code section
+2. parenthetical memory access in instructions, lw (%rax), %rbx
+
+tlb: some pages are heavily referenced
+
+trip
+1. cpu (va)
+2. mmu (vpn)
+3. tlb (pte)
+4. mmu (pa)
+5. memory
+6. cpu (data)
