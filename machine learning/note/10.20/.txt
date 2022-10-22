@@ -1,0 +1,34 @@
+gradient descent
+goal: find vec<theta*> such that f(vec<theta*>) = min_{vec<theta>} f(vec<theta>)
+gradient descent
+  start from initial guess vec<theta0> and learning rate alpha
+  update vec<theta ^ {i + 1}> <- vec<theta ^ i> - alpha grad(f(vec<theta>))
+  repeat until theta is small or reach max number of steps
+
+1. collect dataset D = {x ^ i, y ^ i}_{i = 1} ^ n
+2. choose decision function y = f_theta(x)
+3. construct loss function l(hat(y) ^ i, y ^ i)
+4. define goal theta* = arg min_theta sum_{i = 1} ^ n l(f_theta(x ^ i), y ^ i)
+5. optimize goal using stochastic gradient descent
+
+model how neurons work in brain
+mimic what decision function look like in brain, neuron
+flow of impulse or information from dendrites 树突 through neuron
+ends up at synapse 突触
+taking in some inputs x[0, 1, 2, ...], give an output y
+how is y related to x
+either inactive, active, or have spikes
+
+decision function f_theta
+f_theta(sum_{i = 1} ^ m x_i w_i) = hat(y)
+f(z)
+=
+{0, z <= theta
+1, z > theta}
+
+net input = weighted inputs
+activations = activation function
+label output = threshold (activations of last layer)
+
+https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975
+perceptron learning algorithm
