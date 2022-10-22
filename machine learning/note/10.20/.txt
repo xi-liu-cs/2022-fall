@@ -32,3 +32,4 @@ label output = threshold (activations of last layer)
 
 https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975
 perceptron learning algorithm
+https://towardsdatascience.com/perceptron-algorithm-in-python-f3ac89d2e537
