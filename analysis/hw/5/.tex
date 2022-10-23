@@ -76,14 +76,18 @@ $x_n \in (x - \varepsilon, x + \varepsilon) \cap S \setminus \{x\}$ is not empty
 \\
 \\
 (b)\\
+$S = \mathbb{Z}$\\
 there is a gap between any real number $x$ with any integer $y$ provided that $x \not= y$\\
 $\forall x \in \mathbb{R}, \exists \varepsilon > 0, (x - \varepsilon, x + \varepsilon) \cap \mathbb{Z} \setminus \{x\}$ is empty\\
 $\forall x \in \mathbb{R}, \exists \varepsilon > 0, \forall y \in S = \mathbb{Z}, y \not= x, |x - y| \geq \varepsilon$\\
+$\forall x \in \mathbb{Z}, \exists \delta = 1 / 2, (x - \delta, x + \delta) \cap S \setminus \{x\}$ is empty\\
+$\forall x \in \mathbb{R} \setminus \mathbb{Z}, \exists \delta = \min\{x - \lfloor x \rfloor, \lceil x \rceil - x\} / 2, (x - \delta, x + \delta) \cap S \setminus \{x\}$ is empty\\
 so $S = \mathbb{Z}$ has has no cluster points in $\mathbb{R}$\\
 \\
 \\
 \\
 (c)\\
+$S = \mathbb{Q}$\\
 let $\mathbb{Q}_C$ be the set of cluster points of $\mathbb{Q}$\\
 $\forall x \in \mathbb{R}, \forall \varepsilon > 0, \forall x \in (x - \varepsilon, x + \varepsilon), x - \varepsilon < x < x + \varepsilon$\\
 theorem 1.2.4, if $x, y \in \mathbb{R}, x < y, \exists r \in \mathbb{Q}, x < r < y$\\
@@ -182,7 +186,7 @@ based on proposition 3.1.2, since $c$ is a cluster point of $S$, $\{x_n\}$ is a 
 \begin{align*}
 \text{/* based on sequential limits lemma 3.1.7 */}\\
 \lim_{x \rightarrow c} \frac{f(x)}{g(x)} &= \lim_{n \rightarrow \infty} \frac{f(x_n)}{g(x_n)}\\
-\text{/* proposition 2.2.5 (iv), } \lim_{n \rightarrow \infty} \frac{x_n}{y_n} &= \frac{\lim_{n \rightarrow \infty} x_n}{\lim_{n \rightarrow \infty} y_n} \text{ */}\\
+\text{/* proposition 2.2.5 (iv), } \lim_{n \rightarrow \infty} \frac{x_n}{y_n} = \frac{\lim_{n \rightarrow \infty} x_n}{\lim_{n \rightarrow \infty} y_n} \text{ */}\\
 &= \frac{\lim_{n \rightarrow \infty} f(x_n)}{\lim_{n \rightarrow \infty} g(x_n)}\\
 \text{/* based on sequential limits lemma 3.1.7 */}\\
 &= \frac{\lim_{x \rightarrow c} f(x)}{\lim_{x \rightarrow c} g(x)}\\
@@ -285,7 +289,11 @@ f\_{pos} = (f + |f|) / 2\\
 &= b + \frac{a - b + |a - b|}{2}\\
 &= \frac{2b + a - b + |a - b|}{2}\\
 &= \frac{a + b + |a - b|}{2}\\
+\text{if } a \geq b, &\text{ then } |a - b| = a - b\\
+\max\{a, b\} &= a = \frac{a + b + (a - b)}{2} = \frac{a + b + |a - b}{2}\\
+\text{if } a < b, &\text{ then } |a - b| = -(a - b)\\
+\max\{a, b\} &= b = \frac{a + b - (a - b)}{2} = \frac{a + b + |a - b|}{2} 
 \end{align*}
 since $f$, $g$ are continuous functions, and based on proposition 3.2.5 (i), (ii), (iv), the max function $h(x)$ is also continuous after addition, subtraction, and division of continuous functions\\
-$\forall c \in \mathbb{R}, h(x) = \max\{f(x), g(x)\}$ is continuous
+$\forall c \in \mathbb{R}, h(x) = \max\{f(x), g(x)\} = (f(x) + g(x) + |f(x) - g(x)|) / 2$ is continuous
 \end{document}
