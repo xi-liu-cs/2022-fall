@@ -6,3 +6,4 @@ https://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 https://stackoverflow.com/questions/73210017/using-css-grid-position-multi-row-children-directly-under-each-other
 
 https://github.com/gitname/react-gh-pages
+https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
