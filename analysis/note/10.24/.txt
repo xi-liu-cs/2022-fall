@@ -1,0 +1,107 @@
+continuous f: [a, b] -> R is bounded
+min max theorem
+bolzano mean value theorem
+
+min max
+a function f: S -> R achieves an absolute maximum
+if exists c in S, for all x in S, f(x) <= f(c)
+
+a function f: S -> R achieves an absolute minimum
+if exists c in S, for all x in S, f(x) >= f(c)
+
+f: R -> R
+f(x) = 1 / (x ^ 2 + 1)
+
+a continuous function f: [a, b] -> R
+achieves both an absolute max and absolute min
+on closed and bounded interval [a, b] subset R
+
+shown f: [a, b] -> R is bounded
+set f([a, b]) = {f(x): x in [a, b]} is bounded
+so it has a sup/inf
+
+exists sequences {f(x_n)} {f(y_n)} which approach sup inf
+for all n in N, exists f(x_n) in f([a, b])
+sup f([a, b]) - 1 / n < f(x_n) < sup f([a, b])
+f(x_n) -> sup f([a, b]) as n -> infty
+
+sequences {x_n}, {y_n} are bounded
+for all n in N
+a <= x_n <= b
+a <= y_n <= b
+by bolzano
+exists convergent subsequences {x_{n_k}}, {y_{m_k}}
+
+define c := lim_{k -> infty} x_{n_k}
+d := lim_{k -> infty} y_{m_k}
+limit preserve <=
+a <= c <= b
+a <= d <= b
+
+f is continuous
+by sequential characterization
+sup f([a, b]) = lim_{n -> infty} f(x_n) construction of {f(x_n)}
+=  lim_{k -> infty} f(x_n_k) subsequence of convergent sequence
+= f(lim_{k -> infty} x_{n_k}) {x_{n_k}} is convergent to some c in [a, b]
+= f(c)
+f(c) = sup f([a, b]) >= f(x)
+f achieves an absolute max at c in [a, b]
+
+domain of f matter
+f: R -> R
+f(x) := x
+f has no max min (unbounded)
+f|_{[a, b]} [a, b] -> R and continuity -> boundedness
+
+candidate sup f([a, b]), inf f([a, b])
+
+domain must bounded
+f(x_n) -> sup f[a, b]
+if bounded, can extract convergent subsequence by bolzano
+
+domain must closed
+limit preserve <=
+for all k in N, x_{n_k} <= b
+lim_{k -> infty} x_{n_k} <= b
+
+f: (0, 1) -> R
+f(x) := 1 / x
+f has no upper bound
+no absolute max
+for all x in (0, 1), f(x) >= 1
+f(1) is not defined
+f has no absolute min
+
+bolzano intermediate value theorem
+lemma (bisection method for root finding)
+f: [a, b] -> R be a continuous function
+suppose f(a) < 0 < f(b)
+then exists c in (a, b)
+such that f(c) = 0
+
+prove by algorithm
+bisection method
+1. construct a bisecting sequence of intervals [a_n, b_n]
+start search in [a1, b1]
+look at middle 
+check (a1 + b1) / 2
+2. show convergence of {a_n}, {b_n}
+3. compute limit c in (a, b)
+4. show f(c) = 0
+
+1. construct sequences {a_n}, {b_n} inductively
+base step: take a1 := a, b1 := b
+a1 < b1, b1 - a1 = 1 / (2 ^ 0)(b - a)
+inductive step: assume a_n, b_n have been defined
+a_n < b_n, b_n - a_n = 1 / (2 ^ {n - 1})(b - a)
+
+a_n < b_n -> a_n < (a_n + b_n) / 2 < b_n
+b_{n + 1} - a_{n + 1} = (b_n - a_n) / 2
+computation prove by cases
+
+a_n < b_n, for all n in N
+prove interval is shrinking
+a_{n + 1} >= a_n
+b_{n + 1} <= b_n
+for all n in N
+they are monotone
