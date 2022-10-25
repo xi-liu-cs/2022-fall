@@ -1,0 +1,44 @@
+page table for each process
+cannot have a table for every virtual to physical address
+2 ^ 64 addresses, table would be huge
+translation per page
+2 memory access
+1. translate
+2. data
+
+a page table per process in any state
+2 ^ 12 byte page, 48 bit address (0 - 2 ^ 48 - 1), 8 byte page table entry
+size of page table needed?
+(number pages)(size of page)
+= (2 ^ 48 / 2 ^ 12)(2 ^ 3)
+= 2 ^ 39
+
+number of entries in a page table = number of pages in virtual address space
+what is virtual page number
+
+for every process
+use a multi level page table
+
+why not have a table that contain only the physical pages, and next to it virtual page
+know page fault at node of lower level
+page level
+
+return to previously opened web browser may take time
+since not used browser for some time
+try to make as many pages of the editor as possible in memory and swap out to make room for pages in app or process
+that you are not using a lot which is the browser
+
+page replacement policy (also in cache, web server)
+total number of page faults determine success
+each page labeled with number instructions executed before page referenced
+page with highest label removed
+
+r: set when pages referenced
+m: set when page is written
+
+least recently used
+hard to implement something that depend on timing
+replace page that has been unused for longest time, cost memory
+
+too expensive, slow
+search lowest value
