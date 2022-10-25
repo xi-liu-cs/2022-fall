@@ -1,0 +1,22 @@
+gl.drawArrays(GLenum mode)
+mode:
+gl.TRANGLE_STRIP, more efficient
+gl.TRIANGLES more general, disconnected
+
+also add color to each vertex
+reduce draw calls
+vertex shader linearly interpolate uv value in between vertices
+
+u,v is a lookup into a place in source image
+under sampling
+many parts of the image
+
+take integral, average of sum of all values
+aliasing
+high frequency phenomena
+
+2 high frequency signals that we cannot hear interfere with each other to create what we can hear
+
+forward kinematics
+inverse kinematics
+all possible positions for an elbow is on an sphere centered at the shoulder
