@@ -2,3 +2,6 @@ https://scikit-learn.org/stable/modules/ensemble.html#parameters
 https://www.kaggle.com/general/21876
 
 https://github.com/marvinlanhenke/DataScience/blob/main/MachineLearningFromScratch/DecisionTree/
+
+https://www.youtube.com/watch?v=sgQAhG5Q7iY&t=9s
+https://github.com/Suji04/ML_from_Scratch/blob/master/decision%20tree%20classification.ipynb
