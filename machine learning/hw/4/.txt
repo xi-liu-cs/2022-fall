@@ -1,2 +1,4 @@
 https://scikit-learn.org/stable/modules/ensemble.html#parameters
 https://www.kaggle.com/general/21876
+
+https://github.com/marvinlanhenke/DataScience/blob/main/MachineLearningFromScratch/DecisionTree/
