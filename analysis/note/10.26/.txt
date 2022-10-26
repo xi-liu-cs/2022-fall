@@ -1,0 +1,100 @@
+bisection method for root finding
+f: [a, b] -> R be continuous
+suppose f(a) < 0 < f(b)
+then exists c in (a, b)
+such that f(c) = 0
+
+construct sequences {a_n}, {b_n} inductively
+such that
+1. for all n in N, a_n < b_n, valid interval [a_n, b_n]
+2. for all n in N, a_n <= a_{n + 1}, b_{n + 1} <= b_n, monotone
+3. b_n - a_n = 1 / 2 ^ {n - 1}(b - a) intervals are bisecting
+4. for all n in N, f(a_n) < 0 <= f(b_n) endpoints crossing 0
+
+for all n in N
+a_1 <= a_n <= b_n <= b_1
+{a_n}, {b_n} are bounded monotone sequences, so they converge
+
+since {a_n}, {b_n} converge
+lim_{n -> infty} (b_n - a_n)
+= lim_{n -> infty} 1 / 2 ^ {n - 1}(b - a) = 0
+lim a_n = lim b_n := c
+
+since a = a_1 <= a_n <= b_n <= b_1
+limit preserve non strict inequality
+a <= c <= b
+
+from 4.
+f(a_n) < 0
+by continuity of f
+f(c) = f(lim_{n -> infty} a_n)
+= lim_{n -> infty} f(a_n)
+<= 0
+
+f(b_n) >= 0
+by continuity of f
+f(c) = f(lim_{n -> infty} b_n)
+= lim_{n -> infty} f(b_n)
+>= 0
+
+f(c) <= 0, f(c) >= 0, f(c) = 0
+c != a, c != b
+a < c < b
+
+bolzano intermediate value theorem
+f: [a, b] -> R be continuous
+suppose y in R
+satisfies f(a) < y < f(b)
+or f(a) > y > f(b)
+then exists c in (a, b)
+f(c) = y
+
+consider 2 cases
+if f(a) < y < f(b)
+define g: [a, b] -> R
+g(x) := f(x) - y
+g(a) := f(a) - y < 0 < g(b) = f(b) - y
+g is continuous
+by bisection method
+exists c in (a, b)
+g(c) = f(c) - y = 0
+f(c) = y
+
+every polynomial of odd degree has a real root
+f be a polynomial of odd degree
+f(x) = sum a_d x_d, d in N is odd
+
+can take
+lim_{n -> infty} (b_{d - 1} n ^ {d - 1} + ... + b_0) / n ^ d
+= lim 1 / n = 0
+
+exists M in n
+for all n >= M
+-1 < b ... n / n ^ d < 1
+
+g|[-K, M]: [-K, M] -> R is continuous
+g(-K) < 0 < g(M)
+by bolzano intermediate value theorem
+exists some c in [-K, M] such that g(c) = 0
+
+I subset R be an interval
+let f: I -> R
+c in I
+if limit L := lim_{x -> c} (f(x) - f(c)) / (x - c) difference quotient
+if L exists, then f is differentiable at c
+f'(c) := L
+
+if f is differentiable for all c in I
+we say f is differentiable
+f': I -> R as derivative
+
+f(x) = x ^ 2 is differentiable
+let c in R be arbitrary
+for x != c
+
+let f: I -> R be differentiable at some c in I
+then f is continuous at c
+
+let f, c be as given
+since f is diff at c
+lim_{x -> c} f(x) - f(c) / x - c = f'(c)
