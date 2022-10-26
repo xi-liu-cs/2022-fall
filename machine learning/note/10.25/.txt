@@ -1,0 +1,18 @@
+ml theory to algo, shai, 302, perceptron
+y = sign(w ^ t, x) not differentiable
+use a differentiable function instead
+
+surprisal negative log likelihood
+mnist database (Modified National Institute of Standards and Technology database)
+is a large database of handwritten digits that is commonly used for training various image processing systems
+
+x -> image
+y -> {0, 1, ..., 9}
+x is very large, huge vector of inputs
+
+learn a model on a featurized image
+histogram of oriented gradients
+amount of weight is a lot smaller
+
+bias allow output to be reasonable
+each neuron have a connection to previous layer
