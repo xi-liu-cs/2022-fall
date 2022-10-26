@@ -98,3 +98,7 @@ then f is continuous at c
 let f, c be as given
 since f is diff at c
 lim_{x -> c} f(x) - f(c) / x - c = f'(c)
+
+let I1, I2 be intervals
+g: I1 -> I2 be differentiable at c in I1
+g: I2 -> R be differentiable at g(c) in I2
