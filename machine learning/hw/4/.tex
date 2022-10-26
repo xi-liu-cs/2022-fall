@@ -1,0 +1,102 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+part 1
+{\huge
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+Criterion & Best Test Accuracy\\\hline
+Gini Impurity & 0.9079710144927536\\\hline
+Shannon I.G. & 0.9289855072463769\\\hline
+\end{tabular}
+\end{center}
+}
+\leavevmode
+\\
+\\
+\\
+part 2
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}\hline
+Criterion & \# Estimators & 1 & 3 & 5 & 10\\\hline
+Gini Impurity & Test Accuracy & 0.9217 & 0.9420 & 0.9471 & 0.9565\\\hline
+Shannon I.G. & Test Accuracy & 0.9202 & 0.9376 & 0.9485 & 0.9572\\\hline
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+Criterion & \# Estimators & 15 & 20 & 40 & 70\\\hline
+Gini Impurity & Test Accuracy & 0.9586 & 0.9579 & 0.9594 & 0.9608\\\hline
+Shannon I.G. & Test Accuracy & 0.9608 & 0.9608 & 0.9644 & 0.9644\\\hline
+\end{tabular}
+\end{center}
+\begin{verbatim}
+Gini Impurity
+estimator: 1, accuracy: 0.9217391304347826
+estimator: 3, accuracy: 0.9420289855072463
+estimator: 5, accuracy: 0.9471014492753623
+estimator: 10, accuracy: 0.9565217391304348
+estimator: 15, accuracy: 0.9586956521739131
+estimator: 20, accuracy: 0.9579710144927536
+estimator: 40, accuracy: 0.9594202898550724
+estimator: 70, accuracy: 0.9608695652173913
+
+Shannnon I.G.
+estimator: 1, accuracy: 0.9202898550724637
+estimator: 3, accuracy: 0.9376811594202898
+estimator: 5, accuracy: 0.9485507246376812
+estimator: 10, accuracy: 0.9572463768115942
+estimator: 15, accuracy: 0.9608695652173913
+estimator: 20, accuracy: 0.9608695652173913
+estimator: 40, accuracy: 0.9644927536231884
+estimator: 70, accuracy: 0.9644927536231884
+\end{verbatim}
+intuition for results observed for different hyperparameters used\\
+the accuracy generally increased if the count of estimator increased\\
+for sklearn.ensemble.RandomForestClassifier, n\_parameters is the number of decision trees in the forest. if the number of trees increase, then the accuracy would increase up to a certain upper bound and it would take longer to compute, since random forest's prediction is a result of majority vote of individual trees' predictions\\
+\end{document}
