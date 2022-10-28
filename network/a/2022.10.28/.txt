@@ -1,1 +1,2 @@
 https://stackoverflow.com/questions/58925276/what-is-the-difference-between-a-route-handler-and-middleware-function-in-expres
+https://expressjs.com/en/api.html#res
