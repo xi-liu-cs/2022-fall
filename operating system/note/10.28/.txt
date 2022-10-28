@@ -1,0 +1,25 @@
+when kick out a page
+overwrite it or write it back to disk
+
+hardware maintains a matrix of n * n bits
+can put in mmu, hard for multicore
+so put in in memory, or a specialized hardware inside chip outside all cpus
+
+hardware
+least recently used
+machine with n page frames
+hardware maintains a matrix of n * n bits
+matrix initialized to all 0s
+if page k is referenced
+set all bits of row k to 1
+set all bits of column k to 0
+row with lowest value is lru
+
+software
+not frequently used
+software counter with each page
+at each clock interrupt, os scans all pages and add r bit of each page to counter of that page
+at page fault, page with lowest counter is replaced
+
+better to put counter in page table entry rather than hardware
+page fault frequency: tells when to increase/decrease page allocation for a process
