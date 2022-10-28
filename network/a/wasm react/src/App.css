@@ -1,0 +1,130 @@
+.App {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.App_logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App_logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App_header {
+  background-color: #222222;
+  min-height: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App_body {
+  background-color: #ffe1ab;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App_link {
+  color: #61dafb;
+}
+
+li {
+  list-style-type: none;
+}
+
+.font {
+  font-size: 40px;
+  color: #aaaaaa;
+}
+
+.left_top {
+  position: relative;
+  left: -400px;
+  top: -300px;
+}
+
+.nav_item,
+.header_nav_item {
+  height: 100;
+  width: 350;
+  font-size: 40px;
+  color: #aaaaaa;
+  background-color: #222222;
+  border: 2px solid #777777;
+  border-radius: 4px;
+}
+
+.header_nav_item {
+  border: 0px;
+  background-color: #222222;
+}
+
+.active
+
+/* NavLink */
+  {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+input {
+  height: 100;
+  width: 500;
+}
+
+input[type=text] {
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #222222;
+  border: 2px solid #777777;
+  border-radius: 4px;
+}
+
+input[type=text]::placeholder {
+  text-align: center;
+}
+
+input[type=submit] {
+  font-size: 40px;
+  color: #aaaaaa;
+  background-color: #222222;
+  border: 2px solid #777777;
+  border-radius: 4px;
+}
+
+button {
+  height: 100;
+  width: 500;
+  font-size: 40px;
+  color: #aaaaaa;
+  background-color: #222222;
+  border: 2px solid #777777;
+  border-radius: 4px;
+}
+
+div.d0 {
+    width: 345px;
+    height: 650px;
+}
