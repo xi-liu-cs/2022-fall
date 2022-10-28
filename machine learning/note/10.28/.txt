@@ -1,0 +1,3 @@
+cannot model xor function using a linear model
+cannot find a line in space with good on one side and bad on other side
+feature transform, then linear model
