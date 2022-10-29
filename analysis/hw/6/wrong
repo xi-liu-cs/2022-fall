@@ -1,0 +1,26 @@
+4
+\begin{align*}
+&\text{suppose } g \text{ is a monic polynomial of even degree } d\\
+g(x) &= x ^ d + b_{d - 1} x ^ {d - 1} + ... + b_1 x + b_0\\
+&\text{show } g(n) \text{ is positive}\\
+&\text{compare highest order term with other terms}\\
+\left|\frac{b_{d - 1} n ^ {d - 1} + ... + b_1 n + b_0}{n ^ d}\right|
+&= \frac{|b_{d - 1} n ^ {d - 1} + ... + b_1 n + b_0|}{n ^ d}\\
+&\leq \frac{|b_{d - 1}| n ^ {d - 1} + ... + |b_1| n + |b_0|}{n ^ d}\\
+&\leq \frac{|b_{d - 1}| n ^ {d - 1} + ... + |b_1| n ^ {d - 1} + |b_0| n ^ {d - 1}}{n ^ d}\\
+&= \frac{n ^ {d - 1}(|b_{d - 1}| + ... + |b_1| + |b_0|)}{n ^ d}\\
+&= \frac{1}{n}(|b_{d - 1}| + ... + |b_1| + |b_0|)\\
+\therefore \lim_{n \rightarrow \infty}\frac{b_{d - 1} n ^ {d - 1} + ... + b_1 n + b_0}{n ^ d} &= 0\\
+\therefore \exists M \in \mathbb{N}, \left|\frac{b_{d - 1} M ^ {d - 1} + ... + b_1 M + b_0}{M ^ d}\right| &< 1\\
+-(b_{d - 1} M ^ {d - 1} + ... + b_1 M + b_0) &< M ^ d\\
+0 &< M ^ d + b_{d - 1} M ^ {d - 1} + ... + b_1 M + b_0 = g(M)
+\end{align*}
+\begin{align*}
+&\text{show } g(-n) \text{ is negative}\\
+&\text{compare highest order term with other terms}\\
+&\text{by a similar argument}\\
+\therefore \lim_{n \rightarrow \infty}\frac{b_{d - 1} n ^ {d - 1} + ... + b_1 n + b_0}{n ^ d} &= 0\\
+\therefore \exists K \in \mathbb{N}, \left|\frac{b_{d - 1} (-K) ^ {d - 1} + ... + b_1 (-K) + b_0}{(-K) ^ d}\right| &< 1\\
+-(b_{d - 1} (-K) ^ {d - 1} + ... + b_1 (-K) + b_0) &< (-K) ^ d = K ^ d < b_{d - 1} (-K) ^ {d - 1} + ... + b_1 (-K) + b_0\\
+0 &< M ^ d + b_{d - 1} M ^ {d - 1} + ... + b_1 M + b_0 = g(M)\\
+\end{align*}
