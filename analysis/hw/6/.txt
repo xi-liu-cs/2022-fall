@@ -1,1 +1,2 @@
 https://math.stackexchange.com/questions/1338455/prove-that-the-image-of-a-a-closed-and-bounded-interval-in-mathbbr-is-a-a-c
+https://socratic.org/questions/how-do-i-use-the-intermediate-value-theorem-to-prove-every-polynomial-of-odd-deg
