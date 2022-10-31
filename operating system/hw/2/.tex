@@ -1,0 +1,169 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+$\text{memory size: } 128 MB = (128)(2 ^ {20})B = (2 ^ 7)(2 ^ {20})B = 2 ^ {27}B$\\
+\\
+a.\\
+linked list
+\begin{align*}
+\text{segment size: } 64KB &= (2 ^ 6)(2 ^ {10})B = 2 ^ {16}B\\
+\text{number of nodes: } \frac{2 ^ {27}B}{2 ^ {16}B} &= 2 ^ {11} \text{ nodes}\\
+\text{size of 1 node: } (32 + 16 + 16)\text{bits} &= 64\text{ bits} = 2 ^ 3\text{ bytes}\\
+\text{total number of bytes: } (2 ^ {11} \text{ nodes})\left(\frac{2 ^ 3\text{ bytes}}{1 \text{ node}}\right) &= \boxed{2 ^ {14} \text{ bytes}}\\
+\end{align*}
+\\
+\\
+\\
+b.\\
+bitmap
+\begin{align*}
+\text{number of units: }(2 ^ {27}B)\left(\frac{1 \text{ unit}}{nB}\right) &= \frac{2 ^ {27}}{n} \text{ units}\\
+\text{1 bit is required for each memory unit}\\
+\text{total number of bytes: }\frac{2 ^ {27} \text{ units}}{n}\frac{1 \text{ bit}}{1 \text{ unit}}\frac{1 \text{ bit}}{2 ^ 3 \text{ byte}} &= \boxed{\frac{2 ^ {24}}{n} \text{bytes}}\\
+\end{align*}
+\\
+\\
+\\
+c.\\
+solve for $n$ in below equation
+\begin{align*}
+2 ^ {14} &= \frac{2 ^ {24}}{n}\\
+n &= \frac{2 ^ {24}}{2 ^ {14}} = 2 ^ {10}
+\end{align*}
+$\forall n \in \mathbb{N}$\\
+if($n < 2 ^ {10}$)\{then $2 ^ {14} < 2 ^ {24} / n$, linked list use less storage space, linked list is better\}\\
+if($n = 2 ^ {10}$)\{then $2 ^ {14} = 2 ^ {24} / n$, linked list and bitmap use same amount of storage space\}\\
+if($n > 2 ^ {10}$)\{then $2 ^ {14} > 2 ^ {24} / n$, bitmap use less storage space, bitmap is better\}\\
+\\
+\\
+\newpage
+\noindent
+2.\\
+(a)\\
+multilevel page table may use less space than a single level page table. multilevel page table reduces number of pages that are stored in memory since it allocates page table space proportional to the size of address space currently using through its levels of indirection in the page directory structure\\
+\\
+\\
+\\
+(b)\\
+virtual address is partitioned into $n \in \mathbb{N}$ virtual page numbers and 1 virtual page offset\\
+$16KB = (2 ^ 4)(2 ^ {10})B = 2 ^ {14}B$, virtual page offset have 14 bits\\
+$38 - 14 = 24$, 24 bits for 2 virtual page number fields\\
+so 12 bits should be allocated for top level page table field, 12 bits should be allocated for next level page table field\\
+\\
+\\
+\\
+3.\\
+TLB: virtual address\\
+Page table: physical address, stored in control register cr3\\
+L1 cache memory: physical address\\
+L2 cache memory: physical address\\
+L3 cache memory: physical address\\
+The DRAM installed in you machine: physical address\\
+\\
+\\
+\\
+4.\\
+a.\\
+isolation, ensure a process not write to another process's memory. if no process isolation, a program might behave in unexpected ways due to things unrelated to the program logic\\
+\\
+b.\\
+convenience, make memory management easier by giving each process an address space\\
+\\
+c.\\
+efficiency, using main memory as a cache for pages that are stored on disk, maintaining the recently used pages in main memory, and transfer the pages between memory and disk when necessary\\
+\\
+d.\\
+ability to support time sharing with desired performance, if there is only one process using the full physical memory without the management of virtual memory, switching between processes can be slow if entire contents of the memory need to be stored to disk\\
+\\
+\\
+\\
+5.\\
+a.\\
+case 1:\\
+if assume there is 1 TLB inside the single CPU, then there is 1 TLB in the system\\
+\\
+case 2:\\
+a CPU can have multiple TLBs (for example, if a instruction TLB is used and a data TLB is used, TLB can also be divided according to hierarchical levels). if assume there are $n \in \mathbb{N}$ TLBs inside the single CPU, then there are $n$ TLBs in the system\\
+\\
+translation lookaside buffer is a hardware inside the memory management unit which does not change as number of processes in the system change\\
+\\
+\\
+\\
+\\
+b.\\
+assume there are $n \in \mathbb{N} \cup \{0\}$ processes on the background in addition to the processes involved in the piece of code. since page table is a per process data structure, assume 1 page table is used for 1 process\\
+\\
+case 1:\\
+if assume fork() returned on success, then there are 2 processes in the system before any process reach exit(0), (2 processes)(1 page table / process) = 2 page tables, and there are $n$ page tables used by the background processes outside of this program. then there are $2 + n$ page tables in the system\\
+\\
+case 2:\\
+if assume fork() returned on failure, then there is 1 process in the system before any process reach exit(0), (1 process)(1 page table / process) = 1 page table, and there are $n$ page tables used by the background processes outside of this program. then there are $1 + n$ page tables in the system\\
+\\
+\\
+\\
+\\
+c.\\
+case 1:\\
+if assume there is 1 TLB inside one CPU, and 1 TLB inside another CPU, then there is 1 + 1 = 2 TLBs in the system\\
+\\
+case 2:\\
+if assume there are $a \in \mathbb{N} \cup \{0\}$ TLBs inside one CPU, and $b \in \mathbb{N} \cup \{0\}$ TLBs inside another CPU, then there are $a + b$ TLBs in the system\\
+\\
+\\
+\\
+\\
+d.\\
+assume there are $n \in \mathbb{N} \cup \{0\}$ processes on the background in addition to the processes involved in the piece of code. since page table is a per process data structure, assume 1 page table is used for 1 process\\
+\\
+case 1:\\
+if assume fork() returned on success, then there are 2 processes in the system before any process reach exit(0), (2 processes)(1 page table / process) = 2 page tables, and there are $n$ page tables used by the background processes outside of this program. then there are $2 + n$ page tables in the system\\
+\\
+case 2:\\
+if assume fork() returned on failure, then there is 1 process in the system before any process reach exit(0), (1 process)(1 page table / process) = 1 page table, and there are $n$ page tables used by the background processes outside of this program. then there are $1 + n$ page tables in the system\\
+\end{document}
