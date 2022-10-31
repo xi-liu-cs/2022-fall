@@ -101,9 +101,7 @@ so 12 bits should be allocated for top level page table field, 12 bits should be
 3.\\
 TLB: virtual address\\
 Page table: physical address, stored in control register cr3\\
-L1 cache memory: physical address\\
-L2 cache memory: physical address\\
-L3 cache memory: physical address\\
+L1 cache, L2 cache, L3 cache: whether to use virtual address or physical address is dependent on the system designer. using physical address has the advantage of making the cache to not deal with protection issues, since access permissions are checked in the process of address translation\\
 The DRAM installed in you machine: physical address\\
 \\
 \\
