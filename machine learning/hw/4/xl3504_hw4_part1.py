@@ -10,19 +10,16 @@ x = df.iloc[: , :-1] # before train the model, remove label from data, remove la
 x = x.copy()
 x = np.array(x) # transfer df to array
 
-from sklearn.model_selection import train_test_split
+"""from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, train_size = 0.7, random_state = 0) # split dataset into train and test dataset paired with its label
-"""print(x_train.shape)
+print(x_train.shape)
 print(x_test.shape)
 print(y_train.shape)
 print(y_test.shape)"""
 
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler().fit(x_train)
-x_train = scaler.transform(x_train)
-x_test = scaler.transform(x_test)
-
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 import random
@@ -32,7 +29,12 @@ def decision_tree(criterion):
     print(criterion)
     a = []
     for i in range(n):
-        classifier = DecisionTreeClassifier(criterion = criterion, random_state = random.randint(start, end))
+        rand = random.randint(start, end)
+        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, train_size = 0.7, random_state = rand)
+        scaler = StandardScaler().fit(x_train)
+        x_train = scaler.transform(x_train)
+        x_test = scaler.transform(x_test)
+        classifier = DecisionTreeClassifier(criterion = criterion, random_state = rand)
         classifier = classifier.fit(x_train, y_train)
         y_predict = classifier.predict(x_test)
         accuracy = metrics.accuracy_score(y_test, y_predict)
