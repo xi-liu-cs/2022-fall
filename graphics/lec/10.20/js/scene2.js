@@ -1,4 +1,3 @@
-
 rooms.scene2 = function() {
 
 lib3D2();
@@ -14,32 +13,9 @@ description = `<b>Scene 2</b>
 	       `;
 
 code = {
-'init':`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'init':
+line(25) +
+`
    // A SQUARE IS A TRIANGLE MESH WITH JUST TWO TRIANGLES
 
    S.squareMesh = [ -1, 1, 0,  0,0,1,  0,1,
