@@ -1,0 +1,90 @@
+chain rule
+d := g(c) in I2
+define u: I2 -> R, v: I1 -> I2 by
+u(y) =
+{
+  f(y) - d / y - d if y != d
+  f'(d) if y = d
+}
+
+lim_{y -> d} u(y) = u(d)
+u is continuous at d
+
+lim_{x -> c} v(x) = g(c)
+v is continuous at c
+
+for any y in I2, x in I1
+f(y) - f(d) = u(y)(y - d)
+
+h(x) - h(c) = f(g(x)) - f(g(c))
+u(g(x))(g(x) - g(c)) // use 1 with y = g(x), d = g(c)
+
+(g(x) - g(c)) / (x - c) = u(g(x)) v(x)
+lim_{x -> c}(g(x) - g(c)) / (x - c) = lim_{x -> c} u(g(x)) v(x)
+= u(g(c)) v(c)
+= f'(g(c)) g'(c)
+
+let S subset R, f: S -> R
+f has relative max if exists d > 0, for all x in S
+|x - c| < d, f(c) >= f(x)
+
+relative min/max f(c) -> critical point f'(c) = 0
+suppose f: [a, b] -> R is differentiable at c in (a, b)
+suppose f has a relative min/max at c
+then f'(c) = 0
+
+f(c) is a relative max
+rel min follows by consider -f
+
+assume f(c) is a relative max
+exists d > 0
+forall x in [a, b]
+|x - c| < d
+f(c) >= f(x)
+
+diff quotient in 2 cases
+x in (c, c + d)
+then
+(f(x) - f(c)) / (x - c)
+x - c > 0
+f(x) - f(c) <= 0
+so (f(x) - f(c)) / (x - c) <= 0
+
+x in (c - d, c)
+x - c < 0
+so (f(x) - f(c)) / (x - c) >= 0
+
+take sequences {x_n}, {y_n}
+satisfying x_n in (c, c + d)
+y_n in (c - d, c)
+take d small enough
+
+x_n -> c as n -> infty
+by sequential limit lemma
+f'(c) = lim f(x_n) - f(c) / x_n - c <= 0, since limit preserve <=
+
+rolle's theorem
+let f:[a, b] -> R be a continuous function
+differentiable on (a, b)
+f(a) = f(b)
+then exists c in (a, b)
+f'(c) = 0
+
+f: [-1, 1] -> R
+f = sqrt{1 - x ^ 2}
+
+by min/max theorem
+since f is continuous on [a, b]
+it achieves a min/max
+let k = f(a) = f(b)
+1. suppose exist x in (a, b)
+if f(c) is absolute max
+f(c) > f(x) > k
+-> c in (a, b)
+
+zero derivative -> constant function
+let I be an interval and f: I -> R be a differentiable function
+suppose f'(x) = 0 for all x in I, then f is constant
+f|_[x, y] is continuous and differentiable
+thus, f|_[x, y] satisfies maen value theorem
+exists c in (x, y) satisfying
