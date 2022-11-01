@@ -1,0 +1,5 @@
+x = a_x t ^ 3 + b_x t ^ 2 + c_x t + d_x
+t in [0, 1]
+t = 1 for first poly
+t = 0 for second poly
+hermite spline interpolation
