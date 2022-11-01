@@ -1,0 +1,6 @@
+how memory should be allocated among competing runnable processes
+local algo: allocate every process a fixed fraction of memory
+global algo: dynamically allocate page frames
+java, how often do garbage collector go to clean up
+divide into pages to reduce size of page table
+imagine if there is an entry for every byte
