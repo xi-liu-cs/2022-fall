@@ -1,1 +1,2 @@
 https://www.math-linux.com/mathematics/limits/article/proof-of-limit-of-sin-x-x-1-as-x-approaches-0
+https://math.stackexchange.com/questions/2718250/prove-that-sin-is-differentiable-at-0-and-find-the-derivative-at-0
