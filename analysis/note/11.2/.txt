@@ -1,0 +1,128 @@
+sign of derivative vs increasing (decreasing)
+let I subset R be an interval
+f: I -> R be differentiable
+1. f is increasing iff f'(x) >= 0 for all x in I
+f is increasing, x > y -> f(x) >= f(y)
+2. if f'(y) > 0, f is strictly increasing
+x > y -> f(x) > f(y)
+
+proof
+suppose f is inc, differentiable
+c, x in I, c != x
+if x > c
+  f(x) > f(c)
+if x < c
+  f(x) < f(c)
+for all x in I with x != c
+(f(x) - f(c)) / (x - c) >= 0
+limit_{x -> c} (f(x) - f(c)) / (x - c) = f'(c) >= 0
+
+suppose f'(x) >= 0 for all x in I
+take arbitrary x, y in I with x < y
+by mean value theorem
+f|_[x, y] is continuous and differentiable
+exists c in (x, y) such that 
+f'(c) = (f(y) - f(x)) / (y - x)
+
+f(y) = f(x) + f'(c)(y - x)
+
+2 cases
+f'(x) >= 0, for all x in I
+f(y) = f(x) + f'(c)(y - x) = f(x) + (>= 0)(> 0) >= f(x)
+
+f'(x) > 0, for all x in I
+f(y) > f(x)
+
+f strictly increasing not-> f'(x) > 0 for all x in I
+f(x) = x ^ 3, x > y -> x ^ 3 > y ^ 3
+f'(0) = 3(0) ^ 2 = 0 !> 0
+
+if I -> R is differentiable
+this defines f': I -> R called first derivative of f
+if f': I -> R is also differentiable
+this defines f'': I -> R
+f is n times differentiable
+
+for an n times differentiable function f: I -> R
+with x_0 in interior of I ((a, b) subset I)
+define nth order taylor poly for f at x_0 as
+p_n ^ {x_0}(x) = sum_{k = 0} ^ n (f ^ (k)(x)) / k! (x - x_0) ^ k, n in N, n != infty
+
+f(x) = taylor poly + lagrange form of remainder form
+1. f(x) = taylor poly + O((x - x_0) ^ {n + 1})
+can approximate f by taylor poly
+2. exists some solution c which depends on value x, x_0, f, f', ..., f ^ {n - 1}
+f ^ {n + 1}(c) / (n + 1)! = f(x) - p ^ {x_0}_n(x) / (x - x_0) ^ {n + 1}
+
+f: [a, b] -> R
+x, x_0 in [a, b] f is differentiable
+f|_[x, x_0] assume x_0 > x
+mvt says exists c in (x, x_0)
+such that f'(c) = f(x) - f(x_0) / x - x_0
+-> f(x) = f(x_0) + f'(c)(x - x_0)
+equation of line going through (x_0, f(x_0))
+
+c = c(x, x_0, f, f')
+
+define M := (f(x) - P_{n} ^ {x_0}(x)) / (x - x_0) ^ {n + 1}
+are all given, fixed, so M is a constant
+
+find c
+f ^ {n + 1}(c) / (n + 1)! = M
+
+g(s) := f(s) - P_{n} ^ {x_0}(s)) - M(s - x_0) ^ {n + 1}
+x, x_0 are fixed, s is var
+
+compute derivatives of g
+g ^ (k)(s) = f ^ (k)(s) - (P_{n} ^ {x_0}) ^ {k})(s) - Mk!(s - x_0) ^ {n + 1 - K} /* power rule */
+plug in s = x_0
+0 = g(x_0)
+since (p_n ^ x_0) ^ (k)(x_0) = f ^ (k)(x_0)
+
+g(x) = g(x_0) = 0
+by mean value theorem
+exists x_1 strictly between x and x_0
+satisfying g'(x_1) = (g(x) - g(x_0)) / (x - x_0) = 0
+
+repeat n times
+g ^ (n)(x_n) = g ^ (n)(x_0) = 0
+g ^ (n + 1)(x_(n + 1)) =  (g ^ (n)(x_n) - g ^ (n)(x_0)) / (x_n - x_0) = 0
+
+let c := x_{n + 1}
+c is strictly between x and x_0
+g ^ (n + 1)(c) = f ^ (n + 1)(c) - 0 - M(n + 1)! /* since taylor is n order derivative */
+M = (f ^ (n + 1)(c)) / (n + 1)!
+
+f: [-1, 1] -> R
+f(x) = sin x
+
+sin x \approx x - x ^ 3 / 3 + O(x ^ 4)
+by taylor theorem
+for all x in [-1, 1]
+x_0 = 0
+exists c between x and 0
+satisfying 
+sin x = x - x ^ 3 / 3! + sin(c) x ^ 4 / 4!
+
+|sin c| <= 1
+|sin x - (x - x ^ 3 / 3!)| = |sin(c) x ^ 4 / 4!| = |sin c||x ^ 4| / 4! = |x| ^ 4 / 4!
+f(x) - approx
+
+2nd derivative test
+suppose f: (a, b) -> R is twice continuously differentiable
+suppose exists x_0 in (a, b) s.t. f'(x_0) = 0
+f''(x_0) > 0
+then f will have a strict rel min at x_0
+
+since f''(a, b) -> R is continuous and f''(x_0) > 0
+exists d > 0: f''(x) > 0 for all x in (x - d, x + d)
+take arbitrary x in (x - d, x + d) with x != x_0
+strict rel min , x_0 in S, for all x in (x - d, x + d) with x in S, f(x_0) < f(x)
+
+by taylor's theorem
+exists c between x, x_0
+f(x) = f(x_0) + f'(c)(x - x_0) /* first order taylor */ + f''(c) / 2(x - x_0) ^ 2
+
+f'(x_)) = 0 by assumption
+(x - x_0) ^ 2 > 0 since x != x_0
+f''(c) > 0
