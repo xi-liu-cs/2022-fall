@@ -1,0 +1,16 @@
+linear combination of weights s = sum_k w_k h_k
+activation function y = sigmoid(s)
+error E = 1 / 2(t - y) ^ 2
+derivative of error with regard to one weight w_k
+dE / dw_k = (dE / dy)(dy / ds)(ds / dw_k)
+dE / dy = d / dy(1 / 2(t - y) ^ 2) = -(t - y)
+dy / ds = y(1 - y)
+ds / dw_k = d / dw_k (sum_k w_k h_k) = h_k
+
+dE / dw_k = -(t - y)y(1 - y)h_k
+after compute derivative, do gradient descent on it
+w_{k + 1} <- w_k - alpha delta_w L
+w_k <- w_k + alpha(t - y)y(1 - y)h_k
+
+L = 1 / 2(y - t) ^ 2
+edge from d to g: w_{dg}
