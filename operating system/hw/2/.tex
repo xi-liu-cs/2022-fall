@@ -93,8 +93,8 @@ multilevel page table may use less space than a single level page table. multile
 (b)\\
 virtual address is partitioned into $n \in \mathbb{N}$ virtual page numbers and 1 virtual page offset\\
 $16KB = (2 ^ 4)(2 ^ {10})B = 2 ^ {14}B$, virtual page offset have 14 bits\\
-$38 - 14 = 24$, 24 bits for 2 virtual page number fields, divide the bits evenly for each page table level\\
-so 12 bits should be allocated for top level page table field, 12 bits should be allocated for next level page table field\\
+$38 - 14 = 24$, 24 bits for 2 virtual page number fields, divide the remaining bits evenly for each page table level. it is beneficial to divide the remaining bits into virtual page number fields approximately evenly to have relatively low space usage\\
+so 12 bits should be allocated for top level page table field, 12 bits should be allocated for next (bottom) level page table field\\
 \\
 \\
 \\
