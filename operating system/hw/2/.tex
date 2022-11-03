@@ -93,14 +93,14 @@ multilevel page table may use less space than a single level page table. multile
 (b)\\
 virtual address is partitioned into $n \in \mathbb{N}$ virtual page numbers and 1 virtual page offset\\
 $16KB = (2 ^ 4)(2 ^ {10})B = 2 ^ {14}B$, virtual page offset have 14 bits\\
-$38 - 14 = 24$, 24 bits for 2 virtual page number fields\\
+$38 - 14 = 24$, 24 bits for 2 virtual page number fields, divide the bits evenly for each page table level\\
 so 12 bits should be allocated for top level page table field, 12 bits should be allocated for next level page table field\\
 \\
 \\
 \\
 3.\\
 TLB: virtual address\\
-Page table: physical address, stored in control register cr3\\
+Page table: physical address, can be stored in control register cr3\\
 L1 cache, L2 cache, L3 cache: physical address is used for many situations. using physical address has the advantage of making the cache to not deal with protection issues, since access permissions are checked in the process of address translation. using physical address can be efficient\\
 The DRAM installed in you machine: physical address\\
 \\
@@ -111,7 +111,7 @@ a.\\
 isolation, ensure a process not write to another process's memory. if no process isolation, a program might behave in unexpected ways due to things unrelated to the program logic\\
 \\
 b.\\
-convenience, make memory management easier by giving each process an address space\\
+convenience, make memory management easier by giving each process an address space. part of the program may be swapped between disk and main memory, the program can be relocated in physical memory but the programmer do not need to be aware of this change and use the same virtual memory\\
 \\
 c.\\
 efficiency, using main memory as a cache for pages that are stored on disk, maintaining the recently used pages in main memory, and transfer the pages between memory and disk when necessary\\
