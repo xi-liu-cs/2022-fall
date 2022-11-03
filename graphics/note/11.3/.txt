@@ -1,0 +1,7 @@
+virtual air brush effect
+take silhouette
+run an arbitrary program at every pixel
+expression parser, simd
+general program was better much for mimd
+look good since follow the perception, not following physical principles
+vision david marr
