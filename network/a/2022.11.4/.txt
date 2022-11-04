@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/35530930/nodemon-not-working-bash-nodemon-command-not-found
+npm install -g --force nodemon
