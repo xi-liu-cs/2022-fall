@@ -3,3 +3,4 @@ npm install -g --force nodemon
 
 https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
 https://github.com/Joao-Henrique/React_Express_App_Medium_Tutorial
+https://github.com/nburgess/react-express-example
