@@ -1,1 +1,260 @@
-
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc} 
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+collaboration: Chuanyang Jin\\
+1\\
+(a)\\
+$x, y \in \mathbb{R}$, plot $x ^ 2 + y ^ 2 = 1, x = 1, y = x$\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = 0.7\textwidth, height = 0.7\textwidth]{1a}
+\end{figure}\\
+let $area(object)$ denote area of an object\\
+\begin{align*}
+area(OAB) &= \frac{1}{2}(base)(height) = \frac{1}{2}(1)(\sin x) = \frac{\sin x}{2}\\
+area(\text{sector from } A \text{ to } B) &= (\pi(1) ^ 2)\frac{x}{2\pi} = \frac{x}{2}\\
+area(OAC) &= \frac{1}{2}(base)(height) = \frac{1}{2}(1)(\tan x) = \frac{\tan x}{2}\\
+area(OAB) &\leq \frac{x}{2} \leq area(OAC)\\
+x \not= 0, \frac{\sin x}{2} &\leq \frac{x}{2} \leq \frac{\tan x}{2}\\
+0 < \sin x &\leq x \leq \tan x
+\end{align*}
+\begin{align*}
+\frac{\sin x}{\sin x} &\leq \frac{x}{\sin x} \leq \frac{\tan x}{\sin x}\\
+1 &\leq \frac{x}{\sin x} \leq \frac{1}{\cos x}\\
+\cos x &\leq \frac{\sin x}{x} \leq 1\\
+\lim_{x \rightarrow 0} \cos x &= \lim_{x \rightarrow 0} 1 = 1\\
+&\text{by squeeze lemma 2.2.1}\\
+\lim_{x \rightarrow 0} \frac{\sin x}{x} &= \lim_{x \rightarrow 0} \cos x = \lim_{x \rightarrow 0} 1 = 1\\
+\end{align*}
+\\
+\\
+\\
+\\
+(b)
+\begin{align*}
+&\text{sum to product identity}\\
+\sin a - \sin b &= 2\sin((a - b) / 2)\cos((a + b) / 2)\\
+&\forall c \in \mathbb{R}\\
+\lim_{x \rightarrow c}\frac{f(x) - f(c)}{x - c} &= \lim_{x \rightarrow c}\frac{\sin x - \sin c}{x - c}\\
+&= \lim_{x \rightarrow c}\frac{2\sin((x - c) / 2)\cos((x + c) / 2)}{x - c}\\
+&= \lim_{x \rightarrow c}\frac{\sin((x - c) / 2)\cos((x + c) / 2)}{(x - c) / 2}\\
+&= \lim_{x \rightarrow c}\frac{\sin((x - c) / 2)}{(x - c) / 2}\cos((x + c) / 2)\\
+&= \lim_{h \rightarrow 0}\frac{\sin h}{h}\cdot\lim_{x \rightarrow c}\cos((x + c) / 2)\\
+\text{/* }\because \lim_{x \rightarrow 0}\frac{\sin x}{x} &= 1 \text{ shown in (a) */}\\
+&= (1)\lim_{x \rightarrow c}\cos((x + c) / 2)\\
+&= \cos(2c / 2)\\
+&= \cos c
+\end{align*}
+so $f(x) = \sin x$ is differentiable $\forall x \in \mathbb{R}$, $f'(x) = \cos x$\\
+\\
+\newpage
+\noindent
+2\\
+definition 3.1.1 $x \in \mathbb{R}$ is cluster point of $S$, if $\forall \varepsilon > 0, (x - \varepsilon, x + \varepsilon) \cap S \setminus \{x\}$ is not empty\\
+definition 3.1.3 let $f: S \rightarrow \mathbb{R}$ be a function and $c$ a cluster point of $S \subset \mathbb{R}$, $\exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists \delta > 0, (x \in S \setminus \{c\} \wedge |x - c| < \delta \rightarrow |f(x) - L| < \varepsilon)$, write $\lim_{x \rightarrow c}f(x) = L$\\
+\\
+(a)\\
+$\because \lim_{x \rightarrow c} h(x) = L$\\
+by definition 3.1.3\\
+$\exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists \delta > 0, (x \in S \setminus \{c\} \wedge |x - c| < \delta \rightarrow |h(x) - L| < \varepsilon)\\
+\exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists \delta > 0, (x \in S \setminus \{c\} \cap (c - \delta, c + \delta) \rightarrow |h(x) - L| < \varepsilon)\\
+\text{let } \varepsilon = L / 2\\
+|h(x) - L| < L / 2\\
+- L / 2 < h(x) - L < L / 2\\
+L - L / 2 < h(x) < L / 2 + L\\
+0 < L / 2 < h(x) < 3L / 2\\
+\therefore L \not= 0\\
+\therefore \exists \delta > 0, (x \in S \setminus \{c\} \cap (c - \delta, c + \delta) \rightarrow h(x) \not= 0)\\$
+\\
+(b)\\
+$\because \forall c \in S, h(c) \not= 0\\
+A \subset S, \forall c(c \in A \rightarrow c \in S), \therefore h|_A(x) \not= 0$ 
+\begin{align*}
+\lim_{x \rightarrow c}\left(\frac{1}{h|_A(x)}\right) &= \lim_{\substack{x \rightarrow c\\ x \in A}}\left(\frac{1}{h(x)}\right) \quad \text{/* definition 3.1.14 */}\\
+&= \left(\frac{1}{\lim_{\substack{x \rightarrow c\\ x \in A}}h(x)}\right) \quad \text{/* corollary 3.1.12 (iv) */}\\
+&= \left(\frac{1}{\lim_{x \rightarrow c}(h|_A(x))}\right) \quad \text{/* definition 3.1.14 */}\\
+&= \frac{1}{h(c)}
+\end{align*}
+\\
+\\
+\\
+\\
+(c)
+{\large
+\begin{align*}
+\text{/* } g(x) &\not= g(c) \text{ */}\\
+\lim_{x \rightarrow c} \frac{f(x)}{g(x)} &= \lim_{x \rightarrow c} \frac{f(x) - f(c)}{g(x) - g(c)}\\
+\text{/* } x &\not= c \text{ */}\\
+&= \lim_{x \rightarrow c} \frac{\frac{f(x) - f(c)}{x - c}}{\frac{g(x) - g(c)}{x - c}}\\
+&\text{/* corollary 3.1.12 (iv) */}\\
+&= \frac{\lim_{x \rightarrow c}\frac{f(x) - f(c)}{x - c}}{\lim_{x \rightarrow c}\frac{g(x) - g(c)}{x - c}}\\
+&= \frac{f'(c)}{g'(c)}\\
+&= \lim_{x \rightarrow c}\frac{f'(x)}{g'(x)}
+\end{align*}
+}
+$\therefore \lim_{x \rightarrow c} \frac{f(x)}{g(x)} = \lim_{x \rightarrow c}\frac{f'(x)}{g'(x)}$\\
+\\
+\\
+\\
+\\
+3\\
+mean value theorem 4.2.4. let $f: [a, b] \rightarrow \mathbb{R}$ be a continuous function differentiable on $(a, b)$, then $\exists \text{ point } c \in (a, b), f(b) - f(a) = f'(c)(b - a)$\\
+\\
+\\
+(a)\\
+part 1\\
+if $\forall x \in I, f'(x) \leq 0$\\
+by mean value theorem 4.2.4, $\forall x, y \in I, x < y, \exists \text{ point } c \in (x, y)\\
+f(y) - f(x) = f'(c)(y - x)$\\
+$\because f'(c) \leq 0, x < y, y - x > 0, \therefore f'(c)(y - x) \leq 0\\
+f(y) - f(x) = f'(c)(y - x) \leq 0\\
+f(y) - f(x) \leq 0\\
+f(y) \leq f(x)$\\
+so $f$ is decreasing\\
+\\
+\\
+part 2\\
+if $f$ is decreasing, $\forall x, y \in I, x < y, f(x) \geq f(y)\\
+f(y) - f(x) \leq 0$\\
+by mean value theorem 4.2.4, $\forall x, y \in I, x < y, \exists \text{ point } c \in (x, y)\\
+f'(c)(y - x) = f(y) - f(x) \leq 0\\
+\because x < y, y - x > 0, f'(c)(y - x) \leq 0\\
+\therefore f'(c) \leq 0\\
+f'(x) \leq 0\\$
+\\
+\\
+\\
+(b)\\
+part 1\\
+if $\forall x \in I, f'(x) < 0$\\
+by mean value theorem 4.2.4, $\forall x, y \in I, x < y, \exists \text{ point } c \in (x, y)\\
+f(y) - f(x) = f'(c)(y - x)$\\
+$\because f'(c) < 0, x < y, y - x > 0, \therefore f'(c)(y - x) < 0\\
+f(y) - f(x) = f'(c)(y - x) < 0\\
+f(y) - f(x) < 0\\
+f(y) < f(x)$\\
+so $f$ is strictly decreasing\\
+\\
+\\
+part 2\\
+if $f$ is strictly decreasing, $\forall x, y \in I, x < y, f(x) > f(y)\\
+f(y) - f(x) < 0$\\
+by mean value theorem 4.2.4, $\forall x, y \in I, x < y, \exists \text{ point } c \in (x, y)\\
+f'(c)(y - x) = f(y) - f(x) < 0\\
+\because x < y, y - x > 0, f'(c)(y - x) < 0\\
+\therefore f'(c) < 0\\
+f'(x) < 0\\$
+\\
+\\
+\\
+\\
+4\\
+(a)
+\begin{align*}
+\text{power rule}, \forall n \in \mathbb{N}, &\frac{d}{dx}(x ^ n) = nx ^ {n - 1}\\
+\frac{d}{dx}(x ^ n) &= nx ^ {n - 1}\\
+\frac{d}{dy}(y ^ n) &= ny ^ {n - 1}\\
+\forall x, y \in [-R, R], &|f'(x)| = |nx ^ {n - 1}| \leq nR ^ {n - 1} =: M, |f'(y)| = |ny ^ {n - 1}| \leq nR ^ {n - 1} = M\\
+|f(x) - f(y)| &= |f'(c)(x - y)| = |f'(c)||x - y| = |f'(c)||x - y| \leq M|x - y|\\
+|f(x) - f(y)| &\leq M|x - y|\\
+|x ^ n - y ^ n| &\leq nR ^ {n - 1}|x - y|\\
+\end{align*}
+\\
+\\
+\\
+\\
+(b)
+\begin{align*}
+\text{power rule}, \forall n \in \mathbb{N}, &\frac{d}{dx}(x ^ n) = nx ^ {n - 1}\\
+\text{chain rule 4.1.10, $h$ is differentiable at $c$, } h'(c) &= f'(g(c))g'(c)\\
+\frac{d}{dx}(\sqrt{x ^ 2 + 1}) &= \frac{x}{\sqrt{x ^ 2 + 1}}\\
+\frac{d}{dy}(\sqrt{y ^ 2 + 1}) &= \frac{y}{\sqrt{y ^ 2 + 1}}\\
+\because \sqrt{x ^ 2} &\leq \sqrt{x ^ 2 + 1}, \sqrt{y ^ 2} \leq \sqrt{y ^ 2 + 1}\\
+\therefore \frac{x}{\sqrt{x ^ 2 + 1}} &< 1 =: M, \frac{y}{\sqrt{y ^ 2 + 1}} < 1 = M\\
+|f(x) - f(y)| = |f'(c)(x - y)| = |f'(c)||x - y| &= |f'(c)||x - y| \leq M|x - y|\\
+|f(x) - f(y)| &\leq M|x - y|\\
+|\sqrt{x ^ 2 + 1} - \sqrt{y ^ 2 + 1}| &\leq |x - y|\\
+\end{align*}
+\\
+\\
+\\
+\\
+5\\
+taylor theorem 4.3.2 $f: [a, b] \rightarrow \mathbb{R}$ is a function with $n$ continuous derivatives on $[a, b]$ and such that $f ^ {(n + 1)}$ exists on $(a, b)$. given distinct points $x_0$ and $x$ in $[a, b]$, we can find a point $c$ between $x_0$ and $x$ such that
+\begin{align*}
+f(x) &= P_n ^ {x_0}(x) + R_n ^ {x_0}(x)\\
+&= \sum_{k = 0} ^ n \frac{f ^ {(k)}(x_0)}{k!}(x - x_0) ^ k + \frac{f ^ {(n + 1)}(c)}{(n + 1)!}(x - x_0) ^ {n + 1}
+\end{align*}
+use taylor's theorem at $x_0 = a$
+\begin{align*}
+f(x) &= \sum_{k = 0} ^ n \frac{f ^ {(k)}(a)}{k!}(x - a) ^ k + \frac{f ^ {(n + 1)}(c)}{(n + 1)!}(x - a) ^ {n + 1}
+\end{align*}
+$P_n ^ {x_0}(x)$ is $n$th order taylor polynomial for $f$ at $x_0$, $R_n ^ {x_0}(x)$ is remainder term\\
+based on extreme theorem 3.3.2, a continuous function
+$f: [a, b] \rightarrow \mathbb{R}$ on a closed and bounded interval $[a, b]$ achieves both an absolute minimum and an absolute maximum on $[a, b]$\\
+$f(x) = P_n ^ {x_0}(x) + R_n ^ {x_0}(x)\\
+i \in \mathbb{R}, i > 0, P(x) := f(x) - i \leq f(x)\\
+\exists \lambda \geq i / (x - a) ^ n, \exists \lambda(x - a) ^ n \geq i\\
+Q(x) := (f(x) - i) + \lambda(x - a) ^ n \geq f(x)\\
+Q(x) - P(x) = (f(x) - i) + \lambda(x - a) ^ n - (f(x) - i) = \lambda(x - a) ^ n$\\
+\\
+\\
+\\
+\\
+6\\
+since $f'(x_0) > 0$, as $f'$ is continuous, there exists open interval $I = (x_0 - \delta, x_0 + \delta), \forall x \in I, f'(x) > 0$ by exercise 3.2.11 (shown below). by proposition 4.2.8, $f$ is strictly increasing on $I$. so the restriction of $f|_I$ is bijective onto $J := f(I)$. since $f$ is continuous, by corollary 3.6.3, $f(I)$ is an interval\\
+\\
+exercise 3.2.11, Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be continuous. if $f(c) > 0$. then $\exists \delta > 0, \forall x \in (c - \delta, c + \delta), f(x) > 0$\\
+let $\varepsilon := f(c) > 0$. $\because f$ is continuous, $\exists \delta > 0, (|x - c| < \delta \rightarrow |f(x) - f(c)| < \varepsilon)\\
+x \in (c - \delta, c + \delta) \rightarrow -\varepsilon < f(x) − f(c) < \varepsilon$\\
+let $\alpha = \delta$. then $x \in (c - \alpha, c + \alpha) \rightarrow -f(c) < f(x) - f(c) < f(c)\\
+-f(c) < f(x) - f(c)\\
+\text{add } f(c) \text{ to both sides}\\
+0 < f(x)\\
+\therefore x \in (c - \alpha, c + \alpha), f(x) > 0$
+\end{document}
