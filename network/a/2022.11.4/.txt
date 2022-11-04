@@ -1,2 +1,5 @@
 https://stackoverflow.com/questions/35530930/nodemon-not-working-bash-nodemon-command-not-found
 npm install -g --force nodemon
+
+https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
+https://github.com/Joao-Henrique/React_Express_App_Medium_Tutorial
