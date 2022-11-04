@@ -6,3 +6,5 @@ https://github.com/Joao-Henrique/React_Express_App_Medium_Tutorial
 
 https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3
 https://github.com/nburgess/react-express-example
+
+https://dev.to/salarc123/how-to-connect-a-react-frontend-with-a-nodejs-express-backend-50i9
