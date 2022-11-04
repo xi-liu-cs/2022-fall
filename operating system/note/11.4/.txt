@@ -1,0 +1,11 @@
+when is page replacement wrong
+decide to kick a page out, then it is needed by another process
+swap area not accessed by user for virtual memory
+page fault, page is not in memory but in disk
+if memory is not full, can directly bring page from disk to memory
+use 1 stack per thread for multithreading
+cannot have 0 thread, there is no process that do not have a thread
+can i make a big process with a lot of threads to be fast
+but then probability of deadlock, can see each other's data
+supercomputer have several boards, each board have its own memory
+hardware threads: how many threads the processor can run at same time
