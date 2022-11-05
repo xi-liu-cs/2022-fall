@@ -47,9 +47,10 @@
 \begin{document}
 \section*{Xi Liu}
 collaboration: Chuanyang Jin\\
+\\
 1\\
 (a)\\
-$x, y \in \mathbb{R}$, plot $x ^ 2 + y ^ 2 = 1, x = 1, y = x$\\
+$x, y \in \mathbb{R}$, use a graphing calculator to plot $x ^ 2 + y ^ 2 = 1, x = 1, y = x$\\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 0.7\textwidth, height = 0.7\textwidth]{1a}
@@ -242,6 +243,14 @@ i \in \mathbb{R}, i > 0, P(x) := f(x) - i \leq f(x)\\
 \exists \lambda \geq i / (x - a) ^ n, \exists \lambda(x - a) ^ n \geq i\\
 Q(x) := (f(x) - i) + \lambda(x - a) ^ n \geq f(x)\\
 Q(x) - P(x) = (f(x) - i) + \lambda(x - a) ^ n - (f(x) - i) = \lambda(x - a) ^ n$\\
+by extreme theorem 3.3.2, since $f'(x)$ is continuous, it achieves both an absolute minimum $min\_val \in \mathbb{R}$ and an absolute maximum $max\_val \in \mathbb{R}$ on $[a, b]$
+\begin{align*}
+P(x) &:= P_{n - 1} ^ a (x) + \frac{min\_val}{n!}(x - a) ^ n\\
+Q(x) &:= P_{n - 1} ^ a (x) + \frac{max\_val}{n!}(x - a) ^ n\\
+\therefore &\forall x \in [a, b], P(x) \leq f(x) \leq Q(X)\\
+\lambda &= \frac{max\_val}{n!} - \frac{min\_val}{n!} \geq 0\\
+Q(x) - P(x) &= \lambda(x - a) ^ n\\
+\end{align*}
 \\
 \\
 \\
