@@ -1,1 +1,5 @@
 only connect neurons that are spatially close to each other
+topological mapping
+featural hierarchy
+high (car), mid (rectangle), low (line) level
+width * height * depth = 32 * 32 * 3
