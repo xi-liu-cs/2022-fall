@@ -50,7 +50,7 @@ collaboration: Chuanyang Jin\\
 \\
 1\\
 (a)\\
-$x, y \in \mathbb{R}$, use a graphing calculator to plot $x ^ 2 + y ^ 2 = 1, x = 1, y = x$\\
+$x, y \in \mathbb{R}$, plot $x ^ 2 + y ^ 2 = 1, x = 1, y = x$\\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 0.7\textwidth, height = 0.7\textwidth]{1a}
@@ -70,7 +70,7 @@ x \not= 0, \frac{\sin x}{2} &\leq \frac{x}{2} \leq \frac{\tan x}{2}\\
 \cos x &\leq \frac{\sin x}{x} \leq 1\\
 \lim_{x \rightarrow 0} \cos x &= \lim_{x \rightarrow 0} 1 = 1\\
 &\text{by squeeze lemma 2.2.1}\\
-\lim_{x \rightarrow 0} \frac{\sin x}{x} &= \lim_{x \rightarrow 0} \cos x = \lim_{x \rightarrow 0} 1 = 1\\
+\lim_{x \rightarrow 0} \frac{\sin x}{x} &= \lim_{x \rightarrow 0} \cos x = \lim_{x \rightarrow 0} 1 = 1
 \end{align*}
 \\
 \\
@@ -104,17 +104,21 @@ $\because \lim_{x \rightarrow c} h(x) = L$\\
 by definition 3.1.3\\
 $\exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists \delta > 0, (x \in S \setminus \{c\} \wedge |x - c| < \delta \rightarrow |h(x) - L| < \varepsilon)\\
 \exists L \in \mathbb{R}, \forall \varepsilon > 0, \exists \delta > 0, (x \in S \setminus \{c\} \cap (c - \delta, c + \delta) \rightarrow |h(x) - L| < \varepsilon)\\
-\text{let } \varepsilon = L / 2\\
-|h(x) - L| < L / 2\\
-- L / 2 < h(x) - L < L / 2\\
-L - L / 2 < h(x) < L / 2 + L\\
-0 < L / 2 < h(x) < 3L / 2\\
-\therefore L \not= 0\\
+\text{let } \varepsilon = |L| / 2\\
+||h(x)| - |L|| \leq |h(x) - L| < |L| / 2\\
+- |L| / 2 < |h(x)| - |L| < |L| / 2\\
+|L| - |L| / 2 < |h(x)| < |L| / 2 + |L|\\
+0 < |L| / 2 < |h(x)| < 3|L| / 2\\
+0 < |h(x)|\\
+0 \not= |h(x)|\\
+0 \not= h(x)\\
 \therefore \exists \delta > 0, (x \in S \setminus \{c\} \cap (c - \delta, c + \delta) \rightarrow h(x) \not= 0)\\$
 \\
 (b)\\
-$\because \forall c \in S, h(c) \not= 0\\
-A \subset S, \forall c(c \in A \rightarrow c \in S), \therefore h|_A(x) \not= 0$ 
+$\since h$ is continuous, $\lim_{x \rightarrow c} h(x) = h(c)$\\
+$\since h(c) \not= 0$, based on question 2 (a), $\exists \delta > 0, x \in S \setminus \{c\} \cap (c - \delta, c + \delta), h(x) \not= 0$\\
+$\because \forall x \in S, h(x) \not= 0\\
+A \subset S, \forall x(x \in A \rightarrow x \in S), \therefore h|_A(x) \not= 0$ 
 \begin{align*}
 \lim_{x \rightarrow c}\left(\frac{1}{h|_A(x)}\right) &= \lim_{\substack{x \rightarrow c\\ x \in A}}\left(\frac{1}{h(x)}\right) \quad \text{/* definition 3.1.14 */}\\
 &= \left(\frac{1}{\lim_{\substack{x \rightarrow c\\ x \in A}}h(x)}\right) \quad \text{/* corollary 3.1.12 (iv) */}\\
@@ -256,7 +260,7 @@ Q(x) - P(x) &= \lambda(x - a) ^ n\\
 \\
 \\
 6\\
-since $f'(x_0) > 0$, as $f'$ is continuous, there exists open interval $I = (x_0 - \delta, x_0 + \delta), \forall x \in I, f'(x) > 0$ by exercise 3.2.11 (shown below). by proposition 4.2.8, $f$ is strictly increasing on $I$. so the restriction of $f|_I$ is bijective onto $J := f(I)$. since $f$ is continuous, by corollary 3.6.3, $f(I)$ is an interval\\
+since $f'(x_0) > 0$, as $f'$ is continuous, $\exists \delta > 0, \exists$ open interval $I = (x_0 - \delta, x_0 + \delta), \forall x \in I, f'(x) > 0$ by exercise 3.2.11 (shown below). by proposition 4.2.8, $f$ is strictly increasing on $I$. let $x, y \in I, x < y$, suppose $f(x) = f(y)$, since $f$ is strictly increasing, $x < y \rightarrow f(x) < f(y)$, which contradicts with the assumption that $f(x) = f(y)$, so $f(x) \not= f(y)$, so $f|_I$ is injective. since $f$ is continuous and strictly increasing, $\forall y \in f(I), \exists x \in I$ by corollary 3.6.3, $f(I)$ is an interval, so $I \rightarrow f(I)$ is surjective. so the restriction of $f|_I$ is bijective onto $J := f(I)$\\
 \\
 exercise 3.2.11, Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be continuous. if $f(c) > 0$. then $\exists \delta > 0, \forall x \in (c - \delta, c + \delta), f(x) > 0$\\
 let $\varepsilon := f(c) > 0$. $\because f$ is continuous, $\exists \delta > 0, (|x - c| < \delta \rightarrow |f(x) - f(c)| < \varepsilon)\\
