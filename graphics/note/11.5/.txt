@@ -1,3 +1,8 @@
 https://www.danielsieger.com/blog/2021/01/03/generating-platonic-solids.html
 https://www.danielsieger.com/download/MyViewer_platonic_solids.cpp
 https://gamedev.stackexchange.com/questions/8191/any-reliable-polygon-normal-calculation-code
+
+1. shape_mesh_function  
+2. uv_mesh
+3. store mesh array to s.shape_mesh
+4. draw_mesh
