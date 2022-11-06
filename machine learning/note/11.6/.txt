@@ -1,0 +1,5 @@
+https://mind.ilstu.edu/curriculum/connectionism_intro/connectionism_2.html
+
+conv:
+https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1
+https://poloclub.github.io/cnn-explainer/
