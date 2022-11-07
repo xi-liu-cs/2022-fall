@@ -6,3 +6,5 @@ https://gamedev.stackexchange.com/questions/8191/any-reliable-polygon-normal-cal
 2. uv_mesh
 3. store mesh array to s.shape_mesh
 4. draw_mesh
+
+https://stackoverflow.com/questions/62815536/why-am-i-getting-the-error-noclassdeffounderror-sun-misc-unsafe-when-trying-t
