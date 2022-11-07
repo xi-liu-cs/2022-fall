@@ -9,3 +9,9 @@ https://gamedev.stackexchange.com/questions/8191/any-reliable-polygon-normal-cal
 
 https://stackoverflow.com/questions/62815536/why-am-i-getting-the-error-noclassdeffounderror-sun-misc-unsafe-when-trying-t
 module-info.java, requires jdk.unsupported
+module engine
+{
+	requires lwjgl;
+	requires lwjgl.util;
+	requires jdk.unsupported;
+}
