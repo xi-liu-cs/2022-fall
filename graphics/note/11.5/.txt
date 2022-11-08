@@ -15,3 +15,10 @@ module engine
 	requires lwjgl.util;
 	requires jdk.unsupported;
 }
+
+https://rnavagamuwa.com/open-source/correct-file-permissions-for-a-website
+files should be 644
+folders should be 755
+chmod 755 assigment
+chmod 755 js
+chmod 644 index.html
