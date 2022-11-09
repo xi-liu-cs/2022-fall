@@ -1,0 +1,341 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+collaboration: Chuanyang Jin\\
+\\
+1\\
+definition 5.1.6 refinement, let $P = \{x_0, x_1, ..., x_n\}, \widetilde{P}_0 = \{\widetilde{x_0}, \widetilde{x_1}, ..., \widetilde{x_l}\}$ be partitions of $[a, b]$. $\widetilde{P}$ is a refinement of $P$ if as sets $P \subset \widetilde{P}$\\
+let $\widetilde{P} = \{\widetilde{x_0}, \widetilde{x_1}, ..., \widetilde{x_l}\}$ be a refinement of $P = \{x_0, x_1, ..., x_n\}$. then $x_0 = \widetilde{x}_0, x_n = \widetilde{x}_l$. there are integers $k_0 < k_1 < ... < k_n$ such that $x_j = \widetilde{x}_{k_j}$ for $j = 0, 1, 2, ..., n$
+\[\Delta x_j = x_j - x_{j - 1} = \widetilde{x}_{k_j} - \widetilde{x}_{k_{j - 1}} = \sum_{p = k_{j - 1} + 1} ^ {k_j} \widetilde{x}_p - \widetilde{x}_{p - 1} = \sum_{p = k_{j - 1} + 1} ^ {k_j} \Delta\widetilde{x}_p\]
+$\{f(x): \widetilde{x}_{j - 1} \leq x \leq \widetilde{x}_j\} \subset \{f(x): x_{j - 1} \leq x \leq x_j\}$\\
+let $M_j := \sup\{f(x): x_{j - 1} \leq x \leq x_j\}\\
+\widetilde{M}_j := \sup\{f(x): \widetilde{x}_{j - 1} \leq x \leq \widetilde{x}_j\}, \widetilde{M}_P \leq M_j$ for $k_{j - 1} < p < k_j$
+\begin{align*}
+M_j \Delta x_j &= \sum_{p = k_{j - 1} + 1} ^ {k_j} M_j \Delta \widetilde{x}_p \geq \sum_{p = k_{j - 1} + 1} ^ {k_j} \widetilde{M}_p \Delta \widetilde{x}_p\\
+U(P, f) &= \sum_{j = 1} ^ n M_j \Delta x_j\\
+&\geq \sum_{j = 1} ^ n \sum_{p = k_{j - 1} + 1} ^ {k_j} \widetilde{M}_p \Delta \widetilde{x}_p\\
+&= \sum_{j = 1} ^ m \widetilde{M}_j \Delta \widetilde{x}_j\\
+&= U(\widetilde{P}, f)\\
+\therefore U(\widetilde{P}, f) &\leq U(P, f)
+\end{align*}
+\\
+\\
+\\
+\\
+2\\
+(a)\\
+$B$ is a non-empty bounded set, so $B$ is both bounded above and bounded below, so $\inf B$ exists, $B \subset A, \forall x(x \in B \rightarrow x \in A)$\\
+\\
+$\forall x \in B, \because B \subset A, \therefore x \in A$, based on definition of $\inf A, \forall b \in A, \inf A \leq b$,\\
+and since $x \in A, \therefore \inf A \leq x$\\
+so $\inf A$ is a lower bound of $B$\\
+$\inf B$ is greatest lower bound of $B$\\
+so $\inf A \leq \inf B$\\
+\\
+$\forall \varepsilon > 0\\
+\text{by proposition 1.2.8}, \exists x \in A, \inf A \leq x < \inf A + \varepsilon$\\
+based on the assumption that $\forall x \in A, \exists y \in B, x \geq y\\
+\therefore \exists y \in B, y \leq x < \inf A + \varepsilon$\\
+so $\inf A + \varepsilon$ is not a lower bound of $B$\\
+$\inf A$ is greatest lower bound of $B$, and since $\inf B$ is a lower bound\\
+$\inf B \leq \inf A\\
+\because \inf A \leq \inf B, \inf B \leq \inf A\\
+\therefore \inf B = \inf A$\\
+\\
+\\
+\\
+\\
+(b)\\
+since $A, B$ are non-empty bounded sets, so $A, B$ are both bounded above and bounded below, so $\inf A, \inf B, \sup A, \sup B$ exist\\
+since $A, B$ are non-empty, so $C$ is non-empty, $\forall c \in C, \exists a \in A, \exists b \in B, a + b = c\\
+\inf A + \inf B \leq a + b = c \leq \sup A + \sup B\\$
+$\therefore \inf A + \inf B$ is a lower bound of $C$, $\sup A + \sup B$ is an upper bound of $C$. so $C$ is both bounded above and bounded below, $\sup C$ and $\inf C$ exist\\
+\\
+$\forall \varepsilon > 0, \exists a \in A, \sup A - \varepsilon / 2 < a \leq \sup A\\
+\exists b \in B, \sup B - \varepsilon / 2 < b \leq \sup B\\
+\exists c \in C, c = a + b\\
+(\sup A - \varepsilon / 2) + (\sup B - \varepsilon / 2) < a + b = c \leq \sup A + \sup B\\
+\sup A + \sup B - \varepsilon < a + b = c \leq \sup A + \sup B\\$
+$\therefore \sup A + \sup B - \varepsilon$ is not an upper bound of $C$\\ $\therefore \sup A + \sup B = \sup C$ is the least upper bound of $C$\\
+\\
+$\forall \varepsilon > 0, \exists a \in A, \inf A \leq a < \inf A + \varepsilon / 2\\
+\exists b \in B, \inf B \leq b < \inf B + \varepsilon / 2\\
+\exists c \in C, c = a + b\\
+\inf A + \inf B \leq a + b = c < (\inf A + \varepsilon / 2) + (\inf B + \varepsilon / 2)\\
+\inf A + \inf B \leq a + b = c < \inf A + \inf B + \varepsilon\\$
+$\therefore \inf A + \inf B + \varepsilon$ is not a lower bound of $C$\\ $\therefore \inf A + \inf B = \inf C$ is the greatest lower bound of $C$\\
+\\
+\\
+\\
+\\
+(c)\\
+since $f, g$ are bounded functions, $f, g$ are both bounded above and bounded below, so $\inf f, \inf g, \sup f, \sup g$ exist, $\forall x \in D$
+\[\inf_{x \in D} f(x) + \inf_{x \in D} g(x) \leq f(x) + g(x) \leq \sup_{x \in D} f(x) + \sup_{x \in D} g(x)\]
+so $f + g$ is both bounded above and bounded below, so $f + g$ is bounded, so $\inf(f(x) + g(x)), \sup(f(x) + g(x))$ exist\\
+\\
+since $\sup_{x \in D} f(x) + \sup_{x \in D} g(x)$ is an upper bound of $f + g$, and $\sup_{x \in D} (f(x) + g(x))$ is the least upper bound of $f + g$\\
+so $\sup_{x \in D} (f(x) + g(x)) \leq \sup_{x \in D} f(x) + \sup_{x \in D} g(x)\\$
+\\
+since $\inf_{x \in D} f(x) + \inf_{x \in D} g(x)$ is a lower bound of $f + g$, and $\inf_{x \in D} (f(x) + g(x))$ is the greatest lower bound of $f + g$\\
+so $\inf_{x \in D} f(x) + \inf_{x \in D} g(x) \leq \inf_{x \in D} (f(x) + g(x))\\$
+\\
+\\
+\\
+\\
+3\\
+$m \in \mathbb{N} \cup \{0\}$\\
+$P_1 = \{x_0, x_1, ..., x_{m}\}$ is a partition of $[a, b]$\\
+$P_2 = \{x_{m}, x_{m + 1}, ..., x_n\}$ is a partition of $[b, c]$\\
+$P := P_1 \cup P_2 = \{x_0, x_1, ..., x_n\}$ is a partition of $[a, c]$
+\begin{align*}
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i\\
+&= \sum_{i = 1} ^ {m} M_i \Delta x_i + \sum_{i = {m}} ^ n M_i \Delta x_i\\
+&= U(P_1, f) + U(P_2, f)
+\end{align*}
+$\{U(P, f): P \text{ is a partition of }[a, b], b \in P\} \subset \{U(P, f): P \text{ is a partition of }[a, c]\}$\\
+if $A$ is a partition of $[a, c], P = A \cup \{b\}$, then $P$ is a refinement of $A$, $U(A, f) \geq U(P, f)$\\
+by definition 5.1.3\\
+\begin{align*}
+\overline{\int_a ^ c} f &= \inf\{U(P, f): P \text{ a partition of }[a, c]\}\\
+&= \inf\{U(P, f): P \text{ a partition of }[a, c], b \in P\}\quad\text{/* by problem 2 (a), exercise 1.1.9 */}\\
+&= \inf\{U(P_1, f) + U(P_2, f): P_1 \text{ a partition of }[a, b], P_2 \text{ a partition of }[b, c]\}\\
+&= \inf\{U(P_1, f): P_1 \text{ a partition of }[a, b]\} + \inf\{U(P_2, f): P_2 \text{ a partition of }[b, c]\}\\
+&\quad\text{/* by problem 2 (b), exercise 1.2.9 */}\\
+&= \overline{\int_a ^ b} f + \overline{\int_b ^ c} f
+\end{align*}
+\\
+\\
+\\
+\\
+4\\
+let $S \subset \mathbb{R}$ be a bounded set, $-S := \{-s: s \in S\}$, then $\sup(-S) = -\inf(S), \inf(-S) = -\sup(S)$\\
+let $P$ be a partition of $[a, b]$, $m_i := \inf\{f(x): x \in [x_{i - 1}, x_i]\}, M_i := \sup\{f(x): x \in [x_{i - 1}, x_i]\}$
+\begin{align*}
+\sup\{-f(x): x \in [x_{i - 1}, x_i]\} &= -\inf\{f(x): x \in [x_{i - 1}, x_i]\} = -m_i\\
+\inf\{-f(x): x \in [x_{i - 1}, x_i]\} &= -\sup\{f(x): x \in [x_{i - 1}, x_i]\} = -M_i\\
+U(P, -f) &= \sum_{i = 1} ^ n \sup\{-f(x): x \in [x_{i - 1}, x_i]\}\Delta x_i\\
+&= -\sum_{i = 1} ^ n m_i \Delta x_i\\
+&= -L(P, f)\\
+\\
+L(P, -f) &= \sum_{i = 1} ^ n \inf\{-f(x): x \in [x_{i - 1}, x_i]\}\Delta x_i\\
+&= -\sum_{i = 1} ^ n M_i \Delta x_i\\
+&= -U(P, f)
+\end{align*}
+\begin{align*}
+\underline{\int_a ^ b} (-f) &= \sup\{L(P, -f): P \text{ a partition of }[a, b]\}\\
+&= \sup\{-U(P, -f): P \text{ a partition of }[a, b]\}\\
+&= -\inf\{U(P, f): P \text{ a partition of }[a, b]\}\\
+&= -\overline{\int_a ^ b} f\\
+\overline{\int_a ^ b} (-f) &= \inf\{U(P, -f): P \text{ a partition of }[a, b]\}\\
+&= \inf\{-L(P, -f): P \text{ a partition of }[a, b]\}\\
+&= -\sup\{L(P, f): P \text{ a partition of }[a, b]\}\\
+&= -\underline{\int_a ^ b} f
+\end{align*}
+\begin{align*}
+&\because f \text{ is Riemann integrable}\\
+\int_a ^ b f &= \overline{\int_a ^ b} f = \underline{\int_a ^ b} f\\
+-\int_a ^ b f &= -\overline{\int_a ^ b} f = -\underline{\int_a ^ b} f\\
+\underline{\int_a ^ b} (-f) &= -\overline{\int_a ^ b} f = -\underline{\int_a ^ b} f = \overline{\int_a ^ b} (-f)\\
+&\therefore -f \text{ is Riemann integrable}\\
+\int_a ^ b (-f) &= \underline{\int_a ^ b} (-f) = -\overline{\int_a ^ b} f = -\int_a ^ b f\\
+\end{align*}
+\\
+\\
+\\
+\\
+\\
+5\\
+(a)\\
+let $P_1, P_2$ be partitions of $[a, b]$, $P := P_1 \cup P_2$, $P$ is a refinement of $P_1$ and a refinement of $P_2$
+\begin{align*}
+M_i ^ {f + g} &:= \sup\{f(x) + g(x): x \in [x_{i - 1}, x_i]\}\\
+&\leq \sup\{f(x): x \in [x_{i - 1}, x_i]\} + \sup\{g(x): x \in [x_{i - 1}, x_i]\} \quad\text{/* based on problem 2 (c) */}\\
+&= M_i ^ f + M_i ^ g\\
+U(P, f + g) &= \sum_{i = 1} ^ n M_i ^ {f + g} \Delta x_i\\
+&\leq \sum_{i = 1} ^ n (M_i ^ f + M_i ^ g) \Delta x_i\\
+&= U(P, f) + U(P, g)
+\end{align*}
+by proposition 5.1.7
+\begin{align*}
+U(P, f + g) &\leq U(P, f) + U(P, g) \leq U(P_1, f) + U(P_2, g)\\
+\overline{\int_a ^ b} (f + g) &= \inf\{U(P, f + g): P \text{ a partition of }[a, b]\}\\
+&\leq \inf\{U(P_1, f) + U(P_2, g): P_1 \text{ a partition of }[a, b], P_2 \text{ a partition of }[a, b]\}\\
+&= \inf\{U(P_1, f): P_1 \text{ a partition of }[a, b]\} + \inf\{U(P_2, g): P_2 \text{ a partition of }[a, b]\}\\
+&\quad\text{/* by problem 2 (b), exercise 1.2.9 */}\\
+&= \overline{\int_a ^ b} f + \overline{\int_a ^ b} g\\
+\therefore \overline{\int_a ^ b} (f + g) &\leq \overline{\int_a ^ b} f + \overline{\int_a ^ b} g\\
+\end{align*}
+\begin{align*}
+m_i ^ {f + g} &:= \inf\{f(x) + g(x): x \in [x_{i - 1}, x_i]\}\\
+&\geq \inf\{f(x): x \in [x_{i - 1}, x_i]\} + \inf\{g(x): x \in [x_{i - 1}, x_i]\} \quad\text{/* based on problem 2 (c) */}\\
+&= m_i ^ f + m_i ^ g\\
+L(P, f + g) &= \sum_{i = 1} ^ n m_i ^ {f + g} \Delta x_i\\
+&\geq \sum_{i = 1} ^ n (m_i ^ f + m_i ^ g) \Delta x_i\\
+&= L(P, f) + L(P, g)
+\end{align*}
+by proposition 5.1.7
+\begin{align*}
+L(P, f + g) &\geq L(P, f) + L(P, g) \geq L(P_1, f) + L(P_2, g)\\
+\underline{\int_a ^ b} (f + g) &= \sup\{L(P, f + g): P \text{ a partition of }[a, b]\}\\
+&\geq \sup\{L(P_1, f) + L(P_2, g): P_1 \text{ a partition of }[a, b], P_2 \text{ a partition of }[a, b]\}\\
+&= \sup\{L(P_1, f): P_1 \text{ a partition of }[a, b]\} + \sup\{L(P_2, g): P_2 \text{ a partition of }[a, b]\}\\
+&\quad\text{/* by problem 2 (b), exercise 1.2.9 */}\\
+&= \underline{\int_a ^ b} f + \underline{\int_a ^ b} g\\
+\therefore \underline{\int_a ^ b} (f + g) &\geq \underline{\int_a ^ b} f + \underline{\int_a ^ b} g\\
+\end{align*}
+\\
+\\
+\\
+(b)\\
+based on problem 3 (a)
+\begin{align*}
+\overline{\int_a ^ b} (f + g) &\leq \overline{\int_a ^ b} f + \overline{\int_a ^ b} g\\
+&= \int_a ^ b f + \int_a ^ b g\\
+&= \underline{\int_a ^ b} f + \underline{\int_a ^ b} g\\
+&\leq \underline{\int_a ^ b} (f + g)\\
+&\text{by proposition 5.1.8}\\
+\underline{\int_a ^ b} (f + g) &\leq \overline{\int_a ^ b} (f + g)\\
+\end{align*}
+combine 2 inequalities
+\begin{align*}
+\underline{\int_a ^ b} (f + g) &\leq \overline{\int_a ^ b} (f + g), \quad \underline{\int_a ^ b} (f + g) \geq \overline{\int_a ^ b} (f + g)\\
+\underline{\int_a ^ b} (f + g) &= \overline{\int_a ^ b} (f + g)\\
+&\text{so $f + g$ is Riemann integrable, $f + g \in \mathscr{R}[a, b]$}\\
+\int_a ^ b (f + g) &= \overline{\int_a ^ b} (f + g) = \int_a ^ b f + \int_a ^ b g\\
+\end{align*}
+\\
+\\
+\\
+\\
+\\
+6\\
+part 1\\
+based on definition 2.1.2\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall k \geq M\\
+|U(P_k, f) - L(P_k, f)| = U(P_k, f) - L(P_k, f) < \varepsilon\\
+U(P_M, f) - L(P_M, f) < \varepsilon$
+\begin{align*}
+0 &\leq \overline{\int_a ^ b} f - \underline{\int_a ^ b} f\\
+&\leq U(P_M, f) - L(P_M, f)\\
+&< \varepsilon\\
+&\because \varepsilon \text{ is arbitrary }\\
+\overline{\int_a ^ b} f - \underline{\int_a ^ b} f &= 0\\
+\overline{\int_a ^ b} f &= \underline{\int_a ^ b} f
+\end{align*}
+so $f$ is Riemann integrable\\
+\\
+part 2\\
+based on definition 2.1.2\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall k \geq M\\
+|U(P_k, f) - L(P_k, f)| = U(P_k, f) - L(P_k, f) < \varepsilon\\
+U(P_M, f) - L(P_M, f) < \varepsilon, \forall k \geq M$
+\begin{align*}
+\left|U(P_k, f) - \int_a ^ b f\right| &= U(P_k, f) - \int_a ^ b f\\
+&= U(P_k, f) - \underline{\int_a ^ b f}\\
+&\leq U(P_k, f) - L(P_k, f)\\
+&< \varepsilon\\
+\therefore \int_a ^ b f = \lim_{k \rightarrow \infty} U(P_k, f)\\
+\end{align*}
+\\
+part 3\\
+\begin{align*}
+&\because \lim_{k \rightarrow \infty}\left(U(P_k, f) - L(P_k, f)\right) = 0, \lim_{k \rightarrow \infty} U(P_k, f) = \int_a ^ b f\\
+\lim_{k \rightarrow \infty} L(P_k, f) &= \lim_{k \rightarrow \infty}[U(P, k) - (U(P_k, f) - L(P_k, f))]\\
+&= \lim_{k \rightarrow \infty}U(P, k) - \lim_{k \rightarrow \infty}(U(P_k, f) - L(P_k, f))\\
+&= \int_a ^ b f - 0\\
+&= \int_a ^ b f\\
+\end{align*}
+\\
+\\
+\\
+\\
+\\
+7
+\begin{align*}
+m_i &:= \inf\{x: x \in [(i - 1) / n, i / n]\} = \frac{i - 1}{n}\\
+M_i &:= \sup\{x: x \in [(i - 1) / n, i / n]\} = \frac{i}{n}\\
+\Delta x_i &= \frac{1}{n}\\
+L(P_n, f) &= \sum_{i = 1} ^ n m_i \Delta x_i\\
+&= \sum_{i = 1} ^ n \l\frac{i - 1}{n} \frac{1}{n}\\
+&= \frac{1}{n ^ 2} \sum_{i = 1} ^ n (i - 1)\\
+&= \frac{1}{n ^ 2}\left(\sum_{i = 1} ^ n i - \sum_{i = 1} ^ n 1\right)\\
+&= \frac{1}{n ^ 2}\left(\frac{n(n + 1)}{2} - n\right) \quad \text{/* arithmetic series */}\\
+&= \frac{1}{n ^ 2}\left(\frac{n ^ 2(n + 1) - 2n ^ 2}{2n}\right)\\
+&= \frac{n ^ 3 - n ^ 2}{2n ^ 3}\\
+&= \frac{n ^ 2 - n}{2n ^ 2}\\
+&= \frac{n ^ 2}{2n ^ 2} - \frac{n}{2n ^ 2}\\
+&= \frac{1}{2} - \frac{1}{2n}
+\end{align*}
+\begin{align*}
+U(P_n, f) &= \sum_{i = 1} ^ n M_i \Delta x_i\\
+&= \sum_{i = 1} ^ n \left(\frac{i}{n}\frac{1}{n}\right)\\
+&= \frac{1}{n ^ 2}\sum_{i = 1} ^ n i\\
+&= \frac{1}{n ^ 2}\left(\frac{n(n + 1)}{2}\right) \quad \text{/* arithmetic series */}\\
+&= \frac{n(n + 1)}{2n ^ 2}\\
+&= \frac{n ^ 2}{2n ^ 2} + \frac{n}{2n ^ 2}\\
+&= \frac{1}{2} + \frac{1}{2n}\\
+\end{align*}
+\begin{align*}
+U(P_n, f) - L(P_n, f) &= \frac{1}{2} + \frac{1}{2n} - \left(\frac{1}{2} - \frac{1}{2n}\right) = \frac{1}{n}\\
+\forall \varepsilon > 0, &\exists M \in \mathbb{N}, M > \frac{1}{\varepsilon}\\
+&\exists \text{ partition } P := P_M\\
+U(P_M, f) - L(P_M, f) &= \frac{1}{M} < \varepsilon
+\end{align*}
+based on proposition 5.1.13, $f: [0, 1] \rightarrow \mathbb{R}$ is Riemann integrable
+\begin{align*}
+\{L(P_n, f): n \in \mathbb{N}\} \subset \{L(P, f): P \text{ a partition of } [0, 1]\}\\
+\sup\{L(P_n, f): n \in \mathbb{N}\} &= \sup\left\{\frac{1}{2} - \frac{1}{2n}\right\} = \frac{1}{2}\\
+\int_0 ^ 1 f &= \underline{\int_0 ^ 1} f \geq \frac{1}{2}\\
+\{U(P_n, f): n \in \mathbb{N}\} \subset \{U(P, f): P \text{ a partition of } [0, 1]\}\\
+\inf\{U(P_n, f): n \in \mathbb{N}\} &= \inf\left\{\frac{1}{2} + \frac{1}{2n}\right\} = \frac{1}{2}\\
+\int_0 ^ 1 &= \overline{\int_0 ^ 1} f \leq \frac{1}{2}\\
+\therefore \int_0 ^ 1 f &= \frac{1}{2}\\
+\end{align*}
+\end{document}
