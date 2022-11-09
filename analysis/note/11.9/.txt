@@ -1,0 +1,35 @@
+tilde{P} superset P
+tilde{P} is a refinement
+let f: [a, b] -> R be a bounded function, underline_{int_a ^ b} f <= overline_{int_a ^ b} f
+showed in prop 5.1.2
+for any parition P
+L(P, f) <= U(P, f)
+
+let P_1, P_2 be arbitrary partitions of [a, b]
+P = P1 cup P2
+P superset p1
+p superset p2
+p is refinement of both
+L(P_1, f) <= L(P, f) <= U(p, f) <= u(P2, f)
+as the glb
+overline{int_a ^ b} f = inf{U(p2, f), for all p2} >= L(P1, f)
+
+when f in R[a, b]
+underline int ~ lim inf
+overline int ~ lim sup
+{x_n} is convergent <-> lim inf x_n = lim sup x_n
+f is riemann integrable <-> underline int = overline int
+
+prop 5.1.13 upgrade
+let f be bounded function
+riemann integrals are like limits
+
+f in R[a, b]
+underline{int_a ^ b} f = sup L
+= overline{int_a ^ b} f = inf U
+exists P1 of [a, b]: int_a ^ b f - e / 2 < L(P1, f) <= int_a ^ b f
+exists P2 of [a, b]: int_a ^ b f < U(P2, f) <= int_a ^ b f + e / 2
+
+L(q, f) <= L(p, f) = L(p1, f) + L(p2, f)
+{P = Q cup {b}: for all Q} subset {Q: for all Q}
+a partition containing a point b is a subset of all partitions
