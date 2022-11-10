@@ -7,11 +7,9 @@ Both the back-end and front-end should be running<br>
 * Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
-<br>
 * Go to the front-end folder by ```cd front-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```npm start```<br>
-<br>
 * Unit tests: ```cd back-end```<br>
 ```npm test```<br>
 
