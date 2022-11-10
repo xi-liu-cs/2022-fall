@@ -3,3 +3,6 @@ body: raw, json
 ["graphics"]
 
 Content-Type application/json
+
+https://congtuanle.medium.com/mongoerror-e11000-duplicate-key-error-collection-695e7e9ccdc4
+every time change schema, delete the collection on mongodb atlas, cloud.mongodb.com
