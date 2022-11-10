@@ -44,7 +44,6 @@ Run ```npm start```<br>
 <li>The [Recommend] page may take 1-2 sec to show up when you first go into it.
 <li>This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
 </ul>
-<br>
 
 ## Members
 
