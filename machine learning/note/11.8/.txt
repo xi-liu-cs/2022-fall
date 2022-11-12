@@ -1,1 +1,2 @@
 dot product between input and kernel
+lenet
