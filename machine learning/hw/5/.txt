@@ -1,2 +1,3 @@
 https://colah.github.io/posts/2014-10-Visualizing-MNIST/
 https://github.com/pytorch/examples/blob/main/mnist/main.py
+https://stackoverflow.com/questions/49201236/check-the-total-number-of-parameters-in-a-pytorch-model
