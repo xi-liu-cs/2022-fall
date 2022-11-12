@@ -1,2 +1,8 @@
 dot product between input and kernel
 lenet
+feature map of a face
+color a black white image
+train a cnn to do this
+similar to a semantic segmentation
+
+https://www.kaggle.com/code/basu369victor/image-colorization-basic-implementation-with-cnn
