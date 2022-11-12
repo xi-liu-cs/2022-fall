@@ -1,1 +1,49 @@
+do ml when do not have output labels
+unsupervised learning: only have access to x, input data
+reinforcement learning: do not have access to full data set x
+a ml system that can itself go out there and collect its own data
 
+supervised learning, if have labeled data, clear what want to do, classifier
+belong to which class
+unsupervised learning, figure out underlying structure of data
+
+dimensionality reduction
+high dimensional data can be repetitive
+a lot of words such as 'the', 'a', 'and'
+very few features in this large vector that really matter
+a lot of information is not useful
+overall statistics instead of individual points
+
+increase data points, number of features, then degrade performance
+irrelevant features increase noise
+need more work to figure out what to ignore in the data
+and what things it should actually focus on
+
+compress into few dimensions, easier to understand
+map 3d to 2d space
+feature selection requires domain knowledge
+setting a weight equal to 0 reduce the dimension
+
+an algorithm of how to automatically reduce the dimensions
+
+if all data lie on a line, instead of measuring x and y, measure how much it moves along the blue line. project x to z, where number of dimensions of z is less than dimension of x
+principal component analysis, projection direction that maximizes variance of data
+orthogonal to first and maximize variance of data
+choose a projection that have highest projection, look at projection of points on a line
+when the line aligns properly, the red dot have highest spread
+spin around line is costly
+
+1. make mean of data 0, standardize
+2. compute covariance matrix c
+c = d * d matrix
+c(n, m) = E[(x_n - E(x_n))(x_m - E(x_m))]
+v(n) = E[(x_n - E(x_n)) ^ 2]
+
+if take a diagonal term
+c(1, 1) = E(x1 * x1) = sigma ^ 2(x1)
+
+3. calculate eigenvectors and eigenvalues of c
+eigenvector with kth largest eigenvalue lamda_k corresponds to kth pc
+lamda_k / sum_i lamda_i = proportion of variance captured by kth pc
+
+https://setosa.io/ev/principal-component-analysis/
