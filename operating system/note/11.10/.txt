@@ -1,0 +1,11 @@
+changes made by 1 thread to shared system resources (such as closing a file)
+will be seen by all other threads
+opening a file: ask os whether the file exists,
+and whether we have permission to use it for read or write
+each process are given a different pointer to file's content
+but the threads in the same process share same file pointer
+no need for thread id, since at the creation of thread
+already specified which function the thread will execute
+thread's handle can also be considered as the id of the thread
+if there is no pthread_join to wait for other thread to finish
+then after main thread finishes, then the whole process ends, every thread finishes (even if they did not finish what they are doing)
