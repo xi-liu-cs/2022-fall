@@ -3,6 +3,7 @@ m >= n
 difference between fork and pthread_create
 after fork, parent process continue until end
 after pthread_create, thread stop until the start_routine end
+so call another function inside start_routine
 pthread_join, block until thread p1 finish
 
 (always first) main begin
@@ -10,3 +11,16 @@ pthread_join, block until thread p1 finish
 a
 b}
 (always last) main end
+
+++counter:
+suppose reg0 stores the memory address mem of counter
+mov (reg0), reg1 /* read */
+add $1, reg1 /* modify */
+mov reg1, (reg0) /* write */
+
+suppose reg0, reg0.2 stores the memory address mem of counter
+thread 1                                thread 2
+mov (reg0), reg1 /* read */             mov (reg0.2), reg1.2 /* read */ 
+add $1, reg1 /* modify */               add $1, reg1.2 /* modify */
+mov reg1, (reg0) /* write */            mov reg1.2, (reg0.2) /* write */
+then the memory address of reg0, reg0.2 stores 1, but should be 2
