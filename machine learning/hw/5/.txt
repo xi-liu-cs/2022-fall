@@ -1,1 +1,2 @@
 https://colah.github.io/posts/2014-10-Visualizing-MNIST/
+https://github.com/pytorch/examples/blob/main/mnist/main.py
