@@ -1,1 +1,12 @@
+user (m), kernel (n) level threads 
+m >= n
+difference between fork and pthread_create
+after fork, parent process continue until end
+after pthread_create, thread stop until the start_routine end
+pthread_join, block until thread p1 finish
 
+(always first) main begin
+{which finish is not determined: 
+a
+b}
+(always last) main end
