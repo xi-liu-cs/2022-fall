@@ -8,3 +8,5 @@ https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7b
 https://medium.datadriveninvestor.com/convolution-neural-networks-vs-fully-connected-neural-networks-8171a6e86f15
 https://github.com/poojamahajan0712/medium_blog/blob/master/Fully_connected_NNvsCNN/MNIST_Keras_Fully_Connected_vs_Convolutional.ipynb
 https://www.baeldung.com/cs/convolutional-vs-regular-nn
+
+https://www.mldawn.com/backpropagation-algorithm-part1-mlp-sigmoid/
