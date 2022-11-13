@@ -14,3 +14,4 @@ https://github.com/CamNZ/gradient-descent-from-scratch/blob/master/part_2.ipynb
 https://www.kaggle.com/code/androbomb/simple-nn-with-python-multi-layer-perceptron
 https://leonardoaraujosantos.gitbook.io/artificial-inteligence/machine_learning/deep_learning/relu_layer
 https://www.youtube.com/watch?v=w8yWXqWQYmU
+https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras/notebook
