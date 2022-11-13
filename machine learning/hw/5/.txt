@@ -2,7 +2,9 @@ https://colah.github.io/posts/2014-10-Visualizing-MNIST/
 https://github.com/pytorch/examples/blob/main/mnist/main.py
 https://stackoverflow.com/questions/49201236/check-the-total-number-of-parameters-in-a-pytorch-model
 https://towardsdatascience.com/a-simple-2d-cnn-for-mnist-digit-recognition-a998dbc1e79a
+https://medium.com/analytics-vidhya/my-first-deep-learning-model-using-pytorch-406caa278df6
+
 https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7bc6ee5
 https://medium.datadriveninvestor.com/convolution-neural-networks-vs-fully-connected-neural-networks-8171a6e86f15
-https://medium.com/analytics-vidhya/my-first-deep-learning-model-using-pytorch-406caa278df6
 https://github.com/poojamahajan0712/medium_blog/blob/master/Fully_connected_NNvsCNN/MNIST_Keras_Fully_Connected_vs_Convolutional.ipynb
+https://www.baeldung.com/cs/convolutional-vs-regular-nn
