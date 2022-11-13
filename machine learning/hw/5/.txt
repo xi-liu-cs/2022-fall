@@ -15,3 +15,4 @@ https://www.kaggle.com/code/androbomb/simple-nn-with-python-multi-layer-perceptr
 https://leonardoaraujosantos.gitbook.io/artificial-inteligence/machine_learning/deep_learning/relu_layer
 https://www.youtube.com/watch?v=w8yWXqWQYmU
 https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras/notebook
+https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/
