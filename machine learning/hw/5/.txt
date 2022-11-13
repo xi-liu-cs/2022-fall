@@ -10,3 +10,4 @@ https://github.com/poojamahajan0712/medium_blog/blob/master/Fully_connected_NNvs
 https://www.baeldung.com/cs/convolutional-vs-regular-nn
 
 https://www.mldawn.com/backpropagation-algorithm-part1-mlp-sigmoid/
+https://github.com/CamNZ/gradient-descent-from-scratch/blob/master/part_2.ipynb
