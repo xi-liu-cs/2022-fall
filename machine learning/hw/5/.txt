@@ -16,3 +16,4 @@ https://leonardoaraujosantos.gitbook.io/artificial-inteligence/machine_learning/
 https://www.youtube.com/watch?v=w8yWXqWQYmU
 https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras/notebook
 https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/
+https://zerowithdot.com/mlp-backpropagation/
