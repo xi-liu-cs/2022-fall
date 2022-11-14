@@ -9,6 +9,7 @@ https://medium.datadriveninvestor.com/convolution-neural-networks-vs-fully-conne
 https://github.com/poojamahajan0712/medium_blog/blob/master/Fully_connected_NNvsCNN/MNIST_Keras_Fully_Connected_vs_Convolutional.ipynb
 https://www.baeldung.com/cs/convolutional-vs-regular-nn
 
+https://towardsdatascience.com/lets-code-a-neural-network-in-plain-numpy-ae7e74410795
 https://towardsdatascience.com/coding-neural-network-forward-propagation-and-backpropagtion-ccf8cf369f76
 https://python.plainenglish.io/deep-neural-networks-forward-propagation-93fead5cf24
 https://www.mldawn.com/backpropagation-algorithm-part1-mlp-sigmoid/
