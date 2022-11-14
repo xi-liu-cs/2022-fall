@@ -10,6 +10,7 @@ https://github.com/poojamahajan0712/medium_blog/blob/master/Fully_connected_NNvs
 https://www.baeldung.com/cs/convolutional-vs-regular-nn
 
 https://towardsdatascience.com/coding-neural-network-forward-propagation-and-backpropagtion-ccf8cf369f76
+https://python.plainenglish.io/deep-neural-networks-forward-propagation-93fead5cf24
 https://www.mldawn.com/backpropagation-algorithm-part1-mlp-sigmoid/
 https://github.com/CamNZ/gradient-descent-from-scratch/blob/master/part_2.ipynb
 https://www.kaggle.com/code/androbomb/simple-nn-with-python-multi-layer-perceptron
