@@ -1,0 +1,42 @@
+a bounded function f: [a, c] -> R is riemann integrable iff
+f in R[a, b] and f in R[b, c] is riemann integrable on subintervals
+
+assume f in R[a, b] and f in R[b, c]
+underline{int_a ^ b} f = overline{int_a ^ b} f
+underline{int_b ^ c} f = overline{int_b ^ c} f
+
+refined forms of continuity
+differentiability vs continuity
+
+uniform continuity
+lipschitz continuity
+
+let S subset R, f: S -> R
+|f(x) - f(y)| < e
+
+lipschitz continuous
+f is continuous at c in S: for all e > 0, exists d > 0, for all x in S, |x - c| < d, |f(x) - f(c)| < e
+f is uniformly continuous, for all e > 0, exists d > 0, for all x, y in S, |x - y| < d, |f(x) - f(y)| < e
+
+let f: (0, 1) -> R, f(x) = 1 / x
+f is continuous, not uniformly continuous
+for general S subset R
+continuity not-> uniform
+
+negate of uniform
+exists e > 0, forall d > 0, exists x, y in S, |x - y| < d, |f(x) - f(y)| >= e
+
+hierarchy of continuity
+S subset R, f: S -> R, c in S
+f is differentiable at c -> f is continuous at c
+
+differentiable + bounded -> lipschitz -> uniform -> continuous
+
+I = [a, b]
+f' -> bounded f'
+
+f: R -> R
+f(x) = |x|
+f is lipschitz continuous
+not differentiable at x = 0
+if f is lipschitz, |f(x) - f(y) / x - y| <= K
