@@ -1,0 +1,73 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1\\
+(a)\\
+definition 3.5.1\\
+for $f(x)$ to converge to $L$ as $x \rightarrow -\infty$\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall x \leq M, |f(x) - L| < \varepsilon$\\
+\begin{align*}
+\forall \varepsilon > 0, \exists M &\in \mathbb{N}, 0 < \frac{1}{M ^ 2} < \varepsilon\\
+\forall x \geq M, x ^ 2 &\geq M ^ 2, \frac{1}{x ^ 2} \leq \frac{1}{M ^ 2}\\
+\left|\frac{1}{1 + x ^ 2} - 0\right| &= \left|\frac{1}{1 + x ^ 2}\right|\\
+&\leq \left|\frac{1}{x ^ 2}\right|\\
+&= \frac{1}{x ^ 2}\\
+&\leq \frac{1}{M ^ 2}\\
+&< \varepsilon\\
+\therefore \lim_{x \rightarrow \infty} \frac{1}{1 + x ^ 2} &= 0
+\end{align*}
+\begin{align*}
+\forall \varepsilon > 0, \exists M &\in \mathbb{N}, \frac{1}{M ^ 2 + 1} > \varepsilon\\
+\forall x \leq M, x ^ 2 &\leq M ^ 2, x ^ 2 + 1 \leq M ^ 2 + 1, \frac{1}{x ^ 2 + 1} \geq \frac{1}{M ^ 2 + 1}\\
+\left|\frac{1}{1 + x ^ 2} - 0\right| &= \left|\frac{1}{1 + x ^ 2}\right|\\
+&\geq \frac{1}{M ^ 2 + 1}\\
+\therefore \lim_{x \rightarrow \infty} \frac{1}{1 + x ^ 2} &= 0
+\end{align*}
+\end{document}
