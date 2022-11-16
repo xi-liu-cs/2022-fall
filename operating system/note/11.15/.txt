@@ -1,0 +1,5 @@
+need to get instruction from memory
+as soon as start to use memory, page fault can happen
+if do not call pthread_exit() explicitly, when main() completes
+the process (and all threads) will be terminated
+only 1 thread can lock or own a mutex variable at a given time
