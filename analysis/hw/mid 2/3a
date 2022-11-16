@@ -1,0 +1,16 @@
+3\\
+(a)\\
+let $x_0, c, x \in [a, b], x_0 < c < x$\\
+use taylor's theorem at $x$, with $n = 0$\\
+$f(x) = P_0 ^ {x_0}(x) + f'(c)(x - x_0) = f(x_0) + f'(c)(x - x_0)\\$
+replace $x$ with $x + h$, replace $x_0$ with $x$\\
+$f(x + h) = f(x) + f'(c)(x + h - x) = f(x) + f'(c)h$
+\begin{align*}
+\frac{f(x + h) - f(x)}{h} &= f'(c)\\
+\text{let } c &\in [x, x + h]\\
+&\text{based on mean value theorem 4.2.3}\\
+|f'(c) - f'(x)| &= |f''(d)(c - x)| \leq |f''(d)|h\\
+&\text{take } M := \max\{|f''(d)|\}, d \in [x, x + h]\\
+M_1 &= -M,\quad M_2 = M\\
+M_1 &\leq |f'(c) - f'(x)| \leq M_2\\
+\end{align*}
