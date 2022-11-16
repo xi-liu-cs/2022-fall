@@ -1,0 +1,2 @@
+https://math.stackexchange.com/questions/689600/the-continuous-image-of-a-sequentially-compact-set-is-also-sequentially-compact
+https://math.stackexchange.com/questions/874044/proof-that-the-continuous-image-of-a-compact-set-is-compact
