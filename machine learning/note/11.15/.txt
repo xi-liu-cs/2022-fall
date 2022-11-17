@@ -5,3 +5,4 @@ max variance(v ^ t D)
 v ^ t _ {1 * d} D _ {d * n}
 ||v|| = 1
 var[a_1, a_2, ..., a_n]
+https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf
