@@ -7,3 +7,5 @@ cross product again to find x', y * z' = x'
 build a uv mesh, do rot and translation
 
 sims universe
+find position of hands from image
+https://google.github.io/mediapipe/
