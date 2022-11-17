@@ -1,1 +1,9 @@
+surface of revolution
+u do normally does
 
+extrusion shape
+do a cross product to find y, z * x = y
+cross product again to find x', y * z' = x'
+build a uv mesh, do rot and translation
+
+sims universe
