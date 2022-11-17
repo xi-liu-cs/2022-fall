@@ -9,3 +9,6 @@ build a uv mesh, do rot and translation
 sims universe
 find position of hands from image
 https://google.github.io/mediapipe/
+
+access to device camera javascript
+get user media
