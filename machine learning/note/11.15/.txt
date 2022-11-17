@@ -1,1 +1,7 @@
-
+principal component analysis 主成分分析
+v dot x = v ^ t x
+[v ^ t x1, v ^ t x_2, ..., v ^ t x_n]
+max variance(v ^ t D)
+v ^ t _ {1 * d} D _ {d * n}
+||v|| = 1
+var[a_1, a_2, ..., a_n]
