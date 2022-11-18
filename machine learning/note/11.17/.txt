@@ -1,0 +1,25 @@
+unsupervised: no labels
+principal component analysis: identify direction that maximize variance
+k means clustering
+1. distance measure
+d(A, B)
+a. euclidean distance, sqrt{dx ^ 2 + dy ^ 2}
+b. manhattan distance, dx + dy
+c. minkowski distance, sqrt{sum_i d_j ^ p}
+
+k number of clusters
+w = sum_{k = 1} ^ k 1 / |c_k| sum d_{ij}
+
+for every pair i, j
+find distance, sum them, divide by number of points
+
+minimize cluster variation, points inside cluster are tight
+
+for each of k clusters, compute centroid 几何中心
+kth cluster centroid is vector of feature averages for observations in cluster k
+
+assign each observation to cluster whose centroid is closest
+https://hckr.pl/k-means-visualization/
+
+https://www.cs.princeton.edu/courses/archive/fall18/cos324/files/kmeans.pdf
+https://haralick.org/ML/data_clustering.pdf
