@@ -127,9 +127,17 @@ $\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall y \leq M := -1 / \de
 2\\
 (a)\\
 part 1\\
+method 1\\
+take $\{x_n\} \subset [a, b], [a, b]$ is bounded, so $\{x_n\}$ is bounded. by bolzano weierstrass theorem, there exists a convergent subsequence $\{x_{n_k}\} \rightarrow x\\
+a \leq x_{n_k} \leq b$\\
+as $k \rightarrow \infty, a \leq x \leq b$\\
+so every sequence in $K$ has a convergent subsequence converging to a point in $K$\\ 
+\\
+\\
+\\
+method 2\\
 let $\{x_n\}$ be a sequence satisfying $x_n \in [a, b], \forall n \in \mathbb{N}\\$
 based on bolzano weierstrass theorem, since $\{x_n\}$ is bounded, there exists a convergent subsequence $\{x_{n_i}\}$, $\{x_{n_i}\}$ converge to a number $L \in \mathbb{R}$. since $\{x_{n_i}\}$ is a subsequence of $\{x_n\}$, $\{x_{n_i}\}$ is a sequence satisfying $x_{n_i} \in [a, b], \forall n \in \mathbb{N}$\\
-\\
 assume $[a, b]$ is not sequentially compact, then $L \not\in [a, b]$, then $L < a$ or $L > b$\\
 if $L > b, L - b > 0$, since $\{x_{n_i}\}$ converges to $L, \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |x_{n_i} - L| < \varepsilon$\\
 take $\varepsilon < L - b\\
