@@ -7,3 +7,4 @@ https://stackoverflow.com/questions/73210017/using-css-grid-position-multi-row-c
 
 https://github.com/gitname/react-gh-pages
 https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
+https://stackoverflow.com/questions/18938469/set-variable-to-result-of-mongoose-find
