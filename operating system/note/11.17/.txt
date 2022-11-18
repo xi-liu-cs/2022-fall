@@ -1,0 +1,4 @@
+cond_wait block on condition variable
+cond_signal unblocks threads blocked for that condition variable
+semaphores permit a limited number of threads, x threads at 1 time
+dynamically linked libraries are shared among processes
