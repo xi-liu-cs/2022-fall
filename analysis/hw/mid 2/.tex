@@ -240,6 +240,7 @@ since $f$ is a continuous function on a closed and bounded interval $K$, based o
 \\
 3\\
 (a)\\
+method 1\\
 let $x_0, c, x \in [a, b], x_0 < c < x$\\
 use taylor's theorem at $x$, with $n = 0$\\
 $f(x) = P_0 ^ {x_0}(x) + f'(c)(x - x_0) = f(x_0) + f'(c)(x - x_0)\\$
@@ -253,6 +254,21 @@ $f(x + h) = f(x) + f'(c)(x + h - x) = f(x) + f'(c)h$
 &\text{take } M := \max\{|f''(d)|, d \in [x, x + h]\}\\
 M_1 &= -M,\quad M_2 = M\\
 M_1 &\leq |f'(c) - f'(x)| \leq M_2\\
+\end{align*}
+\\
+\\
+\\
+method 2\\
+use taylor's theorem at $x$, with $n = 1$
+\begin{align*}
+f(x) &= P_1 ^ {x_0}(x) + \frac{f''(c)}{2!}(x - x_0) ^ 2 = f(x_0) + f'(x_0)(x - x_0) + \frac{f''(c)}{2!}(x - x_0) ^ 2\\
+&\text{replace $x$ with $x + h$, replace $x_0$ with $x$}\\
+f(x + h) &= f(x) + f'(x)(x + h - x) + \frac{f''(c)}{2!}(x + h - x) ^ 2\\
+&= f(x) + f'(x)h + \frac{f''(c)}{2!}h ^ 2\\
+\frac{f(x + h) - f(x)}{h} - f'(x) &= \frac{f''(c)}{2!}h\\
+\text{take } M_1 &:= \min\left\{\frac{f''(c)}{2!}, c \in [x, x + h]\right\}\\
+M_2 &:= \max\left\{\frac{f''(c)}{2!}, c \in [x, x + h]\right\}\\
+M_1 h &\leq \frac{f(x + h) - f(x)}{h} - f'(x) \leq M_2 h\\
 \end{align*}
 \\
 \\
