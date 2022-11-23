@@ -1,0 +1,10 @@
+deadlock occur among processes who need to acquire resources to progress
+
+deadlock
+a:
+down(resource1)
+down(resource2)
+
+b:
+down(resource2)
+down(resource1)
