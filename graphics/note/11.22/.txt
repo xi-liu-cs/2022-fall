@@ -1,0 +1,2 @@
+marching squares algorithm
+https://en.wikipedia.org/wiki/Marching_squares
