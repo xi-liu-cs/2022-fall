@@ -6,3 +6,5 @@ https://github.com/poloclub/cnn-explainer
 https://github.com/meituan/YOLOv6
 
 https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
+
+https://www.youtube.com/watch?v=aircAruvnKk
