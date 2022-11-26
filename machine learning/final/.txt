@@ -4,3 +4,5 @@ https://github.com/balavenkatesh3322/CV-pretrained-model#pytorch
 https://github.com/poloclub/cnn-explainer
 
 https://github.com/meituan/YOLOv6
+
+https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
