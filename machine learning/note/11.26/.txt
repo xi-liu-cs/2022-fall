@@ -1,2 +1,7 @@
 regression: output variable takes continuous value
 classification: output variable takes class label. can produce probability of belonging to a particular class
+elementwise multiplication of every pixel in filter with the corresponding overlapped region of the image
+filter: 3 * 3
+patch of image * filter = feature map
+feature map denotes strength of detecting
+changing the weights of the filter, model is able to identify different types of features that might be present in image
