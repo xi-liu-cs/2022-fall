@@ -1,0 +1,2 @@
+regression: output variable takes continuous value
+classification: output variable takes class label. can produce probability of belonging to a particular class
