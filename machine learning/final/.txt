@@ -8,3 +8,5 @@ https://github.com/meituan/YOLOv6
 https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
 
 https://www.youtube.com/watch?v=aircAruvnKk
+
+https://www.analyticsvidhya.com/blog/2021/09/torch-dataset-and-dataloader-early-loading-of-data/
