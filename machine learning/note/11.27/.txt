@@ -1,0 +1,4 @@
+input is an image, output is a text description
+input is coming in as a streaming manner
+how to store memory in neural network
+memory is an array with some weights inside it, optimize the weights of this memory through gradient descent
