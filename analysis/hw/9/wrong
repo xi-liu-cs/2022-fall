@@ -1,0 +1,7 @@
+2
+&\text{by problem 1}\\
+A &\subset \mathbb{R}, B := \{|x|: x \in A\}\\
+\sup B - \inf B &\leq \sup A - \inf A\\
+\sup\{|x|: x \in A\} - \inf\{|x|: x \in A\} &\leq \sup A - \inf A\\
+\sup\{L(P, |f|)\} - \inf\{U(P, |f|)\} &\leq \sup\{L(P, f)\} - \inf\{U(P, f)\}\\
+\end{align*}
