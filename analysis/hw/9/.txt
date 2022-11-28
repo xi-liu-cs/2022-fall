@@ -1,3 +1,3 @@
 https://math.stackexchange.com/questions/1085607/for-b-x-y-x-y-in-a-show-that-sup-b-sup-a-inf-a-and-find-inf
-
+https://math.stackexchange.com/questions/316090/the-absolute-value-of-a-riemann-integrable-function-is-riemann-integrable
 https://math.stackexchange.com/questions/429220/integral-inequality-absolute-value-left-int-ab-fx-gx-dx-right
