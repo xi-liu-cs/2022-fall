@@ -4,3 +4,5 @@ https://math.stackexchange.com/questions/429220/integral-inequality-absolute-val
 
 page 20
 https://www.math.ucdavis.edu/~hunter/m125b/ch1.pdf
+
+https://math.mit.edu/classes/18.125/Solutions/PS1_4.pdf
