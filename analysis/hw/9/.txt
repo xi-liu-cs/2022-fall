@@ -6,3 +6,4 @@ page 20
 https://www.math.ucdavis.edu/~hunter/m125b/ch1.pdf
 
 https://math.mit.edu/classes/18.125/Solutions/PS1_4.pdf
+https://math.stackexchange.com/questions/3468570/suppose-f-geq-0-if-continuous-on-a-b-and-int-ab-fxdx-0-prove-th
