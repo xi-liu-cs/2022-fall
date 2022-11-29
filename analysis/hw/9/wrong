@@ -1,7 +1,17 @@
-2
+1
 &\text{by problem 1}\\
 A &\subset \mathbb{R}, B := \{|x|: x \in A\}\\
 \sup B - \inf B &\leq \sup A - \inf A\\
 \sup\{|x|: x \in A\} - \inf\{|x|: x \in A\} &\leq \sup A - \inf A\\
 \sup\{L(P, |f|)\} - \inf\{U(P, |f|)\} &\leq \sup\{L(P, f)\} - \inf\{U(P, f)\}\\
+\end{align*}
+
+2
+d
+\begin{align*}
+\text{if } \int_a ^ b |f| &= 0\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\} = 0\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\} = 0\\
+L(P, f) &= \sum_{i = 1} ^ n m_i \Delta x_i = \sum_{i = 1} ^ n \inf\{|f(x)|: x_{i - 1} \leq x \leq x_i\}\Delta x_i = 0\\
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i = \sum_{i = 1} ^ n \sup\{|f(x)|: x_{i - 1} \leq x \leq x_i\}\Delta x_i = 0\\
 \end{align*}
