@@ -1,0 +1,26 @@
+get http://localhost:5500
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYyIsImlhdCI6MTY2OTc0ODg1MCwiZXhwIjoxNjY5NzQ4ODgwfQ.UM4zDabVLpgQcyZMAAVTxHdvCE1ywHrGug44Gh2kj6A
+
+###
+delete http://localhost:7000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZiIsImlhdCI6MTY2OTc0MDgyNCwiZXhwIjoxNjY5NzQwODU0fQ.dOp4dQ39-AbWi2VZ00zcwDmS3OIs6loE8sA8iMHqfjs"
+}
+
+###
+post http://localhost:7000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZiIsImlhdCI6MTY2OTc0MDgyNCwiZXhwIjoxNjY5NzQwODU0fQ.dOp4dQ39-AbWi2VZ00zcwDmS3OIs6loE8sA8iMHqfjs"
+}
+
+###
+post http://localhost:7000/login
+Content-Type: application/json
+
+{
+    "username": "abc"
+}
