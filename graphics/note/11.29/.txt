@@ -1,1 +1,17 @@
+least common denominators between gpus in different devices, so geometry shader not supported on browser
+marching cubes use a giant table
+marching tetrahedra
+6 tetrahedron make a cube
+create smooth transitions between shapes
+for each vertex of each triangle, influenced by more than 1 matrices
+elbow vertex is influenced by matrice from upper arm and lower arm
+linear interpolation between 2 matrices, transition where the weights blend
+number of weights that sum to 1, a weight value between 0 and 1
+a set of numbers in each vertex for blend weight
 
+https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended
+https://www.khronos.org/opengl/wiki/Skeletal_Animation
+http://paulbourke.net/geometry/polygonise/
+
+2 spheres blended together using marching tetrahedron
+marching squares table mst
