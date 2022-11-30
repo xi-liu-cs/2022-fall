@@ -1,0 +1,27 @@
+potential deadlock
+
+process_a()
+{
+  lock(m1)
+  lock(m2)
+}
+
+process_b()
+{
+  lock(m2)
+  lock(m1)
+}
+
+more deadlock
+threads from different processes
+
+square r to circle a
+process a is holding resource r
+
+circle b to square s
+process b is requesting resource s
+
+there is an actual deadlock if there is a circular chain
+
+allocation matrix
+request matrix
