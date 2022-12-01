@@ -1,1 +1,35 @@
+marching tetrahedra
+paths: 6 diff ways
+texture mapping
+use features that is protected by the browser
+image is sitting on server
+browser protect files on client
+call draw_mesh(texture_source)
+only load file once
+have a texture object that store list of known textures
+s.textures = {}
+uniform sampler2D u_sampler /* index of which texture to be sampled */
+image.onload = function(){} /* load on a another parallel thread, function() is what to do when image is loaded */
+'this' is the image
+when image is close, do gl.linear interpolation
+when image is far away, do gl.linear mipmap nearest
 
+https://learnopengl.com/Getting-started/Textures
+
+dancing points under sampling
+mipmap: approximate integral
+
+source image dimensions are powers of 2
+
+technique from vision
+take n * n image
+create anther image from it to be n / 2 * n / 2
+
+https://en.wikipedia.org/wiki/Pyramid_(image_processing)
+http://www.cs.cmu.edu/afs/cs/academic/class/15869-f11/www/readings/williams83_mipmap.pdf
+
+3 interpolations per square
+1 interpolation between 2 square
+
+lance williams
+very few algorithms survive since performance is not good although more accurate
