@@ -1,0 +1,209 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+homework 3\\
+\\
+1\\
+a\\
+Piece A results in more page faults since\\
+\\
+for piece A, each element access have an offset of 64 elements with the element in the next element access in the perspective of C contiguous row major array storage, sizeof(long int) = 8, each $512 / (64 * 8) = 1$ element access can be in the same page\\
+\\
+for piece B, each element access have an offset of 1 element with the element in the next element access in the perspective of C contiguous row major array storage, sizeof(long int) = 8, each $512 / (1 * 8) = 64$ element accesses at each batch of accesses are can be in the same page\\
+\\
+so piece A can access less elements that are stored in the same page, so piece A have more page faults\\
+\\
+\\
+b\\
+assume virtual page size is equal to physical page size\\
+assume $bytes\_per\_element = sizeof(long\;int) = 8\\
+page\_size / bytes\_per\_element = 512 / 8 = 64$
+\begin{lstlisting}
+int n = 64;
+long int A[n][n];
+int page_size = 512,
+bytes_per_element = sizeof(**A); /* sizeof(long int) = 8 */
+printf("bytes_per_element = %d\n", bytes_per_element);
+printf("page_size / bytes_per_element = %d\n", page_size / bytes_per_element); /* 512 / 8 = 64 */
+\end{lstlisting}
+so each virtual page can hold \boxed{64} elements of array A\\
+\\
+\\
+\\
+c\\
+assume virtual page size is equal to physical page size\\
+assume $bytes\_per\_element = sizeof(long\;int) = 8\\
+page\_size / bytes\_per\_element = 512 / 8 = 64$
+\begin{lstlisting}
+int n = 64;
+long int A[n][n];
+int page_size = 512,
+bytes_per_element = sizeof(**A); /* sizeof(long int) = 8 */
+printf("bytes_per_element = %d\n", bytes_per_element);
+printf("page_size / bytes_per_element = %d\n", page_size / bytes_per_element); /* 512 / 8 = 64 */
+\end{lstlisting}
+so each physical page can hold \boxed{64} elements of array A\\
+\newpage
+\noindent
+d\\
+$sizeof(A) = 64 * 64 * 8 = 32768$ bytes\\
+number of pages of A: 32768 / 512 = 64 pages\\
+$sizeof(physical\_memory) = 4 * 512 = 2048$ bytes\\
+\\
+piece A
+\begin{lstlisting}
+for(int j = 0; j < 64; j++)
+    for(int i = 0; i < 64; i++)
+        A[i][j] = 0;
+\end{lstlisting}
+piece A\\
+the array A is accessed in the sequence of $A[0][0], A[1][0], A[2][0]$, ...\\
+\\
+for case 1 and case 2, if assume the memory needed to run the operating system, the code of the operating system, and the code of the current process is stored somewhere else and not stored inside these 4 pages, so then assume the 4 pages can be used at the same time to store part of array A. each element access have an offset of 64 elements with the element in the next element access in the perspective of C contiguous row major array storage, sizeof(long int) = 8, each $512 / (64 * 8) = 1$ element access can be in the same page\\
+\\
+case 1: if assume at the beginning, the 4 pages are empty or storing no part of array A\\
+\\
+for the first 4 pages and 4 page faults, no swapping is needed, then the memory is full, then a page is swapped to replace the current page, but then after accessing 1 element at each new page, a page fault occur again. so a page fault occurs for each access of 1 element\\
+total number of array A accesses = 64 * 64 = 4096\\
+each $512 / (64 * 8) = 1$ consecutive element access can be in the same page\\
+number of page fault = 4096 / 1 = \boxed{4096} times\\
+\\
+\\
+\\
+case 2: if assume at the beginning, the 4 pages are already storing the beginning of array A\\
+\\
+for the accesses in the first 4 pages there is no page fault, but then a page is swapped to replace the current page, but then after accessing 1 element at each new page, a page fault occur again. so a page fault occurs for each access of 1 element except for the initial 4 pages\\
+total number of array A accesses = 64 * 64 = 4096\\
+each $512 / (64 * 8) = 1$ consecutive element access can be in the same page\\
+number of page fault = (4096 - 4 * 1) / 1 = \boxed{4092} times\\
+\\
+\\
+\\
+for case 3 and case 4, if assume the memory needed to run the operating system, the code of the operating system, and the code of the current process require $n \in [0, 4) \cap \mathbb{N}$ pages, and the storage using for them is included in these 4 pages, so then 4 - $n$ pages can be used at the same time to store part of array A. each element access have an offset of 64 elements with the element in the next element access in the perspective of C contiguous row major array storage, sizeof(long int) = 8, each $512 / (64 * 8) = 1$ element access can be in the same page\\
+\\
+case 3: if assume at the beginning, the 4 - $n$ pages are empty or storing no part of array A\\
+\\
+for the first 4 - $n$ pages and 4 - $n$ page faults, no swapping is needed, then the memory is full, then a page is swapped to replace the current page, but then after accessing 1 element at each new page, a page fault occur again. so a page fault occurs for each access of 1 element\\
+total number of array A accesses = 64 * 64 = 4096\\
+number of page fault = 4096 / 1 = \boxed{4096} times\\
+\\
+\\
+\\
+case 4: if assume at the beginning, the 4 - $n$ pages are already storing the beginning of array A\\
+\\
+for the accesses in the first 4 - $n$ pages there is no page fault, but then a page is swapped to replace the current page, but then after accessing 1 element at each new page, a page fault occur again. so a page fault occurs for each access containing 1 element except for the initial 4 - $n$ pages\\
+total number of array A accesses = 64 * 64 = 4096\\
+number of page fault = (4096 - (4 - $n$) * 1) / 1 = \boxed{4092 + n} times\\
+\newpage
+\noindent
+e\\
+piece B
+\begin{lstlisting}
+for(int i = 0; i < 64; i++)
+    for(int j = 0; j < 64; j++)
+        A[i][j] = 0;
+\end{lstlisting}
+piece B\\
+the array A is accessed in the sequence of $A[0][0], A[0][1], A[0][2]$, ...\\
+\\
+for case 1 and case 2, if assume the memory needed to run the operating system, the code of the operating system, and the code of the current process is stored somewhere else and not stored inside these 4 pages, so then assume the 4 pages can be used at the same time to store part of array A. each element access have an offset of 1 element with the element in the next element access in the perspective of C contiguous row major array storage, sizeof(long int) = 8, each $512 / (1 * 8) = 64$ element accesses at each batch of accesses are can be in the same page\\
+\\
+case 1: if assume at the beginning, the 4 pages are empty or storing no part of array A\\
+array A need 64 pages in total, page faults occur after each new reference to a new page. for the first 4 pages and 4 page faults, no swapping is needed, then the memory is full, then a page is swapped to replace the current page, but then after accessing all elements in the new page, a page fault occur again. so page faults occur for \boxed{64} times\\ 
+\\
+\\
+\\
+case 2: if assume at the beginning, the 4 pages are already storing the beginning of array A\\
+physical memory can store 4 pages at once. array A need 64 pages in total, so after accessing the elements that are stored in the 4 pages, page faults occur, then a page is swapped to replace the current page, but then after accessing all elements in the new page, a page fault occur again. so page faults occur for 64 - 4 = \boxed{60} times\\
+\\
+\\
+\\
+for case 3 and case 4, if assume the memory needed to run the operating system, the code of the operating system, and the code of the current process require $n \in [0, 4) \cap \mathbb{N}$ pages, and the storage using for them is included in these 4 pages, so then 4 - $n$ pages can be used at the same time to store part of array A\\
+\\
+case 3: if assume at the beginning, the 4 - $n$ pages are empty or storing no part of array A\\
+array A need 64 pages in total, page faults occur after each new reference to a new page. for the first 4 - $n$ pages and 4 - $n$ page faults, no swapping is needed, then the memory is full, then a page is swapped to replace the current page, but then after accessing all elements in the new page, a page fault occur again. so page faults occur for \boxed{64} times\\ 
+\\
+\\
+\\
+case 4: if assume at the beginning, the 4 - $n$ pages are already storing the beginning of array A\\
+physical memory can store 4 - $n$ pages at once. array A need 64 pages in total, so after accessing the elements that are stored in the 4 - $n$ pages, page faults occur, then a page is swapped to replace the current page, but then after accessing all elements in the new page, a page fault occur again. so page faults occur for 64 - 4 - $n$ = \boxed{60 - n} times\\
+\\
+\\
+\\
+\\
+2\\
+a\\
+minimum number of CPUs that these 2 processes can use is \boxed{1}\\
+if 2 processes are using the same CPU, no more than 1 process can be run at the same time, so at least 1 of the processes need to be in ready state\\
+\\
+\\
+\\
+b\\
+maximum number of CPUs that these 2 processes can use is \boxed{4}\\
+if 2 processes are using 4 CPUs, this means at least 1 of the processes is having different threads in different CPUs\\
+\\
+\\
+\\
+\\
+3\\
+(a) when number of CPUs is less than number of threads, then at least 1 thread is not executing, since each CPU can only run 1 task literally at the same time\\
+(b) a thread is blocked for I/O, then the thread is no longer in running state and not executing\\
+(c) if a thread is trying to acquire a resource (for example, a lock) but denied to have that resource, it can be put to sleep, so then it is not executing\\
+(d) if 1 thread is in a critical section with mutex, other threads cannot keep executing until the thread inside the critical section completed the section\\
+(e) if a semaphore is used, then only a limited number of threads can execute a section of the code, if the number of threads $x$ is more than this limit, then at least 1 thread is not executing\\
+(f) if a deadlock is happening
+\begin{lstlisting}
+/* thread 1 */                          /* thread 2 */
+pthread_mutex_t lock1;                  pthread_mutex_t lock2;
+pthread_mutex_lock(&lock1);             pthread_mutex_lock(&lock2);
+pthread_mutex_lock(&lock2);             pthread_mutex_lock(&lock1);
+\end{lstlisting}
+for example, when thread 1 is holding lock1 and waiting for lock2, and thread 2 holds lock2 is waiting for lock1 to be released. then both thread 1 and thread 2 are denied to acquire a resource, then they are both put to sleep, so then they are not executing
+\end{document}
