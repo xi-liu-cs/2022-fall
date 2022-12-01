@@ -1,1 +1,2 @@
 https://stackoverflow.com/questions/15961582/calculating-number-of-page-faults-for-2-d-array
+http://www.csl.mtu.edu/cs4411.ck/www/EXAMS/FINAL/final-2019-Spring-sol.pdf
