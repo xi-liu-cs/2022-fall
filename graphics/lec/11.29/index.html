@@ -1,0 +1,732 @@
+<head>
+<script src=g.js></script>
+<script src=mat.js></script>
+<script src=table.js></script>
+</head>
+<body onload=gStart();>
+
+<HR COLOR=white SIZE=20><CENTER><TABLE width=90%><TR><TD>
+
+<center>
+<big><p><b>Implicit surfaces, marching squares, marching cubes</b></big>
+</center>
+<p>
+
+<hr><p>
+
+<TABLE>
+<TR>
+
+<b><i>Implicit surfaces:</i></b><p>
+
+<td align=top>
+
+It is possible to create
+implicit surface functions, which
+allow you to describe very general shapes.
+The basic idea is to create individual
+functions that form simple shapes, such as spheres,
+but which, when summed,
+form surfaces that "melt" together into
+more complex continuous shapes.
+<p>
+
+The first person
+to publish a description of such a technique
+was Jim Blinn in his 1982 paper
+<a href=http://www.ks.uiuc.edu/Research/vmd/projects/ece498/surf/blinn82.pdf target=1>
+A Generalization of Algebraic Surface Drawing</a>.
+Unfortunately,
+the technique described by Blinn could be
+computationally expensive for ray tracing.
+<p>
+
+In contrast, the <i>metaball</i> technique, developed
+by a team of graduate students under the direction of
+Koichi Omura at the University of Osaka
+in the 1980s,
+is much less computationally expensive to render by ray tracing.
+Given a point <b>p</b>, consider procedure D(<b>p</b>):
+
+<blockquote>
+<pre>
+r = |<b>p</b>|
+
+if r < 1/3
+   1 - 3*r<sup>2</sup>
+else if r < 1
+   1.5 * (1-r)<sup>2</sup>
+else
+   0
+</pre>
+</blockquote>
+
+This procedure describes a smooth function
+with both value and and gradient of zero
+at a radius of 1, and which is zero everywhere that r &gt; 1.
+<p>
+
+We can create very complex
+smooth shapes by summing together many metaballs:
+
+<blockquote>
+   <big>&sum;</big><sub>i</sub>
+   <big>(</big>
+   a<sub>i</sub>
+   D(<b>M</b><sub>i</sub>&bull;<b>p</b>)
+   <big>)</big>
+   - &epsilon;
+</blockquote>
+<p>
+where a<sub>i</sub> and <b>M</b><sub>i</sub>
+are the amplitude and transformation matrix of each metaball,
+respectively.
+Subtracting a small &epsilon;
+from the sum (eg: &epsilon; = 0.1)
+guarantees a smooth transition between
+shapes and a non-zero gradient at the surface.
+<p>
+
+
+<td width=20></td>
+
+<td>
+<canvas id=metaball width=300 height=400 tabindex=1></canvas>
+</td>
+
+</TR>
+<TR>
+
+<TABLE>
+<TR>
+
+<td valign=top>
+<hr color=white size=20>
+<b><i>Marching Squares (2D case):</i></b><p>
+Alternatively we can use our implicit function
+to create triangles.
+<p>
+First consider the simpler 2D case
+of creating lines to approximate a curved boundary.
+Given a function f(x,y), where (x,y) are pixels in an image,
+<i>marching squares</i> is a way to approximate the
+curve along f(x,y) = 0.
+<p>
+For example, consider the function below
+(which you can edit),
+evaluated over the unit square:
+<p>
+<textArea rows=4 cols=80 id=tf>
+   function(x, y) {
+      return 16 - 6 / (.1 + (2*x-0.8)*(2*x-0.8) + (2*y-1)*(2*y-1)) +
+                - 1 / (.1 + (2*x-1.6)*(2*x-1.6) + (2*y-1)*(2*y-1)) ;
+   }</textArea>
+<p>
+&nbsp; &nbsp; &nbsp; &nbsp; <button onclick="fChange();">RUN WITH CHANGE</button>
+<p>
+To the right you can see a very low resolution (10&#215;10)
+rendering of this function.
+<p>
+</td>
+
+<td width=20></td>
+
+<td>
+&nbsp;<p>
+<canvas id=xyfunc1 width=300 height=300 tabindex=1></canvas>
+</td>
+
+</TR>
+<TR>
+
+<hr size=20 color=white>
+
+<td valign=top>
+<hr color=white size=20>
+Suppose we want to know the shape of the curve
+where this function has its roots (that is, where <i>f(x,y) = 0</i>).
+Ideally we'd like to know this without having
+to evaluate the function at more samples.
+<p>
+Marching squares provides a way to
+get a sense of what a level-set curve of a
+unction looks like, without taking more samples.
+<p>
+The key insight is that the curve can be approximated
+just by looking at those pixels bounded by corner points
+(i,j),(i+1,j),(i+1,j+1),(i,j+1)
+for which the signs of f at the four corners are not all the same.
+<p>
+If the signs of f are different
+at two adjoining corner points of a pixel's square,
+that means the curve will cut the edge which
+connects those two corners.
+</td>
+
+<td></td>
+
+<td>
+<canvas id=xyfunc2 width=300 height=300 tabindex=1></canvas>
+</td>
+
+</TR>
+</TABLE>
+
+<table><tr>
+<td valign=top>
+One thing we need to figure out is where
+this transition happens
+along each such edge.
+<p>
+
+Given a value of A at corner a, and
+a value of B at adjoining corner b,
+we can compute the proportional distance t of the transition point along the edge [a,b]
+by observing, by similar triangles:<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t/A = (1-t)/-B<br>
+<font color=#8090a0>
+&rarr; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Bt = (1-t)A<br>
+&rarr; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Bt = A - tA<br>
+&rarr; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(A-B)t = A<br>
+&rarr; </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>t = A / (A-B)</b><br>
+<p>
+</td>
+<td width=20></td>
+<td>
+<canvas id=interpolate width=400 height=200 tabindex=1></canvas>
+</td>
+</tr></table>
+
+<table><tr>
+<td valign=top>
+&nbsp;<p>
+Each corner can have two states: f&lt;0 or f&ge;0,
+so in general, there are sixteen cases,
+as shown in the diagram to the right.
+<p>
+Consider the second case along the top row of the diagram,
+where f at the top left corner (i,j) of a pixel
+is positive, but is negative at the other three corners of the pixel.
+<p>
+In this case, there is a transition point p along the top edge --
+between (i,j) and (i+1,j), and another transition
+point q along the left edge --
+between (i,j) and (i,j+1).
+<p>
+Within this pixel, we can approximate the f(x,y)==0 curve
+by the line segment [p,q].
+
+<p>
+So for any pixel we need to do three things:
+<ol>
+<li>Figure out which edges, if any, of the pixel contain transition points
+<p>
+<li>Compute the locations of these points;
+<p>
+<li>Draw line segments between transition points, to approximate pieces of the curve.
+</ol>
+<p>
+
+</td>
+<td width=20></td>
+<td>
+<canvas id=marchingsquares width=400 height=400 tabindex=1></canvas>
+</td>
+</tr></table>
+
+<p>
+<table><tr>
+<td valign=top>
+<b><i>Marching Cubes (3D case):</i></b><p>
+
+Marching cubes is the 3D equivalent of marching squares.
+Rather than approximate a closed curve
+where f(x,y)=0
+via small straight edges inside square pixels,
+as in marching squares,
+the marching cubes algorithm approximates a closed surface
+where f(x,y,z)=0
+via small triangles inside cubic voxels.
+The technical paper describing this algorithm, published by Lorensen and Cline in 1987,
+has been cited more often than any other paper in the field of computer graphics.
+<p>
+Each voxel cube has eight corners, which can be numbered as follows:
+<center>
+<TABLE><TR>
+<TD>
+<table>
+<tr><th>0</th><td width=20></td><td> <i>x=0 y=0 z=0</i> </td></tr>
+<tr><th>1</th><td width=20></td><td> <i>x=1 y=0 z=0</i> </td></tr>
+<tr><th>2</th><td width=20></td><td> <i>x=0 y=1 z=0</i> </td></tr>
+<tr><th>3</th><td width=20></td><td> <i>x=1 y=1 z=0</i> </td></tr>
+</table>
+</TD><TD width=50></TD><TD>
+<table>
+<tr><th>4</th><td width=20></td><td> <i>x=0 y=0 z=1</i> </td></tr>
+<tr><th>5</th><td width=20></td><td> <i>x=1 y=0 z=1</i> </td></tr>
+<tr><th>6</th><td width=20></td><td> <i>x=0 y=1 z=1</i> </td></tr>
+<tr><th>7</th><td width=20></td><td> <i>x=1 y=1 z=1</i> </td></tr>
+</table>
+</TD>
+</TR></TABLE>
+</center>
+<p>
+
+Because the value of f(x,y,z) at each of these eight corners can be
+either
+<font color=blue>positive</font>
+or
+<font color=red>negative</font>,
+there are 2<sup>8</sup> or 256 cases to consider.
+These are shown in the figure to the right.
+<p>
+I have included a <a href=table.js target=1>table</a>
+to make things easier for you.
+The table has 256 entries, one for each of the 256 cases.
+Each entry contains between 0 and 4 triangles, which is
+the number of triangles that will be produced by the
+marching cube algorithm for a voxel of that type.
+
+<p>
+Each triangle is described by the three edges of the cube
+that contain its respective vertices, and
+each vertex is described by identifying one cube corner
+as well as the orientation of the cube edge that contains that vertex.
+<p>
+
+For example, a particular vertex of a triangle in the table may be
+described by the number sequence 0,1, indicating that this vertex lies on
+edge [0,1] of the cube.  This is the edge that connects
+the <i>x=0 y=0 z=0</i> corner of the cube and the
+<i>x=1 y=0 z=0</i> corner of the cube.
+</td>
+<td width=20></td>
+<td>
+<canvas id=marchingcubes width=400 height=600 tabindex=1></canvas>
+</td>
+</tr></table>
+
+<hr size=20 color=white>
+<table><tr>
+<td valign=top>
+<b><i>Marching Tetrahedra (simpler to implement):</i></b><p>
+
+To avoid the big table look-up of Marching Cubes,
+a technique I've used is to split up each voxel
+into six tetrahedra.
+Given the same corner numbering we used for Marching Cubes,
+we can partition the voxel cube
+by "turning on" the binary bits of the numbered corners in
+different orders, giving the six tetrahedra,
+as shown to the right:
+<blockquote>
+<pre>[0,1,2,7] , [0,1,5,7] , [0,2,3,7] , [0,2,6,7] , [0,4,5,7] , [0,4,6,7]</pre>
+</blockquote>
+Since a tetrahedron has only four edges, there are only
+two non-trivial boundary cases:
+(1) the boundary is a single triangle, or
+(2) the boundary is a four sided shape, which
+can be split into two triangles.
+
+<p>
+This algorithm is a bit less efficient than Marching Cubes,
+because it generally produces more triangles for each boundary cube.  However it requires much less code, and therefore is easier to program, to debug, and to port to a vertex shader.
+<td width=20></td>
+<td>
+<canvas id=marchingtetrahedra width=300 height=300 tabindex=1></canvas>
+</td>
+</tr></table>
+
+<p>
+
+<!!!!!!!!!!!!!!!!><HR SIZE=100 COLOR=white></TD></TR></TABLE></CENTER>
+
+<script>
+   metaball.setup = function() {
+      let w = width(), h = height();
+      this.x0 = w/3;
+   }
+
+   function mb(r) {
+      r = Math.abs(r);
+      return r < 1/3 ? 1 - 3*r*r : r < 1 ? 1.5*(1-r)*(1-r) : 0;
+   }
+
+   metaball.animate = function() {
+      let w = width(), h = height();
+
+      let epsilon = 0.1;
+
+      let isMouseOverFigure = false;
+      if ( this.mouseX >= 0.05 * w && this.mouseX <= 0.95 * w &&
+           this.mouseY >= 0.05 * h && this.mouseY <= 0.95 * h) {
+         this.x0 = this.mouseX;
+         isMouseOverFigure = true;
+      }
+
+      let s = w / 4, y0 = h*3/8, dx = w / 60;
+      let x0 = this.x0, x1 = w/2;
+
+      function x2f(x) { return x / s; }
+      function f2y(f) { return y0 - s * f; }
+
+      function ms(x) { return mb(x2f(x - x0)) + mb(x2f(x - x1)); }
+
+      for (let x = 0 ; x < w ; x += dx) {
+         let f00 = x2f(x - x0);
+         let f10 = x2f(x - x1);
+         let f01 = x2f(x - x0 + dx);
+         let f11 = x2f(x - x1 + dx);
+         let m00 = mb(f00);
+         let m10 = mb(f10);
+         let m01 = mb(f01);
+         let m11 = mb(f11);
+
+         color('black');
+         line(x   , f2y(m00 + m10),
+              x+dx, f2y(m01 + m11));
+
+         if (isMouseOverFigure) {
+            color('#a0a0a0');
+            line(x, f2y(m00), x+dx, f2y(m01));
+            line(x, f2y(m10), x+dx, f2y(m11));
+         }
+      }
+
+      if (isMouseOverFigure) {
+         color('#008080');
+         line(0, f2y(0.1), w, f2y(0.1));
+      }
+
+      y0 = 3*h/4;
+      let xx, yy, rr0;
+      let r = 0.21*w;
+
+      let xLo = Math.min(x0-r, x1-r);
+      let xHi = Math.max(x0+r, x1+r);
+
+      function xy2rr(x, y) {
+         let xx = x2f(x);
+         let yy = x2f(y);
+         return xx*xx + yy*yy;
+      }
+
+      for (let x = xLo ; x < xHi ; x += dx)
+      for (let y = y0-r ; y < y0+r ; y += dx) {
+
+         let rr0 = xy2rr(x - x0, y - y0);
+         let rr1 = xy2rr(x - x1, y - y0);
+
+         if (rr0 > 1.0 && rr1 > 1.0)
+            continue;
+
+         let sum = mb(Math.sqrt(rr0)) + mb(Math.sqrt(rr1));
+
+         if (sum > 0) {
+
+            let d = sum < 1.5 * epsilon ? dx / 4 : dx;
+
+            for (let xx = x ; xx < x + dx ; xx += d)
+            for (let yy = y ; yy < y + dx ; yy += d) {
+
+               if (xx > x || yy > y) {
+                  rr0 = xy2rr(xx - x0, yy - y0);
+                  rr1 = xy2rr(xx - x1, yy - y0);
+                  sum = mb(Math.sqrt(rr0)) + mb(Math.sqrt(rr1));
+               }
+
+               if (sum >= epsilon) {
+                  let c = sum;
+                  c = 1 - c/2;
+                  c = c * c;
+                  c = 1 - .8 * c;
+                  c = Math.min(255, Math.floor(255 * c));
+                  color(0,c,c);
+                  fillRect(xx,yy,d,d);
+                  if (d < dx)
+                     drawRect(xx,yy,d,d);
+               }
+            }
+         }
+      }
+   }
+
+   tf.style.borderColor='white';
+   tf.style.font="14px courier";
+
+   let f;
+   let fChange = () => eval("f = " + tf.value);
+   fChange();
+
+   xyfunc1.animate = function() {
+      let w = width(), h = height(), N = 10;
+      for (let i = 0 ; i <= N ; i++)
+      for (let j = 0 ; j <= N ; j++) {
+         let u = .1 + .8 * i / N;
+         let v = .1 + .8 * j / N;
+         let x = u * w;
+         let y = v * w;
+         let t = f(u, v);
+         color(t > 0 ? 'blue' : 'red');
+         fillRect(x - .005*w, y - .005*w, .01*w, .01*w);
+      }
+
+      let x = this.mouseX, y = this.mouseY;
+      if (x >= .1*w && x < .9*w && y >= .1*h && y < .9*h) {
+         let t = f(x/w, y/w);
+         color('black');
+         text(("" + t).substring(0,4), x, y, .5, .5);
+      }
+   }
+
+// MARCHING SQUARES TABLE         A---B
+//                                |   |
+//                                C---D
+
+   let mst = [              //  A  B  C  D
+      [],                   //  -  -  -  -
+      [0,1,0,2],            //  +  -  -  -
+      [0,1,1,3],            //  -  +  -  -
+      [0,2,1,3],            //  +  +  -  -
+      [0,2,2,3],            //  -  -  +  -
+      [0,1,2,3],            //  +  -  +  -
+      [0,1,0,2, 1,3,2,3],   //  -  +  +  -
+      [1,3,2,3],            //  +  +  +  -
+      [1,3,2,3],            //  -  -  -  +
+      [0,1,0,2, 1,3,2,3],   //  +  -  -  +
+      [0,1,2,3],            //  -  +  -  +
+      [0,2,2,3],            //  +  +  -  +
+      [0,2,1,3],            //  -  -  +  +
+      [0,1,1,3],            //  +  -  +  +
+      [0,1,0,2],            //  -  +  +  +
+      [],                   //  +  +  +  +
+   ];
+
+   xyfunc2.animate = function() {
+      let w = width(), h = height(), N = 10, d = .8 / N;
+
+      let x = this.mouseX, y = this.mouseY;
+      if (x >= .1*w && x < .9*w && y >= .1*h && y < .9*h) {
+         let u = floor((x / w - .1) / d) * d + .1;
+         let v = floor((y / w - .1) / d) * d + .1;
+         let s = d/10*w;
+         for (let m = 0 ; m < 10 ; m++)
+         for (let n = 0 ; n < 10 ; n++) {
+            let U = u + m/10*d;
+            let V = v + n/10*d;
+            let t = f(U + d/20, V + d/20);
+            color(t >= 0 ? '#c0c0ff' : '#ffc0c0');
+            fillRect(U*w, V*w, s, s);
+         }
+      }
+
+      lineWidth(.2);
+      color('black');
+      for (let i = 0 ; i <= N ; i++) {
+         let u = .1 + .8 * i / N;
+         line(u * w, .1 * h, u * w, .9 * h);
+      }
+
+      for (let j = 0 ; j <= N ; j++) {
+         let v = .1 + .8 * j / N;
+         line(.1 * w, v * h, .9 * w, v * h);
+      }
+
+      lineWidth(4);
+      for (let i = 0 ; i < N ; i++)
+      for (let j = 0 ; j < N ; j++) {
+         let u = .1 + i * d;
+         let v = .1 + j * d;
+         let F = [f(u,v), f(u+d,v), f(u,v+d), f(u+d,v+d)];
+         let m = mst[ (F[0]>=0 ? 1 : 0) +
+                      (F[1]>=0 ? 2 : 0) +
+                      (F[2]>=0 ? 4 : 0) +
+                      (F[3]>=0 ? 8 : 0) ];
+         if (m.length > 0) {
+            let x = u * w;
+            let y = v * w;
+            let s = d * w;
+            let p = [[x,y],[x+s,y],[x,y+s],[x+s,y+s]];
+            for (let k = 0 ; k < m.length ; k += 4) {
+               let a0 = F[m[k  ]], b0 = F[m[k+1]];
+               let a1 = F[m[k+2]], b1 = F[m[k+3]];
+               let t0 = a0 / (a0 - b0);
+               let t1 = a1 / (a1 - b1);
+               line(lerp(t0, p[m[k  ]][0], p[m[k+1]][0]),
+                    lerp(t0, p[m[k  ]][1], p[m[k+1]][1]),
+                    lerp(t1, p[m[k+2]][0], p[m[k+3]][0]),
+                    lerp(t1, p[m[k+2]][1], p[m[k+3]][1]));
+            }
+         }
+      }
+   }
+
+   interpolate.animate = function() {
+      addNoise();
+      let w = width(), h = height(), r = w / 16;
+      let x1 = w/4, x2 = 3*w/4;
+
+      let u = .2 + .6 * this.mouseX / w;
+
+      let A = h/3 * u, B = -h/3 * (1-u);
+
+      let t = A / (A-B);
+
+      lineWidth(2);
+      color('black');
+      line(0,h/2, w,h/2);
+
+      line(x1, h/2  , x1, h/2-A);
+      line(x1, h/2-A, x2, h/2-B);
+      line(x2, h/2  , x2, h/2-B);
+
+      text("A", x1, h/2-A, .5, 1.4);
+      text("B", x2, h/2-B, .5,-0.4);
+
+      let x = lerp(t,x1,x2);
+
+      color('#0080f0');
+      text("t = A/(A-B)", x, h/4, .5,1.4);
+      text("t", lerp(.5,x1,x), h/2, .5,-.4);
+      text("1-t", lerp(.5,x,x2), h/2, .5,1.4);
+
+      line(x,h/4, x,h/2);
+   }
+
+   marchingsquares.animate = function() {
+      addNoise();
+      let w = width(), h = height(), r = w / 16, s = w * .025, x, y, row, col;
+
+      function edge(a, b, c, d) {
+         line(x+a,y+b, x+c,y+d);
+
+         if (row==R && col==C) {
+            textHeight(width()*.03);
+            text("p", x+a,y+b, .5-.9*a/r, .7-.9*b/r);
+            text("q", x+c,y+d, .5-.9*c/r, .7-.9*d/r);
+         }
+      }
+
+      function label(sgn, x, y) {
+         color('black');
+         color(sgn < 0 ? '#ffe0e0' : '#e0f0ff');
+         fillOval(x - s*.9, y - s*.9, 2 * s*.9, 2 * s*.9);
+         color('black');
+         drawOval(x - s, y - s, 2 * s, 2 * s);
+         textHeight(width()*.05);
+         text(sgn < 0 ? "-" : "+", x, y, .5, .6);
+      }
+
+      let C = floor(4 * this.mouseX / w);
+      let R = floor(4 * this.mouseY / h);
+
+      function m2x(i,j) { return i%2!=j%2 ? 0 : i%2==0 ? -r : r; }
+      function m2y(i,j) { return m2x(floor(i/2), floor(j/2)); }
+
+      for (row = 0 ; row < 4 ; row++)
+      for (col = 0 ; col < 4 ; col++) {
+         x = (col + .5) * w / 4;
+         y = (row + .5) * h / 4;
+         let a = col % 2 == 0 ? -1 : 1;
+         let b = col % 4 <  2 ? -1 : 1;
+         let c = row % 2 == 0 ? -1 : 1;
+         let d = row % 4 <  2 ? -1 : 1;
+         color('black');
+         lineWidth(.5);
+         drawRect(x - r, y - r, 2 * r, 2 * r);
+         label(a, x - r, y - r);
+         label(b, x + r, y - r);
+         label(c, x - r, y + r);
+         label(d, x + r, y + r);
+         color(row==R && col==C ? 'black' : '#a0a0a0');
+         lineWidth(3);
+         let m = mst[4*row + col];
+         for (let k = 0 ; k < m.length ; k += 4)
+            edge(m2x(m[k  ],m[k+1]), m2y(m[k  ],m[k+1]),
+                 m2x(m[k+2],m[k+3]), m2y(m[k+2],m[k+3]));
+      }
+   }
+
+   let m = new M4();
+
+   marchingcubes.theta = 0;
+   marchingcubes.N = 0;
+   marchingcubes.animate = function() {
+      function sgn(a, b, d) {
+         return b == d ? 0 : (a & 1<<d) > 0 ? 1 : -1;
+      }
+      let w = width(), h = height();
+      let mx = this.mouseX, my = this.mouseY;
+      if (mx > .01*w && mx < .99*w)
+         this.theta = mx/w - .5;
+      m.push();
+         standardView(.5, .75, this.theta, .065, .95);
+         color('black');
+         unitCube();
+         let t = table[this.N];
+         for (let k = 0 ; k < t.length ; k += 6) {
+            let a = t[k], b = t[k+1], c = t[k+2], d = t[k+3], e = t[k+4], f = t[k+5];
+            let A = [sgn(a, b, 0), sgn(a, b, 1), sgn(a, b, 2)];
+            let B = [sgn(c, d, 0), sgn(c, d, 1), sgn(c, d, 2)];
+            let C = [sgn(e, f, 0), sgn(e, f, 1), sgn(e, f, 2)];
+            mLine(A, B);
+            mLine(B, C);
+            mLine(C, A);
+         }
+
+         let b = 0;
+         for (let z = -1 ; z < 1.1 ; z += 2)
+         for (let y = -1 ; y < 1.1 ; y += 2)
+         for (let x = -1 ; x < 1.1 ; x += 2) {
+            color((this.N & 1<<b) > 0 ? 'blue' : 'red');
+            let P = m.transform([x,y,z]);
+            fillOval(P[0]-.01*w, P[1]-.01*w, .02*w, .02*w);
+            b++;
+         }
+      m.pop();
+
+      for (let row = 0 ; row < 16 ; row++)
+      for (let col = 0 ; col < 16 ; col++) {
+         let n = 16 * row + col;
+         let x = (col + .5) * w / 16;
+         let y = (row + .5) * h/2 / 16 + h / 2;
+         if (this.mousePressed && mx >= x - w/32 && mx < x + w/32 &&
+                                  my >= y - h/64 && my < y + h/64)
+           this.N = n;
+         color(n == this.N ? 'black' : '#c0c0c0');
+         textHeight(n == this.N ? 13 : 10);
+         text("" + n, x, y, .5, .5);
+      }
+
+      if (! this.mousePressed &&
+          mx >= .01*w && mx <= .99*w && my >= h/2 && my < h - .01*w) {
+         color('#ffb0b0');
+         text("Drag mouse over numbers below:", 5, h/2, 0, 1.5);
+      }
+   }
+
+   marchingtetrahedra.n = 0;
+   marchingtetrahedra.theta = 0;
+   marchingtetrahedra.animate = function() {
+      let P = [[-1,-1,-1],[1,-1,-1],[-1,1,-1],[1,1,-1],[-1,-1,1],[1,-1,1],[-1,1,1],[1,1,1]];
+      let paths = [[0,1,3,7], [0,2,3,7], [0,2,6,7], [0,4,6,7], [0,4,5,7], [0,1,5,7]];
+      let w = width(), h = height();
+      let mx = this.mouseX, my = this.mouseY;
+      if (mx > .01*w && mx < .99*w)
+         this.theta = mx/w - .5;
+      if (my > .01*h && my < .99*h)
+         this.n = 6 * my/h >> 0;
+      color('black');
+      m.push();
+         standardView(.5, .57, this.theta, .065, 1);
+         lineWidth(.6);
+         unitCube();
+         lineWidth(3);
+         for (let j = 1 ; j < 4 ; j++)
+         for (let i = 0 ; i < j ; i++)
+            mLine(P[paths[this.n][i]], P[paths[this.n][j]]);
+      m.pop();
+   }
+
+</script>
+
