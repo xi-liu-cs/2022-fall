@@ -1,0 +1,397 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+collaboration: Chuanyang Jin\\
+\\
+1\\
+$\forall x, y \in A\\
+|x| \leq \sup\{|x|: x \in A\}\quad\textcircled{1}\\
+\inf\{|y|: y \in A\} \leq |y|\\
+-|y| \leq -\inf\{|y|: y \in A\}\quad\textcircled{2}\\
+\text{add inequality }\textcircled{1}\text{ and inequality }\textcircled{2}\\
+|x| - |y| \leq \sup\{|x|: x \in A\} - \inf\{|y|: y \in A\}\\
+||x| - |y|| \leq |\sup\{|x|: x \in A\} - \inf\{|y|: y \in A\}| = |\sup B - \inf B| = \sup B - \inf B\\
+||x| - |y|| \leq \sup B - \inf B\\
+\sup\{||x| - |y||: x, y \in A\} = \sup B - \inf B\\
+\\
+\forall x, y \in A\\
+x \leq \sup\{x: x \in A\}\quad\textcircled{3}\\
+\inf\{y: y \in A\} \leq y\\
+-y \leq -\inf\{y: y \in A\}\quad\textcircled{4}\\
+\text{add inequality }\textcircled{3}\text{ and inequality }\textcircled{4}\\
+x - y \leq \sup\{x: x \in A\} - \inf\{y: y \in A\}\\
+|x - y| \leq |\sup\{x: x \in A\} - \inf\{y: y \in A\}| = \sup A - \inf A = \sup A - \inf A\\
+|x - y| \leq \sup A - \inf A\\
+\sup\{|x - y|: x, y \in A\} = \sup A - \inf A\\$
+\\
+by corollary 1.3.3 (i) reverse triangle inequality\\
+$\forall x, y \in A\\
+||x| - |y|| \leq |x - y|\\
+\sup\{||x| - |y||: x, y \in A\} \leq \sup\{|x - y|: x, y \in A\}\\
+\sup B - \inf B \leq \sup A - \inf A\\$
+\\
+\\
+\\
+\\
+2\\
+(a)\\
+part 1\\
+since $f \in \mathscr{R}[a, b]$
+\begin{align*}
+\int_a ^ b f &= \underline{\int_a ^ b} f = \overline{\int_a ^ b} f\\
+m_i &= \inf\{f(x): x_{i - 1} \leq x \leq x_i\}\\
+M_i &= \sup\{f(x): x_{i - 1} \leq x \leq x_i\}\\
+L(P, f) &= \sum_{i = 1} ^ n m_i \Delta x_i\\
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\}\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\}\\
+\because \underline{\int_a ^ b} f = \overline{\int_a ^ b} f\\
+\therefore \sup\{L(P, f)\} &= \inf\{U(P, f)\}\\
+\\
+m2_i &= \inf\{|f(x)|: x_{i - 1} \leq x \leq x_i\}\\
+M2_i &= \sup\{|f(x)|: x_{i - 1} \leq x \leq x_i\}\\
+L(P, |f|) &= \sum_{i = 1} ^ n m2_i \Delta x_i\\
+U(P, |f|) &= \sum_{i = 1} ^ n M2_i \Delta x_i \\
+\underline{\int_a ^ b}|f(x)|dx &= \sup\{L(P, |f|): P \text{ a partition of }[a, b]\}\\
+\overline{\int_a ^ b}|f(x)|dx &= \inf\{U(P, |f|): P \text{ a partition of }[a, b]\}\\
+\\
+\forall \varepsilon > 0, \text{let } I &:= [x_{i - 1}, x_i]\\
+U(P, |f|) - L(P, |f|) &= \sum_{i = 1} ^ n (M2_i \Delta x_i) - \sum_{i = 1} ^ n (m2_i \Delta x_i)\\
+&= \sum_{i = 1} ^ n (M2_i - m2_i) \Delta x_i\\
+&= \sum_{i = 1} ^ n\left(\sup_{x_{i - 1} \leq x \leq x_i}\{|f(x)|\} - \inf_{x_{i - 1} \leq x \leq x_i}\{|f(x)|\}\right)\Delta x_i\\
+&= \sum_{i = 1} ^ n\left(\sup_{x \in I}\{|f(x)|\} - \inf_{x \in I}\{|f(x)|\}\right)\Delta x_i\\
+&= \sum_{i = 1} ^ n\left(\sup_I\{|f|\} - \inf_I\{|f|\}\right)\Delta x_i\\
+&\forall I = [x_{i - 1}, x_i], \text{if $f$ has same sign, then}\\
+\sup_I\{-f\} - \inf_I\{-f\} &= -\left(\inf_I\{f\} - \sup_I\{f\}\right) = \sup_I\{f\} - \inf\{f\}\\
+&\forall I = [x_{i - 1}, x_i], \text{if $f$ does not have same sign, then}\\
+\sup_I\{|f|\} - \inf_I\{|f|\} &\leq \sup_I\{|f|\} \leq \sup_I\{f\} - \inf_I\{f\}\\
+&\text{so if sum over all } I = [x_{i - 1}, x_i] \in [a, b]\\
+\sum_{i = 1} ^ n\left(\sup_I\{|f|\} - \inf_I\{|f|\}\right)\Delta x_i &\leq \sum_{i = 1} ^ n\left(\sup_I\{f\} - \inf_I\{f\}\right)\Delta x_i < \varepsilon\\
+\sum_{i = 1} ^ n(\sup_I\{|f|\}\Delta x_i) - \sum_{i = 1} ^ n(\inf_I\{|f|\}\Delta x_i) < \varepsilon\\
+U(P, |f|) - L(P, |f|) &< \varepsilon\\
+\text{since $\varepsilon$ is arbitrary, upper and lower sums} &\text{ can be arbitrarily close to each other}\\
+\sup\{L(P, |f|)\} &= \inf\{U(P, |f|)\}\\
+\underline{\int_a ^ b} |f| = \overline{\int_a ^ b} |f|\\
+|f| \in \mathscr{R}[a, b]\\
+\end{align*}
+\\
+\\
+\\
+\\
+part 2
+\begin{align*}
+-|f| &\leq f \leq |f|\\
+&\text{by proposition 5.2.6}\\
+-\int_a ^ b |f| &\leq \int_a ^ b f \leq \int_a ^ b |f|\\
+&\text{by proposition 1.3.1 (v)}\\
+\left|\int_a ^ b f\right| &\leq \int_a ^ b |f|\\
+\end{align*}
+\\
+\\
+\\
+\\
+(b)\\
+let $f(x) :=
+\begin{cases}
+1 & \text{if } x \in \mathbb{Q}\\
+-1 &\text{if } x \not\in \mathbb{Q}\\
+\end{cases}$
+\begin{align*}
+m_i &= \inf\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = 1\\
+M_i &= \sup\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = 1\\
+L(P, f) &= \sum_{i = 1} ^ n m_i \Delta x_i = (1)(b - a) = b - a\\
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i = (1)(b - a) = b - a\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\} = b - a\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\} = b - a\\
+\underline{\int_a ^ b}f(x)dx &= b - a = \overline{\int_a ^ b}f(x)dx\\
+\therefore |f| \in \mathscr{R}[a, b]\\
+\\
+m2_i &= \inf\{f(x): x_{i - 1} \leq x \leq x_i\} = -1\\
+M2_i &= \sup\{f(x): x_{i - 1} \leq x \leq x_i\} = 1\\
+L(P, f) &= \sum_{i = 1} ^ n m2_i \Delta x_i = (-1)(b - a) = a - b\\
+U(P, f) &= \sum_{i = 1} ^ n M2_i \Delta x_i = (1)(b - a) = b - a\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\} = a - b\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\} = b - a\\
+\underline{\int_a ^ b}f(x)dx &= a - b \not= b - a = \overline{\int_a ^ b}f(x)dx\\
+\therefore f \not\in \mathscr{R}[a, b]\\
+\end{align*}
+\\
+\\
+\\
+\\
+(c)\\
+if $f(c) > 0$ for some $c \in [a, b]$\\
+then $\exists \delta > 0$
+\begin{align*}
+\exists [x_{i - 1}, x_i] \subset [c - \delta, c + \delta]\\
+m_i &= \inf\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = f(c)\\
+M_i &= \sup\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = f(c)\\
+L(P, f) &= \sum_{i = 1} ^ n m_i \Delta x_i = f(c)(c + \delta - (c - \delta)) = 2\delta\\
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i = f(c)(c + \delta - (c - \delta)) = 2\delta\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\} = 2\delta\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\} = 2\delta\\
+\underline{\int_a ^ b}f(x)dx &= 2\delta = \overline{\int_a ^ b}f(x)dx\\
+\therefore |f| \in \mathscr{R}[c - \delta, c + \delta]\\
+\end{align*}
+\\
+\\
+\\
+\\
+(d)\\
+part 1\\
+$\forall c \in (a, b)$
+\begin{align*}
+\int_a ^ b f &= \int_a ^ c f + \int_c ^ d f = 0\\
+\because f \text{ is continuous in } [a, b], &\exists p_1 \in (a, c), p_2 \in (c, b)\\
+\\
+&\text{by mean value theorem 4.2.4}\\
+f(c) - f(a) &= f'(p_1)(c - a)\\
+&\text{integrate both sides}\\
+F(c) - F(a) &= f(p_1)(c - a)\\
+&\text{by fundamental theorem 5.3.1}\\
+\int_a ^ c f &= f(p_1)(c - a)\\
+\\
+&\text{by mean value theorem 4.2.4}\\
+f(b) - f(c) &= f'(p_2)(b - c)\\
+&\text{integrate both sides}\\
+F(b) - F(c) &= f(p_2)(b - c)\\
+&\text{by fundamental theorem 5.3.1}\\
+\int_c ^ b f &= f(p_2)(b - c)\\
+\\
+\int_a ^ c f + \int_c ^ d f &= f(p_1)(c - a) + f(p_2)(b - c) = 0\\
+f(p_1)(c - a) &= -f(p_2)(b - c)\\
+\\
+a < c < b, &\quad c - a > 0, \quad b - c > 0\\
+f(p_1) &= -f(p_2)\frac{b - c}{c - a}\\
+\\
+\text{above equation is satisfied only when} &f(p_1) = f(p_2) = 0\\
+\therefore \forall x \in [a, b], f(x) &= 0
+\end{align*}
+\\
+\\
+\\
+part 2
+\begin{align*}
+\text{if } \forall x \in [a, b], f(x) &= 0\\
+m_i &= \inf\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = 0\\
+M_i &= \sup\{|f(x)|: x_{i - 1} \leq x \leq x_i\} = 0\\
+L(P, |f|) &= \sum_{i = 1} ^ n m_i \Delta x_i = (0)(b - a) = 0\\
+U(P, |f|) &= \sum_{i = 1} ^ n M_i \Delta x_i = (0)(b - a) = 0\\
+\underline{\int_a ^ b}|f(x)|dx &= \sup\{L(P, |f|): P \text{ a partition of }[a, b]\} = 0\\
+\overline{\int_a ^ b}|f(x)|dx &= \inf\{U(P, |f|): P \text{ a partition of }[a, b]\} = 0\\
+\underline{\int_a ^ b}|f(x)|dx &= 0 = \overline{\int_a ^ b}|f(x)|dx\\
+\therefore \int_a ^ b|f| &= 0
+\end{align*}
+\newpage
+\noindent
+3\\
+let $f = F' = G'$. since $F, G$ are continuous differentiable, so $f$ is continuous\\
+by lemma 5.2.7, $f$ is Riemann integrable on $[a, b], f \in \mathscr{R}[a, b]$\\
+by fundamental theorem first form, Theorem 5.3.1
+\begin{align*}
+\forall x &\in [a, b]\\
+F(x) - F(a) &= \int_a ^ x = G(x) - G(a)\\
+F(x) - F(a) &= G(x) - G(a)\\
+F(x) - G(x) &= F(a) - G(a) = C\\
+\end{align*}
+\\
+\\
+\\
+4\\
+(a)\\
+\begin{align*}
+f_n(x) &= \frac{n + 1}{nx}\\
+x &\in (0, 1)\\
+\lim_{n \rightarrow \infty} f_n(x) &= \lim_{n \rightarrow \infty} \left(\frac{n}{nx} + \frac{1}{nx}\right) \quad \text{/* by proposition 2.2.5 */}\\
+&= \lim_{n \rightarrow \infty} \left(\frac{1}{x} + \frac{1}{nx}\right)\\
+&= \frac{1}{x}
+\end{align*}
+so $\{f_n\}$ converges pointwise to $f(x) = 1 / x$\\
+by definition 6.1.9
+\begin{align*}
+\sup_{x \in (0, 1)}||f_n - f||_u &= \sup_{x \in (0, 1)}\left|\frac{n + 1}{nx} - \frac{1}{x}\right|\\
+&= \sup_{x \in (0, 1)}\left|\frac{n + 1}{nx} - \frac{n}{xn}\right|\\
+&= \sup_{x \in (0, 1)}\left|\frac{1}{nx}\right|\\
+&= \sup_{x \in (0, 1)}\frac{1}{nx}
+\end{align*}
+$\frac{1}{nx}$ is not bounded $\forall n \in \mathbb{N}$\\
+$\therefore \forall \varepsilon > 0$, not exist $M \in \mathbb{N}, \forall n \geq M$
+\[\sup_{x \in (0, 1)}\left|\frac{n + 1}{nx} - \frac{1}{x}\right| < \varepsilon\]
+\\
+\\
+\\
+(b)\\
+part 1\\
+$f_n(x) :=
+\begin{cases}
+0 & x = 0\\
+n & 0 < x < 1 / n\\
+0 & 1 / n < x \leq 1\\
+\end{cases}$\\
+if $0 < x, \exists M \in \mathbb{N}, 1 / M < x, \forall n \geq M, f_n(x) = 0$\\
+if $0 = x, f_n(x) = 0\\$
+$\therefore, \forall x \in [0, 1], \lim_{n \rightarrow \infty} f_n(x) = 0\\$
+so $\{f_n\}$ converges to $f$ with $f(x) = 0$\\
+\\
+part 2\\
+by fundamental theorem of calculus
+\begin{align*}
+\int_0 ^ 1 f_n &= \int_0 ^ {1 / n} n\,dx = [nx]_{x = 0} ^ {x = 1 / n} = 1\\
+1 &\not= \lim_{n \rightarrow \infty} \int_0 ^ 1 f_n \not= \int_0 ^ 1 f = \int_0 ^ 1 0 = 0
+\end{align*}
+\\
+\\
+\\
+(c)\\
+part 1
+\begin{align*}
+f_n(x) &= \frac{x ^ n}{n}\\
+0 \leq x \leq 1, &\forall n \in \mathbb{N}, 0 \leq x ^ n \leq 1\\
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, 0 < 1 / M < \varepsilon\\
+||f_n - f|| - 0 &< \varepsilon\\
+\sup|f_n - f| &< \varepsilon\\
+\sup_{x \in [0, 1]}\left|\frac{x ^ n}{n} - 0\right| &= \frac{1}{n} \leq \frac{1}{M} < \varepsilon
+\end{align*}
+by proposition 6.1.10, $f_n$ converges uniformly to $f(x) = 0$ on [0, 1]\\
+\\
+part 2
+\begin{align*}
+f_n'(x) &= \frac{d}{dn}\left(\frac{x ^ n}{n}\right)\\
+&= (n / n) x ^ {n - 1} \quad\text{by power rule}\\
+&= x ^ {n - 1}\\
+f_n'(1) &= x ^ 0 = 1\\
+1 &= \lim_{n \rightarrow \infty} f_n'(1) \not= f'(1) = 0
+\end{align*}
+\\
+\\
+\\
+5\\
+(a)
+\begin{align*}
+\forall x &\in [a, b]\\
+|f(x) + g(x)| &\leq |f(x)| + |g(x)| \quad \text{by triangle inequality proposition 1.3.2}\\
+||f + g||_u &= \sup_{x \in [a, b]}(|f(x) + g(x)|)\quad \text{by proposition 6.1.9}\\
+&\leq \sup_{x \in [a, b]}(|f(x)| + |g(x)|)\quad \text{by triangle inequality proposition 1.3.2}\\
+&\leq \sup_{x \in [a, b]}|f(x)| + \sup_{x \in [a, b]}|g(x)| \quad \text{by exercise 1.3.7, homework 8 problem 2 (c)}\\
+&= ||f||_u + ||g||_u\quad \text{by proposition 6.1.9}\\
+\end{align*}
+\\
+\\
+\\
+(b)
+\begin{align*}
+||-f||_u &= \sup_{x \in [a, b]} |-f(x)|\\
+&= \sup_{x \in [a, b]} |f(x)|\\
+&= ||f||_u
+\end{align*}
+by triangle inequality
+\begin{align*}
+||f||_u &= ||(f - g) + g||_u\\
+&\leq ||f - g||_u + ||g||_u\\
+\therefore ||f||_u - ||g||_u &\leq ||f - g||_u\\
+\\
+||g||_u &= ||(g - f) + f||_u\\
+&\leq ||g - f||_u + ||f||_u\\
+\therefore ||f||_u - ||g||_u &\geq -||f - g||_u\\
+\\
+-||f - g||_u &\leq ||f||_u - ||g||_u \leq ||f - g||_u\\
+|||f||_u - ||g||_u| &\leq ||f - g||_u
+\end{align*}
+\newpage
+\noindent
+6\\
+$f_n(x) :=
+\begin{cases}
+1 - nx & 0 \leq x < 1 / n\\
+0 & 1 / n \leq x \leq 1\\
+\end{cases}$\\
+\\
+fix $x \in (0, 1]$. if $n \geq 1 / x, x \geq 1 / n$\\
+so $\forall n \geq 1 / x, f_n(x) = 0$, so
+\[\lim_{n \rightarrow \infty} f_n(x) = 0\]
+\\
+if $x = 0 < 1 / n$
+\[\lim_{n \rightarrow \infty} f_n(0) = \lim_{n \rightarrow \infty} 1 - n(0) = 1\]
+so the pointwise limit $f_n$ is function $f: [0, 1] \rightarrow \mathbb{R}$\\
+by proposition 2.3.7, every subsequence of $\{f_n\}$ converges pointwise to $f$\\
+$f(x) :=
+\begin{cases}
+1 & \text{if } x = 0\\
+0 & \text{if } x > 0\\
+\end{cases}$
+\\
+\\
+since $\{f_n\}$ converges pointwise to $f, \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq \mathbb{N}, |f_n(x) - f(x)| < \varepsilon$\\
+\\
+\\
+\\
+for contradiction, assume $\{f_n\}$ has a subsequence that converges in uniform norm\\
+by definition 6.1.6, $\{f_n\}$ converges uniformly to $f$\\
+by proposition 6.1.19, since $f_n$ converges uniformly to $f$
+\begin{align*}
+\lim_{n \rightarrow \infty} ||f_n - f||_u &= 0\\
+\lim_{n \rightarrow \infty} \sup\{|f_n(x) - f(x)|\} &= 0 \quad\text{/* by definition 6.1.9 */}\\
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, &\forall n \geq M, |\sup\{|f_n(x) - f(x)|\} - 0| < \varepsilon\\
+&\sup\{|f_n(x) - f(x)|\} < \varepsilon\\
+\\
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, &\forall n \geq M, |f_n(x) - f(x)| \geq \varepsilon, \sup\{|f_n(x) - f(x)|\} \geq \varepsilon\\
+|f_n(x) - f(x)| &\geq \varepsilon\\
+\\
+|(1 - nx) - 0| &\geq \varepsilon\\
+|1 - nx| &\geq \varepsilon\\
+1 - nx &\geq \varepsilon\\
+-nx &\geq \varepsilon - 1\\
+nx &\leq 1 - \varepsilon\\
+x &\leq \frac{1 - \varepsilon}{n}\\
+\exists x &\in [0, 1]\\
+\forall \varepsilon > 0, \exists M \in \mathbb{N}, &\forall n \geq M, |f_n(x) - f(x)| \geq \varepsilon, \sup\{|f_n(x) - f(x)|\} \geq \varepsilon
+\end{align*}
+which is a contradiction, so the assumption that $\{f_n\}$ has a subsequence that converges in uniform norm is false, so $\{f_n\}$ has no subsequence that is convergenet in uniform norm
+\end{document}
