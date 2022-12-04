@@ -393,5 +393,25 @@ x &\leq \frac{1 - \varepsilon}{n}\\
 \exists x &\in [0, 1]\\
 \forall \varepsilon > 0, \exists M \in \mathbb{N}, &\forall n \geq M, |f_n(x) - f(x)| \geq \varepsilon, \sup\{|f_n(x) - f(x)|\} \geq \varepsilon
 \end{align*}
-which is a contradiction, so the assumption that $\{f_n\}$ has a subsequence that converges in uniform norm is false, so $\{f_n\}$ has no subsequence that is convergenet in uniform norm
+which is a contradiction, so the assumption that $\{f_n\}$ has a subsequence that converges in uniform norm is false, so $\{f_n\}$ has no subsequence that is convergenet in uniform norm\\
+\\
+\\
+\\
+\\
+$\forall x \in [0, 1]\\
+\lim_{n \rightarrow \infty} f_n(x) = 0$\\
+so $\{f_n\}$ converges pointwise to $f: [0, 1] \rightarrow \mathbb{R}\\
+f(x) =
+\begin{cases}
+0 & x = 0\\
+1 & 0 \leq x \leq 1\\
+\end{cases}$\\
+every subsequence $\{f_{n_k}\}$ converges pointwise to $f(x)$\\
+assume there exists $\{f_{n_k}\}$ that converges uniformly\\
+$\exists M \in \mathbb{N}, \forall x \in [0, 1]\\
+\forall k \geq M, n_k \geq k \geq M\\
+|f_{n_k}(x) - f(x)| < \varepsilon = \frac{1}{2}\\
+|1 - Mx - 0| < \frac{1}{2}, \forall x \in [0, 1]$\\
+choose $x = 1 / (3M)\\
+|1 - Mx - 0| = |1 - M(1 / 3M)| = 2 / 3 > 1 / 2$, which is a contradiction, so the assumption that $\{f_n\}$ has a subsequence that converges in uniform norm is false, so $\{f_n\}$ has no subsequence that is convergenet in uniform norm\\
 \end{document}
