@@ -180,8 +180,8 @@ physical memory can store 4 - $n$ pages at once. array A need 64 pages in total,
 \\
 2\\
 a\\
-minimum number of CPUs that these 2 processes can use is \boxed{1}\\
-if 2 processes are using the same CPU, no more than 1 process can be run at the same time, so at least 1 of the processes need to be in ready state\\
+minimum number of CPUs that these 2 processes can use is \boxed{2}\\
+assuming none of the 2 processes are blocked or exits, in this case, no process can be in ready state, since there are idle CPUs, both processes then are running, using 2 CPUs.
 \\
 \\
 \\
