@@ -1,0 +1,11 @@
+digital ocean
+first project
+droplets
+ubuntu-s-1vcpu-512mb-10gb-nyc1-01 159.203.180.234
+
+go to shell
+ssh root@159.203.180.234
+
+root@159.203.180.234 password: abC123de
+
+cd final-project-team-decider
