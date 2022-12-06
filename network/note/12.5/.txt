@@ -13,3 +13,10 @@ root@159.203.180.234 password: abC123de
 cd final-project-team-decider
 
 https://www.digitalocean.com/community/questions/npm-install-are-very-slow-in-sg-server
+
+https://medium.com/front-end-weekly/deploy-fullstack-with-nginx-on-digital-ocean-ed1fbc92275f
+https://github.com/nyu-software-engineering/node-js-continuous-integration
+
+https://bobbyhadz.com/blog/react-error-digital-envelope-routines-unsupported
+https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+"start": "react-scripts --openssl-legacy-provider start"
