@@ -3,4 +3,5 @@ https://github.com/diharaw/fft-ocean-waves
 https://github.com/achalpandeyy/OceanFFT
 https://github.com/stanfortonski/Ocean-OpenGL
 
+cmake
 https://www.youtube.com/watch?v=wl2Srog-j7I
