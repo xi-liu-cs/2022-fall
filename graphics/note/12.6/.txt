@@ -1,0 +1,4 @@
+https://github.com/jfperren/mountains
+https://github.com/diharaw/fft-ocean-waves
+https://github.com/achalpandeyy/OceanFFT
+https://github.com/stanfortonski/Ocean-OpenGL
