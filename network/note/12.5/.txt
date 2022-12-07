@@ -34,4 +34,10 @@ https://www.freecodecamp.org/news/error-error-0308010c-digital-envelope-routines
 invalid options object. dev server has been initialized using an options object that does not match the api schema
 https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
 
+This fuser 8080/tcp will print you PID of process bound on that port.
+
+And this fuser -k 8080/tcp will kill that process.
+
+Works on Linux only. More universal is use of lsof -i4 (or 6 for IPv6).
+
 https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux
