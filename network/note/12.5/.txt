@@ -28,3 +28,5 @@ terminate process
 https://docs.oracle.com/cd/E19253-01/817-0403/eoizf/index.html
 
 npm ci
+
+https://www.freecodecamp.org/news/error-error-0308010c-digital-envelope-routines-unsupported-node-error-solved/
