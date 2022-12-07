@@ -30,3 +30,6 @@ https://docs.oracle.com/cd/E19253-01/817-0403/eoizf/index.html
 npm ci
 
 https://www.freecodecamp.org/news/error-error-0308010c-digital-envelope-routines-unsupported-node-error-solved/
+
+invalid options object. dev server has been initialized using an options object that does not match the api schema
+https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
