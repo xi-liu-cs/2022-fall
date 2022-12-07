@@ -33,3 +33,5 @@ https://www.freecodecamp.org/news/error-error-0308010c-digital-envelope-routines
 
 invalid options object. dev server has been initialized using an options object that does not match the api schema
 https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
+
+https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux
