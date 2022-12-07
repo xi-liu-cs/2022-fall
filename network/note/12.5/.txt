@@ -22,3 +22,7 @@ https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-
 "start": "react-scripts --openssl-legacy-provider start"
 
 https://pm2.keymetrics.io/docs/usage/quick-start/
+
+terminate process
+'kill pid'
+https://docs.oracle.com/cd/E19253-01/817-0403/eoizf/index.html
