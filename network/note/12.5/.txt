@@ -20,3 +20,5 @@ https://github.com/nyu-software-engineering/node-js-continuous-integration
 https://bobbyhadz.com/blog/react-error-digital-envelope-routines-unsupported
 https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
 "start": "react-scripts --openssl-legacy-provider start"
+
+https://pm2.keymetrics.io/docs/usage/quick-start/
