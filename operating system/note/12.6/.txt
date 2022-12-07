@@ -1,0 +1,42 @@
+self driving car
+full of io devices, sensors
+need to act very fast
+real time decisions
+
+io device
+registers
+status
+command
+data
+
+device interaction
+calling process to sleep
+context switch
+interrupt
+wakes process that needed io
+
+a number on bus to indicate which interrupt routine
+array of pointers to functions
+interrupt number that index into array of functions
+
+interrupt controller
+order the interrupts sent to cpu
+
+if device is fast, poll is better
+if device is slow, interrupt is better
+
+direct memory access
+transfers between devices and main memory without cpu intervention
+
+each control register is assigned an io port number
+io port is accessed with special instruction
+
+peripheral component interconnect express
+
+a layer of os maps symbolic device names onto proper drivers
+
+device drivers
+receive abstract read write from layer above and carry them out
+
+sector = group of bytes
+master boot record
