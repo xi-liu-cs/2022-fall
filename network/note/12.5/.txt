@@ -26,3 +26,5 @@ https://pm2.keymetrics.io/docs/usage/quick-start/
 terminate process
 'kill pid'
 https://docs.oracle.com/cd/E19253-01/817-0403/eoizf/index.html
+
+npm ci
