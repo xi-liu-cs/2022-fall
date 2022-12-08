@@ -8,3 +8,35 @@ https://stackoverflow.com/questions/73210017/using-css-grid-position-multi-row-c
 https://github.com/gitname/react-gh-pages
 https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
 https://stackoverflow.com/questions/18938469/set-variable-to-result-of-mongoose-find
+
+front end address is
+http://164.90.254.52:3000/
+
+back end address is
+http://164.90.254.52:4000/
+
+
+
+if testing the app locally, then make two files for .env
+
+file 1.
+file path: final-project-team-decider/back-end/.env
+
+file content:
+PORT = 4000
+ATLAS_URI = mongodb+srv://decider:decider@cluster0.ic6s0gm.mongodb.net/?retryWrites=true&w=majority
+ACCESS_TOKEN = 7e77fd8aa756cd0f70f1797354c8713aac384241ed7d1e84f83aed0974f431326f977fad23827e03dfdc35ab413f92104cd7feb2ab81b2fd8825b047b3a48428
+REFRESH_TOKEN = 424ebf10752a8e8977751f659ab513a542865d6671b959479a1f55dda4ed61afb6c18a3281ec7cda3c8e03498ac628545aff51e9939d9fd7a013566ef95cfdf5
+
+
+file 2.
+file path: final-project-team-decider/front-end/.env
+
+file content:
+REACT_APP_BACK_END_URL = http://localhost:4000/
+REACT_APP_GEOAPIFY_KEY = 5b82ca360a754cec8eb085096ff20a32
+REACT_APP_GEOAPIFY_MAP_KEY = f05457a48e8345d7b3084421d631d61d
+REACT_APP_MAP_URL = https://maps.geoapify.com/
+REACT_APP_GEOAPIFY_URL = https://api.geoapify.com/
+REACT_APP_GEOAPIFY_W3_URL = https://www.api.geoapify.com/
+REACT_APP_OPEN_STREET_URL = https://www.openstreetmap.org/
