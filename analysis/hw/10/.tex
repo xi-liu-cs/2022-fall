@@ -1,0 +1,106 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu, homework 10}
+collaboration: Chuanyang Jin
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = \textwidth, height = 1.4\textwidth]{0.jpg}
+\end{figure}
+\newpage
+\noindent
+(c)\\
+for $f: \mathbb{R} \rightarrow \mathbb{R}$, let $f(x_0) = y_0$ be the unique solution to equation $f'(x) = f(x). \forall \alpha \in \mathbb{R}$, let $g: \mathbb{R} \rightarrow \mathbb{R}, g(x) := \alpha f(x)$. by proposition 4.1.7 linearity of derivative, $g'(x) = \alpha f'(x) = \alpha f(x) = g(x), g'(x_0) = \alpha f'(x_0) = \alpha f(x_0) = g(x_0)$. this is unique solution to the equation by uniqueness\\
+\\
+\\
+\\
+(d)\\
+$\forall c \in \mathbb{R}, f: \mathbb{R} \rightarrow \mathbb{R}, f(x) = 0$ with $f'(x) = f(x)$ and initial condition $f(c) = 0$, it is unique solution. if $\forall c \in \mathbb{R}, f(c) = 0$. then $\forall x \in \mathbb{R}, f(x) = 0$. if $f(x_0) = y_0 > 0$. for contradiction, assume $\exists c \in \mathbb{R}, f(c) \leq 0.$ if $f(c) = 0, f(x_0) = 0$, which contradicts with $f(x_0) = y_0 > 0$. if $f(c) < 0$. since $f$ is continuous, by lemma 3.3.7 intermediate value theorem, $\exists$ point $p$ in between $c$ and $x_0$ with $f(p) = 0$. But then $f(x_0) = f(c) = 0$, which contradicts with $f(x_0) = y_0 > 0$. so if $y_0 > 0, \forall x \in \mathbb{R}, f'(x) = f(x) > 0$, so $f$ is strictly increasing $\forall x \in \mathbb{R}$\\
+\\
+\\
+\\
+2\\
+(a)\\
+show $E'(x) = E(x), E(x_0) = y_0, a \in \mathbb{R}, f: \mathbb{R} \rightarrow \mathbb{R}, f(x) := E(x + \alpha)$ is unique solution to $f'(x) = f(x)$ with $f(x_0) = E(x_0 + \alpha)$\\
+$f'(x) = E'(x + \alpha) = E(x + \alpha) = f(x)$, by Picard's theorem, this is unique solution to the equation. $f_1 := E$ is unique solution. $f_1(x) := E(x)$ is unique solution to $f_1'(x) = f_1(x)$ with initial condition $f_1(b) = E(b)$. $f_2(x) := E(x + b)$ is unique solution to $f_2'(x) = f_2(x)$ with initial condition $f_2(0) = E(b)$. based on what is shown in problem 1 (c), $f_3(x) := E(x)E(b)$ is unique solution to $f_3'(x) = f_3(x)$ with initial condition $f_3(0) = E(b)$. so $\forall a, b \in \mathbb{R}, E(a + b) = E(a)E(b)$ by uniqueness\\
+\\
+\\
+\\
+(b)\\
+if $m = 0, E(0x) = e ^ 0 = 1 = E(x) ^ 0$\\
+if $m \in \mathbb{N}, E(1x) = e ^ 1 = e = E(x) ^ 1$, for inductive hypothesis, assume $E(mx) = E(x) ^ m$ is true, then $E((m + 1)x) = E(mx + x) = E(mx)E(x) = E(x) ^ m E(x) = E(x) ^ {m + 1}$, so it is true $\forall m \in \mathbb{N}$\\
+if $m < 0, -m \in \mathbb{N}, 1 = e ^ 0 = E(0) = E(x - x) = E(x)E(-x),\\
+E(-x) = 1 / E(x) = E(x) ^ {-1}\\
+E(mx) = e ^ {mx} = 1 / e ^ {-mx} = 1 / E(-mx) = 1 / E(-x) ^ {-m} = (1 / E(-x)) ^ {-m} = E(x)$, so it is true $\forall m \in \mathbb{Z}$
+\begin{align*}
+E(x) &= E\left(n\frac{x}{n}\right) = e ^ {n(x / n)} = (e ^ {x / n}) ^ n = E\left(\frac{x}{n}\right) ^ n\\
+E(x) > 0, E\left(\frac{x}{n}\right) > 0, E\left(\frac{x}{n}\right) = E(x) ^ {1 / n}\\
+\forall q &= \frac{m}{n} \in \mathbb{Q},\\
+E(qx) = E\left(\frac{m}{n}x\right) = e ^ {(m / n)x} = ((e ^ x) ^ {1 / n}) ^ m &= \left(E(x) ^ \frac{1}{n}\right) ^ m = \left(E(x) ^ \frac{m}{n}\right) = E(x) ^ q\\
+\end{align*}
+\\
+\\
+\\
+(c)\\
+$\because E(x) = e ^ x$ is strictly increasing, $E(-1) < E(0) = 1 < E(1), \{E(-n) \} = \{e ^ {-n}\} = \{(e ^ {-1}) ^ n\} = \{E(-1) ^ n\}$ converges to 0 by lemma 2.2.12 ratio test since $1 / e < 1. \{E(n) \} = \{e ^ {n}\} = \{(e ^ {1}) ^ n\} = \{E(1) ^ n\}$ is unbounded by lemma 2.2.12 ratio test since $e ^ 1 > 1$. $E(1) ^ n < E(1) ^ {n + 1} \forall n \in \mathbb{N}, \therefore \{E(n)\}$ is unbounded monotone increasing sequence\\
+$\because E$ is strictly increasing, $\forall i, j \in \mathbb{R}, i < j \rightarrow f(i) < f(j), \therefore E(i) = E(j) \rightarrow i = j$, so $E$ is injective. $\forall i_1 > 0, \exists n \in \mathbb{N}, E(-n) < i_1 \because \{E(-n)\}$ converges to 0. since $\{E(n)\}$ is unbounded, $\exists i_2 \in \mathbb{N}, E(i_2) > i_1$. by intermediate value theorem 3.3.2, $\exists p \in [-n, i_2]$ with $E(p) = i_1$. so $E$ is surjective. since $E$ injective and surjective, $E$ is bijective, so $\exists$ a unique function $L: (0, \infty) \rightarrow \mathbb{R}$ satisfying $E(L(a) = a, \forall a \in (0, \infty)$\\
+\\ 
+\\
+\\
+(d)\\
+since $E$ is continuous, $\forall$ sequence of rational numbers $\{q_n\}$ with $\lim_{n \rightarrow q_n} = x$
+\begin{align*}
+a ^ x &:= E(xL(a))\\
+&= E\left(\lim_{n \rightarrow \infty} (q_nL(a))\right)\\
+&= \lim_{n \rightarrow \infty} E\left(q_nL(a)\right)\\
+&= \lim_{n \rightarrow \infty} E\left(L(a)\right) ^ {q_n} \quad \text{from problem 2 (b)}\\
+&= \lim_{n \rightarrow \infty} a ^ {q_n} \quad \text{from definition of } e ^ x \text{ and } \ln x
+\end{align*}
+by the uniqueness of limit, $a ^ x$ is a unique number satisfying $a ^ x = \lim_{n \rightarrow \infty} a ^ {q_n}$
+\end{document}
