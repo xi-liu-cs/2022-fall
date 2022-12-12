@@ -1,0 +1,14 @@
+5\\
+b
+\begin{align*}
+\forall x, y &\in I = [\sqrt{a}, \infty)\\
+\left|\frac{1}{2}\left(x + \frac{a}{x}\right) - \frac{1}{2}\left(y + \frac{a}{y}\right)\right| &= \left|\frac{1}{2}\left(x - y + \frac{a}{x} - \frac{a}{y}\right)\right|\\
+&= \frac{1}{2}\left|x - y + \frac{ay - ax}{xy}\right|\\
+&= \frac{1}{2}\left|x - y + \frac{-a(x - y)}{xy}\right|\\
+&\leq \frac{1}{2}\left(|x - y| + \left|\frac{a(x - y)}{xy}\right|\right)\\
+&= \frac{1}{2}|x - y| + \frac{1}{2}\left|\frac{a(x - y)}{xy}\right|\\
+&\text{/* since } x, y \in I = [\sqrt{a}, \infty),\; x, y \geq \sqrt{a},\; &\frac{1}{x} \leq \sqrt{a},\; \frac{1}{xy} \leq \frac{1}{(\sqrt{a}) ^ 2} = \frac{1}{a} \text{ */}\\
+&\leq \frac{1}{2}|x - y| + \frac{1}{2}\left|\frac{a(x - y)}{a}\right|\\
+&= \frac{1}{2}|x - y| + \frac{1}{2}\left|x - y\right|\\
+&= |x - y|\\
+\end{align*}
