@@ -1,1 +1,2 @@
+5b
 https://math.stackexchange.com/questions/1000029/show-1-x-is-lipschitz-continuous
