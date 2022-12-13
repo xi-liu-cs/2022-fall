@@ -1,5 +1,5 @@
 5b
 https://math.stackexchange.com/questions/1000029/show-1-x-is-lipschitz-continuous
 
-6d
+6c
 https://socratic.org/questions/how-to-prove-that-2-n-is-unbounded-real-series
