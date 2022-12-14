@@ -52,3 +52,18 @@ https://www.digitalocean.com/community/questions/npm-gets-killed-no-matter-what
 
 kill -9 pid
 https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work
+
+
+pm2 start app.config.json
+in app.config.json
+{
+  apps : [
+    {
+      name      : "react-app",
+      script    : "npx",
+      interpreter: "none",
+      args: "serve -s build -p 3000"
+    }
+  ]
+}
+https://javascript.plainenglish.io/how-do-you-build-reactjs-for-production-pm2-816001d1d736
