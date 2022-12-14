@@ -41,3 +41,11 @@ And this fuser -k 8080/tcp will kill that process.
 Works on Linux only. More universal is use of lsof -i4 (or 6 for IPv6).
 
 https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux
+
+https://www.digitalocean.com/community/questions/cannot-find-what-is-filling-up-disk-space-dev-vda1-is-100-full
+
+https://www.digitalocean.com/community/questions/can-t-login-to-droplet-with-ssh-and-access-console-is-unresponsive
+
+https://www.digitalocean.com/community/questions/28-no-space-left-on-device-error
+
+https://www.digitalocean.com/community/questions/npm-gets-killed-no-matter-what
