@@ -49,3 +49,6 @@ https://www.digitalocean.com/community/questions/can-t-login-to-droplet-with-ssh
 https://www.digitalocean.com/community/questions/28-no-space-left-on-device-error
 
 https://www.digitalocean.com/community/questions/npm-gets-killed-no-matter-what
+
+kill -9 pid
+https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work
