@@ -1,0 +1,640 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+1.\\
+(a)\\
+since $\sup S$ is an least upper bound, $\sup - 1$ is not an upper bound of $S$, so $\exists x_1 \in S, \sup S - 1 \leq x_1 \leq \sup S$ by homework 1 problem 8\\
+continuing, construct a monotone increasing sequence $x_n, \forall n \in \mathbb{N}, \sup S - 1 / n < x_n \leq \sup S$, since $\lim_{n \rightarrow \infty} (\sup S - 1 / n) = \sup S$ and $\lim_{n \rightarrow \infty} \sup S = \sup S$, by squeeze lemma, $\lim_{n \rightarrow \infty} x_n = \sup S$\\
+\\
+\\
+(b)\\
+base step: $y_1 \in S, \{y_1\}$ is monotone increasing\\
+inductive step: assume $y_n \in S, y_1, ..., y_n = \{y_n\}$ is monotone increasing, need to show $y_1, ..., y_{n + 1} = \{y_{n + 1}\}$ is also monotone increasing\\
+$\because \sup S \not\in S, \forall n \in \mathbb{N}, \forall y_n \in S, y_n < \sup S \\
+\sup S - y_n > 0\\
+\text{base on hw1 q8}, \forall \varepsilon > 0, \exists x \in B, c - \varepsilon < x \leq c\\
+\exists y_{n + 1} \in S, y_n < y_{n + 1} < \sup S$\\
+so $\{y_{n + 1}\}$ is shown to be monotone increasing\\
+$\{y_n\}$ is a monotone increasing sequence\\
+\\
+\\
+(c)\\
+since there exists a strictly monotone increasing sequence $\{y_n\}$ with $y_n \in S, \forall n \in \mathbb{N}$, establish a bijective function $f: \mathbb{N} \rightarrow \{y_n : n \in \mathbb{N}\}, f(n) = y_n$\\
+$f(n) = y_n$ is injective: $a < b \rightarrow f_a < f_b, a > b \rightarrow f_a > f_b,$ so $a \not= b \rightarrow f(a) \not= f(b)$\\
+$f(n) = y_n$ is surjective: $\forall y_a \in \{y_n: n \in \mathbb{N}\}$, $\exists n = a \in \mathbb{N}, y_n = y_a$\\
+\\
+\\
+(d)\\
+let $S := \{0\}, \sup S = 0 \in S, \mathcal{P}(S) = \{\emptyset, \{0\}\}$, all subsets $E$ of $S$ is finite so it is not countably infinite by definition 0.3.29\\
+so not always be a countably infinite subset\\
+\\
+\\
+2.\\
+(a)\\
+part 1\\
+$\{x_n\}$ diverges to negative infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n \leq k, \lim_{n \rightarrow \infty} x_n := -\infty$\\
+part 2\\
+$\{x_n\} := \{-n ^ 3\}, M := \sqrt[3]{K}\\
+\forall K \in \mathbb{R}, \forall n \geq M, -n \leq -M, x_n = -n ^ 3 \leq -M ^ 3 = -(\sqrt[3]{-K}) ^ 3 = K\\
+x_n \leq K$, $x_n$ diverges to $-\infty$\\
+\\
+\\
+(b)\\
+\begin{align*}
+\lim_{n \rightarrow \infty} \frac{1}{x_n} &= 0\\
+\forall K_1 \geq 0, \exists M \in \mathbb{N}, &\forall n \geq M\\
+\left|\frac{1}{x_n} - 0\right| &< K_1\\
+1 &< K_1 x_n\\
+x_n &> \frac{1}{K_1}\\
+K_2 &:= \frac{1}{K_1}\\
+x_n &> K_2
+\end{align*}
+so $\{x_n\}$ diverges to positive infinity\\
+\\
+\\
+(c)\\
+definition 1.3.6\\
+$f: D \rightarrow \mathbb{R}$\\
+$f$ is bounded: $\exists M \in \mathbb{R}, \forall x \in D, |f(x)| \leq M$\\
+$f$ is unbounded: $\forall M \in \mathbb{R}, \exists x \in D, |f(x)| > M$\\
+$f$ is unbounded above: $\forall M \in \mathbb{R}, \exists x \in D, f(x) > M$\\
+\\
+part 1\\
+if $\{x_n\}$ is unbounded above, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
+(i) if $\{x_n\}$ is unbounded above, then every $p$-tail of $\{x_n\}$ is also unbounded above\\
+if $\{x_n\}$ is unbounded above\\
+base step: since $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded above,  based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k$, so choose $k = 1$, $\exists n_1 \in \mathbb{N}, x_{n_1} > 1$, $n_1$-tail of $x_n$ starts with the term after $x_{n_1}, n_1 < n_2$, if choose $k = 2$, $\exists n_2 \in \mathbb{N}, x_{n_2} > 2$\\
+inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k, \text{so }\exists n_p \in \mathbb{N}, f(n_p) := x_{n_p} > p$, $n_p$-tail is the sequence $\{x_{i + n_p}\}_{i = 1} ^ {\infty}$ starting at index $n_p + 1$, $n_{p + 1}$-tail is the sequence $\{x_{i + n_{p + 1}}\}_{i = 1} ^ {\infty}$ starting at index $n_{p + 1} + 1$, since $n_p$-tail of $x_n$ starts with the term after $x_{n_p}, n_p < n_{p + 1}$, $n_{p + 1}$-tail is defined, based on definition of unbounded above, $k = p + 1$, $\exists n_{p + 1} \in \mathbb{N}, x_{n_{p + 1}} > p + 1$\\
+so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
+\\
+part 2\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then $\{x_n\}$ is unbounded above\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then\\
+$\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
+let $x_n := n$, for contradiction, assume $\{x_n\}$ is bounded above, let $b := \sup\{x_n\}$, number $b - 1$ cannot be an upper bound for $\{x_n\}$ as it is strictly less than $b$ (the least upper bound). $\exists m \in \mathbb{N}, m > b - 1, m + 1 = x_m + 1 > b$, since $x_m + 1$ is a term in the sequence that is greater than $b$, it contradicts with $b$ being an upper bound, so $\{x_n\}$ is unbounded above\\
+\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
+assume $\{x_n\}$ has an upper bound $b$ s.t. $\forall n \in \mathbb{N}, x_n \leq b$, since $\{x_{n_k}\}$ diverges, for $b \in \mathbb{R}, \exists M \in \mathbb{N}, \forall k \geq M, x_{n_k} > b,$ then for $n = n_k, x_n > b$, contradicts with $x_n \leq b$, so $\{x_n\}$ is unbounded above\\
+\\
+\\
+\\
+3.\\
+(a)\\
+definition 3.5.1\\
+for $f(x)$ to converge to $L$ as $x \rightarrow -\infty$\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall x \leq M, |f(x) - L| < \varepsilon$\\
+\\
+\\
+\begin{align*}
+\lim_{x \rightarrow \infty} \frac{1}{1 + x ^ 2} &= 0\\
+\left|\frac{1}{1 + x ^ 2} - 0\right| &< \varepsilon\\
+\frac{1}{1 + x ^ 2} &< \varepsilon\\
+1 + x ^ 2 &> \frac{1}{\varepsilon}\\
+x ^ 2 &> \frac{1}{\varepsilon} - 1\\
+x &> \sqrt{\frac{1}{\varepsilon} - 1}\\
+\forall \varepsilon > 0, \exists M := \sqrt{\frac{1}{\varepsilon} - 1} \in \mathbb{R}, &\forall x \geq M = \sqrt{\frac{1}{\varepsilon} - 1}\\
+|f(x) - L| &= \left|\frac{1}{1 + x ^ 2} - 0\right| < \varepsilon
+\end{align*}
+\begin{align*}
+\lim_{x \rightarrow -\infty} \frac{1}{1 + x ^ 2} &= 0\\
+\left|\frac{1}{1 + x ^ 2} - 0\right| &< \varepsilon\\
+\frac{1}{1 + x ^ 2} &< \varepsilon\\
+1 + x ^ 2 &> \frac{1}{\varepsilon}\\
+x ^ 2 &> \frac{1}{\varepsilon} - 1\\
+x &< -\sqrt{\frac{1}{\varepsilon} - 1}\\
+\forall \varepsilon > 0, \exists M := -\sqrt{\frac{1}{\varepsilon} - 1} \in \mathbb{R}, &\forall x \leq M = -\sqrt{\frac{1}{\varepsilon} - 1}\\
+|f(x) - L| = \left|\frac{1}{1 + x ^ 2} - 0\right| < \varepsilon\\
+\end{align*}
+\\
+\\
+\begin{align*}
+\forall \varepsilon > 0, &\exists M = \frac{1}{\sqrt{\varepsilon}} \in \mathbb{R}\\
+\forall x \geq M, \left|\frac{1}{1 + x ^ 2} - 0\right| &= \frac{1}{1 + x ^ 2} < \frac{1}{x ^ 2} \leq \frac{1}{M ^ 2} = \varepsilon\\
+\exists M' = -\frac{1}{\sqrt{\varepsilon}} \in \mathbb{R}\\
+\forall x \leq M, \left|\frac{1}{1 + x ^ 2} - 0\right| &= \frac{1}{1 + x ^ 2} < \frac{1}{x ^ 2} \leq \frac{1}{M ^ 2} = \varepsilon\\
+\lim_{n \rightarrow \infty} \frac{1}{1 + x ^ 2} &= 0
+\end{align*}
+\\
+\\
+\\
+(b)\\
+definition 3.2.1, $S \subset \mathbb{R}, c \in S, f: S \rightarrow \mathbb{R}$ is continuous at $c$ if\\
+$\forall \varepsilon > 0, \exists \delta > 0, (x \in S \wedge |x - c| < \delta \rightarrow |f(x) - f(c)| < \varepsilon)$\\
+\\
+since $\lim_{x \rightarrow \infty} f(x) = L\\
+\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall x \geq M, |f(x) - L| < \varepsilon\\$
+\\
+since $\lim_{x \rightarrow -\infty} f(x) = L\\
+\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall x \leq M, |f(x) - L| < \varepsilon$\\
+\\
+need to show $\forall \varepsilon > 0, \exists \delta > 0, (y \in S \wedge |y - 0| < \delta \rightarrow |g(y) - g(0)| < \varepsilon)\\
+\textcircled{1} \because \lim_{x \rightarrow \infty} f(x) = L, \exists M_0 \in \mathbb{R}, \forall 1 / y \geq M_0, |f(1 / y) - L| < \varepsilon\\
+\textcircled{2} \because \lim_{x \rightarrow -\infty} f(x) = L, \exists M_1 \in \mathbb{R}, \forall 1 / y \leq M_1, |f(1 / y) - L| < \varepsilon\\
+\textcircled{1}, \text{if } y > 0, 1 / y \geq M_0, 0 < y \leq 1 / M_0\\
+\textcircled{2}, \text{if } y < 0, 1 / y \leq M_1, 0 > y \geq 1 / M_1\\
+\textcircled{3}, \text{if } y = 0, |g(y) - g(0)| = |L - L| = 0 <  \varepsilon\\
+\text{combine }\textcircled{1}, \textcircled{2}, 1 / M_1 \leq y \leq 1 / M_0\\
+\text{let } M := \max\{|M_0|, |M_1|\}\\
+-1 / M \leq y \leq 1 / M\\
+|y| \leq 1 / M\\
+\therefore \exists \delta := 1 / M\\
+|y - 0| < \delta = 1 / M \rightarrow |g(y) - g(0)| = |f(1 / y) - L| < \varepsilon$\\
+\\
+\\
+\\
+(c)\\
+if $f$ is continuous at 0\\
+$\forall \varepsilon > 0, \exists \delta > 0, (x \in S \wedge |x - 0| < \delta \rightarrow |f(x) - f(0)| < \varepsilon)\\
+1 / y \in S \wedge |1 / y - 0| < \delta \rightarrow |f(1 / y) - f(0)| < \varepsilon\\
+|1 / y - 0| < \delta\\
+|1 / y| < \delta\\
+-\delta < 1 / y < \delta\\
+\textcircled{1}, -1 / \delta > y\\
+\textcircled{2}, y > 1 / \delta\\$\\
+\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall y \geq M := 1 / \delta, |g(y) - f(0)| = |f(1 / y) - f(0)| < \varepsilon\\
+\therefore \lim_{y \rightarrow \infty} g(y) = f(0)$\\
+\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{R}, \forall y \leq M := -1 / \delta, |g(y) - f(0)| = |f(1 / y) - f(0)| < \varepsilon\\
+\therefore \lim_{y \rightarrow -\infty} g(y) = f(0)\\
+\\
+\therefore \lim_{y \rightarrow \infty} g(y) = \lim_{y \rightarrow -\infty} g(y) = f(0)$\\
+\\
+\\
+\\
+\\
+4.\\
+(a)\\
+\begin{align*}
+m_i &= \inf\{f(x): x_{i - 1} \leq x \leq x_i\}\\
+M_i &= \sup\{f(x): x_{i - 1} \leq x \leq x_i\}\\
+L(\mathcal{P}, f) &= \sum_{i = 1} ^ n m_i \Delta x_i\\
+U(\mathcal{P}, f) &= \sum_{i = 1} ^ n M_i \Delta x_i\\
+\forall c_i &\in [x_{i - 1}, x_i]\\
+\inf\{f(x): x_{i - 1} &\leq x \leq x_i\} \leq f(c_i) \leq \sup\{f(x): x_{i - 1} \leq x \leq x_i\}\\
+\forall i \in \{1, 2, ..., n\}, m_i &\leq f(c_i) \leq M_i\\
+\sum_{i = 1} ^ n m_i &\leq \sum_{i = 1} ^ n f(c_i) \leq \sum_{i = 1} ^ n M_i\\ 
+\sum_{i = 1} ^ n m_i \Delta x_i &\leq \sum_{i = 1} ^ n f(c_i)\Delta x_i \leq \sum_{i = 1} ^ n M_i \Delta x_i\\
+L(\mathcal{P}, f) &\leq \sum_{i = 1} ^ n f(c_i)\Delta x_i \leq U(\mathcal{P}, f)\\
+\end{align*}
+\\
+\\
+\\
+(b)\\
+definition 5.1.9, riemann integrable
+\begin{align*}
+\int_a ^ b f(x) dx &=  \underline{\int_a ^ b}f(x)dx = \overline{\int_a ^ b}f(x)dx\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\}\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\}\\
+\\
+\int_a ^ b f &= \underline{\int_a ^ b} f = \sup\{L(P, f)\}\\
+\text{let } P_1 \text{ be a partition of }[a, b], \int_a ^ b f - \varepsilon &< L(P_1, f) < \underline{\int_a ^ b} f\\
+\\
+\int_a ^ b f &= \overline{\int_a ^ b} f = \inf\{U(P, f)\}\\
+\text{let } P_2 \text{ be a partition of }[a, b], \overline{\int_a ^ b} f &< U(P_2, f) < \int_a ^ b f + \varepsilon\\
+\\
+\text{let } P_3 \text{ be a partition of }[a, b], P_3 := P_1 \cup P_2\\
+\because P_1 \subset P_3, P_3 \text{ is a refinement of } P_1, &\therefore L(P_1, f) \leq L(P_3, f)\\
+\because P_2 \subset P_3, P_3 \text{ is a refinement of } P_2, &\therefore U(P_3, f) \leq U(P_2, f)\\
+\int_a ^ b f - \varepsilon < L(P_1, f) \leq L(P_3, f) \leq &\sum_{i = 1} ^ n f(x_i)\Delta x_i \leq U(P_3, f) \leq U(P_2, f) < \int_a ^ b f + \varepsilon\\
+\int_a ^ b f - \varepsilon < &\sum_{i = 1} ^ n f(x_i)\Delta x_i < \int_a ^ b f + \varepsilon\\
+- \varepsilon < &\sum_{i = 1} ^ n f(x_i)\Delta x_i - \int_a ^ b f < \varepsilon\\
+\left|\sum_{i = 1} ^ n f(x_i)\Delta x_i - \int_a ^ b f\right| &< \varepsilon\\
+\left|\int_a ^ b f - \sum_{i = 1} ^ n f(x_i)\Delta x_i\right| &< \varepsilon\\
+\end{align*}
+\\
+\\
+\\
+(c)\\
+part 1
+\begin{align*}
+R_n(f, [0, 1]) &= \sum_{i = 1} ^ n f(x_i) \Delta x\\
+\Delta x &= \frac{b - a}{n} = \frac{1}{n}\\
+x_i &= a + (b - a)(i / n) = 0 + (1 - 0)(i / n) = \frac{i}{n}\\
+\because i / n \in \mathbb{Q}, f(i / n) = 1\\
+R_n(f, [0, 1]) &= \sum_{i = 1} ^ n (1)(1 / n)\\
+&= \sum_{i = 1} ^ n \frac{1}{n}\\
+&= 1\\
+\therefore \{R_n(f, [0, 1])\}_{n = 1} ^ {\infty} &= \{1\}_{n = 1} ^ {\infty} \text{ converges to 1}\\
+\end{align*}
+\\
+\\
+part 2
+\begin{align*}
+R_n(f, [1, 1 + \sqrt{2}]) &= \sum_{i = 1} ^ n f(x_i) \Delta x\\
+\Delta x &= \frac{b - a}{n} = \frac{1 + \sqrt{2} - 1}{n} = \frac{\sqrt{2}}{n}\\
+x_i &= a + (b - a)(i / n) = 1 + (1 + \sqrt{2} - 1)(i / n) = 1 + (\sqrt{2}i / n)\\
+\because \sqrt{2}i / n \not\in \mathbb{Q}, 1 + (\sqrt{2}i / n) \not\in \mathbb{Q}, &f(1 + (\sqrt{2}i / n)) = 0\\
+R_n(f, [1, 1 + \sqrt{2}]) &= \sum_{i = 1} ^ n 0 (\sqrt{2} / n)\\
+&= 0\\
+\therefore \{R_n(f, [0, 1])\}_{n = 1} ^ {\infty} &= \{0\}_{n = 1} ^ {\infty} \text{ converges to 0}\\
+\end{align*}
+\\
+\\
+part 3
+\begin{align*}
+R_n(f, [0, 1 + \sqrt{2}]) &= \sum_{i = 1} ^ n f(x_i) \Delta x\\
+\Delta x &= \frac{b - a}{n} = \frac{1 + \sqrt{2} - 0}{n} = \frac{1 + \sqrt{2}}{n}\\
+x_i &= a + (b - a)(i / n) = 0 + (1 + \sqrt{2} - 0)(i / n) = (1 + \sqrt{2})(i / n)\\
+&= i / n + (\sqrt{2}i / n)\\
+\because \sqrt{2}i / n \not\in \mathbb{Q}, i / n + (\sqrt{2}i / n) \not\in \mathbb{Q}, &f(i / n + (\sqrt{2}i / n)) = 0\\
+R_n(f, [0, 1 + \sqrt{2}]) &= \sum_{i = 1} ^ n (0) \frac{1 + \sqrt{2}}{n}\\
+&= 0\\
+\therefore \{R_n(f, [0, 1 + \sqrt{2}])\}_{n = 1} ^ {\infty} &= \{0\}_{n = 1} ^ {\infty} \text{ converges to 0}\\
+\end{align*}
+\\
+\\
+part 4
+\begin{align*}
+R_n(f, [0, 1]) + R_n(f, [1, 1 + \sqrt{2}]) = 1 + 0 = 1 &\not= R_n(f, [0, 1 + \sqrt{2}]) = 0\\
+\lim_{n \rightarrow \infty} R_n(f, [0, 1]) + R_n(f, [1, 1 + \sqrt{2}]) = 1 + 0 = 1 &\not= \lim_{n \rightarrow \infty}  R_n(f, [0, 1 + \sqrt{2}]) = 0\\
+\end{align*}
+\\
+\\
+\\
+(d)\\
+disprove\\
+$\{R_n(f, [0, 1])\}$ converges to 1 as $n \rightarrow \infty$ as shown in 4.(c) part 1\\
+but the dirichlet function defined in 4.(c) is not riemann integrable since
+\begin{align*}
+m_i &= \inf\{f(x): x_{i - 1} \leq x \leq x_i\} = 0\\
+M_i &= \sup\{f(x): x_{i - 1} \leq x \leq x_i\} = 1\\
+L(P, f) &= \sum_{i = 1} ^ n m_i \Delta x_i = \sum_{i = 1} ^ n (0)\Delta x_i = 0\\
+U(P, f) &= \sum_{i = 1} ^ n M_i \Delta x_i = \sum_{i = 1} ^ n (1)\Delta x_i = \sum_{i = 1} ^ n \Delta x_i = 1 - 0 = 1\\
+\underline{\int_a ^ b}f(x)dx &= \sup\{L(P, f): P \text{ a partition of }[a, b]\} = 0\\
+\overline{\int_a ^ b}f(x)dx &= \inf\{U(P, f): P \text{ a partition of }[a, b]\} = 1\\
+\underline{\int_a ^ b}f(x)dx &= 0 \not= \overline{\int_a ^ b}f(x)dx = 1
+\end{align*}
+so $f$ is not riemann integrable\\
+\\
+\\
+\\
+5.\\
+(a)\\
+by textbook p.153, need to show $G$ is differentiable and the derivative $G'$ is continuous on $(0, \infty)$\\
+\\
+part 1\\
+show $G$ is differentiable\\
+by textbook p.141 definition 4.1.1, show $L$ exists
+\begin{align*}
+L &:= \lim_{y \rightarrow c} \frac{G(y) - G(c)}{y - c}\\
+\lim_{y \rightarrow c} \frac{\frac{1}{2}\left(y + \frac{a}{y}\right) - \frac{1}{2}\left(c + \frac{a}{c}\right)}{y - c} &= \lim_{y \rightarrow c} \frac{\frac{1}{2}\left(y - c + \frac{a}{y} - \frac{a}{c}\right)}{y - c}\\
+&= \lim_{y \rightarrow c}\frac{1}{2} + \frac{\frac{1}{2}\left(\frac{a}{y} - \frac{a}{c}\right)}{y - c}\\
+&= \lim_{y \rightarrow c}\frac{1}{2} + \frac{\left(\frac{ac - ay}{2yc}\right)}{y - c}\\
+&= \lim_{y \rightarrow c}\frac{1}{2} + \frac{1}{y - c}\left(\frac{ac - ay}{2yc}\right)\\
+&= \lim_{y \rightarrow c}\frac{1}{2} + \frac{1}{y - c}\left(\frac{-a(y - c)}{2yc}\right)\\
+&= \lim_{y \rightarrow c}\frac{1}{2} - \frac{a}{2yc}\\
+&= \frac{1}{2} - \frac{a}{2c ^ 2}\\
+&\text{so $L$ exists, so $G$ is differentiable}\\
+G'(c) &= \frac{1}{2} - \frac{a}{2c ^ 2}\\
+\end{align*}
+\\
+using $y' = 1, (1 / y)' = -1 / y ^ 2\\
+G'(y) = 1 / 2(1 - a / y ^ 2)\\
+= (1 / 2) - (a / (2 y ^ 2)$\\
+\\
+part 2\\
+show $G'$ is continuous on $(0, \infty)$\\
+by proposition 3.2.2 (iii), the function $f$ is continuous at $c$ if and only if for every sequence $\{x_n\}$ where $x_n \in S$ and
+$\lim_{n \rightarrow \infty} x_n = c$, the sequence $\{f(x_n)\}$ converges to $f(c)$\\
+let $c \in (0, \infty)$. let ${y_n}$ be a sequence in $(0, \infty)$ such that $\lim_{n \rightarrow \infty} y_n = c$\\
+\begin{align*}
+\lim_{n \rightarrow \infty} G'(y_n) &= \lim_{n \rightarrow \infty} \frac{1}{2} - \frac{a}{2y_n ^ 2}\\
+&= \frac{1}{2} - \frac{a}{2(\lim_{n \rightarrow \infty}y_n) ^ 2} \quad \text{proposition 2.2.5 continuity of algebraic operations}\\
+&= \frac{1}{2} - \frac{a}{2 c ^ 2}
+\end{align*}
+so $G'$ is continuous at $c$\\
+\\
+$G$ is differentiable and the derivative $G'$ is continuous on $(0, \infty)$, so $G$ is continuously differentiable\\
+\\
+\\
+\\
+part 3\\
+if $y < \sqrt{a}$
+\begin{align*}
+y ^ 2 &< a\\
+1 &< \frac{a}{y ^ 2}\\
+\frac{1}{2} &< \frac{a}{2y ^ 2}\\
+\frac{1}{2} - \frac{a}{2y ^ 2} &< 0\\
+G'(y) &< 0\\
+\end{align*}
+\\
+\\
+\\
+if $y > \sqrt{a}$
+\begin{align*}
+y ^ 2 &> a\\
+1 &> \frac{a}{y ^ 2}\\
+\frac{1}{2} &> \frac{a}{2y ^ 2}\\
+\frac{1}{2} - \frac{a}{2y ^ 2} &> 0\\
+G'(y) &> 0\\
+\end{align*}
+\\
+\\
+\\
+part 4\\
+by p.151 proposition 4.2.9 (i)\\
+let $f: (a, b) \rightarrow \mathbb{R}$ be continuous. let $c \in (a, b)$ and suppose $f$ is differentiable on $(a, c)$ and $(c, b)$\\
+\\
+if $f'(x) \leq 0$ for $x \in (a, c)$ and $f'(x) \geq 0$ for $x \in (c,b)$, then $f$ has an absolute minimum at $c$\\
+\\
+take $x \in (a, c)$ and a sequence
+$\{y_n\}$ such that $x < y_n < c$ for all n and $lim y_n = c$. by the preceding proposition, $f$ is decreasing on
+$(a, c)$ so $f(x) \geq f(y_n)$. as $f$ is continuous at $c$, we take the limit to get $\forall x \in (a, c), f(x) \geq f(c)$\\
+similarly, take $x \in (c, b)$ and $\{y_n\}$ a sequence such that $c < y_n < x$ and $\lim y_n = c$. the function
+is increasing on $(c, b)$ so $f(x) \geq f(y_n)$. by continuity of $f$ we get $ \forall x \in (c, b), f(x) \geq f(c)$.
+Thus $\forall x \in (a,b), f(x) \geq f(c)$\\
+\\
+since from part 3, we have\\
+$G'(y) < 0$ for $y < \sqrt{a}$\\
+$G'(y) > 0$ for $y > \sqrt{a}$\\
+so $G$ achieves an absolute minimum at $y = \sqrt{a}$\\
+\\
+\\
+\\
+(b)\\
+by p.128, definition 3.4.7. a function $f: S \rightarrow \mathbb{R}$ is lipschitz continuous, if there exists a $K \in \mathbb{R}$, such that
+$\forall x, y \in S, |f(x) - f(y)| \leq K|x - y|$\\
+\\
+show $|G(x) - G(y)| \leq L|x - y|$\\
+by p.149 theorem 4.2.4\\
+let $f: [a, b] \rightarrow \mathbb{R}$ be a continuous function differentiable on
+$(a, b)$. then there exists a point $c \in (a, b)$ such that\\
+$f(b) - f(a) = f'(c)(b - a)$\\
+\\
+$G_I: [\sqrt{a}, \infty) \rightarrow (0, \infty)$ is a continuous function differentiable on $[\sqrt{a}, \infty)$. then there exists a point $c \in [\sqrt{a}, \infty)$ such that
+\begin{align*}
+|G(y) - G(x)| &= |G'(c)(y - x)|\\
+&= |G'(c)||(y - x)|\\
+&= \left|\frac{1}{2} - \frac{a}{2c ^ 2}\right||x - y|\\
+\text{/* } c \in [\sqrt{a}, \infty),\; \sqrt{a} \leq c,\; &a \leq c ^ 2\\
+\frac{a}{c ^ 2} \leq 1,\; \frac{a}{2c ^ 2} \leq \frac{1}{2},\; &0 \leq \frac{a}{2c ^ 2} \leq \frac{1}{2}\\
+0 &\leq \frac{a}{2c ^ 2} \quad \because a > 0, c > 0\\
+-\frac{a}{2c ^ 2} &\leq 0\\
+\frac{1}{2} -\frac{a}{2c ^ 2} &\leq \frac{1}{2} \text{ */}\\
+&\leq \left|\frac{1}{2}\right||x - y|\\
+&= \frac{1}{2}|x - y|\\
+L &= \frac{1}{2}
+\end{align*}
+\\
+\\
+\\
+(c)\\
+part 1
+\begin{align*}
+&\text{line 1}\\
+|y_k - y_n| &= |G(y_{k - 1}) - G(y_{n - 1})| \qquad \text{/* } y_n = G(y_{n - 1}) \text{ */}\\
+&\leq L|y_{k - 1} - y_{n - 1}| \qquad \text{/* $G|_I$ is lipschitz continuous, $|G(x) - G(y)| \leq L|x - y|$ */}\\
+&= L|G(y_{k - 2}) - G(y_{n - 2})| \qquad \text{/* } y_n = G(y_{n - 1}) \text{ */}\\
+&\leq L ^ 2|y_{k - 2} - y_{n - 2}| \qquad \text{/* $G|_I$ is lipschitz continuous */}\\
+&\text{/* repeat the above procedure for $n$ times until reaches the base case $y_{n - n} = y_0$ */}\\
+&\leq L ^ n|y_{k - n} - y_{n - n}|\\
+&\leq L ^ n|y_{k - n} - y_0|\\
+\\
+&\text{line 2}\\
+L ^ n|y_{k - n} - y_0| &= L ^ n|(y_1 - y_0) + (y_2 - y_1) + ... + (y_{k - n - 1} - y_{k - n - 2}) + (y_{k - n} - y_{k - n - 1})|\\
+&\text{/* except $-y_0$ and $y_{k - n}$, other terms inside the absolute value sign cancel */}\\
+&= L ^ n\left|\sum_{i = 1} ^ {k - n}y_i - y_{i - 1}\right|\\
+&\leq L ^ n \sum_{i = 1} ^ {k - n} \left|y_i - y_{i - 1}\right| \qquad \text{/* p.33, proposition 1.3.2 */}\\
+\\
+&\text{line 3}\\
+L ^ n \sum_{i = 1} ^ {k - n} \left|y_i - y_{i - 1}\right| &= L ^ n \sum_{i = 1} ^ {k - n} \left|G(y_{i - 1}) - G(y_{i - 2})\right| \qquad \text{/* } y_n = G(y_{n - 1}) \text{ */}\\
+&\leq L ^ n \sum_{i = 1} ^ {k - n} L\left|y_{i - 1} - y_{i - 2}\right| \quad \text{/* $G|_I$ is lipschitz continuous */}\\
+&= L ^ n \sum_{i = 1} ^ {k - n} L\left|G(y_{i - 2}) - G(y_{i - 3})\right| \qquad \text{/* } y_n = G(y_{n - 1}) \text{ */}\\
+&\leq L ^ n \sum_{i = 1} ^ {k - n} L ^ 2\left|y_{i - 2} - y_{i - 3}\right| \quad \text{/* $G|_I$ is lipschitz continuous */}\\
+&\text{/* repeat the above procedure for $i - 1$ times}\\
+&\text{until reaches the base case $y_{(i - 1) - (i - 1)} = y_0$ */}\\
+&\leq L ^ n \sum_{i = 1} ^ {k - n} L ^ {i - 1}\left|y_{i - (i - 1)} - y_{(i - 1) - (i - 1)}\right|\\
+&= L ^ n \sum_{i = 1} ^ {k - n} L ^ {i - 1}|y_1 - y_0|\\
+&= L ^ n |y_1 - y_0| \sum_{i = 1} ^ {k - n} L ^ {i - 1} \qquad \text{/* $|y_1 - y_0|$ does not depend on $i$}\\
+\\
+\text{line 4}\\
+L ^ n |y_1 - y_0| \sum_{i = 1} ^ {k - n} L ^ {i - 1} &= L ^ n |y_1 - y_0|\left(\frac{1 - L ^ {k - n}}{1 - L}\right)\\
+&\text{/* geometric series sum formula}\\
+&\text{see wikipedia page on geometric series in section sum closed formula}\\
+\sum_{i = 1} ^ n a r ^ {i - 1} &= a\left(\frac{1 - r ^ n}{1 - r}\right) \text{ */}\\
+&= \frac{L ^ n(1 - L ^ {k - n})}{1 - L}|y_1 - y_0|\\
+\\
+\text{line 5}\\
+\frac{L ^ n(1 - L ^ {k - n})}{1 - L}|y_1 - y_0| &= \frac{L ^ n - L ^ k}{1 - L}|y_1 - y_0|\\
+&\leq \frac{L ^ n}{1 - L}|y_1 - y_0|\\
+\end{align*}
+part 2\\
+definition 2.4.1. a sequence $\{x_n\}$ is a cauchy sequence if $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, \forall k \geq M$
+\begin{align*}
+|x_n - x_k| &< \varepsilon\\
+\\
+&\text{from part 1}\\
+|y_k - y_n| &\leq \frac{L ^ n}{1 - L}|y_1 - y_0|\\
+\\
+&\text{need to show}\\
+\textcolor{orchid}{\textcircled{1}}\quad|y_k - y_n| &< \varepsilon\\
+\textcolor{orchid}{\textcircled{2}}\quad|y_k - y_n| &\leq \frac{L ^ n}{1 - L}|y_1 - y_0| < \varepsilon\\
+\textcolor{orchid}{\textcircled{3}}\quad\frac{L ^ n}{1 - L}|y_1 - y_0| &< \varepsilon\\
+\\
+L &= \frac{1}{2}\\
+\frac{|y_1 - y_0|}{1 - L} &\text{ is a constant number}\\
+\lim_{n \rightarrow \infty} \frac{L ^ n}{1 - L}|y_1 - y_0| &= \frac{|y_1 - y_0|}{1 - L}\lim_{n \rightarrow \infty} L ^ n \qquad \text{/* by p.107 corollary 3.1.12 (iii) */}\\
+&\text{/* } L = \frac{1}{2} < 1, \text{ by p.63, lemma 2.2.12, ratio test */}\\
+&= 0\\
+\\
+\lim_{n \rightarrow \infty} L ^ n &= 0\\
+\frac{|y_1 - y_0|}{1 - L}\lim_{n \rightarrow \infty} L ^ n &= 0\\
+\lim_{n \rightarrow \infty} \frac{|y_1 - y_0|}{1 - L} L ^ n &= 0\\
+\\
+\text{by p.48, definition 2.1.2}\\
+\forall \varepsilon > 0, &\exists M \in \mathbb{N}, \forall n \geq M\\
+\left|\frac{|y_1 - y_0|}{1 - L} L ^ n - 0\right| &< \varepsilon\\
+\therefore \textcolor{orchid}{\textcircled{3}} \text{ is true}\\
+\therefore \textcolor{orchid}{\textcircled{1}} \text{ is true}\\
+\therefore \{y_n\}\text{ is cauchy}
+\end{align*}
+\\
+\\
+\\
+(d)\\
+part 1
+\begin{align*} 
+G(y_n) &= y_{n + 1}\\
+\lim_{n \rightarrow \infty} G(y_n) &= \lim_{n \rightarrow \infty} y_{n + 1}\\
+G(\lim_{n \rightarrow \infty} y_n) &= \lim_{n \rightarrow \infty} y_{n + 1}\quad \text{/* p.58, proposition 2.2.5, continuity of algebraic operations */}\\
+&= \lim_{n \rightarrow \infty} y_n\\
+G(y) &= y \qquad \text{/* } y = \lim_{n \rightarrow \infty} y_n \text{ */}
+\end{align*}
+\\
+\\
+\\
+part 2
+\begin{align*}
+G(y) &= y\\
+\frac{1}{2}\left(y + \frac{a}{y}\right) &= y\\
+y + \frac{a}{y} &= 2y\\
+\frac{a}{y} &= y\\
+a &= y ^ 2\\
+\sqrt{a} &= y\\
+y &= \sqrt{a}
+\end{align*}
+\newpage
+\noindent
+6\\
+(a)
+\begin{align*}
+||f + g||_{\alpha} &= \sup\{k ^ {\alpha} |(f + g)(k)|: k \in \mathbb{N}\}\\
+&= \sup\{k ^ {\alpha} |f(k) + g(k)|: k \in \mathbb{N}\}\\
+&\leq \sup\{k ^ {\alpha} |f(k)| + k ^ {\alpha} |g(k)|: k \in \mathbb{N}\} \quad \text{/* p.33, proposition 1.3.2, triangle inequality */}\\
+&\leq \sup\{k ^ {\alpha} |f(k)|: k \in \mathbb{N}\} + \sup\{k ^ {\alpha} |g(k)|: k \in \mathbb{N}\} \text{/* by p.37, exercise 1.3.7, hw8, q2 (c) */}\\
+&= ||f||_{\alpha} + ||g||_{\alpha}
+\end{align*}
+\\
+\\
+\\
+(b)\\
+show $f \in \ell_m ^ {\infty} \rightarrow f \in \ell_{m - 1} ^ {\infty}$\\
+if $f \in \ell_m ^ {\infty}, \{k ^ m |f(k)|: k \in \mathbb{N}\}$ is bounded, the $\ell_m ^ {\infty}$ norm of $f$ is\\
+$||f||_m := \sup\{k ^ m|f(k)|: k \in \mathbb{N}\} = ||k ^ m f||_u$\\
+if $k = 0, k ^ m = 1 = k ^ {m - 1}$\\
+if $k \geq 1, k ^ m \geq k ^ {m - 1}\\
+\forall k \in \mathbb{N}, k ^ m|f(k)| \geq k ^ {m - 1}|f(k)|\\
+\forall i \in \{k ^ {m - 1}|f(k)|: k \in \mathbb{N}\}, \sup\{k ^ m|f(k)|: k \in \mathbb{N}\} \geq i$\\
+so $\sup\{k ^ m|f(k)|: k \in \mathbb{N}\}$ is an upper bound of the set $\{k ^ {m - 1}|f(k)|: k \in \mathbb{N}\}\\
+\sup\{k ^ m|f(k)|\} \geq \sup\{k ^ {m - 1}|f(k)|\}\\$
+so the set $\{k ^ {m - 1}|f(k)|: k \in \mathbb{N}\}$ is bounded, so $f \in \ell_{m - 1} ^ {\infty}$\\
+\\
+\\
+\\
+(c)\\
+part 1\\
+show $S =  \{g_n: n \in \mathbb{N}\}$ is bounded in $\ell_0 ^ {\infty}$ norm\\
+show $\exists B \in \mathbb{R}, \forall g_n \in S, ||g_n||_0 \leq B$
+\begin{align*}
+||g_n||_0 &= \sup\{k ^ 0 |g_n(k)|: k \in \mathbb{N}, n \in \mathbb{N}\}\\
+&= \sup\{|g_n(k)|\}\\
+&= \sup\{0, 1\}\\
+&= 1\\
+&\leq 1 := B\\
+\therefore ||g_n||_0 \leq B &= 1
+\end{align*}
+\\
+part 2\\
+show $S =  \{g_n: n \in \mathbb{N}\}$ is not bounded in $\ell_m ^ {\infty}$ norm $\forall m \in \mathbb{N}$
+\begin{align*}
+&\{k ^ m |g_n(k)|: k \in \mathbb{N}, n \in \mathbb{N}\}\\
+&= \begin{cases}
+k ^ m|1| & \text{if } k = n\\
+k ^ m|0| & \text{if } k \not= n
+\end{cases}\\
+&= \{k ^ m \text{ if } k = n\}\\
+&= \{n ^ m\}\\
+&\forall B \in \mathbb{R}, \exists M \in \mathbb{R}, 
+\end{align*}
+$n$ is a variable and $m$ is a constant, as $n \rightarrow \infty$, $n ^ m \rightarrow \infty\\
+\forall B \in \mathbb{R}, \exists M \in \mathbb{R}, \forall n \geq M, n ^ m > B\\
+\{n ^ m\}$ is an unbounded sequence\\
+$\{k ^ m |g_n(k)|: k \in \mathbb{N}, n \in \mathbb{N}\}$ is not bounded\\
+$S$ is not bounded in $\ell_m ^ {\infty}$ norm\\
+\\
+\\
+\\
+(d)\\
+if $K$ is bounded in $\ell_m ^ {\infty}$ norm for some $m \in \mathbb{N}$
+\begin{align*}
+||f||_m &< B\\
+\sup\{k ^ m|f(k)|: k \in \mathbb{N}\} &< B\\
+\forall i \in \{k ^ m|f(k)|: k \in \mathbb{N}\}, i < B\\
+k ^ m|f(k)| &< B\\
+|f(k)| &< \frac{B}{k ^ m}\\
+&< \frac{B}{k}\\
+&< \varepsilon
+\end{align*}
+by p.28, theorem 1.2.4, archimedean property\\
+if $x, y \in \mathbb{R}$ and $x > 0$, then there exists an $n \in N$ such that $nx > y$\\
+if $\varepsilon, B \in \mathbb{R}$ and $\varepsilon > 0$, then there exists an $k \in N$ such that $k\varepsilon > B, \varepsilon > B / k\\
+\therefore \forall \varepsilon > 0, \exists C \in \mathbb{N}, \forall k \geq C, \forall f \in K\\
+K$ is uniformly small at infinity\\
+\\
+\\
+\\
+(e)\\
+if the collection $\{f_n: n \in \mathbb{N}\}$ is uniformly small at infinity\\
+$\forall \varepsilon > 0, \exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, \forall f_n \in K, |f_n(k)| < \varepsilon \quad \text{/* definition of uniformly small at infinity */}$\\
+\\
+let $\varepsilon > 0$ be given. since $f_n$ is uniformly small at infinity\\
+find $C, M \in \mathbb{N}, \forall k \geq C, \forall i, j \geq M\\
+|f_i(k)| < \varepsilon / 2\\
+|f_j(k)| < \varepsilon / 2\\
+|f_i(k) - f_j(k)| \leq |f_i(k)| + |f_j(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon \quad \text{/* triangle inequality */}\\
+\\
+\forall k \geq C, |f_i(k) - f_j(k)| < \varepsilon\\$
+for any fixed $k$, since $f_n$ converges pointwise to $f$, $f_j$ converges pointwise to $f$, take the limit as $j$ goes to infinity, then $|f_i(k) - f_j(k)|$ goes to $|f_i(k) - f(k)|$\\
+so $|f_i(k) - f(k)| < \varepsilon\\
+|f_n(k) - f(k)| < \varepsilon$\\
+\\
+$\forall k < C$, there are only a finite number of sequences $\{f_n(k)\}$ that each have pointwise convergence\\
+since $f_n$ converges pointwise to $f$\\
+by definition of pointwise convergence\\
+$\forall k < C$, for any fixed $k$, $f(k) = \lim_{n \rightarrow \infty} f_n(k)$\\
+by p.48, definition 2.1.2 of convergence $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
+\\
+i.e.\\
+$\forall k < C, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon$\\
+\\
+$\therefore \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$\\
+so $f_n$ converges to $f$ uniformly\\
+\\
+\\
+\\
+\\
+\\
+/* by p.205, definition 6.1.1, pointwise convergence\\
+$\forall n \in \mathbb{N}, \{f_n\}_{n = 1} ^ {\infty}$ converges pointwise to $f: S \rightarrow \mathbb{R}, \forall x \in S, f(x) = \lim_{n \rightarrow \infty} f_n(x)$\\
+\\
+by p.207, definition 6.1.6, uniform convergence\\
+$\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$ */\\
+\end{document}
