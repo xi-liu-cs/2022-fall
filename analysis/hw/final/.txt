@@ -3,3 +3,6 @@ https://math.stackexchange.com/questions/1000029/show-1-x-is-lipschitz-continuou
 
 6c
 https://socratic.org/questions/how-to-prove-that-2-n-is-unbounded-real-series
+
+6e
+https://math.stackexchange.com/questions/705961/a-function-vanishing-at-infinity-is-uniformly-continuous
