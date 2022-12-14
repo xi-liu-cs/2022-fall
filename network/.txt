@@ -40,3 +40,74 @@ REACT_APP_MAP_URL = https://maps.geoapify.com/
 REACT_APP_GEOAPIFY_URL = https://api.geoapify.com/
 REACT_APP_GEOAPIFY_W3_URL = https://www.api.geoapify.com/
 REACT_APP_OPEN_STREET_URL = https://www.openstreetmap.org/
+
+
+https://www.youtube.com/watch?v=fJ4x00SR7vo
+
+digital ocean
+first project
+droplets
+ubuntu-s-1vcpu-512mb-10gb-nyc1-01 159.203.180.234
+
+go to shell
+ssh root@159.203.180.234
+
+root@159.203.180.234 password: abC123de
+
+cd final-project-team-decider
+
+https://www.digitalocean.com/community/questions/npm-install-are-very-slow-in-sg-server
+
+https://medium.com/front-end-weekly/deploy-fullstack-with-nginx-on-digital-ocean-ed1fbc92275f
+https://github.com/nyu-software-engineering/node-js-continuous-integration
+
+https://bobbyhadz.com/blog/react-error-digital-envelope-routines-unsupported
+https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+"start": "react-scripts --openssl-legacy-provider start"
+
+https://pm2.keymetrics.io/docs/usage/quick-start/
+
+terminate process
+'kill pid'
+https://docs.oracle.com/cd/E19253-01/817-0403/eoizf/index.html
+
+npm ci
+
+https://www.freecodecamp.org/news/error-error-0308010c-digital-envelope-routines-unsupported-node-error-solved/
+
+invalid options object. dev server has been initialized using an options object that does not match the api schema
+https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
+
+This fuser 8080/tcp will print you PID of process bound on that port.
+
+And this fuser -k 8080/tcp will kill that process.
+
+Works on Linux only. More universal is use of lsof -i4 (or 6 for IPv6).
+
+https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux
+
+https://www.digitalocean.com/community/questions/cannot-find-what-is-filling-up-disk-space-dev-vda1-is-100-full
+
+https://www.digitalocean.com/community/questions/can-t-login-to-droplet-with-ssh-and-access-console-is-unresponsive
+
+https://www.digitalocean.com/community/questions/28-no-space-left-on-device-error
+
+https://www.digitalocean.com/community/questions/npm-gets-killed-no-matter-what
+
+kill -9 pid
+https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work
+
+
+pm2 start app.config.json
+in app.config.json
+{
+  apps : [
+    {
+      name      : "react-app",
+      script    : "npx",
+      interpreter: "none",
+      args: "serve -s build -p 3000"
+    }
+  ]
+}
+https://javascript.plainenglish.io/how-do-you-build-reactjs-for-production-pm2-816001d1d736
