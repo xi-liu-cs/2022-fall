@@ -107,21 +107,35 @@ $f$ is unbounded: $\forall M \in \mathbb{R}, \exists x \in D, |f(x)| > M$\\
 $f$ is unbounded above: $\forall M \in \mathbb{R}, \exists x \in D, f(x) > M$\\
 \\
 part 1\\
-if $\{x_n\}$ is unbounded above, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
-(i) if $\{x_n\}$ is unbounded above, then every $p$-tail of $\{x_n\}$ is also unbounded above\\
-if $\{x_n\}$ is unbounded above\\
-base step: since $\{x_n\}_{n = 1} ^ {\infty}$ is unbounded above,  based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k$, so choose $k = 1$, $\exists n_1 \in \mathbb{N}, x_{n_1} > 1$, $n_1$-tail of $x_n$ starts with the term after $x_{n_1}, n_1 < n_2$, if choose $k = 2$, $\exists n_2 \in \mathbb{N}, x_{n_2} > 2$\\
-inductive step: suppose $x_{n_p}$ is defined for some $p$, need to define $x_{n_{p + 1}}$, based on definition of unbounded above, $\forall k \in \mathbb{R}, \exists n \in \mathbb{N}, f(n) := x_n > k, \text{so }\exists n_p \in \mathbb{N}, f(n_p) := x_{n_p} > p$, $n_p$-tail is the sequence $\{x_{i + n_p}\}_{i = 1} ^ {\infty}$ starting at index $n_p + 1$, $n_{p + 1}$-tail is the sequence $\{x_{i + n_{p + 1}}\}_{i = 1} ^ {\infty}$ starting at index $n_{p + 1} + 1$, since $n_p$-tail of $x_n$ starts with the term after $x_{n_p}, n_p < n_{p + 1}$, $n_{p + 1}$-tail is defined, based on definition of unbounded above, $k = p + 1$, $\exists n_{p + 1} \in \mathbb{N}, x_{n_{p + 1}} > p + 1$\\
-so $\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
+$\leftarrow$\\
+if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to $+\infty$\\
+for contradiction, assume $\{x_n\}$ has an upper bound $b \in \mathbb{R}$ s.t. $\forall n \in \mathbb{N}, x_n \leq b$\\
+by definition of $\{x_{n_k}\}$ diverges to $+\infty, \forall b \in \mathbb{R}, \exists M \in \mathbb{N}, \forall k \geq M, x_{n_k} > b$\\
+then if $n = n_k, x_{n_k} > b \rightarrow x_n > b$\\
+$x_n > b$ contradicts with $x_n \leq b$\\
+so $\{x_n\}$ is unbounded above\\
+\\
+\\
 \\
 part 2\\
-if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then $\{x_n\}$ is unbounded above\\
-if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity, then\\
-$\forall k \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_{n_k} > k$\\
-let $x_n := n$, for contradiction, assume $\{x_n\}$ is bounded above, let $b := \sup\{x_n\}$, number $b - 1$ cannot be an upper bound for $\{x_n\}$ as it is strictly less than $b$ (the least upper bound). $\exists m \in \mathbb{N}, m > b - 1, m + 1 = x_m + 1 > b$, since $x_m + 1$ is a term in the sequence that is greater than $b$, it contradicts with $b$ being an upper bound, so $\{x_n\}$ is unbounded above\\
+$\rightarrow$\\
+(i)\\
+if $\{x_n\}$ is unbounded,\\
+let $\{x_{n + p}\}_{n = 1} ^ {\infty}$ be an arbitrary $p-$tail,\\
+for contradiction, assume $\{x_{n + p}\}_{n = 1} ^ {\infty}$ has an upper bound $b', \forall n \in \mathbb{N}, x_{n + p} \leq b'\\
+\forall n \in \mathbb{N}, x_n \leq \max\{x_1, x_2, ..., x_p, b'\} := b\\$
+then $b$ is an upper bound of $\{x_n\}$, which contradicts with the assumption that $\{x_n\}$ is unbounded\\
+so every $p-$tail of $\{x_n\}$ is also unbounded\\
 \\
-if $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to positive infinity\\
-assume $\{x_n\}$ has an upper bound $b$ s.t. $\forall n \in \mathbb{N}, x_n \leq b$, since $\{x_{n_k}\}$ diverges, for $b \in \mathbb{R}, \exists M \in \mathbb{N}, \forall k \geq M, x_{n_k} > b,$ then for $n = n_k, x_n > b$, contradicts with $x_n \leq b$, so $\{x_n\}$ is unbounded above\\
+(ii)\\
+$\forall k \in \mathbb{N}\\
+\text{since }\{x_n\}$ is unbounded, $\exists n \in \mathbb{N}, x_{n_1} > k$\\
+inductively, suppose $x_{n_1}, ..., x_{n_k} > k\\$
+since by (i) every $p \in \mathbb{N}$-tail of $\{x_n\}$ is unbounded, every $n_k \in \mathbb{N}$-tail of $\{x_n\}$ is unbounded, $\{x_{n + n_k}\}$ is unbounded, $x_{n_{k + 1}} > k$ for some $n_k < n_{k + 1}$\\
+/* all items with index after $n_k$ are unbounded, $n_{k + 1}$ can be an index after $n_k$ */\\
+$\exists M = 1 \in \mathbb{N}, \forall k \geq M, x_{n_k} \geq k$\\
+so $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ that diverges to $+\infty$\\
+\\
 \\
 \\
 \\
