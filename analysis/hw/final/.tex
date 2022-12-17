@@ -55,9 +55,9 @@ continuing, construct a monotone increasing sequence $x_n, \forall n \in \mathbb
 \\
 \\
 (b)\\
-base step: $y_1 \in S, \{y_1\}$ is monotone increasing\\
+base step: $y_1 \in S, y_1 < \sup S, \sup S - y_1 > 0, \{y_1\}$ is a sequence containing 1 element, it is monotone increasing\\
 inductive step: assume $y_n \in S, y_1, ..., y_n = \{y_n\}$ is monotone increasing, need to show $y_1, ..., y_{n + 1} = \{y_{n + 1}\}$ is also monotone increasing\\
-$\because \sup S \not\in S, \forall n \in \mathbb{N}, \forall y_n \in S, y_n < \sup S \\
+$\because \sup S \not\in S, \forall n \in \mathbb{N}, \forall y_n \in S, y_n < \sup S\\
 \sup S - y_n > 0\\
 \text{base on hw1 q8}, \forall \varepsilon > 0, \exists x \in B, c - \varepsilon < x \leq c\\
 \exists y_{n + 1} \in S, y_n < y_{n + 1} < \sup S$\\
@@ -89,12 +89,12 @@ x_n \leq K$, $x_n$ diverges to $-\infty$\\
 (b)\\
 \begin{align*}
 \lim_{n \rightarrow \infty} \frac{1}{x_n} &= 0\\
-\forall K_1 \geq 0, \exists M \in \mathbb{N}, &\forall n \geq M\\
-\left|\frac{1}{x_n} - 0\right| &< K_1\\
-1 &< K_1 x_n\\
-x_n &> \frac{1}{K_1}\\
-K_2 &:= \frac{1}{K_1}\\
-x_n &> K_2
+\forall \varepsilon \geq 0, \exists M \in \mathbb{N}, &\forall n \geq M\\
+\left|\frac{1}{x_n} - 0\right| &< \varepsilon\\
+1 &< \varepsilon x_n\\
+x_n &> \frac{1}{\varepsilon}\\
+K &:= \frac{1}{\varepsilon}\\
+x_n &> K
 \end{align*}
 so $\{x_n\}$ diverges to positive infinity\\
 \\
