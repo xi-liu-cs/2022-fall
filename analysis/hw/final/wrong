@@ -31,3 +31,38 @@ $\forall n \in \mathbb{N}, \{f_n\}_{n = 1} ^ {\infty}$ converges pointwise to $f
 \\
 by p.207, definition 6.1.6, uniform convergence\\
 $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$ */\\
+
+6
+(e)\\
+if the collection $\{f_n: n \in \mathbb{N}\}$ is uniformly small at infinity\\
+$\forall \varepsilon > 0, \exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, \forall f_n \in K, |f_n(k)| < \varepsilon \quad \text{/* definition of uniformly small at infinity */}$\\
+\\
+\text{case 1}\\
+let $\varepsilon > 0$ be given. since $f_n$ is uniformly small at infinity\\
+find $C, M \in \mathbb{N}, \forall k \geq C, \forall i, j \geq M\\
+|f_i(k)| < \varepsilon / 2\\
+|f_j(k)| < \varepsilon / 2\\
+|f_i(k) - f_j(k)| \leq |f_i(k)| + |f_j(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon \quad \text{/* triangle inequality */}\\
+\\
+\forall k \geq C, |f_i(k) - f_j(k)| < \varepsilon\\$
+for any fixed $k$, since $f_n$ converges pointwise to $f$, $f_j$ converges pointwise to $f$, take the limit as $j$ goes to infinity, then $|f_i(k) - f_j(k)|$ goes to $|f_i(k) - f(k)|$\\
+so $|f_i(k) - f(k)| < \varepsilon\\
+|f_n(k) - f(k)| < \varepsilon$\\
+\\
+let $\varepsilon > 0$ be arbitrary, by usi, $\exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, |f_n(k)| < \varepsilon / 2$\\
+let $k \geq C$ be fixed, $f_n \rightarrow f$, $\lim_{n \rightarrow \infty} |f_n(k)| = |f(k)| < \varepsilon / 2\\
+|f_n(k) - f(k)| \leq |f_n(k)| + |f(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon\\$
+\\
+\text{case 2}\\
+$\forall k < C$, there are only a finite number of sequences $\{f_n(k)\}$ that each have pointwise convergence\\
+since $f_n$ converges pointwise to $f$\\
+by definition of pointwise convergence\\
+$\forall k < C$, for any fixed $k$, $f(k) = \lim_{n \rightarrow \infty} f_n(k)$\\
+by p.48, definition 2.1.2 of convergence $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
+\\
+$\forall k < C, \text{ by pointwise convergence }, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon\\
+M := \max\{M_1, M_2, ..., M_{C - 1}\}\\
+\forall k \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
+\\
+$\therefore \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$\\
+so $f_n$ converges to $f$ uniformly\\
