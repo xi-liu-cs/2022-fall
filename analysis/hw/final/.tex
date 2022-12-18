@@ -254,10 +254,10 @@ definition 5.1.9, riemann integrable
 \int_a ^ b f &= \overline{\int_a ^ b} f = \inf\{U(P, f)\}\\
 \text{let } P_2 \text{ be a partition of }[a, b], \overline{\int_a ^ b} f &< U(P_2, f) < \int_a ^ b f + \varepsilon\\
 \\
-\text{let } P_3 \text{ be a partition of }[a, b], P_3 := P_1 \cup P_2\\
-\because P_1 \subset P_3, P_3 \text{ is a refinement of } P_1, &\therefore L(P_1, f) \leq L(P_3, f)\\
-\because P_2 \subset P_3, P_3 \text{ is a refinement of } P_2, &\therefore U(P_3, f) \leq U(P_2, f)\\
-\int_a ^ b f - \varepsilon < L(P_1, f) \leq L(P_3, f) \leq &\sum_{i = 1} ^ n f(x_i)\Delta x_i \leq U(P_3, f) \leq U(P_2, f) < \int_a ^ b f + \varepsilon\\
+\text{let } P \text{ be a partition of }[a, b], P := P_1 \cup P_2\\
+\because P_1 \subset P, P \text{ is a refinement of } P_1, &\therefore L(P_1, f) \leq L(P, f)\\
+\because P_2 \subset P, P \text{ is a refinement of } P_2, &\therefore U(P, f) \leq U(P_2, f)\\
+\int_a ^ b f - \varepsilon < L(P_1, f) \leq L(P, f) \leq &\sum_{i = 1} ^ n f(x_i)\Delta x_i \leq U(P, f) \leq U(P_2, f) < \int_a ^ b f + \varepsilon\\
 \int_a ^ b f - \varepsilon < &\sum_{i = 1} ^ n f(x_i)\Delta x_i < \int_a ^ b f + \varepsilon\\
 - \varepsilon < &\sum_{i = 1} ^ n f(x_i)\Delta x_i - \int_a ^ b f < \varepsilon\\
 \left|\sum_{i = 1} ^ n f(x_i)\Delta x_i - \int_a ^ b f\right| &< \varepsilon\\
