@@ -496,7 +496,7 @@ definition 2.4.1. a sequence $\{x_n\}$ is a cauchy sequence if $\forall \varepsi
 \\
 L &= \frac{1}{2}\\
 \frac{|y_1 - y_0|}{1 - L} &\text{ is a constant number}\\
-\lim_{n \rightarrow \infty} \frac{L ^ n}{1 - L}|y_1 - y_0| &= \frac{|y_1 - y_0|}{1 - L}\lim_{n \rightarrow \infty} L ^ n \qquad \text{/* by p.107 corollary 3.1.12 (iii) */}\\
+\lim_{n \rightarrow \infty} \frac{L ^ n}{1 - L}|y_1 - y_0| &= \frac{|y_1 - y_0|}{1 - L}\lim_{n \rightarrow \infty} L ^ n \qquad \text{/* by p.107 corollary on section of sequential limits 3.1.12 (iii) */}\\
 &\text{/* } L = \frac{1}{2} < 1, \text{ by p.63, lemma 2.2.12, ratio test */}\\
 &= 0\\
 \\
@@ -555,7 +555,7 @@ y &= \sqrt{a}
 show $f \in \ell_m ^ {\infty} \rightarrow f \in \ell_{m - 1} ^ {\infty}$\\
 if $f \in \ell_m ^ {\infty}, \{k ^ m |f(k)|: k \in \mathbb{N}\}$ is bounded, the $\ell_m ^ {\infty}$ norm of $f$ is\\
 $||f||_m := \sup\{k ^ m|f(k)|: k \in \mathbb{N}\} = ||k ^ m f||_u$\\
-if $k = 0, k ^ m = 1 = k ^ {m - 1}$\\
+if $k = 0, k ^ m = 0 = k ^ {m - 1}$\\
 if $k \geq 1, k ^ m \geq k ^ {m - 1}\\
 \forall k \in \mathbb{N}, k ^ m|f(k)| \geq k ^ {m - 1}|f(k)|\\
 \forall i \in \{k ^ {m - 1}|f(k)|: k \in \mathbb{N}\}, \sup\{k ^ m|f(k)|: k \in \mathbb{N}\} \geq i$\\
@@ -656,7 +656,7 @@ by definition of pointwise convergence\\
 $\forall k < C$, for any fixed $k$, $f(k) = \lim_{n \rightarrow \infty} f_n(k)$\\
 by p.48, definition 2.1.2 of convergence $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
 \\
-$\forall k < C, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon\\
+$\forall k < C, \text{ by pointwise convergence }, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon\\
 M := \max\{M_1, M_2, ..., M_{C - 1}\}\\
 \forall k \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
 \\
