@@ -81,7 +81,7 @@ so not always be a countably infinite subset\\
 part 1\\
 $\{x_n\}$ diverges to negative infinity: $\forall K \in \mathbb{R}, \exists M \in \mathbb{N}, \forall n \geq M, x_n \leq k, \lim_{n \rightarrow \infty} x_n := -\infty$\\
 part 2\\
-$\{x_n\} := \{-n ^ 3\}, M := \sqrt[3]{K}\\
+$\{x_n\} := \{-n ^ 3\}, M := \sqrt[3]{-K}\\
 \forall K \in \mathbb{R}, \forall n \geq M, -n \leq -M, x_n = -n ^ 3 \leq -M ^ 3 = -(\sqrt[3]{-K}) ^ 3 = K\\
 x_n \leq K$, $x_n$ diverges to $-\infty$\\
 \\
@@ -586,8 +586,14 @@ show $S =  \{g_n: n \in \mathbb{N}\}$ is not bounded in $\ell_m ^ {\infty}$ norm
 k ^ m|1| & \text{if } k = n\\
 k ^ m|0| & \text{if } k \not= n
 \end{cases}\\
-&= \{k ^ m \text{ if } k = n\}\\
-&= \{n ^ m\}\\
+&= \begin{cases}
+k ^ m & \text{if } k = n\\
+0 & \text{if } k \not= n
+\end{cases}\\
+&= \begin{cases}
+n ^ m & \text{if } k = n\\
+0 & \text{if } k \not= n
+\end{cases}\\
 &\forall B \in \mathbb{R}, \exists M \in \mathbb{R}, 
 \end{align*}
 $n$ is a variable and $m$ is a constant, as $n \rightarrow \infty$, $n ^ m \rightarrow \infty\\
@@ -634,33 +640,16 @@ if the collection $\{f_n: n \in \mathbb{N}\}$ is uniformly small at infinity\\
 $\forall \varepsilon > 0, \exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, \forall f_n \in K, |f_n(k)| < \varepsilon \quad \text{/* definition of uniformly small at infinity */}$\\
 \\
 \text{case 1}\\
-let $\varepsilon > 0$ be given. since $f_n$ is uniformly small at infinity\\
-find $C, M \in \mathbb{N}, \forall k \geq C, \forall i, j \geq M\\
-|f_i(k)| < \varepsilon / 2\\
-|f_j(k)| < \varepsilon / 2\\
-|f_i(k) - f_j(k)| \leq |f_i(k)| + |f_j(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon \quad \text{/* triangle inequality */}\\
-\\
-\forall k \geq C, |f_i(k) - f_j(k)| < \varepsilon\\$
-for any fixed $k$, since $f_n$ converges pointwise to $f$, $f_j$ converges pointwise to $f$, take the limit as $j$ goes to infinity, then $|f_i(k) - f_j(k)|$ goes to $|f_i(k) - f(k)|$\\
-so $|f_i(k) - f(k)| < \varepsilon\\
-|f_n(k) - f(k)| < \varepsilon$\\
-\\
-let $\varepsilon > 0$ be arbitrary, by usi, $\exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, |f_n(k)| < \varepsilon / 2$\\
-let $k \geq C$ be fixed, $f_n \rightarrow f$, $\lim_{n \rightarrow \infty} |f_n(k)| = |f(k)| < \varepsilon / 2\\
-|f_n(k) - f(k)| \leq |f_n(k)| + |f(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon\\$
+since $k \geq C$, can use usi, $\forall \varepsilon > 0, \exists C \in \mathbb{N}, \forall k \geq C, \forall n \in \mathbb{N}, |f_n(k)| < \varepsilon / 2$\\
+let $k \geq C$ be fixed, since $f_n$ converges pointwise to $f$, $\lim_{n \rightarrow \infty} f_n(k) = f(k), \lim_{n \rightarrow \infty} |f_n(k)| = |f(k)| < \varepsilon / 2\\
+\textcircled{1}\; \forall k \geq C, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| \leq |f_n(k)| + |f(k)| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon\\$
 \\
 \text{case 2}\\
-$\forall k < C$, there are only a finite number of sequences $\{f_n(k)\}$ that each have pointwise convergence\\
-since $f_n$ converges pointwise to $f$\\
-by definition of pointwise convergence\\
-$\forall k < C$, for any fixed $k$, $f(k) = \lim_{n \rightarrow \infty} f_n(k)$\\
-by p.48, definition 2.1.2 of convergence $\forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
-\\
-$\forall k < C, \text{ by pointwise convergence }, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon\\
+$\forall k < C, f_n \rightarrow f, \text{ by pointwise convergence}, f(k) = \lim_{n \rightarrow \infty} f_n(k), \forall \varepsilon > 0, \exists M_k \in \mathbb{N}, \forall n \geq M_k, |f_n(k) - f(k)| < \varepsilon\\
 M := \max\{M_1, M_2, ..., M_{C - 1}\}\\
-\forall k \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
+\textcircled{2}\; \forall k < C, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(k) - f(k)| < \varepsilon$\\
 \\
-$\therefore \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$\\
+by $\textcircled{1} \textcircled{2}, \therefore \forall \varepsilon > 0, \exists M \in \mathbb{N}, \forall n \geq M, |f_n(x) - f(x)| < \varepsilon$\\
 so $f_n$ converges to $f$ uniformly\\
 \\
 \\
