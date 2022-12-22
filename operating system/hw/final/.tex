@@ -1,0 +1,231 @@
+\documentclass[12pt, border = 4pt, multi]{article} % \documentclass[tikz, border = 4pt, multi]{article}
+\usepackage[a4paper, margin = 70pt]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb} % mathbb{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{forest}
+\usepackage[pdftex]{hyperref}
+\usepackage{amsmath} % matrices
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{diagbox} % diagonal line in cell
+\usepackage[usestackEOL]{stackengine}
+\usepackage{makecell}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\allowdisplaybreaks[1]
+\setlength{\columnsep}{1cm}
+\graphicspath{{./img}} % specify the graphics path to be relative to the main .tex file, denoting the main .tex file directory as ./
+\definecolor{orchid}{rgb}{0.7, 0.4, 1.1}
+\lstset
+{ 
+  backgroundcolor = \color{white},
+  basicstyle = \scriptsize,
+  breaklines = true,
+  commentstyle = \color{comment_color}\textit,
+  keywordstyle = \color{keyword_color}\bfseries,
+  language = c++,
+  escapeinside = {\%*}{*)},          
+  extendedchars = true,              
+  frame = tb,
+  numberstyle = \tiny\color{comment_color},
+  rulecolor = \color{black},
+  showstringspaces = false,
+  stringstyle = \color{string_color},
+  upquote = true, 
+}
+\usepackage{xcolor}
+\definecolor{comment_color}{rgb}{0, 0.5, 0}
+\definecolor{keyword_color}{rgb}{0.3, 0, 0.6}
+\definecolor{string_color}{rgb}{0.5, 0, 0.1}
+\begin{document}
+\section*{Xi Liu}
+last name: Liu\\
+first name: Xi\\
+netid: xl3504\\
+\begin{verbatim}
+• You may use the textbook, slides, and any notes you have.
+But you may not use the internet.
+• You may NOT use communication tools to collaborate 
+with other humans. This includes but is not limited to
+Google-Chat, Messenger, E-mail, etc.
+• Do not try to search for answers on the internet
+it will show in your answer, and you will earn an immediate grade of 0.
+• Anyone found sharing answers or communicating
+with another student during the exam
+period will earn an immediate grade of 0.
+• “I understand the ground rules and agree to abide by them.
+I will not share answers or assist another student during this exam,
+nor will I seek assistance from another student or attempt to view their answers.”
+\end{verbatim}
+\newpage
+\noindent
+Problem 1\\
+a.\\
+minimum number of pages accessed is 1\\
+8 * (8 bytes) = 64 bytes\\
+4KB = $4 * 2 ^ {10} \text{ bytes } = 2 ^ 2 * 2 ^ {10} \text{ bytes } = 2 ^ {12} = 4096$ bytes\\
+64 bytes < 4096 bytes\\
+so all of the data accessed in all of 8 memory accesses can fit in 1 page\\
+ignoring pages accessed to load the instructions themselves, so the minimum number of pages accessed is 1\\
+\\
+\\
+\\
+b.\\
+maximum number of pages accessed is 8\\
+for each memory access, the 8 bytes accessed can come from a different page, so the maximum number of pages accessed is 8 * 1 = 8\\
+\\
+show the 8 bytes in each memory access cannot come from 2 different pages:\\
+for contradiction, assume for each of the memory access, the 8 bytes come from 2 different pages (i.e., $i \in [2, 16] \cap \mathbb{N}$, the first part at end of page $i - 1$, the second part at front of page $i$), then the 8 bytes cannot be read by 1 memory access but instead need to be read by 2 memory accesses, which contradicts with the problem statement that each 1 memory access reads 8 bytes from memory, so the 8 bytes in each memory access cannot come from 2 different pages\\
+\\
+so the maximum number of pages accessed is 8\\
+\\
+\\
+\\
+c.\\
+the number of accesses of MMU (memory management unit) is between 8 and 16 times (i.e., $8 \leq \text{ number of accesses }\leq 16$)\\
+if assume "access of MMU" here is refering to sending data from CPU to MMU\\
+case 1: when there is a page hit, CPU sends the virtual address to MMU (first access), and after a series of operations, the cache or main memory returns the data to CPU\\
+case 2: when there is a page fault, CPU sends the virtual address to MMU (first access), since the page is not in memory, a page fault exception handler is started to cache the virtual page in memory, then the CPU need to resend the virtual address again to the MMU (second access), then there is a page hit and after a series of operations, the cache or main memory can return the data to CPU\\
+\\
+let $n \in \mathbb{N}$ be the number of accesses of MMU
+\begin{align*}
+\text{number of accesses in case 1} &= 8 * 1 = 8\\
+\text{number of accesses in case 2} &= 8 * 2 = 16\\
+\text{number of accesses in case 1} &\leq n \leq \text{number of accesses in case 2}\\
+8 * 1 &\leq n \leq 8 * 2\\
+8 &\leq n \leq 16
+\end{align*}
+so the number of accesses of MMU is between 8 and 16
+\\
+\\
+\\
+\\
+d.\\
+the number of accesses of TLB (translation lookaside buffer) is between 8 and 16 (i.e., $8 \leq \text{ number of accesses }\leq 16$)\\
+\\
+for each virtual memory access:\\
+case 1: if the page table entry (PTE) is already in TLB, there is a TLB hit, then there is 1 corresponding TLB access associated with this virtual memory access\\
+case 2: if after the first access of the TLB for searching the PTE, the PTE is not in TLB, there is a TLB miss, then page table (possibly in main memory) need to be accessed to find that page table entry, then after finding the page table entry, another TLB access is needed to update and include the newly retrieved page table entry in the TLB, so there are 2 TLB accesses associated with this virtual memory access\\
+\\
+let $n \in \mathbb{N}$ be the number of accesses of TLB
+\begin{align*}
+\text{number of accesses in case 1} &= 8 * 1 = 8\\
+\text{number of accesses in case 2} &= 8 * 2 = 16\\
+\text{number of accesses in case 1} &\leq n \leq \text{number of accesses in case 2}\\
+8 * 1 &\leq n \leq 8 * 2\\
+8 &\leq n \leq 16
+\end{align*}
+so the number of accesses of TLB is between 8 and 16
+\newpage
+\noindent
+Problem 2\\
+the minimum number of instances of this I/O device needed to avoid deadlock is 16\\
+\\
+let $p1, p2, p3, p4, p5$ be the 5 processes executing in the system, the column with the title "has" indicates the number of instances that the process is currently holding, the column with the title "max" is indicates the total number of instances that the process need to complete\\
+\\
+step 1: show when there are 16 instances, the system is in a safe state\\
+when there 16 instances of this I/O device\\
+consider when all processes are given 1 instance of the I/O device
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+process & has & max\\\hline
+p1 & 1 & 4\\\hline 
+p2 & 1 & 4\\\hline  
+p3 & 1 & 4\\\hline
+p4 & 1 & 4\\\hline  
+p5 & 1 & 4\\\hline
+\end{tabular}\\
+\end{center}
+number of free instances = 16 - 5(1) = 11, can assign 3 of the 11 free instances to any of the processes, and that process would be finished and release 4 instances, then other processes can complete, so this state is safe\\
+\\
+\\
+\\
+consider when all processes are given 2 instances of the I/O device
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+process & has & max\\\hline
+p1 & 2 & 4\\\hline 
+p2 & 2 & 4\\\hline  
+p3 & 2 & 4\\\hline
+p4 & 2 & 4\\\hline  
+p5 & 2 & 4\\\hline
+\end{tabular}\\
+\end{center}
+number of free instances = 16 - 5(2) = 6, can assign 2 of the 6 free instances to any of the processes, and that process would be finished and release 4 instances, then other processes can complete, so this state is safe\\
+\\
+\\
+\\
+consider when all processes are given 3 instances of the I/O device
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+process & has & max\\\hline
+p1 & 3 & 4\\\hline 
+p2 & 3 & 4\\\hline  
+p3 & 3 & 4\\\hline
+p4 & 3 & 4\\\hline  
+p5 & 3 & 4\\\hline
+\end{tabular}\\
+\end{center}
+number of free instances = 16 - 5(3) = 1, can assign the 1 free instance to any of the processes, and that process would be finished and release 4 instances, then other processes can complete, so this state is safe, so all processes can complete with 16 instances of this I/O device, so a deadlock cannot happen\\
+\\
+\\
+\\
+step 2: show 16 is the minimum number of instances by showing when there are only 15 instances, the system is in a unsafe state\\
+when there 15 instances of this I/O device\\
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+process & has & max\\\hline
+p1 & 3 & 4\\\hline 
+p2 & 3 & 4\\\hline  
+p3 & 3 & 4\\\hline
+p4 & 3 & 4\\\hline  
+p5 & 3 & 4\\\hline
+\end{tabular}\\
+\end{center}
+number of free instances = 15 - 5(3) = 0, there is no free instance to be assigned to any of the processes, so no process can finish, so this state is unsafe, so a deadlock can happen\\
+\\
+so the minimum number of instances of this I/O device needed to avoid deadlock is 16\\
+\newpage
+\noindent
+Problem 3\\
+a.\\
+yes\\
+can happen in a multithreaded process, for example, if a process have 3 threads $t1, t2, t3$ and 3 resources $r1, r2, r3$\\
+thread $t1$ can be blocked waiting for resource $r1$, and thread $t2$ can be blocked waiting for resource $r2$, thread $t3$ can be blocked waiting for resource $r3$, then the process is blocked for 3 I/O events at the same time\\
+\\
+\\
+\\
+b.\\
+2 is the maximum number of CPUs that this process uses\\
+the thread that is blocked for I/O is not using any CPU, the number of remaining threads is $3 - 1 = 2$, each thread can use a different CPU, and assume each 1 user-level thread is mapped to 1 kernel-level thread, then 2 is the maximum number of CPUs that this process uses\\
+\\
+\\
+\\
+c.\\
+case 1: no, assume the system is using a three state model, since there is no state transition between blocked and running, a process cannot cause another process to move from blocked state directly to running state\\
+\\
+case 2: a process can cause another process to move from blocked state to ready state, then it can be run. in this case it is ambiguous whether the answer is "yes" or "no"\\
+let $p1, p2$ be two processes\\
+let $r$ be a resource in a critical section (e.g., enclosed by pthread\_mutex\_lock() and pthread\_mutex\_unlock())\\
+first, suppose $p1$ is holding resource $r$ that is needed by process $p2$, when process $p2$ try to acquire resource $r$, since $p1$ is holding $r$, $p2$ is denied and put to sleep, so $p2$ is blocked, but when $p1$ releases $r$, $p2$ can acquire $r$, at this time $p2$ is awaken and change from blocked to ready and then can be run\\
+\\
+\\
+\\
+d.\\
+yes\\
+processes executing in user mode cannot use the hardware such as transferring data from or to disk, access physical page, or send network packets. in a system call, hardware privilege level is raised to kernel mode by giving control to a trap handler, then the process can access the hardware such as making I/O requests and allocating memory\\
+\\
+\\
+\\
+e.\\
+let $x, y \in \mathbb{N}$, suppose there are $x$ processes that are not ready to run (e.g., waiting for a completion of an event such as I/O), and there are $y$ processes that are ready to run. at the time when the scheduler need to decide what process to run next, since there is no state differentiation between "blocked" and "ready", the scheduler then might try to run a process that is not ready to run (still waiting for the event to complete), then in case 1: the scheduler discovers something is wrong and try to pick another process to run (but the newly picked process might also not ready to run until some event happens), which added additional time overhead in scheduling, in case 2: if the scheduler runs the process that is not ready to run (still waiting for the event to complete), then inconsistent and unintended behavior might happen
+\end{document}
